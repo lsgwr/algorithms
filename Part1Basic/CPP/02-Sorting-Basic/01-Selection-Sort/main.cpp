@@ -24,7 +24,7 @@ void selectionSort(int arr[], int n) {
                 minIndex = j;
             }
         }
-        // 把本轮的最小元素和循环的起始位置进行置换
+        // 把本轮的最小元素的位置和循环的起始位置进行置换
         swap(arr[i], arr[minIndex]);
     }
 }
