@@ -6,6 +6,7 @@
  ***********************************************************/
 
 #include <iostream>
+#include "Student.h"
 
 using namespace std;
 /**
@@ -58,5 +59,13 @@ int main() {
         cout << d[i] << " ";
     }
     cout << endl;
+
+    // 5.自定义对象排序
+    Student s[4] = {{"B",78}, {"A", 86},{"G",34}, {"D",78}};
+    selectionSort(s,4);
+    for(int i = 0; i < 4; i++){
+        cout<<s[i];
+    }
+    cout<<endl;
     return 0;
 }
