@@ -32,9 +32,9 @@ void selectionSort(T arr[], int n) {
 int main() {
     // 测试自定义的算法辅助函数
     int N = 100000;
-    int *arr = SorterTestHelper::generateRandomArray(N, 0, N);
+    int *arr = SortTestHelper::generateRandomArray(N, 0, N);
     // 岑石数组是否有序
-    SorterTestHelper::testSort("Selection Sort", selectionSort, arr, N);
-    delete arr;
+    SortTestHelper::testSort("Selection Sort", selectionSort, arr, N);
+    delete[] arr;
     return 0;
 }

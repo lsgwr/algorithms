@@ -32,9 +32,9 @@ void selectionSort(T arr[], int n) {
 int main() {
     // 测试自定义的算法辅助函数
     int N = 20;
-    int *arr = SorterTestHelper::generateRandomArray(N, 0, 100);
+    int *arr = SortTestHelper::generateRandomArray(N, 0, 100);
     selectionSort(arr, N);
-    SorterTestHelper::printArray(arr, N);
-    delete arr;
+    SortTestHelper::printArray(arr, N);
+    delete[] arr;
     return 0;
 }

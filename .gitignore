@@ -10,3 +10,4 @@ target/
 #####################
 *.out
 cmake-build-debug/
+.vscode/

@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-namespace SorterTestHelper{
+namespace SortTestHelper{
     // 生成有n个元素的随即数组，每个元素的随机范围为[rangeL, rangeR]
     int *generateRandomArray(int n, int rangeL, int rangeR){
         assert(rangeL < rangeR);
