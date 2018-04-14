@@ -1,10 +1,11 @@
 /***********************************************************
- * @Description : 
+ * @Description : 利用自定义的辅助函数简化测试用例
  * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2018/4/14 11:13
+ * @date        : 2018/4/14 14:18
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter2SortingBasic.Section2SortUsingTemplate;
+package Chapter2SortingBasic.Section3GenerateTestCases;
+
 
 public class SelectionSort {
     // 算法类不允许产生任何实例，简单的单例模式，没有做同步
@@ -46,45 +47,10 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        // 1.整型数组排序
-        Integer[] a = {10, 9, 5, 6, 8, 7, 2, 1, 3, 4};
-        sort(a);
-        for (int i = 0; i < 10; ++i) {
-            System.out.print(a[i] + " ");
-        }
-        System.out.println();
-        // 2.对浮点数进行排序
-        Float[] b = {2.2f, 1.1f, 4.4f, 3.3f};
-        sort(b);
-        for (int i = 0; i < 4; ++i) {
-            System.out.print(b[i] + " ");
-        }
-        System.out.println();
-        // 3.字符数组排序
-        Character[] c = {'B', 'A', 'D', 'C'};
-        sort(c);
-        for (int i = 0; i < 4; ++i) {
-            System.out.print(c[i] + " ");
-        }
-        System.out.println();
-        // 4.字符串数组排序
-        String[] d = {"dba", "abd", "bbc", "abc"};
-        sort(d);
-        for (int i = 0; i < 4; i++) {
-            System.out.print(d[i] + " ");
-        }
-        System.out.println();
-
-        // 5.自定义对象排序
-        Student[] students = new Student[4];
-        students[0] = new Student("B", 78);
-        students[1] = new Student("A", 86);
-        students[2] = new Student("G", 34);
-        students[3] = new Student("D", 78);
-        sort(students);
-        for (int i = 0; i < 4; i++) {
-            System.out.println(students[i]);
-        }
-        System.out.println();
+        // 测试自定义的算法辅助函数
+        int N = 20;
+        Integer[] arr = SortTestHelper.generateRandomArray(N, 0, 100);
+        sort(arr);
+        SortTestHelper.printArray(arr);
     }
 }

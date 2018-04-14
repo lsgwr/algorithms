@@ -9,7 +9,7 @@ package Chapter2SortingBasic.Section1SelectionSort;
 public class SelectionSort {
     // 算法类不允许产生任何实例，简单的单例模式，没有做同步
 
-    public SelectionSort() {
+    private SelectionSort() {
     }
 
     /**
