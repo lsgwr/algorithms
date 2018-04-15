@@ -1,11 +1,12 @@
 /***********************************************************
- * @Description : 快速排序的优化1：处理接近有序的数组，
- *                参考元素需要随意选.否则运行效率会蜕变成O(n^2)
+ * @Description : 快速排序的优化1处理含有大量重复元素的数组,双路处理法，
+ *                可以把重复的元素均匀地分散到左右两边，从而有效地防止
+ *                partition失衡
  * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2018/4/15 19:14
+ * @date        : 2018/4/15 20:02
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter3SortingSenior.Section6QuickSortDealWithNearlyOrderedArray;
+package Chapter3SortingSenior.Section7QuickSortDealWithRepeatedOnes;
 
 public class QuickSort {
     /**
@@ -22,15 +23,23 @@ public class QuickSort {
         SortTestHelper.swap(arr, left, (int) (Math.random() * (right - left + 1)) + left);
         // 选择后面所有元素都要与之比较的元素，一般直接选第一个就好
         Comparable ref = arr[left];
-        //开始考察元素： arr[left...j] < v ; arr[j+1...i] > v
-        int j = left;
-        for (int i = left + 1; i <= right; i++) {
-            // arr[i] > ref的时候不需要挪动，因为已经在最右侧了
-            if (arr[i].compareTo(ref) < 0) {
-                // 小于参考元素的都忘左边挪
-                SortTestHelper.swap(arr, j + 1, i);
-                j++;
+        //开始考察元素： arr[left+1...j] <= v ; arr[j...right] >= v
+        int i = left + 1;
+        int j = right;
+        while (true) {
+            while (i <= right && arr[i].compareTo(ref) < 0) {
+                i++;
             }
+            while (j >= left + 1 && arr[j].compareTo(ref) > 0) {
+                j--;
+            }
+            if (i > j) {
+                break;
+            }
+            // arr[i] >= v 并且 arr[j] <= v的时候该把i和j的元素进行交换的情况
+            SortTestHelper.swap(arr, i, j);
+            i++;
+            j--;
         }
         // 最后把参考元素置换到中间去
         SortTestHelper.swap(arr, left, j);
@@ -69,6 +78,6 @@ public class QuickSort {
         Integer[] arr = SortTestHelper.generateRandomArray(N, 0, N);
         // 测试数组是否有序
         // sort函数一定不要穿数组长度，要不老会报错
-        SortTestHelper.testSort("Chapter3SortingSenior.Section6QuickSortDealWithNearlyOrderedArray.QuickSort", arr);
+        SortTestHelper.testSort("Chapter3SortingSenior.Section7QuickSortDealWithRepeatedOnes.QuickSort", arr);
     }
 }
