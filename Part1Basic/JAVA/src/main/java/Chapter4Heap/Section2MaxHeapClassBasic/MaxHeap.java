@@ -38,6 +38,7 @@ public class MaxHeap<Item> {
         return count == 0;
     }
 
+
     public static void main(String[] args) {
         MaxHeap<Integer> maxHeap = new MaxHeap<>(100);
         System.out.println(maxHeap.size());
