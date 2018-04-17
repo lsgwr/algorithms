@@ -4,7 +4,7 @@
  * @date        : 2018/4/17 00:50
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter4Heap.Section2MaxHeapClassBasic;
+package Chapter4Heap.Section2to4;
 
 
 /**
@@ -123,6 +123,9 @@ public class PrintableMaxHeap extends MaxHeap<Comparable<Integer>> {
             maxHeap.insert(new Integer((int) (Math.random() * M)));
         }
         maxHeap.treePrint();
-
+        while (!maxHeap.isEmpty()){
+            System.out.print(maxHeap.popMax()+" ");
+        }
+        System.out.println();
     }
 }

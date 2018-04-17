@@ -4,7 +4,7 @@
  * @date        : 2018/4/16 00:26
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter4Heap.Section2MaxHeapClassBasic;
+package Chapter4Heap.Section2to4;
 
 /**
  * 在堆的有关操作中，需要比较堆中元素的大小，所以Item需要extends Comparable
@@ -59,7 +59,7 @@ public class MaxHeap<Item extends Comparable> {
     /**
      * 上浮的私有函数
      */
-    public void shiftUp(int k) {
+    private void shiftUp(int k) {
         // k > 1是因为到根节点时就没父节点了，不需要再比较了
         while (k > 1 && data[k / 2].compareTo(data[k]) < 0) {
             // 如果当前元素的父元素(在数组中的下表为整除2)比当前元素还小，
@@ -68,6 +68,32 @@ public class MaxHeap<Item extends Comparable> {
             k /= 2;
         }
     }
+
+    /**
+     * 把移上来的最后一个元素下移到合适位置
+     */
+    private void shiftDown(int k) {
+        // 当当前k节点有子节点的时候(有左孩子不一定有右孩子，但有右孩子一定有左孩子。因为生成堆得时候是从左向右地)
+        // 等于号别漏
+        while (2 * k <= count) {
+            // 获取子孩子下标
+            int j = 2 * k;
+            // 存在右孩子并且右孩子大于左孩子，那么右孩子有父节点交换
+            if (j + 1 <= count && data[j + 1].compareTo(data[j]) > 0) {
+                // 选择右节点作为下面与k处节点进行交换
+                j++;
+            }
+            // 父节点比两个子节点的较大值还大，那么不需要交换
+            if (data[k].compareTo(data[j]) >= 0) {
+                break;
+            }
+            // 父节点小于孩子节点的较大值，那么就和较大值的子节点交换
+            swap(k, j);
+            // 把换后的子节点作为父节点，接着往下走
+            k = j;
+        }
+    }
+
 
     /**
      * 插入元素
@@ -79,6 +105,23 @@ public class MaxHeap<Item extends Comparable> {
         data[++count] = item;
         // 把新加入的元素向上浮动到合适位置
         shiftUp(count);
+    }
+
+    /**
+     * 弹出最大值(根节点的对象)
+     */
+    public Item popMax() {
+        // 保证堆不为空
+        assert (count > 0);
+        // 最大元素为第一个元素
+        Item max = data[1];
+        // 移出最大元素后，需要把最下面的元素移到上面去
+        swap(1, count);
+        // 少了最后一个元素
+        count--;
+        // 将换上去(到最上面了,根元素，下标为1)的最后一个元素下移
+        shiftDown(1);
+        return max;
     }
 
     public static void main(String[] args) {
