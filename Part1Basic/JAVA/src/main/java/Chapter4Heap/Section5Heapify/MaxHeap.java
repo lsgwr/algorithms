@@ -23,6 +23,10 @@ public class MaxHeap<Item extends Comparable> {
      */
     protected int capacity;
 
+    /**
+     * 联众构造方式的区别
+     * 直接输入数组的方式构造堆，其复杂度为O(n);将n个元素挨个插入空堆来构造堆，复杂度是O(nlogn)
+     */
     public MaxHeap(int capacity) {
         // 不能直接声明泛型数组，只能先声明再强制转换
         this.data = (Item[]) new Comparable[capacity + 1];
