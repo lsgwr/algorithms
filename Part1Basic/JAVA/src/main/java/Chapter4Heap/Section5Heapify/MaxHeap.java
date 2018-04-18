@@ -1,10 +1,10 @@
 /***********************************************************
- * @Description : 
+ * @Description : 直接利用外面的数组初始化一个堆
  * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2018/4/16 00:26
+ * @date        : 2018/4/19 00:42
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter4Heap.Section2to4;
+package Chapter4Heap.Section5Heapify;
 
 /**
  * 在堆的有关操作中，需要比较堆中元素的大小，所以Item需要extends Comparable
@@ -25,9 +25,31 @@ public class MaxHeap<Item extends Comparable> {
 
     public MaxHeap(int capacity) {
         // 不能直接声明泛型数组，只能先声明再强制转换
-        this.data = (Item[]) new Comparable[capacity];
+        this.data = (Item[]) new Comparable[capacity + 1];
         count = 0;
         this.capacity = capacity;
+    }
+
+    /**
+     * 直接输入完整的数组进行最大堆化(Heapify)
+     * 核心在于从floor(n/2)下标位置的元素开始到下标为0的元素一次执行shiftDown,好好理解4-5老师前8分钟的图示
+     */
+    public MaxHeap(Item arr[]) {
+        int n = arr.length;
+        // 声明空间，还没赋值
+        data = (Item[]) new Comparable[n + 1];
+        capacity = n;
+        // 挨个赋值
+        for (int i = 0; i < n; i++) {
+            data[i + 1] = arr[i];
+        }
+        // 堆中元素个数为n了
+        count = n;
+        // 核心 : 从floor(n/2)下标位置的元素开始到下标为0的元素一次执行shiftDown,好好理解4-5老师前8分钟的图示
+        // 执行完，就根据数组生成一个最大堆了
+        for (int i = count / 2; i >= 1; i--) {
+            shiftDown(i);
+        }
     }
 
     /**
@@ -55,6 +77,7 @@ public class MaxHeap<Item extends Comparable> {
         data[i] = data[j];
         data[j] = t;
     }
+
 
     /**
      * 上浮的私有函数
