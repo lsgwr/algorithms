@@ -7,7 +7,7 @@ using namespace std;
 template<typename T>
 int binarySearch(T arr[], int n, T target){
     // 在arr[left...right]之中查找target
-    int left = 0, right = n-1,middle = 0;
+    int left = 0, right = n-1;
     while(left <= right){
         // middle = (left+right)/2中，left + right 可能越界;，完美的实现方式如下
         int middle = left + (right - left)/2;
