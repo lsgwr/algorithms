@@ -6,6 +6,8 @@
  ***********************************************************/
 package Chapter5BinarySearchTree.Section5Traverse;
 
+import java.util.LinkedList;
+
 /**
  * @param <Key>   作为树的索引关键词，必须是可比较地，所以需要继承Comparable
  * @param <Value> 不需要可比较
@@ -169,6 +171,25 @@ public class BST<Key extends Comparable<Key>, Value> {
         postOrder(root);
     }
 
+    /**
+     * 层序遍历(Level Order),又称广度优先遍历
+     */
+    public void levelOrder() {
+        LinkedList<Node> queue = new LinkedList<>();
+        // 先推入根节点
+        queue.push(root);
+        while (!queue.isEmpty()) {
+            Node node = queue.remove();
+            System.out.println(node.key);
+            if (node.left != null) {
+                queue.push(node.left);
+            }
+            if (node.right != null) {
+                queue.push(node.right);
+            }
+        }
+    }
+
     /*****************************************************************************
      * 前、中、后序遍历的私有辅助函数：前中后序遍历的差别在于访问当前节点是在一开始、中间还是最后
      * ***************************************************************************/
@@ -239,6 +260,11 @@ public class BST<Key extends Comparable<Key>, Value> {
         // 测试二分搜索树的后序遍历 postOrder  后序遍历可用于释放二叉搜索树
         System.out.println("postOrder: ");
         bst.postOrder();
+        System.out.println();
+
+        // 层序遍历
+        System.out.println("levelOrder: ");
+        bst.levelOrder();
         System.out.println();
     }
 }
