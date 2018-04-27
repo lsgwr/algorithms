@@ -4,7 +4,7 @@
  * @date        : 2018/4/24 23:09
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter5BinarySearchTree.section2to3BasicAndInsert;
+package Chapter5BinarySearchTree.section2to4BasicAndInsertAndSearch;
 
 /**
  * @param <Key>   作为树的索引关键词，必须是可比较地，所以需要继承Comparable

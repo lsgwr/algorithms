@@ -4,7 +4,7 @@
  * @date        : 2018/4/24 23:09
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter5BinarySearchTree.Section5Traverse;
+package Chapter5BinarySearchTree.Section7DeleteMinMax;
 
 import java.util.LinkedList;
 
@@ -75,6 +75,44 @@ public class BST<Key extends Comparable<Key>, Value> {
     public Value search(Key key) {
         return search(root, key);
     }
+
+
+    /**
+     * 寻找最小的键值
+     */
+    public Key min() {
+        assert (count != 0);
+        Node minNode = min(root);
+        return minNode.key;
+    }
+
+    /**
+     * 寻找最大的键值
+     */
+    public Key max() {
+        assert (count != 0);
+        Node maxNode = max(root);
+        return maxNode.key;
+    }
+
+    /**
+     * 删除最小值对应的节点
+     */
+    public void deleteMin() {
+        if (root != null) {
+            root = deleteMin(root);
+        }
+    }
+
+    /**
+     * 删除最大值对应的节点
+     */
+    public void deleteMax() {
+        if (root != null) {
+            root = deleteMax(root);
+        }
+    }
+
 
     //***************************************************
     //* 二分搜索树的辅助函数
@@ -228,9 +266,67 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
     }
 
+    /**
+     * 在以node为根的二叉搜索树中，返回最小键值的点
+     */
+    private Node min(Node node) {
+        // 没有左子节点的时候就到了最小点了
+        if (node.left == null) {
+            return node;
+        }
+        return min(node.left);
+    }
+
+    /**
+     * 在以node为根的二叉搜索树中，返回最大键值的点
+     */
+    private Node max(Node node) {
+        // 没有左子节点的时候就到了最小点了
+        if (node.right == null) {
+            return node;
+        }
+        return min(node.right);
+    }
+
+    /**
+     * 删除以Node为根节点的子树中的最小值
+     */
+    private Node deleteMin(Node node) {
+        if (node.left == null) {
+            // 没有左节点了，就要看看右节点是否存在
+            Node rightNode = node.right;
+            // 删除最小节点node
+            node.right = null;
+            count--;
+            // 不管rightNode是否为空，都可以直接返回地
+            return rightNode;
+        }
+        // 好好体验递归
+        node.left = deleteMin(node.left);
+        return node;
+    }
+
+    /**
+     * 删除以Node为根节点的子树中的最大值
+     */
+    private Node deleteMax(Node node) {
+        if (node.right == null) {
+            // 没有右节点了，就要看看左节点是否存在
+            Node leftNode = node.left;
+            // 删除最小节点node
+            node.left = null;
+            count--;
+            // 不管rightNode是否为空，都可以直接返回地
+            return leftNode;
+        }
+        // 好好体验递归
+        node.right = deleteMax(node.right);
+        return node;
+    }
+
 
     public static void main(String[] args) {
-        BST<Integer, Integer> bst = new BST<Integer, Integer>();
+        BST<Integer, Integer> bst = new BST<>();
 
         // 取n个取值范围在[0...m)的随机整数放进二分搜索树中
         int N = 10;
@@ -266,5 +362,32 @@ public class BST<Key extends Comparable<Key>, Value> {
         System.out.println("levelOrder: ");
         bst.levelOrder();
         System.out.println();
+
+        // 测试 removeMin
+        // 输出的元素应该是从小到大排列的
+        System.out.println("Test removeMin: ");
+        while (!bst.isEmpty()) {
+            System.out.print("min: " + bst.min() + " , ");
+            bst.deleteMin();
+            System.out.println("After removeMin, size = " + bst.size());
+        }
+        System.out.println();
+
+
+        for (int i = 0; i < N; i++) {
+            Integer key = (int) (Math.random() * M);
+            // 为了后续测试方便,这里value值取和key值一样
+            bst.insert(key, key);
+        }
+        // 注意, 由于随机生成的数据有重复, 所以bst中的数据数量大概率是小于n的
+
+        // 测试 removeMax
+        // 输出的元素应该是从大到小排列的
+        System.out.println("Test removeMax: ");
+        while (!bst.isEmpty()) {
+            System.out.print("max: " + bst.max() + " , ");
+            bst.deleteMax();
+            System.out.println("After removeMax, size = " + bst.size());
+        }
     }
 }

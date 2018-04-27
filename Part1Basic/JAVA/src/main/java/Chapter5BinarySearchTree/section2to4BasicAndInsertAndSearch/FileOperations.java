@@ -4,7 +4,7 @@
  * @date        : 2018/4/25 01:24
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter5BinarySearchTree.section2to3BasicAndInsert;
+package Chapter5BinarySearchTree.section2to4BasicAndInsertAndSearch;
 
 import java.io.BufferedInputStream;
 import java.io.File;
