@@ -25,6 +25,14 @@ private:
             this->left = NULL;
             this->right = NULL;
         }
+
+        Node(Node *node) {
+            // key是唯一地，不能重复
+            this->key = node->key;
+            this->value = node->value;
+            this->left = node->left;
+            this->right = node->right;
+        }
     };
 
     // 根节点
@@ -129,7 +137,7 @@ public:
     }
 
 
-// 从二叉树中删除键值为key的节点
+    // 从二叉树中删除键值为key的节点
     void deleteNode(Key key) {
         root = deleteNode(root, key);
     }
@@ -297,8 +305,10 @@ private:
         }
         if (key < node->key) {
             node->left = deleteNode(node->left, key);
+            return node;
         } else if (key > node->key) {
             node->right = deleteNode(node->right, key);
+            return node;
         } else {
             // 关键之处，循环到某阶段key = node->key了，最为复杂
             if (node->left == NULL) {
@@ -318,15 +328,32 @@ private:
             }
 
             // 左右子树都不为空，找右子树的最小节点即可，然后把左右子树更新一下
-            Node *delNode = node;
-            // 找到右子树的最小值
-            Node *successor = min(node->right);
+            // 找到右子树的最小值.注意要新建一个Node,不然下面的
+            Node *successor = new Node(min(node->right));
+            // 这里++，在下面的deleteMin会--地
+            count++;
             // 更新右子树指针,注意deleteMin返回的node->right作为根节点的树的最小值的父亲节点
             successor->right = deleteMin(node->right);
             successor->left = node->left;
+            // 删除指定节点
+            delete node;
+            count--;
+            // 返回新的二叉搜索树的根节点
+            return successor;
         }
     }
+
 };
+
+// 随机打乱数组
+void shuffle(int arr[], int n) {
+
+    srand(time(NULL));
+    for (int i = n - 1; i >= 0; i--) {
+        int x = rand() % (i + 1);
+        swap(arr[i], arr[x]);
+    }
+}
 
 int main(void) {
     srand(time(NULL));
@@ -395,6 +422,34 @@ int main(void) {
         bst.deleteMax();
         cout << "After deleteMax, size = " << bst.size() << endl;
     }
+
+
+    // 取n个取值范围在[0...n)的随机整数放进二分搜索树中
+    int n = 10000;
+    for (int i = 0; i < n; i++) {
+        int key = rand() % n;
+        // 为了后续测试方便,这里value值取和key值一样
+        int value = key;
+        bst.insert(key, value);
+    }
+    // 注意, 由于随机生成的数据有重复, 所以bst中的数据数量大概率是小于n的
+
+    // order数组中存放[0...n)的所有元素
+    int order[n];
+    for (int i = 0; i < n; i++)
+        order[i] = i;
+    // 打乱order数组的顺序
+    shuffle(order, n);
+
+    // 乱序删除[0...n)范围里的所有元素
+    for (int i = 0; i < n; i++)
+        if (bst.contain(order[i])) {
+            bst.deleteNode(order[i]);
+            cout << "After remove " << order[i] << " size = " << bst.size() << endl;
+        }
+
+    // 最终整个二分搜索树应该为空
+    cout << bst.size() << endl;
 
     return 0;
 }
