@@ -246,7 +246,7 @@ private:
         if (node->right == NULL) {
             return node;
         }
-        return min(node->right);
+        return max(node->right);
     }
 
     // 删除以Node为根节点的子树中的最小值
