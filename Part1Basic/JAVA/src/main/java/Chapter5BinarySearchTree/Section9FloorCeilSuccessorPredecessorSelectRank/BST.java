@@ -562,8 +562,9 @@ public class BST<Key extends Comparable<Key>, Value> {
             System.out.print("the ceil of " + i + " is ");
             if (ceilKey == null) {
                 System.out.println("NULL");
-            } else
+            } else {
                 System.out.println(ceilKey);
+            }
 
             System.out.println();
         }
