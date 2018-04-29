@@ -4,8 +4,8 @@
  * @date        : 2018/4/29 18:04
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-#ifndef HELLOWORLD_UNIONFIND1_H
-#define HELLOWORLD_UNIONFIND1_H
+#ifndef UNIONFIND_H
+#define UNIONFIND_H
 
 #include <iostream>
 #include <cassert>
@@ -66,4 +66,4 @@ namespace UF1 {
     };
 }
 
-#endif //HELLOWORLD_UNIONFIND1_H
+#endif //UNIONFIND_H

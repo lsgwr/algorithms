@@ -4,8 +4,8 @@
  * @date        : 2018/4/29 18:08
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-#ifndef HELLOWORLD_UNIONFINDTESTHELPER_H
-#define HELLOWORLD_UNIONFINDTESTHELPER_H
+#ifndef UNIONFINDTESTHELPER_H
+#define UNIONFINDTESTHELPER_H
 
 #include <iostream>
 #include <ctime>
@@ -42,4 +42,4 @@ namespace UnionFindTestHelper {
         cout << "UF1, " << 2 * n << " ops, " << double(endTime - startTime) / CLOCKS_PER_SEC << " s" << endl;
     }
 }
-#endif //HELLOWORLD_UNIONFINDTESTHELPER_H
+#endif //UNIONFINDTESTHELPER_H
