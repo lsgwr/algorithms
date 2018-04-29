@@ -285,7 +285,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         if (node.right == null) {
             return node;
         }
-        return min(node.right);
+        return max(node.right);
     }
 
     /**

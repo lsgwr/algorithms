@@ -4,7 +4,7 @@
  * @date        : 2018/4/24 23:09
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter5BinarySearchTree.SectionDeleteNode;
+package Chapter5BinarySearchTree.Section8DeleteNode;
 
 import java.util.LinkedList;
 
@@ -299,7 +299,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         if (node.right == null) {
             return node;
         }
-        return min(node.right);
+        return max(node.right);
     }
 
     /**
