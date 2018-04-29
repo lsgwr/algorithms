@@ -10,7 +10,7 @@
 using namespace std;
 
 int main(void) {
-    int n = 10000;
+    int n = 1000000;
     UnionFindTestHelper::testUF(n);
     return 0;
 }

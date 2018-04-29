@@ -17,10 +17,10 @@ using namespace std;
 namespace UnionFindTestHelper {
 
     // 测试第一版本的并查集, 测试元素个数为n
-    void testUF1(int n) {
+    void testUF(int n) {
 
         srand(time(NULL));
-        UF1::UnionFind uf = UF1::UnionFind(n);
+        UF::UnionFind uf = UF::UnionFind(n);
 
         time_t startTime = clock();
 
@@ -39,7 +39,7 @@ namespace UnionFindTestHelper {
         time_t endTime = clock();
 
         // 打印输出对这2n个操作的耗时
-        cout << "UF1, " << 2 * n << " ops, " << double(endTime - startTime) / CLOCKS_PER_SEC << " s" << endl;
+        cout << "UF, " << 2 * n << " ops, " << double(endTime - startTime) / CLOCKS_PER_SEC << " s" << endl;
     }
 }
 #endif //UNIONFINDTESTHELPER_H

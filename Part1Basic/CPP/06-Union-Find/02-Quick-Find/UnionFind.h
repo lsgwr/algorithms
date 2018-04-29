@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 
+ * @Description : UF的基本实现
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/4/29 18:04
  * @email       : liangshanguang2@gmail.com
@@ -12,7 +12,7 @@
 
 using namespace std;
 
-namespace UF1 {
+namespace UF {
     class UnionFind {
 
     private:
