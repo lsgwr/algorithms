@@ -110,14 +110,14 @@ public:
 
     // 寻找最小的键值
     Key min() {
-        assert(count > 0);
+        assert(count != 0);
         Node *minNode = min(root);
         return minNode->key;
     }
 
     // 寻找最大的键值
     Key max() {
-        assert(count > 0);
+        assert(count != 0);
         Node *maxNode = max(root);
         return maxNode->key;
     }
@@ -283,7 +283,7 @@ private:
         if (node->right == NULL) {
             return node;
         }
-        return min(node->right);
+        return max(node->right);
     }
 
     // 删除以Node为根节点的子树中的最小值
@@ -416,15 +416,6 @@ private:
     }
 };
 
-// 随机打乱数组
-void shuffle(int arr[], int n) {
-
-    srand(time(NULL));
-    for (int i = n - 1; i >= 0; i--) {
-        int x = rand() % (i + 1);
-        swap(arr[i], arr[x]);
-    }
-}
 
 void shuffle(vector<int> &vec) {
 
