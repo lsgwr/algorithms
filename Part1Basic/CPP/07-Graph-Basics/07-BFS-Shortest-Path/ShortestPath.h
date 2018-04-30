@@ -1,21 +1,22 @@
 /***********************************************************
- * @Description : 寻找指定两点之间的路径
+ * @Description : 广度优先遍历之寻找最短路径
  * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2018/4/30 19:36
+ * @date        : 2018/4/30 22:40
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-#ifndef _PATH_H
-#define _PATH_H
+#ifndef _SHORTESTPATH_H
+#define _SHORTESTPATH_H
 
 #include <iostream>
 #include <cassert>
 #include <stack>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
 template<typename Graph>
-class Path {
+class ShortestPath {
 private:
     Graph &graph;
     // 起始点,后面会求出这个源到其他任意一个节点的路径
@@ -23,43 +24,54 @@ private:
     bool *visited;
     // from[i]表示访问i节点是从哪一个节点过来地
     int *from;
-
-    // 从v开始遍历连通分量内的所有点
-    void dfs(int v) {
-        // 上来先把v设置为已访问
-        visited[v] = true;
-        typename Graph::adjIterator adj(graph, v);
-        // 遍历邻接点
-        for (int i = adj.begin(); !adj.end(); i = adj.next()) {
-            if (!visited[i]) {
-                // 访问的i节点是从v节点过来地
-                from[i] = v;
-                dfs(i);
-            }
-        }
-    }
+    // source节点到每一个节点的最短距离
+    int *order;
 
 public:
-    Path(Graph &graph, int source) : graph(graph) {
+    ShortestPath(Graph &graph, int source) : graph(graph) {
         // 算法初始化
         // 确保source在合适的范围内
         assert(source >= 0 && source < graph.V());
         visited = new bool[graph.V()];
         from = new int[graph.V()];
+        order = new int[graph.V()];
         for (int i = 0; i < graph.V(); ++i) {
             visited[i] = false;
             from[i] = -1;
+            order[i] = -1;
         }
         // 设置路径开始的点的坐标
         this->source = source;
 
-        // 寻路算法，稍加改动dfs就行了
-        dfs(source);
+        // 无向图的最短路径算法,类似二叉搜索树的levelOrder(层序遍历，维护一个队列即可)
+        queue<int> q;
+        q.push(source);
+        visited[source] = true;
+        // 起点到起点的距离为0
+        order[source] = 0;
+        while (!q.empty()) {
+            int v = q.front();
+            q.pop();
+            typename Graph::adjIterator adj(graph, v);
+            // 遍历邻接点
+            for (int i = adj.begin(); !adj.end(); i = adj.next()) {
+                if (!visited[i]) {
+                    // 元素入队
+                    q.push(i);
+                    visited[i] = true;
+                    // 访问的i节点是从v节点过来地
+                    from[i] = v;
+                    // 此时边还没有权重
+                    order[i] = order[v] + 1;
+                }
+            }
+        }
     }
 
-    ~Path() {
+    ~ShortestPath() {
         delete[] visited;
         delete[] from;
+        delete[] order;
     }
 
     // 起点source到点w之间是否有路径存在
@@ -107,6 +119,13 @@ public:
             }
         }
     }
+
+    // 查询source到w的最短路径的长度
+    int length(int w) {
+        // 保证w不越界
+        assert(w >= 0 && w < graph.V());
+        return order[w];
+    }
 };
 
-#endif //_PATH_H
+#endif //_SHORTESTPATH_H
