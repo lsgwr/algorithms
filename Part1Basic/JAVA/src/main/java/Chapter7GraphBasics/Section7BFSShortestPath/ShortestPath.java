@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 广度优先遍历之寻找最短路径
+ * @Description : 广度优先遍历,不一定能实现最短路径，与邻接点入队的顺序有关
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/1 00:01
  * @email       : liangshanguang2@gmail.com
@@ -60,7 +60,7 @@ public class ShortestPath {
                     visited[i] = true;
                     // 访问的i节点是从v节点过来地
                     from[i] = v;
-                    // 此时边还没有权重
+                    // 此时边还没有权重.最终的order[i]表示从source到i的距离
                     order[i] = order[v] + 1;
                 }
             }
@@ -83,6 +83,7 @@ public class ShortestPath {
      */
     public Vector<Integer> pathTo(int w) {
         assert (hasPathTo(w));
+        // System.out.println(order[w]); // order[w]表示从source到w点的最短距离，上面构造函数处理地不对
         // 因为路径是倒推地，所以先压入栈中，然后再弹出到vector中顺序就正常了
         Stack<Integer> pathStack = new Stack<>();
         // 路径上的点初始化
