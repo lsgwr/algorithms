@@ -9,7 +9,7 @@ package Chapter7GraphBasics.Section4ReadGraph;
 
 import java.util.Vector;
 
-public class SparseGraph {
+public class SparseGraph implements Graph {
     /**
      * 图的顶点数
      */
@@ -41,21 +41,24 @@ public class SparseGraph {
     /**
      * 返回顶点数
      */
-    int V() {
+    @Override
+    public int V() {
         return vertices;
     }
 
     /**
      * 返回边的数目
      */
-    int E() {
+    @Override
+    public int E() {
         return edges;
     }
 
     /**
      * 添加边,在v和w之间建立一条边
      */
-    void addEdge(int v, int w) {
+    @Override
+    public void addEdge(int v, int w) {
         // 先确保元素不越界
         assert (v >= 0 && v < vertices);
         assert (w >= 0 && w < vertices);
@@ -77,7 +80,8 @@ public class SparseGraph {
     /**
      * v和w之间是否存在边
      */
-    boolean hasEdge(int v, int w) {
+    @Override
+    public boolean hasEdge(int v, int w) {
         // 先确保元素不越界
         assert (v >= 0 && v < vertices);
         assert (w >= 0 && w < vertices);
@@ -90,10 +94,22 @@ public class SparseGraph {
         return false;
     }
 
+    @Override
+    public void show() {
+        for (int i = 0; i < vertices; i++) {
+            System.out.print("vertex " + i + ":\t");
+            for (int j = 0; j < adj[i].size(); j++) {
+                System.out.print(adj[i].elementAt(j) + "\t");
+            }
+            System.out.println();
+        }
+    }
+
     /**
      * 返回顶点v的所有临边
      * 由于java使用引用机制，返回一个vector不会带来额外开销
      */
+    @Override
     public Iterable<Integer> adj(int v) {
         assert (v >= 0 && v < vertices);
         // 邻接表本身v处就是表达地v的所有邻接点
