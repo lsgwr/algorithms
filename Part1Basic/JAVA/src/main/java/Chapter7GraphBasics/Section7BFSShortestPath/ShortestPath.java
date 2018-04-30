@@ -7,6 +7,7 @@
 package Chapter7GraphBasics.Section7BFSShortestPath;
 
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 import java.util.Vector;
 
@@ -44,19 +45,20 @@ public class ShortestPath {
         // 设置路径开始的点的坐标
         this.source = source;
 
-        // 无向图的最短路径算法,类似二叉搜索树的levelOrder(层序遍历，维护一个队列即可)
-        LinkedList<Integer> q = new LinkedList<>();
-        q.push(source);
+        // 无向图的最短路径算法,类似二叉搜索树的levelOrder(层序遍历，维护一个队列即可).注意LinkList是无序地，不能当队列用，老师的代码是错地
+        // LinkedList<Integer> q = new LinkedList<>();
+        Queue<Integer> q = new LinkedList<>();
+        q.offer(source);
         visited[source] = true;
         // 起点到起点的距离为0
         order[source] = 0;
         while (!q.isEmpty()) {
-            int v = q.pop();
+            int v = q.poll();
             // 遍历邻接点
             for (Integer i : graph.adj(v)) {
                 if (!visited[i]) {
                     // 元素入队
-                    q.push(i);
+                    q.offer(i);
                     visited[i] = true;
                     // 访问的i节点是从v节点过来地
                     from[i] = v;
