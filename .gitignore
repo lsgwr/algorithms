@@ -11,3 +11,8 @@ target/
 *.out
 cmake-build-debug/
 .vscode/
+
+#####################
+# Python Ignore files #
+#####################
+.ipynb_checkpoints/
