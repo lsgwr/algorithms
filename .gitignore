@@ -16,3 +16,4 @@ cmake-build-debug/
 # Python Ignore files #
 #####################
 .ipynb_checkpoints/
+__pycache__/
