@@ -43,8 +43,8 @@ public:
         for(int i = 0; i < vertices; i++){
             for(int j = 0; j < vertices; j++){
                 // 不为空的节点全部删除
-                if(g[i][j] != NULL){
-                    delete g[i][j];
+                if(adj[i][j] != NULL){
+                    delete adj[i][j];
                 }
             }
         }
@@ -67,17 +67,17 @@ public:
         assert(w >= 0 && w < vertices);
         // v和w之间是连接地,不需要再加一次，就直接退出
         if (hasEdge(v, w)) {
-            delete g[v][w];
+            delete adj[v][w];
             // 无向图需要成对删除
             if(!directed){
-                delete g[w][v];
+                delete adj[w][v];
             }
             edges--;
         }
-        adj[v][w] = new Edge(v, w, weight);
+        adj[v][w] = new Edge<Weight>(v, w, weight);
         if (!directed) {
             // 无向图实际上是双向图，所以w到v也应该为true.如果是有向图这步就不用处理了
-            adj[w][v] = new Edge(w, v, weight);
+            adj[w][v] = new Edge<Weight>(w, v, weight);
         }
         // 边加1
         edges++;
@@ -96,7 +96,7 @@ public:
 
         for( int i = 0 ; i < vertices ; i ++ ){
             for( int j = 0 ; j < vertices ; j ++ ){
-                if(g[i][j]){
+                if(adj[i][j]){
                     cout<<adj[i][j]->wt()<<"\t";
                 }else{
                     cout << "NULL\t";

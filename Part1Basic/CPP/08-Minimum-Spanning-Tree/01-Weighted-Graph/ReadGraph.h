@@ -1,7 +1,7 @@
 /***********************************************************
- * @Description : 
+ * @Description : 读取稀疏、稠密图
  * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2018/4/30 13:29
+ * @date        : 2018/5/8 07:47
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
 #ifndef _READGRAPH_H
@@ -12,11 +12,12 @@
 #include <fstream>
 #include <sstream>
 #include <cassert>
+#include "Edge.h"
 
 using namespace std;
 
 // 读取图算法
-template<typename Graph>
+template<typename Graph,typename Weight>
 class ReadGraph {
 
 public:
@@ -43,10 +44,11 @@ public:
             stringstream ss(line);
 
             int a, b;
-            ss >> a >> b;
+            Weight weight;
+            ss >> a >> b >> weight;
             assert(a >= 0 && a < V);
             assert(b >= 0 && b < V);
-            graph.addEdge(a, b);
+            graph.addEdge(a, b, weight);
         }
     }
 };

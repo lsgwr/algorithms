@@ -5,48 +5,32 @@
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
 #include <iostream>
+#include <iomanip>
 #include "SparseGraph.h"
 #include "DenseGraph.h"
 #include "ReadGraph.h"
-#include "Component.h"
-#include "Path.h"
-#include "ShortestPath.h"
 
 using namespace std;
 
 int main(void) {
-    cout << "*************************************稀疏图************************************" << endl;
+    string fileName = "graph1.txt";
+    int vertices = 8; // 8条边
+    cout << fixed << setprecision(2); // 保留2位小数
+    cout << "*************************************加权稀疏图************************************" << endl;
     // 1. 稀疏图
-    string fileName1 = "graph1.txt";
     // false代表为无向图
-    SparseGraph sparseGraph(13, false);
-    ReadGraph<SparseGraph> readSparseGraph(sparseGraph, fileName1);
+    SparseGraph<double> sparseGraph = SparseGraph<double>(vertices, false);
+    ReadGraph<SparseGraph<double>, double> readSparseGraph(sparseGraph, fileName);
     sparseGraph.show();
     cout << endl;
-    // 0到所有其他点的路径
-    Path<SparseGraph> path1(sparseGraph, 0);
-    cout << "DFS path of 0 to 3 :";// 0 -> 5 -> 3
-    path1.showPath(3);
-    ShortestPath<SparseGraph> path11(sparseGraph, 0);
-    cout << "BFS shortest path of 0 to 3 :";// 0 -> 5 -> 3
-    path11.showPath(3);
 
-
-    cout << "*************************************稠密图************************************" << endl;
-    string fileName2 = "graph2.txt";
+    cout << "*************************************加权稠密图************************************" << endl;
     // 2.稠密图
-    // false代表为无向图
-    DenseGraph denseGraph(7, false);
-    ReadGraph<DenseGraph> readDenseGraph(denseGraph, fileName2);
+    // double代表权重的数据类型，false代表为无向图
+    DenseGraph<double> denseGraph = DenseGraph<double>(vertices, false);
+    ReadGraph<DenseGraph<double>, double> readDenseGraph(denseGraph, fileName);
     denseGraph.show();
     cout << endl;
-    // 0到所有其他点的路径
-    Path<DenseGraph> path2(denseGraph, 0);
-    cout << "DFS path of 0 to 6 :";
-    path2.showPath(6);
-    ShortestPath<DenseGraph> path22(denseGraph, 0);
-    cout << "BFS shortest path of 0 to 6 :";
-    path22.showPath(6);
     return 0;
 }
  

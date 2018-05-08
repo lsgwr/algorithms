@@ -42,7 +42,7 @@ public:
     }
 
     // 重写输出函数
-    fread ostream& operator<<(ostream &os, const Edge &e){
+    friend ostream& operator<<(ostream &os, const Edge &e){
         os<<e.a<<"-"<<e.b<<": "<< e.weight;
         return os;
     }

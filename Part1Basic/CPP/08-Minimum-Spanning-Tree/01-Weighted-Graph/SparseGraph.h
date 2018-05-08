@@ -11,9 +11,10 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
+#include "Edge.h"
 
 using namespace std;
-
+template<typename Weight>
 class SparseGraph {
     // 图的顶点数
     int vertices;
@@ -22,20 +23,28 @@ class SparseGraph {
     // 当前图是有向图还是无向图
     bool directed;
     // 邻接表，采用vector套vector的形式
-    vector <vector<int> > adj;
+    vector <vector<Edge<Weight> *> > adj;
 public:
     SparseGraph(int vertices, bool directed) {
         this->vertices = vertices;
         this->edges = 0;
         this->directed = directed;
         for (int i = 0; i < vertices; ++i) {
-            // 初始化邻接表，每个定点对应的邻接表用vector<int>()初始化为空
-            adj.push_back(vector<int>());
+            // 初始化邻接表，每个定点对应的邻接表用vector<Edge<Weight> *>()初始化为空
+            adj.push_back(vector<Edge<Weight> *>());
         }
     }
 
     ~SparseGraph() {
-
+        // 删除所有节点
+        for(int i = 0; i < vertices; i++){
+            for(int j = 0; j < vertices; j++){
+                // 不为空的节点全部删除
+                if(adj[i][j] != NULL){
+                    delete adj[i][j];
+                }
+            }
+        }
     }
 
     // 返回顶点数
@@ -49,7 +58,7 @@ public:
     }
 
     // 添加边,在v和w之间建立一条边
-    void addEdge(int v, int w) {
+    void addEdge(int v, int w, Weight weight) {
         // 先确保元素不越界
         assert(v >= 0 && v < vertices);
         assert(w >= 0 && w < vertices);
@@ -58,11 +67,11 @@ public:
         // if (hasEdge(v, w)) {
         //    return;
         // }
-        adj[v].push_back(w);
+        adj[v].push_back(new Edge<Weight>(v, w, weight));
         // v=w会生成自环边
         if (v != w && !directed) {
-            // 无向图实际上是双向图，所以w到v也应该为true.如果是有向图这步就不用处理了
-            adj[w].push_back(v);
+            // 无向图实际上是双向图，所以w到v也应该为Edge.如果是有向图这步就不用处理了
+            adj[w].push_back(new Edge<Weight>(w, v, weight));
         }
         // 边加1
         edges++;
@@ -75,7 +84,7 @@ public:
         assert(w >= 0 && w < vertices);
         for (int i = 0; i < adj[v].size(); ++i) {
             // 判断是否v到w之间存在边
-            if (adj[v][i] == w) {
+            if (adj[v][i]->other(v) == w) {
                 return true;
             }
         }
@@ -88,7 +97,7 @@ public:
         for( int i = 0 ; i < vertices ; i ++ ){
             cout<<"vertex "<<i<<":\t";
             for( int j = 0 ; j < adj[i].size() ; j ++ )
-                cout<<adj[i][j]<<"\t";
+                cout << "( to" << adj[i][j]->w() << ", weight: " << adj[i][j]->wt()<<")\t";
             cout<<endl;
         }
     }
@@ -112,22 +121,22 @@ public:
 
         }
 
-        int begin() {
+        Edge<Weight>* begin() {
             index = 0;
             // 确实有元素的话,就返回第一个元素的值
             if (graph.adj[v].size() != 0) {
                 return graph.adj[v][index];
             }
-            return -1;
+            return NULL;
         }
 
-        int next() {
+        Edge<Weight>* next() {
             index++;
             // 先判断是否越界
             if (index < graph.adj[v].size()) {
                 return graph.adj[v][index];
             }
-            return -1;
+            return NULL;
         }
 
         int end() {
