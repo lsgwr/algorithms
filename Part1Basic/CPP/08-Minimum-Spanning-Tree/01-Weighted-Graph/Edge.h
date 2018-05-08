@@ -23,11 +23,15 @@ public:
 
     Edge(){}
     ~Edge(){}
+
+    // 返回第一个顶点
     int v(){
-        return v;
+        return a;
     }
+
+    // 返回第二个顶点
     int w(){
-        return w;
+        return b;
     }
 
     // 获取边的权重

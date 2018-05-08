@@ -38,7 +38,8 @@ public:
     ~SparseGraph() {
         // 删除所有节点
         for(int i = 0; i < vertices; i++){
-            for(int j = 0; j < vertices; j++){
+            // 一定注意这里不是j了哈。是adj[i].size()
+            for(int j = 0; j < adj[i].size(); j++){
                 // 不为空的节点全部删除
                 if(adj[i][j] != NULL){
                     delete adj[i][j];
@@ -97,7 +98,7 @@ public:
         for( int i = 0 ; i < vertices ; i ++ ){
             cout<<"vertex "<<i<<":\t";
             for( int j = 0 ; j < adj[i].size() ; j ++ )
-                cout << "( to" << adj[i][j]->w() << ", weight: " << adj[i][j]->wt()<<")\t";
+                cout << "( to: " << adj[i][j]->w() << ", weight: " << adj[i][j]->wt()<<")\t";
             cout<<endl;
         }
     }
