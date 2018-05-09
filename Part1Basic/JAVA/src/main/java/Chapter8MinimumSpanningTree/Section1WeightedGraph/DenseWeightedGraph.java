@@ -100,7 +100,7 @@ public class DenseWeightedGraph<Weight extends Number & Comparable> implements W
                 if (adj[i][j] != null) {
                     System.out.print(adj[i][j].wt() + "\t");
                 } else {
-                    System.out.println("NULL\t");
+                    System.out.print("NULL\t");
                 }
             }
             System.out.println();
