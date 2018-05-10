@@ -9,6 +9,7 @@
 #include "SparseGraph.h"
 #include "DenseGraph.h"
 #include "ReadGraph.h"
+#include "LazyPrimMST.h"
 
 using namespace std;
 
@@ -22,15 +23,15 @@ int main(void) {
     SparseGraph<double> sparseGraph = SparseGraph<double>(vertices, false);
     ReadGraph<SparseGraph<double>, double> readSparseGraph(sparseGraph, fileName);
     sparseGraph.show();
+    cout << "Test Lazy Prim MST: " << endl;
+    LazyPrimMST<SparseGraph<double>, double> lazyPrimMST(sparseGraph);
+    vector<Edge<double> > mst = lazyPrimMST.mstEdges();
+    for(int i = 0; i < mst.size(); i++){
+        cout << mst[i] << endl;
+    }
+    cout << "The weight of MST is : "<<lazyPrimMST.result()<<endl;
     cout << endl;
-
-    cout << "*************************************加权稠密图************************************" << endl;
-    // 2.稠密图
-    // double代表权重的数据类型，false代表为无向图
-    DenseGraph<double> denseGraph = DenseGraph<double>(vertices, false);
-    ReadGraph<DenseGraph<double>, double> readDenseGraph(denseGraph, fileName);
-    denseGraph.show();
-    cout << endl;
+    // 稠密图的可以仿照着来
     return 0;
 }
  

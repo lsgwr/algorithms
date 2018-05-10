@@ -19,11 +19,11 @@ class LazyPrimMST{
 private:
     Graph &graph;
     // pq:priority queue 优先队列，其实就是最x堆
-    MinHeap<Edge<Weight>> pq;
+    MinHeap<Edge<Weight> > pq;
     // 用于标记各个元素是否已经被标记，被标记了说明已经被划分到了另外一个分割区
     bool *marked;
     // 存储组成最小生成树的v-1条边
-    vector<Edge<Weight>> mst;
+    vector<Edge<Weight> > mst;
     // 最小生成树的权值.一般是double类型
     Weight mstWeight;
     void visit(int v){
@@ -32,14 +32,14 @@ private:
         marked[v] = true;
         typename Graph::adjIterator adj(graph, v);
         for(Edge<Weight>* edge = adj.begin(); !adj.end(); edge = adj.next()){
-            if(!marked[edge.other(v)]){
+            if(!marked[edge->other(v)]){
                 // v的没被访问过的邻边(即切分定理中的横切边)加入到最小堆中
                 pq.insert(*edge);
             }
         }
     }
 public:
-    LazyPrimMST(Graph &graph):graph(graph),pq(MinHeap<Edge<Weight>>(graph.E())){
+    LazyPrimMST(Graph &graph):graph(graph),pq(MinHeap<Edge<Weight> >(graph.E())){
         // 根据顶点数确定marked的长度
         marked = new bool[graph.V()];
         for(int i=0; i < graph.V();i++){
@@ -75,8 +75,13 @@ public:
         }
     }
 
+
+    ~LazyPrimMST(){
+        delete[] marked;
+    }   
+
     // 获取最小生成树的所有的边
-    vector<Edge<Weight>> mstEdges(){
+    vector<Edge<Weight> > mstEdges(){
         return mst;
     }
 
@@ -84,10 +89,7 @@ public:
     Weight result(){
         return mstWeight;
     }
-
-    ~LazyPrimMST(){
-
-    }    
+ 
 };
 
 #endif // !_LAZY_PRIM_MST_H_
