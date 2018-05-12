@@ -49,6 +49,7 @@ public:
         distTo[s] = Weight();
         from[s] = new Edge<Weight>(s, s, Weight()); // 这里我们from[s]的内容是new出来的, 注意要在析构函数里delete掉
         // 进行V-1次循环, 每一次循环求出从起点到其余所有点, 最多使用pass步可到达的最短距离
+        // (第一次假设经过一个点就能到目的点，第二次假设经过2个点就能到达目的点.........)
         for(int pass = 1; pass < graph.V(); pass++){
             // 松弛操作
             // 每次循环中对所有的边进行一遍松弛操作
