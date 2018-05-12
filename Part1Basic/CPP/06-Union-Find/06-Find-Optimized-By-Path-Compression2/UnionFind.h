@@ -83,7 +83,8 @@ namespace UF {
                 // q所在的并查集连接p所在的并查集
                 parent[qRoot] = pRoot;
             } else { // p所在的并查集层数等于q所在的并查集层数,谁指向谁都行，这里选p指向q
-                rank[pRoot] = rank[qRoot];
+                //当 rank[pRoot] = rank[qRoot];
+                parent[pRoot] = qRoot;
                 // 把新的并查集层数+1
                 rank[qRoot] += 1;
             }
