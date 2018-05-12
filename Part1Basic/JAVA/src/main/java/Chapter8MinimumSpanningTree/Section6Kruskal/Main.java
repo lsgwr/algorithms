@@ -11,7 +11,7 @@ import java.util.Vector;
 public class Main {
     public static void main(String[] args) {
         // 使用两种图的存储方式读取testG1.txt文件
-        String filename = "/Users/liangshanguang/Program/Algorithm/liuyubobobo-algorithms/Part1Basic/JAVA/src/main/java/Chapter8MinimumSpanningTree/Section5Prim/testG4.txt";
+        String filename = "/Users/liangshanguang/Program/Algorithm/liuyubobobo-algorithms/Part1Basic/JAVA/src/main/java/Chapter8MinimumSpanningTree/Section6Kruskal/testG4.txt";
         SparseWeightedGraph g1 = new SparseWeightedGraph(10000, false);
         ReadWeightedGraph readWeightedGraph1 = new ReadWeightedGraph(g1, filename);
         System.out.println("graph1 in Sparse WeightedGraph:");
@@ -28,6 +28,14 @@ public class Main {
         startTime = System.currentTimeMillis();
         PrimMST<Double> primMST = new PrimMST<>(g1);
         System.out.println("The weight of Prim MST is : "+primMST.result());
+        endTime = System.currentTimeMillis();
+        System.out.println("Test to test: " + (endTime-startTime) + "ms.");
+        System.out.println();
+
+        System.out.println("Test Kruskal MST: ");
+        startTime = System.currentTimeMillis();
+        KruskalMST<Double> kruskalMST = new KruskalMST<>(g1);
+        System.out.println("The weight of Kruskal MST is : "+kruskalMST.result());
         endTime = System.currentTimeMillis();
         System.out.println("Test to test: " + (endTime-startTime) + "ms.");
         System.out.println();

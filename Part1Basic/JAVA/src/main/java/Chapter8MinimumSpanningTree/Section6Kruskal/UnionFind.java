@@ -1,11 +1,10 @@
 /***********************************************************
- * @Description :  优化1：利用parent数组把上一节Union操作的效率由N降到logN
- *                 优化2：通过比较两个并查集的大小来决定pRoot连接qRoot,  还是qRoot连接pRoot
+ * @Description : 优化1：利用parent数组把上一节Union操作的效率由N降到logN
+ *                优化2：通过比较两个并查集的大小来决定pRoot连接qRoot,  还是qRoot连接pRoot
  *                      (即谁是谁的父节点，元素少的并查集根节点连接元素多的并查集的根节点)
- *                 优化3：按照两个并查集的层数来判断谁和谁连接，这样更准确，因为遍历的时候就是逐层遍历
- *                 优化4：find操作之前先把层数过多的并查集进行压缩，通过把尽量多的节点指向根节点来减少层数
+ *                优化3：按照两个并查集的层数来判断谁和谁连接，这样更准确，因为遍历的时候就是逐层遍历
  * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2018/4/29 23:31
+ * @date        : 2018/4/29 23:22
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
 package Chapter8MinimumSpanningTree.Section6Kruskal;
@@ -38,18 +37,18 @@ public class UnionFind {
 
     }
 
+
     /**
      * 返回p所在的根节点的下标(找到并查集的根节点)
      */
     private int find(int p) {
         assert (p >= 0 && p < count);
-        // 只要没到根节点就不断把节点上调,直到并查集只剩两层
-        if (p != parent[p]) {
-            parent[p] = find(parent[p]);
+        // 只要节点不指向自身，说明还没到根节点
+        while (p != parent[p]) {
+            // 不断刷新p直接遇到并查集的根节点
+            p = parent[p];
         }
-        // 这时候P还是子节点，但是因为成了两层，所以其父节点就是根节点。
-        // 即使一开始就是根节点，但是因为根节点指向自己，所以返回parent[p]也是没问题的
-        return parent[p];
+        return p;
     }
 
     /**
@@ -62,7 +61,7 @@ public class UnionFind {
     /**
      * 连接两个元素p和q
      */
-    public void unionElements(int p, int q) {
+    void unionElements(int p, int q) {
         // 找到p元素对应的根
         int pRoot = find(p);
         int qRoot = find(q);
