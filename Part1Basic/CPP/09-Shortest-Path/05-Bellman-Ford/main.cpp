@@ -13,11 +13,11 @@
 using namespace std;
 
 int main(void) {
-    string fileName = "graph1.txt";
+    string fileName = "graph1.txt"; // 测试拥有负权环的图string fileName = "graph_with_negative_circle.txt"; 
     int vertices = 5; // 5个顶点
     cout << fixed << setprecision(2); // 保留2位小数
     cout << "*************************************加权稀疏图************************************" << endl;
-    // true和false 分别代表有向图和无向图。dijkstra算法适用于有向图和无向图
+    // true和false 分别代表有向图和无向图。Bellman适用于有向图
     SparseGraph<int> sparseGraph = SparseGraph<int>(vertices, true);
     ReadGraph<SparseGraph<int>, int> readSparseGraph(sparseGraph, fileName);
     sparseGraph.show();

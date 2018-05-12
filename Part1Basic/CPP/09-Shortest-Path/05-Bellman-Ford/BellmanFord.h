@@ -1,6 +1,6 @@
 /***********************************************************
  * @Description : 09-05 Bellman-Ford算法求最短路径问题,
- *                适用于存在负权边但是没有负权环的图
+ *                适用于存在负权边但是没有负权环的图。Bellman适用于有向图
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/12 23：54
  * @email       : liangshanguang2@gmail.com
