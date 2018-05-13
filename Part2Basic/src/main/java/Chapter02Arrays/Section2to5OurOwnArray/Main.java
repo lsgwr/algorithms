@@ -12,8 +12,16 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             arr.addLast(i);
         }
+        // 向下标为1的地方插入元素，原来的1及后面的元素统一后移一位
         arr.insert(1, 100);
-        arr.set(1, 666);
+        System.out.println(arr);
+        // 向队首添加元素
+        arr.addFirst(-1);
+        System.out.println(arr);
+        // 删除索引为2的元素
+        arr.remove(2);
+        System.out.println(arr);
+        arr.removeFirst();
         System.out.println(arr);
     }
 

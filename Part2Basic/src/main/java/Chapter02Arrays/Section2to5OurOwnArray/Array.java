@@ -127,6 +127,87 @@ public class Array {
         data[index] = element;
     }
 
+    /**
+     * 是否包含指定元素
+     *
+     * @param element 要查找的元素
+     * @return 是否包含的标志位
+     */
+    public boolean contain(int element) {
+        for (int i = 0; i < size; i++) {
+            if (data[i] == element) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 查找指定元素
+     *
+     * @param element 要查找的元素
+     * @return 找到的元素在data中的位置
+     */
+    public int find(int element) {
+        for (int i = 0; i < size; i++) {
+            if (data[i] == element) {
+                return i;
+            }
+        }
+        // 没找到就返回-1
+        return -1;
+    }
+
+    /**
+     * 从数组中删除index位置的元素，并返回删除的元素
+     *
+     * @param index 待删除的位置
+     * @return 删除的元素的值
+     */
+    public int remove(int index) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("index的范围必须在[0, size)");
+        }
+        int ret = data[index];
+        // index位置开始，每个元素往前挪一位
+        for (int i = index + 1; i < size; i++) {
+            data[i - 1] = data[i];
+        }
+        size--;
+        return ret;
+    }
+
+    /**
+     * 删除数组头的元素
+     *
+     * @return 删除的元素
+     */
+    public int removeFirst() {
+        return remove(0);
+    }
+
+    /**
+     * 删除数组尾的元素
+     *
+     * @return 删除的元素
+     */
+    public int removeLast() {
+        return remove(size - 1);
+    }
+
+    /**
+     * 删除指定值的元素，不适用于存在重复元素的情况。自己改下很容易地
+     *
+     * @param element 元素的值
+     */
+    public void removeElement(int element) {
+        int index = find(element);
+        // 找到地话
+        if (index != -1) {
+            remove(index);
+        }
+    }
+
     @Override
     public String toString() {
         return "Array:" +
