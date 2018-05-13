@@ -1,7 +1,7 @@
-##《玩转数据结构-从入门到进阶》
+《玩转数据结构-从入门到进阶》
 > 主要是用Java实现常见的数据结构(堆、栈、树等)
 
-### [课程链接](https://coding.imooc.com/learn/list/207.html)
+[课程链接](https://coding.imooc.com/learn/list/207.html)
 
 ### 目录
 + 第1章 欢迎学习《玩转数据结构》
