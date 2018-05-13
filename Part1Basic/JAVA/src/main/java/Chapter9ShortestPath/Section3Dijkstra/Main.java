@@ -10,10 +10,14 @@ public class Main {
     public static void main(String[] args) {
         int V = 5;
         String basePath = "/Users/liangshanguang/Program/Algorithm/liuyubobobo-algorithms/Part1Basic/JAVA/src/main/java/Chapter9ShortestPath/Section3Dijkstra/";
-        // 有负边但是无负环的图
+        // 1.有负边但是无负环的图
         String filename = basePath + "graph1.txt";
-        SparseWeightedGraph sparseWeightedGraph = new SparseWeightedGraph(5, false);
+        // 2.有负权边而且有负权环的图
+        // String filename = basePath + "graph_with_negative_circle.txt";
+        // 一定注意Bellman-Ford只能针对有向图，下面只能传入true!!!
+        SparseWeightedGraph<Integer> sparseWeightedGraph = new SparseWeightedGraph<>(V, true);
         ReadWeightedGraph readWeightedGraph = new ReadWeightedGraph(sparseWeightedGraph, filename);
+        sparseWeightedGraph.show();
         System.out.println("**********************Test Bellman-Ford********************");
         BellmanFord<Integer> bellmanFord = new BellmanFord<>(sparseWeightedGraph, 0);
         if (bellmanFord.negativeCycle()) {
