@@ -15,20 +15,20 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             arr.addLast(i);
         }
-        System.out.println(arr);
+        System.out.println("Array: "+arr);
         System.out.println("向下标为1的地方插入元素100，超出数组容量会自动扩容");
         arr.insert(1, 100);
-        System.out.println(arr);
-        System.out.println("连续减少2个元素，元素数小于容量一半的时候，不在缩容，得等到1/4的时候，可以防止反复扩容缩容引起性能震荡");
+        System.out.println("Array: "+arr);
+        System.out.println("连续减少2个元素，元素数小于容量一半的时候，不缩容，得等到1/4的时候再扩容，可以防止反复扩容缩容引起性能震荡");
         arr.removeFirst();
         arr.removeFirst();
-        System.out.println(arr);
+        System.out.println("Array: "+arr);
         System.out.println("再弹出四个，容量到1/4，才会自动缩容");
         arr.removeFirst();
         arr.removeFirst();
         arr.removeFirst();
         arr.removeFirst();
-        System.out.println(arr);
+        System.out.println("Array: "+arr);
     }
 
 }

@@ -126,6 +126,20 @@ public class Array<Element> {
     }
 
     /**
+     * 获取最后的元素
+     */
+    public Element getLast() {
+        return get(size - 1);
+    }
+
+    /**
+     * 获取第一个元素
+     */
+    public Element getFirst() {
+        return get(0);
+    }
+
+    /**
      * 更新指定位置的元素
      *
      * @param index   要更新的位置
@@ -228,9 +242,11 @@ public class Array<Element> {
 
     @Override
     public String toString() {
-        return "Array:" +
-                " capacity=" + capacity +
+        // 输出的时候要把不是NULL的元素提取出来
+        Element[] dataWithOutNull = (Element[]) new Object[size];
+        System.arraycopy(data, 0, dataWithOutNull, 0, size);
+        return  "capacity=" + capacity +
                 ", size=" + size +
-                ", data=" + Arrays.toString(data);
+                ", data=" + Arrays.toString(dataWithOutNull);
     }
 }
