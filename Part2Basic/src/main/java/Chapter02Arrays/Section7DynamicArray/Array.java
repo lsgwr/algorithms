@@ -188,8 +188,8 @@ public class Array<Element> {
         size--;
         // 把原来的最后面的元素释放掉
         data[size] = null;
-        // 当数组中元素数小于容量的一半时，自动缩容为原来的一半
-        if (size == capacity / 2) {
+        // 当数组中元素数小于容量的1/4时，自动缩容为原来的一半.之所以选1/4是为了防止频繁扩容和缩容引起性能下降
+        if (size == capacity / 4 && data.length / 2 != 0) {
             resize(capacity / 2);
         }
         return ret;
