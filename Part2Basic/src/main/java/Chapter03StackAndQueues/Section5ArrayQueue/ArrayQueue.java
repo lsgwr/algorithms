@@ -51,7 +51,7 @@ public class ArrayQueue<Element> implements Queue<Element> {
     }
 
     /**
-     * 获取栈的容量
+     * 获取队列的容量
      */
     public int getCapacity() {
         return arr.getCapacity();
