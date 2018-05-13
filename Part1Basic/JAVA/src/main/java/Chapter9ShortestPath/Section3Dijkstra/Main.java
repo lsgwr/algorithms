@@ -9,22 +9,27 @@ package Chapter9ShortestPath.Section3Dijkstra;
 public class Main {
     public static void main(String[] args) {
         int V = 5;
-        // 使用两种图的存储方式读取testG1.txt文件
-        String filename = "/Users/liangshanguang/Program/Algorithm/liuyubobobo-algorithms/Part1Basic/JAVA/src/main/java/Chapter9ShortestPath/Section3Dijkstra/graph1.txt";
+        String basePath = "/Users/liangshanguang/Program/Algorithm/liuyubobobo-algorithms/Part1Basic/JAVA/src/main/java/Chapter9ShortestPath/Section3Dijkstra/";
+        // 有负边但是无负环的图
+        String filename = basePath + "graph1.txt";
         SparseWeightedGraph sparseWeightedGraph = new SparseWeightedGraph(5, false);
-        ReadWeightedGraph readWeightedGraph1 = new ReadWeightedGraph(sparseWeightedGraph, filename);
-        System.out.println("**********************Test Dijkstra********************");
-        Dijkstra<Integer> dijkstra = new Dijkstra<>(sparseWeightedGraph, 0);
-        for (int i = 1; i < V; i++) {
-            if (dijkstra.hasPathTo(i)) {
-                System.out.println("Shortest Path To " + i + " :");
-                System.out.println("shortest weight: " + dijkstra.shortestPathTo(i));
-                System.out.print("Path is : ");
-                dijkstra.showPath(i);
-            } else {
-                System.out.println("No Path to " + i);
+        ReadWeightedGraph readWeightedGraph = new ReadWeightedGraph(sparseWeightedGraph, filename);
+        System.out.println("**********************Test Bellman-Ford********************");
+        BellmanFord<Integer> bellmanFord = new BellmanFord<>(sparseWeightedGraph, 0);
+        if (bellmanFord.negativeCycle()) {
+            System.out.println("++++++++++++++++ 图中存在负边! ++++++++++++++++");
+        } else {
+            for (int i = 1; i < V; i++) {
+                if (bellmanFord.hasPathTo(i)) {
+                    System.out.println("Shortest Path To " + i + " :");
+                    System.out.println("shortest weight: " + bellmanFord.shortestPathTo(i));
+                    System.out.print("Path is : ");
+                    bellmanFord.showPath(i);
+                } else {
+                    System.out.println("No Path to " + i);
+                }
+                System.out.println("---------------------------------------");
             }
-            System.out.println("---------------------------------------");
         }
     }
 }
