@@ -81,12 +81,37 @@ public class LinkedList<Element> {
     }
 
     /**
+     * 向链表尾加入元素
+     *
+     * @param element 要加入地元素
+     */
+    public void addLast(Element element) {
+        insert(size, element);
+    }
+
+    /**
      * 在链表的index(从0开始)位置添加新的元素element
      * 在链表中这种操作很少用，仅仅练习下就行
      */
-    public void insert(int index,Element element){
-        if (index<0||index>size){
+    public void insert(int index, Element element) {
+        if (index < 0 || index > size) {
             throw new IllegalArgumentException("插入失败！index范围违法！");
+        }
+        // 链表头比较特殊
+        if (index == 0) {
+            addFirst(element);
+        } else {
+            Node prev = head;
+            for (int i = 0; i < index - 1; i++) {
+                // 链表不停向后移动，直到移动到要插入位置的前一个位置
+                prev = prev.next;
+            }
+            // 下面3行等效于prev.next = new Node(element, prev.next);
+            Node node = new Node(element);
+            node.next = prev.next;
+            prev.next = node;
+
+            size++;
         }
     }
 }
