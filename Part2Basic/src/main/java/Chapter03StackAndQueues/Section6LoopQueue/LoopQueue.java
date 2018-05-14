@@ -58,7 +58,7 @@ public class LoopQueue<Element> implements Queue<Element> {
     }
 
     @Override
-    public void enquque(Element element) {
+    public void enqueue(Element element) {
         // 判断队列是否已满，这个判断条件好好体会，也可以见老师的视频教程
         if ((tail + 1) % data.length == front) {
             // 循环队列满了就自动扩容
@@ -90,7 +90,7 @@ public class LoopQueue<Element> implements Queue<Element> {
     }
 
     @Override
-    public Element dequque() {
+    public Element dequeue() {
         if (isEmpty()) {
             throw new IllegalArgumentException("队列不能为空！");
         }
@@ -142,10 +142,10 @@ public class LoopQueue<Element> implements Queue<Element> {
     public static void main(String[] args) {
         LoopQueue<Integer> queue = new LoopQueue<>();
         for (int i = 0; i < 10; i++) {
-            queue.enquque(i);
+            queue.enqueue(i);
             System.out.println(queue);
             if (i % 3 == 2) {
-                queue.dequque();
+                queue.dequeue();
                 System.out.println(queue);
             }
         }

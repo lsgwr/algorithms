@@ -31,12 +31,12 @@ public class ArrayQueue<Element> implements Queue<Element> {
     }
 
     @Override
-    public void enquque(Element element) {
+    public void enqueue(Element element) {
         arr.addLast(element);
     }
 
     @Override
-    public Element dequque() {
+    public Element dequeue() {
         return arr.removeFirst();
     }
 
@@ -60,10 +60,10 @@ public class ArrayQueue<Element> implements Queue<Element> {
     public static void main(String[] args) {
         ArrayQueue<Integer> queue = new ArrayQueue<>();
         for (int i = 0; i < 10; i++) {
-            queue.enquque(i);
+            queue.enqueue(i);
             System.out.println(queue);
             if (i%3==2){
-                queue.dequque();
+                queue.dequeue();
                 System.out.println(queue);
             }
         }

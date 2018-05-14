@@ -20,12 +20,12 @@ public interface Queue<Element> {
     /**
      * 从队尾入队
      */
-    void enquque(Element element);
+    void enqueue(Element element);
 
     /**
      * 从队首出队
      */
-    Element dequque();
+    Element dequeue();
 
     /**
      * 获取队头元素但是不弹出
