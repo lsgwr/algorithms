@@ -1,16 +1,17 @@
 /***********************************************************
- * @Description : 
+ * @Description : 利用虚拟头节点来统一添加元素的方法，不论是insert、
+ *                、addFirst还是addLast
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/14 07:56
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter04LinkedList.Section1Basic;
+package Chapter04LinkedList.Section3DummyHead;
 
 public class LinkedList<Element> {
     /**
-     * 链表头节点
+     * 链表伪头节点
      */
-    private Node head;
+    private Node dummyHead;
     /**
      * 链表的头节点
      */
@@ -51,7 +52,7 @@ public class LinkedList<Element> {
     }
 
     public LinkedList() {
-        head = null;
+        dummyHead = new Node(null, null);
         size = 0;
     }
 
@@ -73,11 +74,7 @@ public class LinkedList<Element> {
      * 链表头添加元素
      */
     public void addFirst(Element element) {
-        // 下面3行可用一行 head = new Node(element, head)来代替
-        Node node = new Node(element);
-        node.next = head;
-        head = node;
-        size++;
+        insert(0, element);
     }
 
     /**
@@ -97,21 +94,16 @@ public class LinkedList<Element> {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("插入失败！index范围违法！");
         }
-        // 链表头比较特殊
-        if (index == 0) {
-            addFirst(element);
-        } else {
-            Node prev = head;
-            for (int i = 0; i < index - 1; i++) {
-                // 链表不停向后移动，直到移动到要插入位置的前一个位置
-                prev = prev.next;
-            }
-            // 下面3行等效于prev.next = new Node(element, prev.next);
-            Node node = new Node(element);
-            node.next = prev.next;
-            prev.next = node;
-
-            size++;
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            // 链表不停向后移动，直到移动到要插入位置的前一个位置
+            prev = prev.next;
         }
+        // 下面3行等效于prev.next = new Node(element, prev.next);
+        Node node = new Node(element);
+        node.next = prev.next;
+        prev.next = node;
+
+        size++;
     }
 }
