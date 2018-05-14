@@ -44,9 +44,7 @@ public class LinkedList<Element> {
 
         @Override
         public String toString() {
-            return "Node{" +
-                    "element=" + element +
-                    '}';
+            return element.toString();
         }
     }
 
@@ -164,6 +162,25 @@ public class LinkedList<Element> {
      * 需要遍历，找到就返回true,否则返回false
      */
     public boolean contain(Element element) {
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            if (cur.element.equals(element)) {
+                return true;
+            }
+            cur = cur.next;
+        }
+        return false;
+    }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            sb.append(cur + "->");
+            cur = cur.next;
+        }
+        sb.append("NULL");
+        return sb.toString();
     }
 }
