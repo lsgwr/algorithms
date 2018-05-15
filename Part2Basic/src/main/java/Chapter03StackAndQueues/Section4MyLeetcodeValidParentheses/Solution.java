@@ -15,7 +15,7 @@ import java.util.Arrays;
 
 public class Solution {
 
-    public class Array<Element> {
+    private class Array<Element> {
         /**
          * 存储数据的数组
          */
@@ -252,12 +252,13 @@ public class Solution {
             // 输出的时候要把不是NULL的元素提取出来
             Element[] dataWithOutNull = (Element[]) new Object[size];
             System.arraycopy(data, 0, dataWithOutNull, 0, size);
-            return  "capacity=" + capacity +
+            return "capacity=" + capacity +
                     ", size=" + size +
                     ", data=" + Arrays.toString(dataWithOutNull);
         }
     }
-    public interface Stack<Element> {
+
+    private interface Stack<Element> {
         /**
          * 获取Stack的元素数
          */
@@ -283,7 +284,8 @@ public class Solution {
          */
         Element peek();
     }
-    public class ArrayStack<Element> implements Stack<Element> {
+
+    private class ArrayStack<Element> implements Stack<Element> {
 
         Array<Element> arr;
 

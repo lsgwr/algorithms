@@ -10,29 +10,52 @@ import Chapter03StackAndQueues.Section2ArrayStack.Stack;
 import Chapter04LinkedList.Section5Delete.LinkedList;
 
 public class LinkedListStack<Element> implements Stack<Element> {
-    private LinkedList list;
+    private LinkedList<Element> list;
+
+    public LinkedListStack() {
+        this.list = new LinkedList<>();
+    }
+
     @Override
     public int getSize() {
-        return 0;
+        return list.getSize();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return list.isEmpty();
     }
 
     @Override
     public void push(Element element) {
-
+        list.addFirst(element);
     }
 
     @Override
     public Element pop() {
-        return null;
+        return list.deleteFirst();
     }
 
     @Override
     public Element peek() {
-        return null;
+        return list.getFirst();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Stack: top ");
+        sb.append(list);
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        LinkedListStack<Integer> stack = new LinkedListStack<>();
+        for (int i = 0; i < 5; i++) {
+            stack.push(i);
+            System.out.println(stack);
+        }
+        stack.pop();
+        System.out.println(stack);
     }
 }
