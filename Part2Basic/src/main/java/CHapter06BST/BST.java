@@ -395,7 +395,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     /**
      * 打乱数组顺序
      */
-    private static void shuffle(Object[] arr) {
+    public static void shuffle(Object[] arr) {
 
         for (int i = arr.length - 1; i >= 0; i--) {
             int pos = (int) (Math.random() * (i + 1));
@@ -475,9 +475,18 @@ public class BST<Key extends Comparable<Key>, Value> {
         for (int i = 0; i < N; i++) {
             order[i] = i;
         }
+
+        for (int i = 0; i < N; i++) {
+            Integer key = (int) (Math.random() * N);
+            // 为了后续测试方便,这里value值取和key值一样.
+            // 注意这里因为key是随机产生地，所以可能会出现key相同覆盖的情况,
+            // 因此所有的键合并起来一定是order数组的子集，所以下面的删除最后一定是0
+            bst.insert(key, key);
+        }
         // 打乱order数组的顺序
         shuffle(order);
-
+        System.out.println("Test delete: ");
+        System.out.println(bst.size());
         // 乱序删除[0...n)范围里的所有元素
         for (int i = 0; i < N; i++) {
             if (bst.contain(order[i])) {
