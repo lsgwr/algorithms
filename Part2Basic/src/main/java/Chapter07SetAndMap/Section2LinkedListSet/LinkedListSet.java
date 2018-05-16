@@ -13,28 +13,34 @@ public class LinkedListSet<Element> implements Set<Element> {
 
     private LinkedList<Element> list;
 
+    public LinkedListSet() {
+        list = new LinkedList<>();
+    }
+
     @Override
     public void add(Element element) {
-
+        if (!list.contain(element)) {
+            list.addFirst(element);
+        }
     }
 
     @Override
     public void delete(Element element) {
-
+        list.deleteElement(element);
     }
 
     @Override
     public boolean contain(Element element) {
-        return false;
+        return list.contain(element);
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return list.getSize();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return list.isEmpty();
     }
 }

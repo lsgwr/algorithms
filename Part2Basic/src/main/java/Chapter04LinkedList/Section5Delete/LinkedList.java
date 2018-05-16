@@ -143,6 +143,27 @@ public class LinkedList<Element> {
     }
 
     /**
+     * 从链表中删除元素e
+     */
+    public void deleteElement(Element element) {
+
+        Node prev = dummyHead;
+        while (prev.next != null) {
+            if (prev.next.element.equals(element)) {
+                break;
+            }
+            prev = prev.next;
+        }
+
+        if (prev.next != null) {
+            Node delNode = prev.next;
+            prev.next = delNode.next;
+            delNode.next = null;
+            size--;
+        }
+    }
+
+    /**
      * 更新链表的第index个位置的元素(从0开始计)为element
      * 在链表中不是一个常用的操作，练习用
      *
