@@ -7,7 +7,7 @@
  * @date        : 2018/5/16 22:19
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package CHapter06BST;
+package Chapter06BST;
 
 // package Chapter5BinarySearchTree.Section8DeleteNode;
 

@@ -4,7 +4,7 @@
  * @date        : 2018/5/16 22:43
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package CHapter06BST;
+package Chapter06BST;
 
 import java.util.Random;
 

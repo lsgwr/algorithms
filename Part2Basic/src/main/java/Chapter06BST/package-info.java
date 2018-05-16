@@ -5,4 +5,4 @@
  *               第5章的前8节完全重复，此处直接那里代码拿过来复用。
  *               不在做本章的课了
  */
-package CHapter06BST;
+package Chapter06BST;
