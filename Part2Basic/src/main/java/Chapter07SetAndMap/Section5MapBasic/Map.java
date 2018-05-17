@@ -6,7 +6,7 @@
  ***********************************************************/
 package Chapter07SetAndMap.Section5MapBasic;
 
-public interface Map<Key extends Comparable<Key>, Value> {
+public interface Map<Key, Value> {
     /**
      * 添加键值对
      */
