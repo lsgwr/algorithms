@@ -8,14 +8,14 @@ package Chapter07SetAndMap.Section5MapBasic;
 
 public interface Map<Key, Value> {
     /**
-     * 添加键值对
+     * 添加/更新键值对
      */
-    void add(Key key, Value value);
+    void set(Key key, Value value);
 
     /**
      * 删除指定键的键值对
      */
-    Value delete(Key key);
+    void delete(Key key);
 
     /**
      * 是否包含某指定键的键值对
@@ -27,10 +27,6 @@ public interface Map<Key, Value> {
      */
     Value get(Key key);
 
-    /**
-     * 更新键值对
-     */
-    void update(Key key, Value value);
 
     /**
      * 获取Map的大小

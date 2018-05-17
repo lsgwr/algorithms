@@ -39,7 +39,7 @@ public class LinkedListMap<Key, Value> implements Map<Key, Value> {
             this.next = next;
         }
 
-        public Node(Key key,Value value) {
+        public Node(Key key, Value value) {
             this(key, value, null);
         }
 
@@ -76,7 +76,7 @@ public class LinkedListMap<Key, Value> implements Map<Key, Value> {
     }
 
     @Override
-    public void add(Key key, Value value) {
+    public void set(Key key, Value value) {
         // 先查询是否能找到这个节点
         Node node = getNode(key);
         if (node == null) {
@@ -90,7 +90,7 @@ public class LinkedListMap<Key, Value> implements Map<Key, Value> {
     }
 
     @Override
-    public Value delete(Key key) {
+    public void delete(Key key) {
         Node prev = dummyHead;
         while (prev.next != null) {
             if (prev.next.key.equals(key)) {
@@ -104,9 +104,7 @@ public class LinkedListMap<Key, Value> implements Map<Key, Value> {
             prev.next = delNode.next;
             delNode.next = null;
             size--;
-            return delNode.value;
         }
-        return null;
     }
 
     @Override
@@ -118,17 +116,6 @@ public class LinkedListMap<Key, Value> implements Map<Key, Value> {
     public Value get(Key key) {
         Node node = getNode(key);
         return node == null ? null : node.value;
-    }
-
-    @Override
-    public void update(Key key, Value value) {
-        // 先查询是否能找到这个节点
-        Node node = getNode(key);
-        if (node == null) {
-            throw new IllegalArgumentException(key + " does't exist");
-        }
-        // 找到这个节点了就更新
-        node.value = value;
     }
 
     @Override

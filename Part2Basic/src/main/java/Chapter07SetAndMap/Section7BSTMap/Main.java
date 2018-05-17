@@ -1,10 +1,10 @@
 /***********************************************************
- * @Description : 验证基于链表实现的Map
+ * @Description : BSTMap的测试,明显要比基于链表的LinkedListMap快地多
  * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2018/5/17 23:07
+ * @date        : 2018/5/17 23:56
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter07SetAndMap.Section6LinkedListMap;
+package Chapter07SetAndMap.Section7BSTMap;
 
 import Chapter07SetAndMap.Section1SetBasicAndBSTSet.FileOperation;
 
@@ -19,7 +19,7 @@ public class Main {
         if (FileOperation.readFile(filename, words)) {
             System.out.println("Total words: " + words.size());
 
-            LinkedListMap<String, Integer> map = new LinkedListMap<>();
+            BSTMap<String, Integer> map = new BSTMap<>();
             for (String word : words) {
                 if (map.contains(word)) {
                     // 之前存在地话就词频+1
