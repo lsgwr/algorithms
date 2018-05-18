@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 
+ * @Description : 优先队列总是弹出最大/最小的元素
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/18 08:08
  * @email       : liangshanguang2@gmail.com

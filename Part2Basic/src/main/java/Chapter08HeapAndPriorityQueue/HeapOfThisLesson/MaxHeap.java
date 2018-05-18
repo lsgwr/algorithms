@@ -21,7 +21,8 @@ public class MaxHeap<Element extends Comparable<Element>> {
     }
 
     public MaxHeap(Element[] arr) {
-        data = new Array<>();
+        // 忘记传入arr了简直日了
+        data = new Array<>(arr);
         for (int i = parent(arr.length - 1); i >= 0; i--) {
             siftDown(i);
         }

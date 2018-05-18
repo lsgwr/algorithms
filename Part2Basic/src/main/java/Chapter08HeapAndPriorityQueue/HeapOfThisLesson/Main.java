@@ -25,7 +25,6 @@ public class Main {
         }
 
         int[] arr = new int[testData.length];
-        System.out.println(testData.length);
         for (int i = 0; i < testData.length; i++) {
             arr[i] = maxHeap.popMax();
         }
