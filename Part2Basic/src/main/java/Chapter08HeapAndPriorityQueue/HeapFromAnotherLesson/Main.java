@@ -8,7 +8,7 @@ package Chapter08HeapAndPriorityQueue.HeapFromAnotherLesson;
 
 import java.util.Random;
 
-public class Main1 {
+public class Main {
     private static double testHeap(Integer[] testData, boolean isHeapify) {
 
         long startTime = System.nanoTime();

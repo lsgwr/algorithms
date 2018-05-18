@@ -34,6 +34,15 @@ public class Array<Element> {
         size = 0;
     }
 
+    public Array(Element[] arr) {
+        data = (Element[]) new Object[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        size = arr.length;
+    }
+
+
     /**
      * 默认构造函数
      */
@@ -240,12 +249,24 @@ public class Array<Element> {
         }
     }
 
+    public void swap(int i, int j) {
+
+        if (i < 0 || i >= size || j < 0 || j >= size) {
+            throw new IllegalArgumentException("Index is illegal.");
+        }
+
+        Element t = data[i];
+        data[i] = data[j];
+        data[j] = t;
+    }
+
+
     @Override
     public String toString() {
         // 输出的时候要把不是NULL的元素提取出来
         Element[] dataWithOutNull = (Element[]) new Object[size];
         System.arraycopy(data, 0, dataWithOutNull, 0, size);
-        return  "capacity=" + capacity +
+        return "capacity=" + capacity +
                 ", size=" + size +
                 ", data=" + Arrays.toString(dataWithOutNull);
     }
