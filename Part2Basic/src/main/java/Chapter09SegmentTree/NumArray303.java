@@ -4,7 +4,7 @@
  * @date        : 2018/5/19 13:27
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter09SegmentTree.Section2To6;
+package Chapter09SegmentTree;
 
 public class NumArray303 {
     private SegmentTree<Integer> segmentTree;

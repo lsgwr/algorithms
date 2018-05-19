@@ -4,7 +4,7 @@
  * @date        : 2018/5/18 23:02
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter09SegmentTree.Section2To6;
+package Chapter09SegmentTree;
 
 import java.util.Arrays;
 

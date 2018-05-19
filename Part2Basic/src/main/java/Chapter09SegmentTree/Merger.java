@@ -4,7 +4,7 @@
  * @date        : 2018/5/19 12:11
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter09SegmentTree.Section2To6;
+package Chapter09SegmentTree;
 
 public interface Merger<Element> {
     /**
