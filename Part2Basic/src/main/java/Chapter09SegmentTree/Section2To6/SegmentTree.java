@@ -94,12 +94,47 @@ public class SegmentTree<Element> {
         return merger.merge(leftResult, rightResult);
     }
 
+    /**
+     * 更新指定位置的元素
+     */
+    public void update(int index, Element element) {
+        if (index < 0 || index >= data.length) {
+            throw new IllegalArgumentException("Index is illegal");
+        }
+        data[index] = element;
+        // 下面是更新线段树
+        update(0, 0, data.length - 1, index, element);
+    }
+
+    private void update(int treeIndex, int l, int r, int index, Element element) {
+        if (l == r) {
+            tree[treeIndex] = element;
+            return;
+        }
+        // 获取左孩子的索引
+        int leftTreeIndex = leftChild(treeIndex);
+        int rightTreeIndex = rightChild(treeIndex);
+        // 确定左右区间的分界点，[leftTreeIndex, mid] [mid+1, rightTreeIndex]
+        int mid = l + (r - l) / 2;
+        // 一定是大于等于，别只写成大于哈
+        if (index >= mid + 1) {
+            // 右子树中查找
+            update(rightTreeIndex, mid + 1, r, index, element);
+        } else {
+            // 左子树中查找
+            update(leftTreeIndex, l, mid, index, element);
+        }
+
+        tree[treeIndex] = merger.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
+    }
+
     public Element get(int index) {
         if (index < 0 || index >= data.length) {
             throw new IllegalArgumentException("Index is illegal");
         }
         return data[index];
     }
+
 
     public int getSize() {
         return data.length;
