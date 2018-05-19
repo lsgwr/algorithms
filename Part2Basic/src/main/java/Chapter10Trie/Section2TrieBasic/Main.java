@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : Trie和BST查询、天剑单词的性能比较
+ * @Description : Trie和BSTSet查询、添加单词的性能比较
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/19 19:00
  * @email       : liangshanguang2@gmail.com
@@ -40,11 +40,11 @@ public class Main {
             Trie trie = new Trie();
             // 添加单词
             for (String word : words) {
-                trie.add(word);
+                trie.insert(word);
             }
             // 查询单词
             for (String word : words) {
-                trie.contains(word);
+                trie.search(word);
             }
             endTime = System.nanoTime();
             time = (endTime - startTime) / 1000000000.0;

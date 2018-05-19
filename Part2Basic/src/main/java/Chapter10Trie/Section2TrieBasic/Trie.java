@@ -56,7 +56,7 @@ public class Trie {
      *
      * @param word 要添加的单词
      */
-    public void add(String word) {
+    public void insert(String word) {
         // 开始从根节点开始
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
@@ -82,7 +82,7 @@ public class Trie {
      * @param word 要查询的单词
      * @return 是否包含指定单词
      */
-    public boolean contains(String word) {
+    public boolean search(String word) {
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
@@ -94,5 +94,25 @@ public class Trie {
         }
         // 到达字符串的最后一个字符,及时有这个单词，但是isWord不为True也表明没有被标记过。不算包含这个单词
         return cur.isWord;
+    }
+
+    /**
+     * 判断某个字符串是否是单词的前缀(即某个字符串以这个字符串开始)
+     *
+     * @param prefix 字符串
+     * @return 是否是前缀，只要能找到prefix的链路即可，不需要判断链路结尾是否是单词
+     */
+    public boolean startsWith(String prefix) {
+        Node cur = root;
+        for (int i = 0; i < prefix.length(); i++) {
+            char c = prefix.charAt(i);
+            // 只要在第二层找不到word第一个字符(第二层是所有单词的起点)
+            if (cur.next.get(c) == null) {
+                return false;
+            }
+            cur = cur.next.get(c);
+        }
+        // 只要找到这个链路，就可认为这个前缀是存在地
+        return true;
     }
 }
