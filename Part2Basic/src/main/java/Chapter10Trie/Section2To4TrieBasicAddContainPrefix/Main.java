@@ -4,7 +4,7 @@
  * @date        : 2018/5/19 19:00
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter10Trie.Section2TrieBasic;
+package Chapter10Trie.Section2To4TrieBasicAddContainPrefix;
 
 import Chapter07SetAndMap.Section1SetBasicAndBSTSet.BSTSet;
 import Chapter07SetAndMap.Section1SetBasicAndBSTSet.FileOperation;
@@ -44,7 +44,7 @@ public class Main {
             }
             // 查询单词
             for (String word : words) {
-                trie.search(word);
+                trie.contains(word);
             }
             endTime = System.nanoTime();
             time = (endTime - startTime) / 1000000000.0;

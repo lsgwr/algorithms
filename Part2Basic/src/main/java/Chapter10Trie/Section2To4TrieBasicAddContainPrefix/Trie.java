@@ -4,7 +4,7 @@
  * @date        : 2018/5/19 18:12
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter10Trie.Section2TrieBasic;
+package Chapter10Trie.Section2To4TrieBasicAddContainPrefix;
 
 import java.util.TreeMap;
 
@@ -82,7 +82,7 @@ public class Trie {
      * @param word 要查询的单词
      * @return 是否包含指定单词
      */
-    public boolean search(String word) {
+    public boolean contains(String word) {
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
