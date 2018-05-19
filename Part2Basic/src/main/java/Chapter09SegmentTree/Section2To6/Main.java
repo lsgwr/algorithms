@@ -16,6 +16,11 @@ public class Main {
                 return a + b;
             }
         });
+        // 1.查看树
         System.out.println(segmentTree);
+        // 2.查询指定区间的和
+        System.out.println(segmentTree.query(0, 2));
+        System.out.println(segmentTree.query(2, 5));
+        System.out.println(segmentTree.query(0, 5));
     }
 }

@@ -28,7 +28,7 @@ public class SegmentTree<Element> {
      * @param treeIndex 要创建的线段树的根节点
      */
     private void buildSegmentTree(int treeIndex, int l, int r) {
-        // assert (l <= r);
+        assert (l <= r);
         // 当只有一个元素的时候
         if (l == r) {
             tree[treeIndex] = data[l];
@@ -44,6 +44,54 @@ public class SegmentTree<Element> {
 
         // 这里根据业务特点决定每个节点的值是sum、max、min、avg等.综合两段子树来得到父节点的数据
         tree[treeIndex] = merger.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
+    }
+
+    /**
+     * 查询指定区间[queryL,queryR]的merge结果
+     *
+     * @param queryL 区间左边界
+     * @param queryR 区间右边界
+     * @return 返回得到的merge结果
+     */
+    public Element query(int queryL, int queryR) {
+        assert queryL <= queryR;
+        if (queryL < 0 || queryL >= data.length || queryR < 0 || queryR >= data.length) {
+            throw new IllegalArgumentException("Index is illegal");
+        }
+        return query(0, 0, data.length - 1, queryL, queryR);
+    }
+
+    /**
+     * 递归查找
+     *
+     * @param treeIndex 开始查找的根节点
+     * @param l         区间左边界
+     * @param r         区间右边界
+     * @param queryL    要查询的左边界
+     * @param queryR    要查询的右边界
+     * @return 查询并Merge后的结果
+     */
+    private Element query(int treeIndex, int l, int r, int queryL, int queryR) {
+        // 当区间完全重合的时候，直接返回根节点的值就行
+        if (l == queryL && r == queryR) {
+            return tree[treeIndex];
+        }
+        // 获取左孩子的索引
+        int leftTreeIndex = leftChild(treeIndex);
+        int rightTreeIndex = rightChild(treeIndex);
+        int mid = l + (r - l) / 2;
+        if (queryL >= mid + 1) {
+            // 只在右侧找
+            return query(rightTreeIndex, mid + 1, r, queryL, queryR);
+        } else if (queryR <= mid) {
+            // 只在左侧找
+            return query(leftTreeIndex, l, mid, queryL, queryR);
+        }
+
+        // 在左右两侧各有一部分,要分开查，然后合并
+        Element leftResult = query(leftTreeIndex, l, mid, queryL, mid);
+        Element rightResult = query(rightTreeIndex, mid + 1, r, mid + 1, queryR);
+        return merger.merge(leftResult, rightResult);
     }
 
     public Element get(int index) {
