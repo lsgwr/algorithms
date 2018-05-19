@@ -39,7 +39,7 @@ public class Main {
 
         BSTSet<String> bstSet = new BSTSet<>();
         double time1 = testSet(bstSet, filename);
-        System.out.println("BST Set: " + time1 + " s");
+        System.out.println("AVLTree Set: " + time1 + " s");
 
         System.out.println();
 
