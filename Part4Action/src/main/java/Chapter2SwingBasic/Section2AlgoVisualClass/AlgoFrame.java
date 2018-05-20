@@ -47,6 +47,9 @@ public class AlgoFrame extends JFrame {
             super.paintComponent(g);
             // 个性化地进行绘制，Graphics2D的功能更强大，所以先转换到2D，再进行绘图操作
             Graphics2D g2d = (Graphics2D) g;
+
+            // 打开抗锯齿,使得边缘更平滑
+            AlgoVisualHelper.beSmooth(g2d);
             // 设置线条宽度
             AlgoVisualHelper.setStrokeWidth(g2d, 5);
             // 设置线条颜色

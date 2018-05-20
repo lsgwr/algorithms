@@ -25,6 +25,14 @@ public class AlgoVisualHelper {
     }
 
     /**
+     * 打开抗锯齿,使得边缘更平滑
+     */
+    public static void beSmooth(Graphics2D g2d) {
+        RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.addRenderingHints(hints);
+    }
+
+    /**
      * 设置画笔颜色
      *
      * @param g2d   绘图对象
