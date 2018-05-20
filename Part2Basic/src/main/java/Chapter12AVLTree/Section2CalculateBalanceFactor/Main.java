@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 
+ * @Description : 平衡二叉树的检测
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/20 00:29
  * @email       : liangshanguang2@gmail.com

@@ -204,19 +204,25 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
         }
         // AVL新增：维护节点的高度值,父节点的高度等于左右子树中高度较高的+1
         node.height = 1 + Math.max(getNodeHeight(node.left), getNodeHeight(node.right));
-        // 计算平衡因子
+        // 计算平衡因子,用于下面进行二叉树的平衡维护
         int balanceFactor = getNodeBalanceFactor(node);
-        if (Math.abs(balanceFactor) > 1) {
-            // 左右子树高度差大于1,这里需要进行树平衡维护
-            System.out.println("unbalanced : " + balanceFactor);
-        }
-        /*二叉搜索树的平衡维护*/
-        // 1.左子树高度过高，平衡因子>=0,进行右旋转
+        /************************二叉搜索树的平衡维护************************/
+        // 1.左子树的左子树高度过高,进行右旋转(LL)
         if (balanceFactor > 1 && getNodeBalanceFactor(node.left) >= 0) {
             return rotateRight(node);
         }
-        // 2.右子树高度过高，平衡因子<=0,进行左旋转
-        if (balanceFactor < -1 && getNodeBalanceFactor(node.left) <= 0) {
+        // 2.右子树的右子树高度过高,进行左旋转(RR)
+        if (balanceFactor < -1 && getNodeBalanceFactor(node.right) <= 0) {
+            return rotateLeft(node);
+        }
+        // 3.左子树的右子树高度过高，先把左子节点左旋转，变成LL后再右旋转(LR)
+        if (balanceFactor > 1 && getNodeBalanceFactor(node.left) < 0) {
+            node.left = rotateLeft(node.left);
+            return rotateRight(node);
+        }
+        // 4.右子树的左子树高度过高，先把右子节点右旋转，变成RR后再左旋转(RL)
+        if (balanceFactor < -1 && getNodeBalanceFactor(node.right) > 0) {
+            node.right = rotateRight(node.right);
             return rotateLeft(node);
         }
         return node;
@@ -545,5 +551,7 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
         x.height = 1 + Math.max(getNodeHeight(x.left), getNodeHeight(x.right));
         return x;
     }
+
+    // private Node rotateLeftRight(Node )
 
 }
