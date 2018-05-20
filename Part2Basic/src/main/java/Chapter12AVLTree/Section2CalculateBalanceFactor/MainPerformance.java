@@ -28,7 +28,7 @@ public class MainPerformance {
             for (String word : words) {
                 if (map.contain(word)) {
                     // 之前存在地话就词频+1
-                    map.insert(word, map.search(word) + 1);
+                    map.insert(word, map.get(word) + 1);
                 } else {
                     // 不存在就插入进去，词频初始化为1
                     map.insert(word, 1);

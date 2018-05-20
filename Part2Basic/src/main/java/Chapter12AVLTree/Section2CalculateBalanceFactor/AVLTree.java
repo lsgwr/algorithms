@@ -87,8 +87,8 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
         return contain(root, key);
     }
 
-    public Value search(Key key) {
-        return search(root, key);
+    public Value get(Key key) {
+        return get(root, key);
     }
 
 
@@ -129,10 +129,17 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * 从二叉树中删除键值为key的节点
+     * 从二叉树中删除键值为key的节点,并返回删除节点的Value
      */
-    public void deleteNode(Key key) {
-        root = deleteNode(root, key);
+    public Value deleteNode(Key key) {
+        Value value = get(key);
+        // 不为空表示才进行删除，为空表示根本没有这个节点，自然不用删除
+        if (value != null) {
+            // 删除后重新设置根节点
+            root = deleteNode(root, key);
+        }
+        // NULL 标是不用删除
+        return value;
     }
 
     /**
@@ -181,7 +188,7 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * 向以node为根节点的二叉树搜索树种，插入节点(key,value)
+     * 向以node为根节点的二叉树搜索树种，插入节点(key,value).如果之前存在就更新节点
      * 返回插入新节点后的二叉搜索树的根
      */
     private Node insert(Node node, Key key, Value value) {
@@ -202,29 +209,10 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
             // 如果key相等就直接更新(注意二叉搜索树的键是唯一地)
             node.value = value;
         }
-        // AVL新增：维护节点的高度值,父节点的高度等于左右子树中高度较高的+1
-        node.height = 1 + Math.max(getNodeHeight(node.left), getNodeHeight(node.right));
-        // 计算平衡因子,用于下面进行二叉树的平衡维护
-        int balanceFactor = getNodeBalanceFactor(node);
-        /************************二叉搜索树的平衡维护************************/
-        // 1.左子树的左子树高度过高,进行右旋转(LL)
-        if (balanceFactor > 1 && getNodeBalanceFactor(node.left) >= 0) {
-            return rotateRight(node);
-        }
-        // 2.右子树的右子树高度过高,进行左旋转(RR)
-        if (balanceFactor < -1 && getNodeBalanceFactor(node.right) <= 0) {
-            return rotateLeft(node);
-        }
-        // 3.左子树的右子树高度过高，先把左子节点左旋转，变成LL后再右旋转(LR)
-        if (balanceFactor > 1 && getNodeBalanceFactor(node.left) < 0) {
-            return rotateLeftRight(node);
-        }
-        // 4.右子树的左子树高度过高，先把右子节点右旋转，变成RR后再左旋转(RL)
-        if (balanceFactor < -1 && getNodeBalanceFactor(node.right) > 0) {
-            return rotateRightLeft(node);
-        }
-        return node;
+        // AVL新增：下面针对新的根节点进行二叉搜索树的平衡操作
+        return balance(node);
     }
+
 
     /**
      * 被递归调用来判断是否包含指定key的函数
@@ -249,17 +237,17 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
     /**
      * 在以node为根的二叉搜索树种查找key对应的value
      */
-    private Value search(Node node, Key key) {
+    private Value get(Node node, Key key) {
         // 递归退出条件.最后到达树底，返回NULL
         if (node == null) {
             return null;
         }
         if (key.compareTo(node.key) > 0) {
             // 大于就在右边找
-            return search(node.right, key);
+            return get(node.right, key);
         } else if (key.compareTo(node.key) < 0) {
             // 小于就在左边找
-            return search(node.left, key);
+            return get(node.left, key);
         } else {
             // 等于就返回true,代表找到含有这个key地节点了,返回Value的地址
             return node.value;
@@ -429,41 +417,46 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
         if (node == null) {
             return null;
         }
+        // 经过平衡调整后，retNode作为返回给递归上一层的根节点
+        Node retNode;
         if (key.compareTo(node.key) < 0) {
             node.left = deleteNode(node.left, key);
-            return node;
+            retNode = node;
         } else if (key.compareTo(node.key) > 0) {
             node.right = deleteNode(node.right, key);
-            return node;
+            retNode = node;
         } else {
-            // 关键之处，循环到某阶段key = node->key了，最为复杂
+            // 关键之处，循环到某阶段key = node.key了，最为复杂
             if (node.left == null) {
                 // 左子树为空，看右子树，删除节点后，所有右子树节点前提一位
                 Node rightNode = node.right;
                 count--;
                 // 右子树也为空的话也不影响，会返回NULL，不影响地
-                return rightNode;
+                retNode = rightNode;
             }
             if (node.right == null) {
                 // 右子树为空，看左子树，删除节点后，所有左子树节点前提一位
                 Node leftNode = node.left;
                 count--;
-                return leftNode;
+                retNode = leftNode;
             }
 
-            // 左右子树都不为空，找右子树的最小节点即可，然后把左右子树更新一下
+            // 待删除节点的左右子树都不为空，找右子树的最小节点即可，然后把左右子树更新一下
             // 找到右子树的最小值.注意要新建一个Node,不然下面的
             Node successor = new Node(min(node.right));
             // 这里++，在下面的deleteMin会--地
             count++;
-            // 更新右子树指针,注意deleteMin返回的node->right作为根节点的树的最小值的父亲节点
+            // 更新右子树指针,注意deleteMin返回的node.right作为根节点的树的最小值的父亲节点
             successor.right = deleteMin(node.right);
             successor.left = node.left;
             // 删除指定节点
             count--;
             // 返回新的二叉搜索树的根节点
-            return successor;
+            retNode = successor;
         }
+
+        // AVL新增：下面针对新的根节点进行二叉搜索树的平衡操作
+        return balance(retNode);
     }
 
     /**
@@ -503,9 +496,41 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
         }
     }
 
+
     /*****************************************************************************
-     * 坐旋转、右旋转等多种旋转方式实现二叉搜索树的平衡，平衡函数都是在insert中调用地
+     * 坐旋转、右旋转等多种旋转方式实现二叉搜索树的平衡，平衡函数都是在insert和delete中调用地
      * ***************************************************************************/
+
+    /**
+     * 把以node节点作为根节点的子树进行平衡操作，使得二叉树编程平衡二叉树
+     *
+     * @param node 指定二叉树的根节点
+     * @return 平衡后新的根节点
+     */
+    private Node balance(Node node) {
+        // 维护节点的高度值,父节点的高度等于左右子树中高度较高的+1
+        node.height = 1 + Math.max(getNodeHeight(node.left), getNodeHeight(node.right));
+        // 计算平衡因子,用于下面进行二叉树的平衡维护
+        int balanceFactor = getNodeBalanceFactor(node);
+        /************************二叉搜索树的平衡维护************************/
+        // 1.左子树的左子树高度过高,进行右旋转(LL)
+        if (balanceFactor > 1 && getNodeBalanceFactor(node.left) >= 0) {
+            return rotateRight(node);
+        }
+        // 2.右子树的右子树高度过高,进行左旋转(RR)
+        if (balanceFactor < -1 && getNodeBalanceFactor(node.right) <= 0) {
+            return rotateLeft(node);
+        }
+        // 3.左子树的右子树高度过高，先把左子节点左旋转，变成LL后再右旋转(LR)
+        if (balanceFactor > 1 && getNodeBalanceFactor(node.left) < 0) {
+            return rotateLeftRight(node);
+        }
+        // 4.右子树的左子树高度过高，先把右子节点右旋转，变成RR后再左旋转(RL)
+        if (balanceFactor < -1 && getNodeBalanceFactor(node.right) > 0) {
+            return rotateRightLeft(node);
+        }
+        return node;
+    }
 
     /*******************************************************
      * 对节点y进行向右旋转操作，返回旋转后新的根节点x

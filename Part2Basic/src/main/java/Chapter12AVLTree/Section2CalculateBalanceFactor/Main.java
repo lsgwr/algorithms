@@ -23,7 +23,7 @@ public class Main {
             for (String word : words) {
                 if (map.contain(word)) {
                     // 之前存在地话就词频+1
-                    map.insert(word, map.search(word) + 1);
+                    map.insert(word, map.get(word) + 1);
                 } else {
                     // 不存在就插入进去，词频初始化为1
                     map.insert(word, 1);
@@ -31,8 +31,8 @@ public class Main {
             }
             System.out.println("Total different words: " + map.size());
             // 出现pride和prejudice单词的次数
-            System.out.println("Frequency of PRIDE : " + map.search("pride"));
-            System.out.println("Frequency of PREJUDICE : " + map.search("prejudice"));
+            System.out.println("Frequency of PRIDE : " + map.get("pride"));
+            System.out.println("Frequency of PREJUDICE : " + map.get("prejudice"));
             System.out.println("is BST : " + map.isBST());
             System.out.println("is Balanced : " + map.isBalanced());
         }
