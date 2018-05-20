@@ -4,7 +4,7 @@
  * @date        : 2018/5/20 21:03
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter2SwingBasic.Section2AlgoVisualClass;
+package Chapter2SwingBasic.Section2To7AlgoVisualClass;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
@@ -66,5 +66,19 @@ public class AlgoVisualHelper {
     public static void filleCircle(Graphics2D g2d, int x, int y, int r) {
         Ellipse2D circle = new Ellipse2D.Double(x - r, y - r, 2 * r, 2 * r);
         g2d.fill(circle);
+    }
+
+    /**
+     * 暂停t毫秒
+     *
+     * @param t 毫秒
+     */
+    public static void pause(int t) {
+        try {
+            Thread.sleep(t);
+        } catch (InterruptedException e) {
+            System.out.println("Error in Sleeping");
+            e.printStackTrace();
+        }
     }
 }
