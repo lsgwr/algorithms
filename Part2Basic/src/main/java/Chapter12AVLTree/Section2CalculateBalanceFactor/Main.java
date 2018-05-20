@@ -33,6 +33,8 @@ public class Main {
             // 出现pride和prejudice单词的次数
             System.out.println("Frequency of PRIDE : " + map.search("pride"));
             System.out.println("Frequency of PREJUDICE : " + map.search("prejudice"));
+            System.out.println("is BST : " + map.isBST());
+            System.out.println("is Balanced : " + map.isBalanced());
         }
         System.out.println();
     }

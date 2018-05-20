@@ -6,6 +6,7 @@
 package Chapter12AVLTree.Section2CalculateBalanceFactor;
 
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -42,7 +43,7 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
             this.value = value;
             this.left = null;
             this.right = null;
-            height = 1;
+            this.height = 1;
         }
 
         public Node(Node node) {
@@ -133,9 +134,51 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
     public void deleteNode(Key key) {
         root = deleteNode(root, key);
     }
+
+    /**
+     * 判断该二叉树是否是一棵二分搜索树
+     */
+    public boolean isBST() {
+        ArrayList<Key> keys = new ArrayList<>();
+        // 二分搜索树的中序遍历可以用来升序排序，用这个性质来检查是否是一个二分搜索树
+        inOrder(root, keys);
+        for (int i = 1; i < keys.size(); i++) {
+            if (keys.get(i - 1).compareTo(keys.get(i)) > 0) {
+                // 升序排列中出现一个地方前面的元素大于后面的元素就可以否定整个二叉搜索树了
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 判断二叉树是否是一棵平衡二叉树
+     */
+    public boolean isBalanced() {
+        return isBalanced(root);
+    }
+
     //***************************************************
     //* 二分搜索树的辅助函数
     //**************************************************
+
+    /**
+     * 判断二叉树是否是一棵平衡二叉树
+     *
+     * @param node 递归开始的子树根节点，root时表示整个子树
+     */
+    private boolean isBalanced(Node node) {
+        if (node == null) {
+            // 递归到底仍未发现不平衡的左右子树，说明整个二叉树是平衡地
+            return true;
+        }
+        int balancedFactor = getNodeBalanceFactor(node);
+        if (Math.abs(balancedFactor) > 1) {
+            return false;
+        }
+        // 递归查看左右子树
+        return isBalanced(node.left) && isBalanced(node.right);
+    }
 
     /**
      * 向以node为根节点的二叉树搜索树种，插入节点(key,value)
@@ -272,13 +315,24 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
 
 
     /**
-     * 对以node为根的二叉搜索树进行中序遍历
+     * 对以node为根的二叉搜索树进行中序遍历,结果一直sout输出
      */
     private void inOrder(Node node) {
         if (node != null) {
             inOrder(node.left);
             System.out.println(node.key);
             inOrder(node.right);
+        }
+    }
+
+    /**
+     * 对以node为根的二叉搜索树进行中序遍历,结果存放到list中
+     */
+    private void inOrder(Node node, ArrayList<Key> keys) {
+        if (node != null) {
+            inOrder(node.left, keys);
+            keys.add(node.key);
+            inOrder(node.right, keys);
         }
     }
 
