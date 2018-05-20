@@ -207,8 +207,17 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
         // 计算平衡因子
         int balanceFactor = getNodeBalanceFactor(node);
         if (Math.abs(balanceFactor) > 1) {
-            // 左右子树高度差大于1,这里需要进行树平衡
+            // 左右子树高度差大于1,这里需要进行树平衡维护
             System.out.println("unbalanced : " + balanceFactor);
+        }
+        /*二叉搜索树的平衡维护*/
+        // 1.左子树高度过高，平衡因子>=0,进行右旋转
+        if (balanceFactor > 1 && getNodeBalanceFactor(node.left) >= 0) {
+            return rotateRight(node);
+        }
+        // 2.右子树高度过高，平衡因子<=0,进行左旋转
+        if (balanceFactor < -1 && getNodeBalanceFactor(node.left) <= 0) {
+            return rotateLeft(node);
         }
         return node;
     }
@@ -488,6 +497,53 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
             arr[pos] = arr[i];
             arr[i] = t;
         }
+    }
+
+    /*****************************************************************************
+     * 坐旋转、右旋转等多种旋转方式实现二叉搜索树的平衡，平衡函数都是在insert中调用地
+     * ***************************************************************************/
+    /*******************************************************
+     * 对节点y进行向右旋转操作，返回旋转后新的根节点x
+     *        y                              x
+     *       / \                           /   \
+     *      x   T4     向右旋转 (y)        z     y
+     *     / \       - - - - - - - ->    / \   / \
+     *    z   T3                       T1  T2 T3 T4
+     *   / \
+     * T1   T2
+     *******************************************************/
+    private Node rotateRight(Node y) {
+        // 1.y以x为轴进行右旋转
+        Node x = y.left;
+        Node T3 = x.right;
+        x.right = y;
+        y.left = T3;
+        // 2.更新height
+        y.height = 1 + Math.max(getNodeHeight(y.left), getNodeHeight(y.right));
+        x.height = 1 + Math.max(getNodeHeight(x.left), getNodeHeight(x.right));
+        return x;
+    }
+
+    /*******************************************************
+     * 对节点y进行向左旋转操作，返回旋转后新的根节点x
+     *    y                             x
+     *  /  \                          /   \
+     * T1   x      向左旋转 (y)       y     z
+     *     / \   - - - - - - - ->   / \   / \
+     *   T2  z                     T1 T2 T3 T4
+     *      / \
+     *     T3 T4
+     *******************************************************/
+    private Node rotateLeft(Node y) {
+        // 1.y以x为轴进行左旋转
+        Node x = y.right;
+        Node T2 = x.left;
+        x.left = y;
+        y.right = T2;
+        // 2.更新height
+        y.height = 1 + Math.max(getNodeHeight(y.left), getNodeHeight(y.right));
+        x.height = 1 + Math.max(getNodeHeight(x.left), getNodeHeight(x.right));
+        return x;
     }
 
 }
