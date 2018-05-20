@@ -6,5 +6,41 @@
  ***********************************************************/
 package Chapter12AVLTree;
 
-public class AVLTreeSet {
+import Chapter07SetAndMap.Section1SetBasicAndBSTSet.Set;
+
+public class AVLTreeSet<Element extends Comparable<Element>> implements Set<Element> {
+
+    /**
+     * 键值一样即可
+     */
+    private AVLTree<Element, Element> avlTree;
+
+    public AVLTreeSet() {
+        avlTree = new AVLTree<>();
+    }
+
+    @Override
+    public void add(Element element) {
+        avlTree.insert(element, element);
+    }
+
+    @Override
+    public void delete(Element element) {
+        avlTree.deleteNode(element);
+    }
+
+    @Override
+    public boolean contain(Element element) {
+        return avlTree.contain(element);
+    }
+
+    @Override
+    public int getSize() {
+        return avlTree.size();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return avlTree.isEmpty();
+    }
 }
