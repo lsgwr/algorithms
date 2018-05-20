@@ -217,13 +217,11 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
         }
         // 3.左子树的右子树高度过高，先把左子节点左旋转，变成LL后再右旋转(LR)
         if (balanceFactor > 1 && getNodeBalanceFactor(node.left) < 0) {
-            node.left = rotateLeft(node.left);
-            return rotateRight(node);
+            return rotateLeftRight(node);
         }
         // 4.右子树的左子树高度过高，先把右子节点右旋转，变成RR后再左旋转(RL)
         if (balanceFactor < -1 && getNodeBalanceFactor(node.right) > 0) {
-            node.right = rotateRight(node.right);
-            return rotateLeft(node);
+            return rotateRightLeft(node);
         }
         return node;
     }
@@ -508,6 +506,7 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
     /*****************************************************************************
      * 坐旋转、右旋转等多种旋转方式实现二叉搜索树的平衡，平衡函数都是在insert中调用地
      * ***************************************************************************/
+
     /*******************************************************
      * 对节点y进行向右旋转操作，返回旋转后新的根节点x
      *        y                              x
@@ -552,6 +551,34 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
         return x;
     }
 
-    // private Node rotateLeftRight(Node )
+    /******************************************************************************
+     * 对节点x进行向左旋转操作，再对y进行右旋转，返回旋转后新的根节点z
+     *        y                             y                               z
+     *       / \                           / \                            /   \
+     *      x   T4     向左旋转(x)         z  T4       向右旋转(y)         x     y
+     *     / \       - - - - - - - ->    / \      - - - - - - - - ->    / \   / \
+     *    T1 z                          x  T3                          T1 T2 T3 T4
+     *      / \                        / \
+     *     T2 T3                      T1 T2
+     ******************************************************************************/
+    private Node rotateLeftRight(Node y) {
+        y.left = rotateLeft(y.left);
+        return rotateRight(y);
+    }
+
+    /******************************************************************************
+     * 对节点x进行向左旋转操作，再对y进行右旋转，返回旋转后新的根节点z
+     *        y                             y                                  z
+     *       / \                           / \                               /   \
+     *      T1  x     向右旋转(x)          T1  z         向左旋转(y)          y     x
+     *         / \  - - - - - - - ->         / \      - - - - - - - - ->   / \   / \
+     *        z  T4                         T2  x                         T1 T2 T3 T4
+     *       / \                               / \
+     *      T2 T3                             T3 T4
+     ******************************************************************************/
+    private Node rotateRightLeft(Node y) {
+        y.right = rotateRight(y.right);
+        return rotateLeft(y);
+    }
 
 }
