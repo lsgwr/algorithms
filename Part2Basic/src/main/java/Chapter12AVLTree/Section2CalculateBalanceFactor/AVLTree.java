@@ -110,23 +110,6 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
         return maxNode.key;
     }
 
-    /**
-     * 删除最小值对应的节点
-     */
-    public void deleteMin() {
-        if (root != null) {
-            root = deleteMin(root);
-        }
-    }
-
-    /**
-     * 删除最大值对应的节点
-     */
-    public void deleteMax() {
-        if (root != null) {
-            root = deleteMax(root);
-        }
-    }
 
     /**
      * 从二叉树中删除键值为key的节点,并返回删除节点的Value
@@ -371,43 +354,6 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * 删除以Node为根节点的子树中的最小值
-     */
-    private Node deleteMin(Node node) {
-        if (node.left == null) {
-            // 没有左节点了，就要看看右节点是否存在
-            Node rightNode = node.right;
-            // 删除最小节点node
-            node.right = null;
-            count--;
-            // 不管rightNode是否为空，都可以直接返回地
-            return rightNode;
-        }
-        // 好好体验递归
-        node.left = deleteMin(node.left);
-        return node;
-    }
-
-    /**
-     * 删除以Node为根节点的子树中的最大值
-     */
-    private Node deleteMax(Node node) {
-        if (node.right == null) {
-            // 没有右节点了，就要看看左节点是否存在
-            Node leftNode = node.left;
-            // 删除最小节点node
-            node.left = null;
-            count--;
-            // 不管rightNode是否为空，都可以直接返回地
-            return leftNode;
-        }
-        // 好好体验递归
-        node.right = deleteMax(node.right);
-        return node;
-    }
-
-
-    /**
      * 删除指定节点作为树的根的二叉搜索树中键值为Key的节点
      * 返回删除节点后的新的二分搜索树的根。
      * 删除最小节点后的替换值实际从删除节点的右子树中找最小节点即可
@@ -433,28 +379,30 @@ public class AVLTree<Key extends Comparable<Key>, Value> {
                 count--;
                 // 右子树也为空的话也不影响，会返回NULL，不影响地
                 retNode = rightNode;
-            }
-            if (node.right == null) {
+            } else if (node.right == null) {
                 // 右子树为空，看左子树，删除节点后，所有左子树节点前提一位
                 Node leftNode = node.left;
                 count--;
                 retNode = leftNode;
+            } else {
+                // 待删除节点的左右子树都不为空，找右子树的最小节点即可，然后把左右子树更新一下
+                // 找到右子树的最小值.注意要新建一个Node,不然下面的
+                Node successor = new Node(min(node.right));
+                // 这里++，在下面的deleteMin会--地
+                count++;
+                // 更新右子树指针,有子树的最小值就存在successor.key中，所以改成delete函数可以防止deleteMin出现不平衡的情况
+                successor.right = deleteNode(node.right, successor.key);
+                successor.left = node.left;
+                // 删除指定节点
+                count--;
+                // 返回新的二叉搜索树的根节点
+                retNode = successor;
             }
-
-            // 待删除节点的左右子树都不为空，找右子树的最小节点即可，然后把左右子树更新一下
-            // 找到右子树的最小值.注意要新建一个Node,不然下面的
-            Node successor = new Node(min(node.right));
-            // 这里++，在下面的deleteMin会--地
-            count++;
-            // 更新右子树指针,注意deleteMin返回的node.right作为根节点的树的最小值的父亲节点
-            successor.right = deleteMin(node.right);
-            successor.left = node.left;
-            // 删除指定节点
-            count--;
-            // 返回新的二叉搜索树的根节点
-            retNode = successor;
         }
-
+        // retNode为空，表示删除地是叶子节点，不再有新的根节点了
+        if (retNode == null) {
+            return null;
+        }
         // AVL新增：下面针对新的根节点进行二叉搜索树的平衡操作
         return balance(retNode);
     }

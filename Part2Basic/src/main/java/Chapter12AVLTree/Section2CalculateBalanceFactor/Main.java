@@ -9,6 +9,7 @@ package Chapter12AVLTree.Section2CalculateBalanceFactor;
 import Chapter07SetAndMap.Section1SetBasicAndBSTSet.FileOperation;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +18,8 @@ public class Main {
         ArrayList<String> words = new ArrayList<>();
         String filename = "/Users/liangshanguang/Program/Algorithm/liuyubobobo-algorithms/Part2Basic/src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt";
         if (FileOperation.readFile(filename, words)) {
+            // 排序后看看性能，这样最能测AVL的实现好不好
+            Collections.sort(words);
             System.out.println("Total words: " + words.size());
 
             AVLTree<String, Integer> map = new AVLTree<>();
@@ -35,6 +38,13 @@ public class Main {
             System.out.println("Frequency of PREJUDICE : " + map.get("prejudice"));
             System.out.println("is BST : " + map.isBST());
             System.out.println("is Balanced : " + map.isBalanced());
+
+            for (String word : words) {
+                map.deleteNode(word);
+                if (!map.isBST() || !map.isBalanced()) {
+                    System.out.println("Error!!不在是二叉搜索树和平衡二叉树了！！");
+                }
+            }
         }
         System.out.println();
     }
