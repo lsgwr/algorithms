@@ -3,7 +3,7 @@
  * @date        : 2018/5/20 22:19
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter12AVLTree.Section2CalculateBalanceFactor;
+package Chapter12AVLTree;
 
 
 import java.util.ArrayList;

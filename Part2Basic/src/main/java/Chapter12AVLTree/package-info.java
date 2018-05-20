@@ -1,5 +1,5 @@
 /*
- * Created By Liang Shan Guang at 2018/5/19 23:18
- * Description : 平衡二叉树
+ * Created By Liang Shan Guang at 2018/5/20 00:05
+ * Description : 计算平衡因子
  */
 package Chapter12AVLTree;

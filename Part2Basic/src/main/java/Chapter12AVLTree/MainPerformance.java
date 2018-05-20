@@ -4,7 +4,7 @@
  * @date        : 2018/5/20 14:36
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter12AVLTree.Section2CalculateBalanceFactor;
+package Chapter12AVLTree;
 
 import Chapter06BST.BST;
 import Chapter07SetAndMap.Section1SetBasicAndBSTSet.FileOperation;
