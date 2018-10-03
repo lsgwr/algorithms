@@ -94,8 +94,61 @@ public class RBTree<Key extends Comparable<Key>, Value> {
         return node.color;
     }
 
+    /**
+     * 左旋转 辅助函数
+     * **************************************
+     *
+     * @return 新的模块的根节点
+     */
+    //   node                     x
+    //  /   \     左旋转         /  \
+    // T1   x   --------->   node   T3
+    //     / \              /   \
+    //    T2 T3            T1   T2
+    private Node rotateLeft(Node node) {
+        Node x = node.right;
+        // 左旋转
+        node.right = x.left;
+        x.left = node;
+        // 设置子树根节点的颜色
+        x.color = node.color;
+        return x;
+    }
+
+    /**
+     * 向右侧旋转
+     *
+     * @return 新的子树的根节点
+     */
+    //     node                   x
+    //    /   \     右旋转       /  \
+    //   x    T2   ------->   y   node
+    //  / \                       /  \
+    // y  T1                     T1  T2
+    private Node rotateRight(Node node) {
+        Node x = node.left;
+        // 右旋转的过程
+        node.left = x.right;
+        x.right = node;
+        // 维持颜色
+        x.color = node.color;
+        node.color = RED;
+        return x;
+    }
+
+    /**
+     * 翻转子树每个节点的颜色
+     */
+    private void flipCololrs(Node node) {
+        node.color = RED;
+        node.left.color = BLACK;
+        node.right.color = BLACK;
+    }
+
     public void insert(Key key, Value value) {
         root = insert(root, key, value);
+        // 根节点一定是黑色地
+        root.color = BLACK;
     }
 
     public boolean contain(Key key) {
@@ -174,6 +227,20 @@ public class RBTree<Key extends Comparable<Key>, Value> {
         } else {
             // 如果key相等就直接更新(注意二叉搜索树的键是唯一地)
             node.value = value;
+        }
+
+        // 下面三个条件不是互斥地，很可能一个操作完成后就变成了下一个判断条件的样子(比如插入两个元素直接的元素时 )
+        // 左节点黑色，右节点红色
+        if (isRed(node.right) && !isRed(node.left)) {
+            node = rotateLeft(node);
+        }
+        // 连续两个左子节点都是红色的，需要右旋转
+        if (isRed(node.left) && isRed(node.left.left)) {
+            node = rotateRight(node);
+        }
+        // 左右子树都是红节点，直接翻转颜色即可
+        if (isRed(node.left) && isRed(node.right)) {
+            flipCololrs(node);
         }
 
         return node;
