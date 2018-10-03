@@ -267,6 +267,37 @@ public class RBTree<Key extends Comparable<Key>, Value> {
     }
 
     /**
+     * 返回以node为根节点的二分搜索树中，key所在的节点
+     */
+    private Node getNode(Node node, Key key) {
+        if (node == null) {
+            return null;
+        }
+        if (key.equals(node.key)) {
+            return node;
+        } else if (key.compareTo(node.key) < 0) {
+            return getNode(node.left, key);
+        } else // if(key.compareTo(node.key) > 0)
+        {
+            return getNode(node.right, key);
+        }
+    }
+
+    public Value get(Key key) {
+
+        Node node = getNode(root, key);
+        return node == null ? null : node.value;
+    }
+
+    public void set(Key key, Value newValue) {
+        Node node = getNode(root, key);
+        if (node == null) {
+            throw new IllegalArgumentException(key + " doesn't exist!");
+        }
+        node.value = newValue;
+    }
+
+    /**
      * 在以node为根的二叉搜索树种查找key对应的value
      */
     private Value search(Node node, Key key) {
