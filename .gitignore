@@ -17,3 +17,7 @@ cmake-build-debug/
 #####################
 .ipynb_checkpoints/
 __pycache__/
+.settings/
+.classpath
+.project
+.factorypath
