@@ -31,6 +31,7 @@ public class SparseGraph {
         this.vertices = vertices;
         this.edges = 0;
         this.directed = directed;
+        // 集合类型初始化，类型是泛型时需要强制转换
         adj = (Vector<Integer>[]) new Vector[vertices];
         for (int i = 0; i < vertices; i++) {
             adj[i] = new Vector<>();
