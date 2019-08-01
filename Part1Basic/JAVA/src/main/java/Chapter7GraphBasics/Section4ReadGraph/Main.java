@@ -8,7 +8,7 @@ package Chapter7GraphBasics.Section4ReadGraph;
 
 public class Main {
     public static void main(String[] args) {
-        // 使用两种图的存储方式读取testG1.txt文件
+        // 使用两种图的存储方式读取testG1.txt文件，txt文件第一行表示几条边几个顶点(13, 13)以及(6, 8)分别表示13个顶点13条边以及6个顶点8条边
         String filename = "/Users/liangshanguang/Program/Algorithm/liuyubobobo-algorithms/Part1Basic/JAVA/src/main/java/Chapter7GraphBasics/Section4ReadGraph/graph1.txt";
         SparseGraph g1 = new SparseGraph(13, false);
         ReadGraph readGraph1 = new ReadGraph(g1, filename);
