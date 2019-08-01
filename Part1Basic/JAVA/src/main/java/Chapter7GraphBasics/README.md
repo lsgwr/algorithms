@@ -47,5 +47,9 @@
       return adj[v].length;
   }
   ```
+  
+## 图的多种表示方法和实现的比较
+
+![图的多种表示方式以及实现的比较](Section4ReadGraphOptimize/图的多种表示方式以及实现的比较.png)
 
 
