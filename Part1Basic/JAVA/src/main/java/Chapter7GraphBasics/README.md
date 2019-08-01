@@ -18,11 +18,34 @@
 
 > 源于刘宇波老师的图论课 https://coding.imooc.com/lesson/370.html#mid=27328
 
+代码见[Section4ReadGraphOptimize](Section4ReadGraphOptimize)
+
 + 对于边的编号不能超过边的总数vertices
   ```java
-  
+  public void validateVertex(int v) {
+      assert (v >= 0 && v < vertices);
+  }
   ```
-+ 稀疏图的邻接表实现改进:vector换成TreeSet，把查询邻接表的时间复杂度从O(n)提高到了O(logn)
++ 稀疏图的邻接表实现改进:vector换成TreeSet，把查询邻接表的时间复杂度从O(n)提高到了O(logN),而且元素还是有序地
+  ```java
+   /**
+     * 邻接表，采用vector套vector的形式
+     */
+   private TreeSet<Integer>[] adj;
+  ```
 + 添加degree()函数，用于统计图里每个定点的度(即每个定点有几个临边)
+  ```java
+  // 稀疏图，adj是TreeSet
+  public int degree(int v) {
+      return adj[v].size();
+  }
+  ```
+  
+  ```java
+  // 稠密图，adj是二维数组
+  public int degree(int v) {
+      return adj[v].length;
+  }
+  ```
 
 

@@ -96,6 +96,11 @@ public class SparseGraph implements Graph {
     }
 
     @Override
+    public int degree(int v) {
+        return adj[v].size();
+    }
+
+    @Override
     public void show() {
 
         // 遍历所有顶点vertex(顶点都是按照编号顺序来地)
@@ -108,7 +113,6 @@ public class SparseGraph implements Graph {
             System.out.println();
         }
     }
-
 
 
     /**

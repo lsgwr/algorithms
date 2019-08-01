@@ -54,6 +54,11 @@ public class DenseGraph implements Graph {
         return edges;
     }
 
+    @Override
+    public void validateVertex(int v) {
+        assert (v >= 0 && v < vertices);
+    }
+
     /**
      * 添加边,在v和w之间建立一条边
      */
@@ -81,13 +86,19 @@ public class DenseGraph implements Graph {
     @Override
     public boolean hasEdge(int v, int w) {
         // 先确保元素不越界
-        assert (v >= 0 && v < vertices);
-        assert (w >= 0 && w < vertices);
+        validateVertex(v);
+        validateVertex(w);
         return adj[v][w];
     }
 
     @Override
+    public int degree(int v) {
+        return adj[v].length;
+    }
+
+    @Override
     public void show() {
+        // 邻接矩阵是个vertices * vertices的方阵
         for (int i = 0; i < vertices; i++) {
             for (int j = 0; j < vertices; j++) {
                 System.out.print(adj[i][j] + "\t");
@@ -98,11 +109,11 @@ public class DenseGraph implements Graph {
 
     /**
      * 返回顶点v的所有临边
-     * 由于java使用引用机制，返回一个vector不会带来额外开销
+     * 由于java使用引用机制，返回一个Iterable对象不会带来额外开销
      */
     @Override
     public Iterable<Integer> adj(int v) {
-        assert (v >= 0 && v < vertices);
+        validateVertex(v);
         Vector<Integer> adjV = new Vector<>();
         for (int i = 0; i < vertices; i++) {
             // 邻接矩阵中为true表示v和i是相连地
