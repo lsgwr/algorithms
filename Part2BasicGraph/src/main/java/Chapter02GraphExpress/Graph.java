@@ -26,7 +26,7 @@ public class Graph implements IGraph {
      */
     private TreeSet<Integer>[] adj;
 
-    Graph(int vertices, boolean directed) {
+    public Graph(int vertices, boolean directed) {
         this.vertices = vertices;
         this.edges = 0;
         this.directed = directed;

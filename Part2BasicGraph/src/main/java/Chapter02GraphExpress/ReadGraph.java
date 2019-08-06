@@ -26,6 +26,7 @@ public class ReadGraph {
             if (V < 0) {
                 throw new IllegalArgumentException("number of vertices in a Graph must be nonnegative");
             }
+            // 图初始化时的边和
             assert V == graph.V();
 
             int E = scanner.nextInt();
