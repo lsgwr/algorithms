@@ -11,8 +11,15 @@ import Chapter02GraphExpress.ReadGraph;
 
 public class Main {
     public static void main(String[] args) {
+        // 连通图
         String filePath = "src/main/java/Chapter03DepthFirstTraversal/graph.txt";
         Graph graph = new Graph(7, false);
+        ReadGraph.init(graph, filePath);
+        System.out.println(new GraphDFS(graph).getOrderList());
+
+        // 非连通图
+        filePath = "src/main/java/Chapter03DepthFirstTraversal/graphNotConnected.txt";
+        graph = new Graph(7, false);
         ReadGraph.init(graph, filePath);
         System.out.println(new GraphDFS(graph).getOrderList());
     }
