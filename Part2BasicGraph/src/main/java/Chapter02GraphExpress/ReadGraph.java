@@ -4,7 +4,7 @@
  * @date        : 2018/4/30 14:04
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter2GraphExpress;
+package Chapter02GraphExpress;
 
 import java.io.BufferedInputStream;
 import java.io.File;

@@ -4,7 +4,7 @@
  * @date        : 2019-08-02 07:59
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter2GraphExpress;
+package Chapter02GraphExpress;
 
 public class Main {
     public static void main(String[] args) {

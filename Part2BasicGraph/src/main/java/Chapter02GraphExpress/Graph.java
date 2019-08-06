@@ -4,7 +4,7 @@
  * @date        : 2018/08/02 07:53
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter2GraphExpress;
+package Chapter02GraphExpress;
 
 import java.util.TreeSet;
 
