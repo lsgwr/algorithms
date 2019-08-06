@@ -2,7 +2,7 @@
 
 > 主要是介绍常见的基础算法，如排序、树的访问、图算法等。
 
-[课程链接](https://coding.imooc.com/learn/list/71.html)
+[课程链接](https://coding.imooc.com/learn/list/71.html) [参考代码](https://github.com/liuyubobobo/Play-with-Algorithms)
 
 + 第1章 当我们谈论算法的时候，我们在谈论什么？
   + 1-1 我们究竟为什么要学习算法  (15:33)
