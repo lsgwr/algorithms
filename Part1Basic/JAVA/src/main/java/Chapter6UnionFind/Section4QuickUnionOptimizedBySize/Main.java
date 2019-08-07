@@ -12,8 +12,7 @@ public class Main {
         // 使用10000的数据规模
         int n = 1000000;
 
-        // 虽然isConnected只需要O(1)的时间, 但由于union操作需要O(n)的时间
-        // 总体测试过程的算法复杂度是O(n^2)的
+        // 改变了union时的指向，带来了成千上万倍的速度提升
         UnionFindTestHelper.testUF(n);
     }
 }
