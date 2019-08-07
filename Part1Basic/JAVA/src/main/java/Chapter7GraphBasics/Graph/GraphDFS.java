@@ -23,6 +23,11 @@ public class GraphDFS {
      */
     private List<Integer> orderList = new ArrayList<>();
 
+    /**
+     * 连通分量计数器
+     */
+    private int connectedComponentCount;
+
     public GraphDFS(Graph graph) {
         this.graph = graph;
         // 初始化访问数组，用图的顶点个数来访问
@@ -31,12 +36,18 @@ public class GraphDFS {
         for (int v = 0; v < graph.V(); v++) {
             if (!visited[v]) {
                 dfs(v);
+                // 当退出递归时，相当于结束了一个连通图的遍历，所以连通分量数加1
+                connectedComponentCount++;
             }
         }
     }
 
     public Iterable<Integer> getOrderList() {
         return orderList;
+    }
+
+    public int getConnectedComponentCount() {
+        return connectedComponentCount;
     }
 
     private void dfs(int v) {

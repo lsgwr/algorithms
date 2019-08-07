@@ -16,12 +16,19 @@ public class MainGraphDFS {
         String filePath = "src/main/java/Chapter7GraphBasics/Graph/data/graphDFS.txt";
         Graph graph = new Graph(7, false);
         ReadGraph.init(graph, filePath);
-        System.out.println(new GraphDFS(graph).getOrderList());
+        GraphDFS graphDFS1 = new GraphDFS(graph);
+        System.out.println("深度优先遍历的结果是：" + graphDFS1.getOrderList());
+        System.out.println("连通分量的个数是：" + graphDFS1.getConnectedComponentCount());
+
+        System.out.println();
 
         // DFS用于非连通图
         filePath = "src/main/java/Chapter7GraphBasics/Graph/data/graphDFSNotConnected.txt";
         graph = new Graph(7, false);
         ReadGraph.init(graph, filePath);
-        System.out.println(new GraphDFS(graph).getOrderList());
+        GraphDFS graphDFS2 = new GraphDFS(graph);
+        System.out.println("深度优先遍历的结果是：" + graphDFS2.getOrderList());
+        System.out.println("连通分量的个数是：" + graphDFS2.getConnectedComponentCount());
+
     }
 }
