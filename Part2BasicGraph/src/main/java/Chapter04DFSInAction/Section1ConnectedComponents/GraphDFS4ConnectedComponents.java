@@ -5,7 +5,7 @@
  * @date        : 2019-08-07 22:05
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter04DFSInAction;
+package Chapter04DFSInAction.Section1ConnectedComponents;
 
 import Chapter02GraphExpress.Graph;
 
