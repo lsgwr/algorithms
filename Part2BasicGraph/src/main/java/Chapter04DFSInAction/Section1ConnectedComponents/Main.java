@@ -8,7 +8,6 @@ package Chapter04DFSInAction.Section1ConnectedComponents;
 
 import Chapter02GraphExpress.Graph;
 import Chapter02GraphExpress.ReadGraph;
-import Chapter03DepthFirstTraversal.GraphDFS;
 
 public class Main {
     public static void main(String[] args) {

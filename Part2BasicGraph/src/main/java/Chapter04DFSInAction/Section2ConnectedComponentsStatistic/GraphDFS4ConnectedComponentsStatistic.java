@@ -9,8 +9,7 @@ package Chapter04DFSInAction.Section2ConnectedComponentsStatistic;
 
 import Chapter02GraphExpress.Graph;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class GraphDFS4ConnectedComponentsStatistic {
     private Graph graph;
@@ -18,7 +17,13 @@ public class GraphDFS4ConnectedComponentsStatistic {
     /**
      * 存储顶点是否被访问的数组
      */
-    private boolean[] visited;
+    private int[] visited;
+
+
+    /**
+     * 存储连通分量具体内容的Map
+     */
+    private Map<Integer, List<Integer>> connectedComponentsMap = new TreeMap<>();
 
     /**
      * 存放图的深度优先遍历的结果
@@ -34,11 +39,14 @@ public class GraphDFS4ConnectedComponentsStatistic {
     public GraphDFS4ConnectedComponentsStatistic(Graph graph) {
         this.graph = graph;
         // 初始化访问数组，用图的顶点个数来访问
-        visited = new boolean[graph.V()];
+        visited = new int[graph.V()];
+        // 数组初始化为-1
+        Arrays.fill(visited, -1);
         // 从dfs(0)改成下面的代码，可以支持非连通的图
-        for (int v = 0; v < graph.V(); v++) {
-            if (!visited[v]) {
-                dfs(v);
+        for (int v = 0; v < graph.V(); v++) { // 等于-1表示还没被访问过
+            if (visited[v] != -1) {
+                // 第二个参数表示当前连通分量的标志(多个连通分量内的元素在visited内用connectedComponentCount这个值进行标记)
+                dfs(v, connectedComponentCount);
                 // 当退出递归时，相当于结束了一个连通图的遍历，所以连通分量数加1
                 connectedComponentCount++;
             }
@@ -53,13 +61,39 @@ public class GraphDFS4ConnectedComponentsStatistic {
         return connectedComponentCount;
     }
 
-    private void dfs(int v) {
-        visited[v] = true;
+    public Map<Integer, List<Integer>> getConnectedComponentsMap() {
+        for (int ccid = 0; ccid < connectedComponentCount; ccid++) {
+            // vertexIndex表示顶点的索引，即从txt文本中读入地一个个边的顶点数值
+            for (int vertexIndex = 0; vertexIndex < visited.length; vertexIndex++) {
+                // 给Map赋值
+                if (connectedComponentsMap.get(ccid) == null) {
+                    // 以前没加过这个连通分量地话
+                    List<Integer> ccList = new ArrayList<>();
+                    ccList.add(vertexIndex);
+                    // 把连通分量加进去
+                    connectedComponentsMap.put(ccid, ccList);
+                } else {
+                    // 以前加入过ccList了，那么这次直接往list里加元素即可
+                    connectedComponentsMap.get(ccid).add(vertexIndex);
+                }
+            }
+        }
+        return connectedComponentsMap;
+    }
+
+    /**
+     * 深度优先遍历
+     *
+     * @param v    当前遍历到的顶点下标
+     * @param ccid 当前连通分量的标记(同一个连通分量内的元素都在visited数组内用这个数值进行赋值标记)
+     */
+    private void dfs(int v, int ccid) {
+        visited[v] = ccid;
         orderList.add(v);
         for (Integer w : graph.adj(v)) {
-            if (!visited[w]) {
+            if (visited[w] == -1) {
                 // w点没被访问的话就递归接着访问
-                dfs(w);
+                dfs(w, ccid);
             }
         }
     }

@@ -9,6 +9,9 @@ package Chapter04DFSInAction.Section2ConnectedComponentsStatistic;
 import Chapter02GraphExpress.Graph;
 import Chapter02GraphExpress.ReadGraph;
 
+import java.util.List;
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
         // 连通图
@@ -18,6 +21,18 @@ public class Main {
         GraphDFS4ConnectedComponentsStatistic graphDFS1 = new GraphDFS4ConnectedComponentsStatistic(graph);
         System.out.println("深度优先遍历的结果是：" + graphDFS1.getOrderList());
         System.out.println("连通分量的个数是：" + graphDFS1.getConnectedComponentCount());
+        System.out.println("连通分量的详情是(每个连通分量里有哪些顶点)：");
+        Map<Integer, List<Integer>> connectedComponentsMap = graphDFS1.getConnectedComponentsMap();
+        for (Integer ccid : connectedComponentsMap.keySet()) {
+            System.out.print("连通分量" + ccid + "包含的顶点:");
+            List<Integer> vertexList = connectedComponentsMap.get(ccid);
+            for (Integer vertex : vertexList) {
+                System.out.println(vertex+" ");
+            }
+            System.out.println();
+        }
+
+        System.out.println();
 
         // 非连通图
         filePath = "src/main/java/Chapter03DepthFirstTraversal/graphNotConnected.txt";
@@ -26,5 +41,14 @@ public class Main {
         GraphDFS4ConnectedComponentsStatistic graphDFS2 = new GraphDFS4ConnectedComponentsStatistic(graph);
         System.out.println("深度优先遍历的结果是：" + graphDFS2.getOrderList());
         System.out.println("连通分量的个数是：" + graphDFS2.getConnectedComponentCount());
+        connectedComponentsMap = graphDFS2.getConnectedComponentsMap();
+        for (Integer ccid : connectedComponentsMap.keySet()) {
+            System.out.print("连通分量" + ccid + "包含的顶点:");
+            List<Integer> vertexList = connectedComponentsMap.get(ccid);
+            for (Integer vertex : vertexList) {
+                System.out.println(vertex+" ");
+            }
+            System.out.println();
+        }
     }
 }
