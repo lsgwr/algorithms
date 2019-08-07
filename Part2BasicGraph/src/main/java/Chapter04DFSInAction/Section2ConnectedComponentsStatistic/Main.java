@@ -27,7 +27,7 @@ public class Main {
             System.out.print("连通分量" + ccid + "包含的顶点:");
             List<Integer> vertexList = connectedComponentsMap.get(ccid);
             for (Integer vertex : vertexList) {
-                System.out.println(vertex+" ");
+                System.out.print(vertex+" ");
             }
             System.out.println();
         }
@@ -46,7 +46,7 @@ public class Main {
             System.out.print("连通分量" + ccid + "包含的顶点:");
             List<Integer> vertexList = connectedComponentsMap.get(ccid);
             for (Integer vertex : vertexList) {
-                System.out.println(vertex+" ");
+                System.out.print(vertex+" ");
             }
             System.out.println();
         }

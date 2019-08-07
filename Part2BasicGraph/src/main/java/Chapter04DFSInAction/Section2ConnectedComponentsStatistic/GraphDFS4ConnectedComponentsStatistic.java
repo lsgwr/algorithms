@@ -44,7 +44,7 @@ public class GraphDFS4ConnectedComponentsStatistic {
         Arrays.fill(visited, -1);
         // 从dfs(0)改成下面的代码，可以支持非连通的图
         for (int v = 0; v < graph.V(); v++) { // 等于-1表示还没被访问过
-            if (visited[v] != -1) {
+            if (visited[v] == -1) {
                 // 第二个参数表示当前连通分量的标志(多个连通分量内的元素在visited内用connectedComponentCount这个值进行标记)
                 dfs(v, connectedComponentCount);
                 // 当退出递归时，相当于结束了一个连通图的遍历，所以连通分量数加1
