@@ -6,6 +6,9 @@
  ***********************************************************/
 package Chapter4Heap.Section2to4;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /**
  * 在堆的有关操作中，需要比较堆中元素的大小，所以Item需要extends Comparable
  */
@@ -125,6 +128,7 @@ public class MaxHeap<Item extends Comparable> {
     }
 
     public static void main(String[] args) {
+        // 自己实现的优先队列
         MaxHeap<Integer> maxHeap = new MaxHeap<>(100);
         for (int i = 0; i < 31; i++) {
             maxHeap.insert((int) (Math.random() * i));
@@ -132,6 +136,78 @@ public class MaxHeap<Item extends Comparable> {
         System.out.println(maxHeap.size());
         while (!maxHeap.isEmpty()) {
             System.out.print(maxHeap.popMax() + " ");
+        }
+        System.out.println();
+
+        // Java自带的有限队列PriorityQueue
+        int[] arr = new int[]{2, 5, 3, 9, 6, 4, 7};
+
+
+        // 1.排序(升序， 默认)
+        System.out.println("PriorityQueue默认的升序：");
+        PriorityQueue<Integer> pqAsc = new PriorityQueue<>();
+        for (int i : arr) {
+            pqAsc.offer(i);
+        }
+        while (!pqAsc.isEmpty()) {
+            System.out.print(pqAsc.poll() + " ");
+        }
+        System.out.println();
+
+        // 2.排序(降序)
+        System.out.println("PriorityQueue自定义的降序");
+        PriorityQueue<Integer> pqDesc = new PriorityQueue<>(arr.length, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer num1, Integer num2) {
+                return num2.compareTo(num1);
+            }
+        });
+        for (int i : arr) {
+            pqDesc.offer(i);
+        }
+        while (!pqDesc.isEmpty()) {
+            System.out.print(pqDesc.poll() + " ");
+        }
+        System.out.println();
+
+        // 3.取出最大的3个元素
+        System.out.println("取出最大的3个元素(默认):");
+        PriorityQueue<Integer> pqMax = new PriorityQueue<>();
+
+        for (int i : arr) {
+            if (pqMax.size() < 3) {
+                pqMax.offer(i);
+            } else if (pqMax.peek() < i) {
+                // 新元素大于堆顶元素，弹出堆顶元素，并把新的最大值加进去
+                pqMax.poll();
+                pqMax.offer(i);
+            }
+        }
+        while (!pqMax.isEmpty()) {
+            System.out.print(pqMax.poll() + " ");
+        }
+        System.out.println();
+
+
+        System.out.println("取出最小的3个元素(自定义):");
+        PriorityQueue<Integer> pqMin = new PriorityQueue<>(arr.length, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer num1, Integer num2) {
+                return num2.compareTo(num1);
+            }
+        });
+
+        for (int i : arr) {
+            if (pqMin.size() < 3) {
+                pqMin.offer(i);
+            } else if (pqMin.peek() > i) {
+                // 新元素大于堆顶元素，弹出堆顶元素，并把新的最大值加进去
+                pqMin.poll();
+                pqMin.offer(i);
+            }
+        }
+        while (!pqMin.isEmpty()) {
+            System.out.print(pqMin.poll() + " ");
         }
         System.out.println();
     }
