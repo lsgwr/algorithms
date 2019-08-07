@@ -14,6 +14,7 @@ import java.util.*;
 public class GraphDFS4ConnectedComponentsStatistic {
     private Graph graph;
 
+
     /**
      * 存储顶点是否被访问的数组
      */
@@ -61,20 +62,27 @@ public class GraphDFS4ConnectedComponentsStatistic {
         return connectedComponentCount;
     }
 
+    public int[] getVisited() {
+        return visited;
+    }
+
     public Map<Integer, List<Integer>> getConnectedComponentsMap() {
         for (int ccid = 0; ccid < connectedComponentCount; ccid++) {
             // vertexIndex表示顶点的索引，即从txt文本中读入地一个个边的顶点数值
             for (int vertexIndex = 0; vertexIndex < visited.length; vertexIndex++) {
-                // 给Map赋值
-                if (connectedComponentsMap.get(ccid) == null) {
-                    // 以前没加过这个连通分量地话
-                    List<Integer> ccList = new ArrayList<>();
-                    ccList.add(vertexIndex);
-                    // 把连通分量加进去
-                    connectedComponentsMap.put(ccid, ccList);
-                } else {
-                    // 以前加入过ccList了，那么这次直接往list里加元素即可
-                    connectedComponentsMap.get(ccid).add(vertexIndex);
+                // 只有当已访问数组中vertexIndex下标对应的值等于ccid才加到ccid对应的连通分量List中
+                if (ccid == visited[vertexIndex]) {
+                    // 给Map赋值
+                    if (connectedComponentsMap.get(ccid) == null) {
+                        // 以前没加过这个连通分量地话
+                        List<Integer> ccList = new ArrayList<>();
+                        ccList.add(vertexIndex);
+                        // 把连通分量加进去
+                        connectedComponentsMap.put(ccid, ccList);
+                    } else {
+                        // 以前加入过ccList了，那么这次直接往list里加元素即可
+                        connectedComponentsMap.get(ccid).add(vertexIndex);
+                    }
                 }
             }
         }
