@@ -4,7 +4,7 @@
  * @date        : 2018/08/02 07:52
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter02GraphExpress;
+package Chapter7GraphBasics.Graph;
 
 public interface IGraph {
     /**
