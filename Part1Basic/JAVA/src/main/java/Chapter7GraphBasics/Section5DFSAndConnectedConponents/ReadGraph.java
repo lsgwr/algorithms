@@ -4,7 +4,7 @@
  * @date        : 2018/4/30 14:04
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter7GraphBasics.Section5ConnectedConponents;
+package Chapter7GraphBasics.Section5DFSAndConnectedConponents;
 
 import java.io.BufferedInputStream;
 import java.io.File;

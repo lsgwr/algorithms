@@ -5,7 +5,7 @@
  * @date        : 2018/4/30 13:04
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter7GraphBasics.Section5ConnectedConponents;
+package Chapter7GraphBasics.Section5DFSAndConnectedConponents;
 
 import java.util.Vector;
 

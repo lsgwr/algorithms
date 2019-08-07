@@ -4,7 +4,7 @@
  * @date        : 2018/4/30 19:22
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter7GraphBasics.Section5ConnectedConponents;
+package Chapter7GraphBasics.Section5DFSAndConnectedConponents;
 
 public class Components {
     private Graph graph;
