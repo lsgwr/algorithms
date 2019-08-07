@@ -66,6 +66,9 @@ public class GraphDFS4ConnectedComponentsStatistic {
         return visited;
     }
 
+    /**
+     * 获取连通分量的详细信息，Map的key是ccid，value是ccid对应连通分量内的所有元素
+     */
     public Map<Integer, List<Integer>> getConnectedComponentsMap() {
         for (int ccid = 0; ccid < connectedComponentCount; ccid++) {
             // vertexIndex表示顶点的索引，即从txt文本中读入地一个个边的顶点数值

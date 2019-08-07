@@ -54,6 +54,15 @@ public class GraphDFS4IsConnected {
         }
     }
 
+    /**
+     * 判断v和w在图中是否是可以连接地
+     */
+    public boolean isConnected(int v, int w) {
+        graph.validateVertex(v);
+        graph.validateVertex(w);
+        return visited[v] == visited[w];
+    }
+
     public Iterable<Integer> getOrderList() {
         return orderList;
     }
@@ -66,6 +75,9 @@ public class GraphDFS4IsConnected {
         return visited;
     }
 
+    /**
+     * 获取连通分量的详细信息，Map的key是ccid，value是ccid对应连通分量内的所有元素
+     */
     public Map<Integer, List<Integer>> getConnectedComponentsMap() {
         for (int ccid = 0; ccid < connectedComponentCount; ccid++) {
             // vertexIndex表示顶点的索引，即从txt文本中读入地一个个边的顶点数值
