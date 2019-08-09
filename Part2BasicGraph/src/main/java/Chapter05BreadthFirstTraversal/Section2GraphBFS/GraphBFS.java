@@ -60,7 +60,7 @@ public class GraphBFS {
         }
     }
 
-    public Iterable<Integer> getOrder(){
+    public Iterable<Integer> getOrderList(){
         return orderList;
     }
 }
