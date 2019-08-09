@@ -31,29 +31,33 @@ public class GraphBFSSingleSourcePath {
     private int[] pre;
 
     public GraphBFSSingleSourcePath(Graph graph, int source) {
+        graph.validateVertex(source);
         this.graph = graph;
-        this.visited = new boolean[graph.V()];
         this.source = source;
+        this.visited = new boolean[graph.V()];
         // 给存储单源路径的数组赋值
         pre = new int[graph.V()];
         Arrays.fill(pre, -1);
         // 因为单源路径问题是和连通分量无关的，所以dfs()要用最早没有考虑连通分量的那版
-        bfs(source, source);
+        bfs(source);
     }
 
     /**
      * 从source点开始进行广度优先遍历
      */
-    private void bfs(int v, int parent) {
-        visited[v] = true;
-        orderList.add(v);
-        // 记录每个定点的上一个访问节点
-        pre[v] = parent;
-        for (Integer w : graph.adj(v)) {
-            if (!visited[w]) {
-                // w点没被访问的话就递归接着访问
-                bfs(w, v);
-            }
+    private void bfs(int source) {
+        Queue<Integer> queue = new ArrayDeque<>();
+        queue.add(source);
+        visited[source] = true;
+        pre[source] = source;
+        while (!queue.isEmpty()) {
+            int v = queue.remove();
+            for (int w : graph.adj(v))
+                if (!visited[w]) {
+                    queue.add(w);
+                    visited[w] = true;
+                    pre[w] = v;
+                }
         }
     }
 
