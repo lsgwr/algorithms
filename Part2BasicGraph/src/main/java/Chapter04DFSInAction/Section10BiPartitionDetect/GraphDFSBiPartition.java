@@ -32,7 +32,7 @@ enum VertexColor {
     }
 }
 
-public class GraphDFSBiPartition {
+public class GraphDFSBiPartitionDetect {
     private Graph graph;
 
     /**
@@ -55,7 +55,7 @@ public class GraphDFSBiPartition {
      */
     private boolean biPartition = true;
 
-    public GraphDFSBiPartition(Graph graph) {
+    public GraphDFSBiPartitionDetect(Graph graph) {
         this.graph = graph;
         // 初始化访问数组，用图的顶点个数来访问
         visited = new boolean[graph.V()];
