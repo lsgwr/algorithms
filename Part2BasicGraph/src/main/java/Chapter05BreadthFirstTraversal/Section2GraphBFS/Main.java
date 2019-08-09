@@ -15,7 +15,7 @@ public class Main {
         Graph graph = new Graph(7, false);
         ReadGraph.init(graph, filePath);
         GraphBFS graphBFS = new GraphBFS(graph);
-        System.out.println("广度优先遍历顺序结果是：" + graphBFS.getOrder());
+        System.out.println("广度优先遍历顺序结果是：" + graphBFS.getOrderList());
     }
 }
 
