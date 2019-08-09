@@ -13,14 +13,14 @@ import java.util.Arrays;
 
 public class Main {
     private static void showResult(Graph graph, int source, int target) {
-        GraphBFSSingleSourcePathOptimize singleSourcePathDFSOptimize = new GraphBFSSingleSourcePathOptimize(graph, source, target);
-        System.out.println(source + "--->" + target + "的路径:" + singleSourcePathDFSOptimize.path());
-        // 因为优化后每个GraphDFSSingleSourcePathOptimize只是为了指定的source和target，并没有访问全部的节点,所以可以看到节点部分为true，部分为false
-        System.out.println("节点是否访问的情况是(每个数组下标代表一个定点)：" + Arrays.toString(singleSourcePathDFSOptimize.getVisited()));
+        GraphBFSSingleSourcePathOptimize singleSourcePathBFSOptimize = new GraphBFSSingleSourcePathOptimize(graph, source, target);
+        System.out.println(source + "--->" + target + "的路径:" + singleSourcePathBFSOptimize.path());
+        // 因为优化后每个GraphBFSSingleSourcePathOptimize只是为了指定的source和target，并没有访问全部的节点,所以可以看到节点部分为true，部分为false
+        System.out.println("节点是否访问的情况是(每个数组下标代表一个定点)：" + Arrays.toString(singleSourcePathBFSOptimize.getVisited()));
     }
 
     public static void main(String[] args) {
-        // 求起点source到目标点target的单源路径(source就会作为DFS的起点)
+        // 求起点source到目标点target的单源路径(source就会作为BFS的起点)
         int source = 0;
         int target = 6;
         String filePath = "src/main/java/Chapter05BreadthFirstTraversal/Section2GraphBFS/graph.txt";
