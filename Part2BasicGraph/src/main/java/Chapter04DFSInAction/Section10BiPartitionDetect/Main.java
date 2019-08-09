@@ -13,9 +13,9 @@ public class Main {
     private static void showResult(String filePath) {
         Graph graph = new Graph(7, false);
         ReadGraph.init(graph, filePath);
-        GraphDFSBiPartition graphDFSBiPartition = new GraphDFSBiPartition(graph);
-        System.out.println(graphDFSBiPartition.isBiPartition());
-        System.out.println("当前图" + (graphDFSBiPartition.isBiPartition() ? "是" : "不是") + "二分图");
+        GraphDFSBiPartitionDetect graphDFSBiPartitionDetect = new GraphDFSBiPartitionDetect(graph);
+        System.out.println(graphDFSBiPartitionDetect.isBiPartition());
+        System.out.println("当前图" + (graphDFSBiPartitionDetect.isBiPartition() ? "是" : "不是") + "二分图");
     }
 
     public static void main(String[] args) {
