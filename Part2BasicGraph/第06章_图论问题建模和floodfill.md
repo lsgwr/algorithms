@@ -47,6 +47,16 @@ int[][] dirs = {{-1, 0}, {-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1,
 + [问题链接 LeetCode 695.岛屿的最大面积](https://leetcode-cn.com/problems/max-area-of-island)
 + [代码实现](src/main/java/Chapter06GraphModellingAndFloodfill/Section2And3GraphModel/Solution.java)
 
+## 6.4 Floodfill算法
+
+> 实际就是把原来基于整数的图遍历扩展到了基于二维坐标系的图遍历，二维坐标系中的每个像素点都是图中的一个顶点。
+
+上一节做了大量的构建基于整数顶点的图并进行了大量二维坐标到整数的转换，从而可以使用前面写好地DFS代码，
+
+实际是可以直接用(x, y)来表达图的顶点了，而且也不需要显示地构建图了，只需要利用骄傲DFS或BFS的思想即可
+
++ [实现代码](src/main/java/Chapter06GraphModellingAndFloodfill/Section4Floodfill/Solution.java)
+
 ## 6.5 更多floodfill的问题
 
 ![更多floodfilee算法的问题1](images/更多floodfilee算法的问题1.jpg)
