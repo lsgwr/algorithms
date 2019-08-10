@@ -42,6 +42,11 @@ int[][] dirs = {{-1, 0}, {-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1,
 
 ## 6.3 DFS实现解决floodfill的问题
 
+> 通过构造图和使用DFS来解决洪泛问题
+
++ [问题链接 LeetCode 695.岛屿的最大面积](https://leetcode-cn.com/problems/max-area-of-island)
++ [代码实现](src/main/java/Chapter06GraphModellingAndFloodfill/Section2And3GraphModel/Solution.java)
+
 ## 6.5 更多floodfill的问题
 
 ![更多floodfilee算法的问题1](images/更多floodfilee算法的问题1.jpg)
