@@ -28,6 +28,9 @@ public class GraphBFSUnweightedGraphShortestPath {
      */
     private int source, target;
 
+    /**
+     * pre数组是为了记录起点source到目标点target的路径(中间经过了哪些点)
+     */
     private int[] pre;
 
     /**
@@ -67,7 +70,7 @@ public class GraphBFSUnweightedGraphShortestPath {
         }
         while (!queue.isEmpty()) {
             int v = queue.remove();
-            for (int w : graph.adj(v))
+            for (int w : graph.adj(v)) {
                 if (!visited[w]) {
                     queue.add(w);
                     visited[w] = true;
@@ -77,6 +80,7 @@ public class GraphBFSUnweightedGraphShortestPath {
                         return;
                     }
                 }
+            }
         }
     }
 
