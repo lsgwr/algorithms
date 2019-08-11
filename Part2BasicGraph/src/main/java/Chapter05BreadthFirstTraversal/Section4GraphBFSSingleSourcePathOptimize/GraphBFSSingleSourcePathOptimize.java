@@ -58,7 +58,7 @@ public class GraphBFSSingleSourcePathOptimize {
         }
         while (!queue.isEmpty()) {
             int v = queue.remove();
-            for (int w : graph.adj(v))
+            for (int w : graph.adj(v)) {
                 if (!visited[w]) {
                     queue.add(w);
                     visited[w] = true;
@@ -67,6 +67,7 @@ public class GraphBFSSingleSourcePathOptimize {
                         return;
                     }
                 }
+            }
         }
     }
 

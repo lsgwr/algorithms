@@ -87,10 +87,9 @@ public class GraphBFSUnweightedGraphShortestPath {
     /**
      * 判断图的遍历起点是否和target点连通，实际只需要看下visit[v]是否为true即可，为true表示在一个连通分量上，肯定是连通地
      *
-     * @param target 目标定点索引
      * @return 判断图的遍历起点是否和target点连通
      */
-    public boolean isSourceConnectedTo(int target) {
+    public boolean isSourceConnectedTo() {
         graph.validateVertex(target);
         return visited[target];
     }
@@ -107,7 +106,7 @@ public class GraphBFSUnweightedGraphShortestPath {
     public Iterable<Integer> path() {
         List<Integer> pathList = new ArrayList<>();
         // source到target有路径才进行路径查找
-        if (isSourceConnectedTo(target)) {
+        if (isSourceConnectedTo()) {
             // 用pre数组从target一直找到source点，记录下中间经过的所有点，就是要求的单源路径
             int current = target;
             while (current != source) {
