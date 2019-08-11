@@ -35,7 +35,7 @@ public class SolutionOptimize {
     private HashMap<String, Integer> distance = new HashMap<>();
 
     /**
-     * 存放不可遍历的顶点
+     * 存放不可遍历的顶点，一定要用HashSet不要用ArrayList,会超时地！！！
      */
     private HashSet<String> deadList = new HashSet<>();
 

@@ -35,7 +35,7 @@ public class Solution {
     private HashMap<String, Integer> distance = new HashMap<>();
 
     /**
-     * 存放不可遍历的顶点
+     * 存放不可遍历的顶点，用List会超时，改成HashSet就行了，不超时的方案见SolutionOptimize.java
      */
     private List<String> deadList;
 
