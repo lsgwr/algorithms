@@ -59,6 +59,33 @@ public class Solution {
     }
 
     /**
+     * 计算当前点的邻接点
+     *
+     * @param v   当前遍历到的点
+     * @param adj 存储v的邻接点的列表
+     */
+    private void getAdj(String v, List<String> adj) {
+        char[] vArr = v.toCharArray();
+        for (int i = 0; i < 4; i++) {
+            // 记录指定位置当前的字符
+            char o = vArr[i];
+
+            // 向前拨一位
+            vArr[i] = Character.forDigit((vArr[i] - '0' + 1) % 10, 10);
+            adj.add(new String(vArr));
+            // 字符归位
+            vArr[i] = o;
+
+            // 向后拨一位,不能用-1因为可能出现负数，所以用+9
+            // vArr[i] = Character.forDigit((vArr[i] - '0' - 1) % 10, 10);
+            vArr[i] = Character.forDigit((vArr[i] - '0' + 9) % 10, 10);
+            adj.add(new String(vArr));
+            // 字符归位
+            vArr[i] = o;
+        }
+    }
+
+    /**
      * 从source点开始进行广度优先遍历
      */
     private void bfs() {
@@ -70,8 +97,9 @@ public class Solution {
             // 当前顶点vertex
             String v = queue.remove();
             orderList.add(v);
-            // Todo:算出当前顶点的所有邻接点
+            // 算出当前顶点的所有邻接点(字符的逻辑转换)
             List<String> adj = new ArrayList<>();
+            getAdj(v, adj);
             // BFS遍历所有邻接点
             for (String w : adj) {
                 // w是指v的邻接点
