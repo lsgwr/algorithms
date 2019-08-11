@@ -19,7 +19,7 @@ public class GraphBFSUnweightedGraphShortestPath {
     private boolean[] visited;
 
     /**
-     * 广度优先遍历的顺序结果(只有一种，不想DFS有前序、后序两种)
+     * 广度优先遍历的顺序结果(只有一种，不像DFS有前序、后序两种)
      */
     private List<Integer> orderList = new ArrayList<>();
 
@@ -70,6 +70,7 @@ public class GraphBFSUnweightedGraphShortestPath {
         }
         while (!queue.isEmpty()) {
             int v = queue.remove();
+            orderList.add(v);
             for (int w : graph.adj(v)) {
                 if (!visited[w]) {
                     queue.add(w);
@@ -89,7 +90,7 @@ public class GraphBFSUnweightedGraphShortestPath {
      *
      * @return 判断图的遍历起点是否和target点连通
      */
-    public boolean isSourceConnectedTo() {
+    public boolean isConnected() {
         graph.validateVertex(target);
         return visited[target];
     }
@@ -106,7 +107,7 @@ public class GraphBFSUnweightedGraphShortestPath {
     public Iterable<Integer> path() {
         List<Integer> pathList = new ArrayList<>();
         // source到target有路径才进行路径查找
-        if (isSourceConnectedTo()) {
+        if (isConnected()) {
             // 用pre数组从target一直找到source点，记录下中间经过的所有点，就是要求的单源路径
             int current = target;
             while (current != source) {

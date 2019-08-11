@@ -52,12 +52,14 @@ public class GraphBFSSingleSourcePath {
         pre[source] = source;
         while (!queue.isEmpty()) {
             int v = queue.remove();
-            for (int w : graph.adj(v))
+            orderList.add(v);
+            for (int w : graph.adj(v)) {
                 if (!visited[w]) {
                     queue.add(w);
                     visited[w] = true;
                     pre[w] = v;
                 }
+            }
         }
     }
 
