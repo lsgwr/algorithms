@@ -1,16 +1,16 @@
 /***********************************************************
- * @Description : 转盘锁问题测试，测试存在超时问题，经过测试是因为deadends存成了ArrayList,换成HashSet立马就合格了
+ * @Description : 转盘锁问题测试，ArrayList换成HashSet就立马不超时了
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2019/8/11 17:35
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
 package Chapter07AISearchAndBFS.Section2And3RotaryLock;
 
-public class Main {
+public class MainOptimize {
     public static void main(String[] args) {
         String[] deadends = {"0201", "0101", "0102", "1212", "2002"};
         String target = "0202";
-        Solution solution = new Solution();
+        SolutionOptimize solution = new SolutionOptimize();
         System.out.println(solution.openLock(deadends, target));
 
         //
