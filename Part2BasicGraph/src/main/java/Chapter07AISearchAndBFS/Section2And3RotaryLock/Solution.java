@@ -93,6 +93,8 @@ public class Solution {
         queue.add(source);
         // 已访问集合加入source点
         visited.put(source, true);
+        // source到source的步骤距离是0
+        distance.put(source, 0);
         while (!queue.isEmpty()) {
             // 当前顶点vertex
             String v = queue.remove();
@@ -103,7 +105,7 @@ public class Solution {
             // BFS遍历所有邻接点
             for (String w : adj) {
                 // w是指v的邻接点
-                if (!deadList.contains(w) && !visited.get(w)) {
+                if (!deadList.contains(w) && visited.get(w) == null) {
                     // 如果w顶点不在禁止访问列表中并且还没被访问
                     queue.add(w);
                     // w标记为已经访问
