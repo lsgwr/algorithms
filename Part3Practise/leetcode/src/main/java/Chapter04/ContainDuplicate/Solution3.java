@@ -24,7 +24,7 @@ public class Solution3 {
             record.add((long) nums[i]);
             // 保持record中不超过k个元素，即i和j的索引最大差值不大于k，超过k时抹掉最左边的元素即可
             if (record.size() == k + 1) {
-                record.remove(nums[i - k]);
+                record.remove((long)nums[i - k]);
             }
         }
         // 遍历到最后还找不到就返回false
