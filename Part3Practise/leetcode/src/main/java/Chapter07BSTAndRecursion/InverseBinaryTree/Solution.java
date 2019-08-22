@@ -21,6 +21,7 @@
  ***********************************************************/
 package Chapter07BSTAndRecursion.InverseBinaryTree;
 
+import Chapter07BSTAndRecursion.Codec;
 import Chapter07BSTAndRecursion.TreeNode;
 
 public class Solution {
@@ -39,5 +40,13 @@ public class Solution {
         invertTree(root.right);
         swap(root);
         return root;
+    }
+
+    public static void main(String[] args) {
+        String data = "3,9,20,null,null,15,7";
+        Codec codec = new Codec();
+        TreeNode root = codec.deserialize(data);
+        String datatInit = codec.serialize(root);
+        System.out.println(datatInit);
     }
 }
