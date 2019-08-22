@@ -6,19 +6,9 @@
  ***********************************************************/
 package Chapter07BSTAndRecursion.MaxDepthOfBST;
 
-public class Solution {
-    /**
-     * Definition for a binary tree node
-     */
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+import Chapter07BSTAndRecursion.TreeNode;
 
-        TreeNode(int x) {
-            val = x;
-        }
-    }
+public class Solution {
 
     public int maxDepth(TreeNode root) {
         // 递归的退出条件
