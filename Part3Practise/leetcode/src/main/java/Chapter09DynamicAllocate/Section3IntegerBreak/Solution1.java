@@ -17,7 +17,8 @@ public class Solution1 {
         }
         // 整数乘积的最大值,初始化要很小
         int mulMax = -1;
-        for (int i = 1; i < n - 1; i++) {
+        // 一定注意别忘了等号
+        for (int i = 1; i <= n - 1; i++) {
             // 如果当前不再继续拆分地话
             mulMax = Math.max(mulMax, i * (n - i));
             // n = i + (n - i)，和继续拆分的进行比较，看最大值
@@ -42,5 +43,5 @@ public class Solution1 {
  * 输出为：
  * <p>
  * 10拆分后的整数的最大乘积是：36
- * 共进入递归函数：256次
+ * 共进入递归函数：512次
  */
