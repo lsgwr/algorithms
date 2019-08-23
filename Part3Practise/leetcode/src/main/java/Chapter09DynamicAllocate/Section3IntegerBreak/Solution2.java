@@ -22,28 +22,32 @@ public class Solution2 {
         if (n == 1) {
             return 1;
         }
+
+        // 如果这次子问题之前已经计算过了，就直接跳过，避免计算重复子问题
+        if (memo[n] != -1) {
+            return memo[n];
+        }
         // 整数乘积的最大值,初始化要很小
         int mulMax = -1;
-        if (memo[n] == -1) {
-            for (int i = 1; i < n - 1; i++) {
-                // 如果当前不再继续拆分地话
-                mulMax = Math.max(mulMax, i * (n - i));
-                // n = i + (n - i)，和继续拆分的进行比较，看最大值
-                mulMax = Math.max(mulMax, i * intBreak(n - i));
-                memo[n] = mulMax;
-            }
+        // 一定注意别忘了等号
+        for (int i = 1; i <= n - 1; i++) {
+            // 如果当前不再继续拆分地话
+            mulMax = Math.max(mulMax, i * (n - i));
+            // n = i + (n - i)，和继续拆分的进行比较，看最大值
+            mulMax = Math.max(mulMax, i * intBreak(n - i));
         }
+        memo[n] = mulMax;
         return memo[n];
     }
 
     public int integerBreak(int n) {
+        memo = new int[n + 1];
+        Arrays.fill(memo, -1);
         return intBreak(n);
     }
 
     public static void main(String[] args) {
         int n = 10;
-        memo = new int[n + 1];
-        Arrays.fill(memo, -1);
         int mulMax = new Solution2().integerBreak(n);
         System.out.println(n + "拆分后的整数的最大乘积是：" + mulMax);
         System.out.println("共进入递归函数：" + num + "次");
@@ -54,5 +58,5 @@ public class Solution2 {
  * 输出为：
  * <p>
  * 10拆分后的整数的最大乘积是：36
- * 共进入递归函数：37次
+ * 共进入递归函数：46次
  */
