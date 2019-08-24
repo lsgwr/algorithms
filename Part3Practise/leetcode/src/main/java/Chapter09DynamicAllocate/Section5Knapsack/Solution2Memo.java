@@ -6,9 +6,13 @@
  ***********************************************************/
 package Chapter09DynamicAllocate.Section5Knapsack;
 
-import java.util.Arrays;
-
 public class Solution2Memo {
+
+    /**
+     * 进入递归的次数
+     */
+    public static int num;
+
     private int[][] memo;
 
     /**
@@ -35,7 +39,11 @@ public class Solution2Memo {
         }
 
         memo = new int[n][C + 1];
-        Arrays.fill(memo, -1);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < C + 1; j++) {
+                memo[i][j] = -1;
+            }
+        }
         return bestValue(w, v, n - 1, C);
     }
 
@@ -49,6 +57,8 @@ public class Solution2Memo {
      * @return [0...index]的物品, 填充容积为c的背包的最大价值
      */
     private int bestValue(int[] w, int[] v, int index, int c) {
+
+        num++;
 
         if (c <= 0 || index < 0) {
             return 0;
@@ -67,7 +77,18 @@ public class Solution2Memo {
     }
 
     public static void main(String[] args) {
-
+        int[] weight = {1, 2, 3, 1, 2, 3};
+        int[] value = {6, 10, 12, 6, 10, 12};
+        int C = 10;
+        int bestValue = new Solution2Memo().knapsack(weight, value, C);
+        System.out.println("最大价值是：" + bestValue);
+        System.out.println("进入递归：" + num + "次");
     }
-
 }
+
+/**
+ * 输出结果是(相比Solution1Recur减少近一半的递归次数)：
+ * <p>
+ * 最大价值是：46
+ * 进入递归：68次
+ */
