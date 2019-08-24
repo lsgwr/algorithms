@@ -1,12 +1,12 @@
 /***********************************************************
- * @Description : 动态规划解决背包问题
+ * @Description : 动态规划解决背包问题，空间复杂度优化
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2019/8/24 20:31
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter09DynamicAllocate.Section5Knapsack;
+package Chapter09DynamicAllocate.Section6KnapsackOptimize;
 
-public class Solution3Dynamic {
+public class Solution3DynamicSpaceOptimize {
 
     /**
      * 背包问题：在容量C下求最大价值
@@ -52,20 +52,20 @@ public class Solution3Dynamic {
                     // 与
                     // 新物体加入后的价值v[i] + memo[i-1][j-w[i]]
                     // 两者中的较大值
-                    memo[i][j] = Math.max(memo[i - 1][j], v[i] + memo[i - 1][j - w[i]]);
+                    memo[i % 2][j] = Math.max(memo[(i - 1) % 2][j], v[i] + memo[(i - 1) % 2][j - w[i]]);
                 } else { // 如果当前容量小于第i个物体的重量，就不用放入新物体了，直接用上一步求地最大价值即可
-                    memo[i][j] = memo[i - 1][j];
+                    memo[i % 2][j] = memo[(i - 1) % 2][j];
                 }
             }
         }
-        return memo[n - 1][C];
+        return memo[(n - 1) % 2][C];
     }
 
     public static void main(String[] args) {
         int[] weight = {1, 2, 3, 1, 2, 3};
         int[] value = {6, 10, 12, 6, 10, 12};
         int C = 10;
-        int bestValue = new Solution3Dynamic().knapsack(weight, value, C);
+        int bestValue = new Solution3DynamicSpaceOptimize().knapsack(weight, value, C);
         System.out.println("最大价值是：" + bestValue);
         System.out.println("动态规划不需要进入递归");
     }
