@@ -6,8 +6,6 @@
  ***********************************************************/
 package Chapter09DynamicAllocate.Section5Knapsack;
 
-import java.util.Arrays;
-
 public class Solution3Dynamic {
 
     /**
@@ -34,13 +32,48 @@ public class Solution3Dynamic {
         }
 
         int[][] memo = new int[n][C + 1];
-        Arrays.fill(memo, -1);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < C + 1; j++) {
+                memo[i][j] = -1;
+            }
+        }
 
-        return -1;
+
+        for (int j = 0; j <= C; j++) {
+            // 对第0个物体遍历所有的容量可能值.当容量值大于第0个物体的重量时就取底0个物体的容量值，否则取0
+            memo[0][j] = j >= w[0] ? v[0] : 0;
+        }
+
+        // 计算0往后的物体
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j <= C; j++) {
+                if (j >= w[i]) { // 如果当前容量大于等于第i个物体的重量，那么就尝试下放入新物体
+                    // 上一个物体加入时的最大价值memo[i-1][j]
+                    // 与
+                    // 新物体加入后的价值v[i] + memo[i-1][j-w[i]]
+                    // 两者中的较大值
+                    memo[i][j] = Math.max(memo[i - 1][j], v[i] + memo[i - 1][j - w[i]]);
+                } else { // 如果当前容量小于第i个物体的重量，就不用放入新物体了，直接用上一步求地最大价值即可
+                    memo[i][j] = memo[i - 1][j];
+                }
+            }
+        }
+        return memo[n - 1][C];
     }
 
     public static void main(String[] args) {
-
+        int[] weight = {1, 2, 3, 1, 2, 3};
+        int[] value = {6, 10, 12, 6, 10, 12};
+        int C = 10;
+        int bestValue = new Solution3Dynamic().knapsack(weight, value, C);
+        System.out.println("最大价值是：" + bestValue);
+        System.out.println("动态规划不需要进入递归");
     }
-
 }
+
+/**
+ * 输出结果为(动态规划不需要进入递归)：
+ * <p>
+ * 最大价值是：46
+ * 动态规划不需要进入递归
+ */
