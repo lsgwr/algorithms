@@ -41,4 +41,5 @@ class kNNClassifier:
         return votes.most_common(1)[0][0]
 
     def __repr__(self):
+        """__repr__相当于java里面的toString()方法"""
         return "kNN(k = %d)" % self.k
