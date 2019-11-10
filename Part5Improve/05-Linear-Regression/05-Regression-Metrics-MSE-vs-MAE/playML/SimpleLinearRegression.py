@@ -16,7 +16,7 @@ class SimpleLinearRegression:
         denominator = 0.0  # 分母
         x_mean = np.mean(x_train)
         y_mean = np.mean(y_train)
-        # for循环转会为点乘
+        # for循环转化为点乘
         numerator = (x_train - x_mean).dot(y_train - y_mean)
         denominator = (x_train - x_mean).dot(x_train - x_mean)
         self.a_ = numerator / denominator
