@@ -16,7 +16,7 @@ class LinearRegression:
         assert X_train.shape[0] == y_train.shape[0], " the size of X_train must be equal to the size of y_train"
         # 创建加上截距后的X_train--->X_b
         X_b = np.hstack([np.ones((len(X_train), 1)), X_train])
-        # 参考本节推导出的公式
+        # 参考本节推导出的公式,hstack即沿着→→方向堆叠[1, 2, 3]和[4, 5, 6]堆叠成[1, 2, 3, 4, 5, 6]
         self._theta = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y_train)
         self.interception_ = self._theta[0]
         self.coef_ = self._theta[1:]
