@@ -28,12 +28,18 @@ class LinearRegression:
             "the size of X_train must be equal to the size of y_train"
 
         def J(theta, X_b, y):
+            """
+            求损失函数J
+            """
             try:
                 return np.sum((y - X_b.dot(theta)) ** 2) / len(y)
             except:
                 return float('inf')
 
         def dJ(theta, X_b, y):
+            """
+            求损失函数的导数(多元时为偏导数)
+            """
             res = np.empty(len(theta))
             res[0] = np.sum(X_b.dot(theta) - y)
             for i in range(1, len(theta)):
@@ -41,7 +47,9 @@ class LinearRegression:
             return res * 2 / len(X_b)
 
         def gradient_descent(X_b, y, initial_theta, eta, n_iters=1e4, epsilon=1e-8):
-
+            """
+            梯度下降法求得使损失函数J最小的θ向量即为要求的多项式系数
+            """
             theta = initial_theta
             cur_iter = 0
 
