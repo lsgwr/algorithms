@@ -5,7 +5,7 @@
  * @date        : 2019/12/7 15:14
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package 第1章_栈和队列.设计一个有getMin功能的栈;
+package 第1章_栈和队列.第01题_设计一个有getMin功能的栈;
 
 import java.util.Scanner;
 import java.util.Stack;
