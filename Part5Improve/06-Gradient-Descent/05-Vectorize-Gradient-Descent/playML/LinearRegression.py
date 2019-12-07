@@ -15,7 +15,7 @@ class LinearRegression:
             "the size of X_train must be equal to the size of y_train"
 
         X_b = np.hstack([np.ones((len(X_train), 1)), X_train])
-        self._theta = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y_train)
+        self._theta = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y_train) # 5.7推导的，使用地是高等数学知识求地多元选型回归的正规方程解(Normal Equation)
 
         self.intercept_ = self._theta[0]
         self.coef_ = self._theta[1:]
