@@ -21,3 +21,4 @@ __pycache__/
 .classpath
 .project
 .factorypath
+mldata/
