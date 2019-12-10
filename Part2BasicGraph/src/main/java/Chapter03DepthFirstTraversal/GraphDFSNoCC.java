@@ -30,7 +30,7 @@ public class GraphDFSNoCC {
         this.graph = graph;
         // 初始化访问数组，用图的顶点个数来访问
         visited = new boolean[graph.V()];
-        // 从dfs(0)改成下面的代码，可以支持非连通的图,不用考虑连通分量的时候直接用dfs(0)即可
+        // dfs(0)只能遍历一个联通分量
         dfs(0);
     }
 
