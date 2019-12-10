@@ -1,7 +1,9 @@
 /***********************************************************
- * @Description : 图的最优表示(基于TreeSet的邻接表)，后面所有的图的操作都会基于这个去讲
+ * @Description : 图的最优表示(基于TreeSet的邻接表)，后面所有的图的操作都会基于这个去讲,
+ 邻接矩阵方法多用于稠密图;邻接表多用于稀疏图。考虑到我们见到的大多数图论问题是稀疏图，
+ 所以我们后面都用本文件中的基于TreeSet的邻接表实现
  * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2018/08/02 07:53
+ * @date        : 2019/08/02 07:53
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
 package Chapter02GraphExpress;
@@ -102,7 +104,7 @@ public class Graph implements IGraph {
     @Override
     public void show() {
 
-        // 遍历所有顶点vertex(顶点都是按照编号顺序来地)
+        // 遍历所有顶点vertex(顶点都是按照编号顺序来地).vertices是vertex的复数形式，两者都是顶点的意思
         for (int v = 0; v < vertices; v++) {
             System.out.print("vertex " + v + ":\t");
             // 遍历顶点vertex的所有邻接点
