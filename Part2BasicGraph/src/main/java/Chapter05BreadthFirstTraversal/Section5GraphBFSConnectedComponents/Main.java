@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
         // 连通图
         String filePath = "src/main/java/Chapter03DepthFirstTraversal/graph.txt";
-        Graph graph = new Graph(7, false);
+        Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         GraphBFSConnectedComponents graphBFS1 = new GraphBFSConnectedComponents(graph);
         System.out.println("广度优先遍历的结果是：" + graphBFS1.getOrderList());
@@ -36,7 +36,7 @@ public class Main {
 
         // 非连通图
         filePath = "src/main/java/Chapter03DepthFirstTraversal/graphNotConnected.txt";
-        graph = new Graph(7, false);
+        graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         GraphBFSConnectedComponents graphBFS2 = new GraphBFSConnectedComponents(graph);
         System.out.println("广度优先遍历的结果是：" + graphBFS2.getOrderList());

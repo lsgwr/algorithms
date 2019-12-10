@@ -15,7 +15,7 @@ public class Main {
         int source = 0;
         int target = 6;
         String filePath = "src/main/java/Chapter03DepthFirstTraversal/graphNotConnected.txt";
-        Graph graph = new Graph(7, false);
+        Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         GraphDFSSingleSourcePath singleSourcePathDFS = new GraphDFSSingleSourcePath(graph, source);
         System.out.println(source + "--->" + target + "的路径:" + singleSourcePathDFS.path(target));

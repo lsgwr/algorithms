@@ -26,9 +26,8 @@ public class ReadGraph {
             if (V < 0) {
                 throw new IllegalArgumentException("number of vertices in a Graph must be nonnegative");
             }
-            // 图初始化时的边数必须和文件中指定的边数相等
-            assert V == graph.V();
-
+            // 设置顶点数,边数在下面的addEdge()中累计
+            graph.setVertices(V);
             int E = scanner.nextInt();
             if (E < 0) {
                 throw new IllegalArgumentException("number of edges in a Graph must be nonnegative");

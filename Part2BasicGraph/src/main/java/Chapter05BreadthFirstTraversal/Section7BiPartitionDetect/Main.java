@@ -5,7 +5,7 @@ import Chapter02GraphExpress.ReadGraph;
 
 public class Main {
     private static void showResult(String filePath) {
-        Graph graph = new Graph(7, false);
+        Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         GraphBFSBiPartitionDetect graphBFSBiPartitionDetect = new GraphBFSBiPartitionDetect(graph);
         System.out.println(graphBFSBiPartitionDetect.isBiPartition());

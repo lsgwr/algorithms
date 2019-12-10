@@ -1,7 +1,7 @@
 /***********************************************************
  * @Description : 图的最优表示(基于TreeSet的邻接表)，后面所有的图的操作都会基于这个去讲,
- 邻接矩阵方法多用于稠密图;邻接表多用于稀疏图。考虑到我们见到的大多数图论问题是稀疏图，
- 所以我们后面都用本文件中的基于TreeSet的邻接表实现
+邻接矩阵方法多用于稠密图;邻接表多用于稀疏图。考虑到我们见到的大多数图论问题是稀疏图，
+所以我们后面都用本文件中的基于TreeSet的邻接表实现
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2019/08/02 07:53
  * @email       : liangshanguang2@gmail.com
@@ -28,15 +28,14 @@ public class Graph implements IGraph {
      */
     private TreeSet<Integer>[] adj;
 
+    public Graph(boolean directed) {
+        this(0, directed);
+    }
+
     public Graph(int vertices, boolean directed) {
         this.vertices = vertices;
         this.edges = 0;
         this.directed = directed;
-        // 泛型数组需要强制转换，可以认为是Java语言的缺陷
-        adj = (TreeSet<Integer>[]) new TreeSet[vertices]; // 每个顶点都有一组邻边组成邻接表，用TreeSet可以提高性能
-        for (int i = 0; i < vertices; i++) {
-            adj[i] = new TreeSet<>();
-        }
     }
 
 
@@ -46,6 +45,21 @@ public class Graph implements IGraph {
     @Override
     public int V() {
         return vertices;
+    }
+
+    /**
+     * 设置图的顶点数
+     *
+     * @param vertices 顶点数
+     */
+    public void setVertices(int vertices) {
+        this.vertices = vertices;
+        // 泛型数组需要强制转换，可以认为是Java语言的缺陷
+        adj = (TreeSet<Integer>[]) new TreeSet[vertices];
+        for (int i = 0; i < vertices; i++) {
+            // 每个顶点都有一组邻边组成邻接表，用TreeSet可以提高性能
+            adj[i] = new TreeSet<>();
+        }
     }
 
     /**
@@ -74,10 +88,10 @@ public class Graph implements IGraph {
         // if (hasEdge(v, w)) {
         //    return;
         // }
-        
+
         // v=w会生成自环边
-        if(v == w) {
-            throw new IllegalArgumentException("Self Loop is Detected!")
+        if (v == w) {
+            throw new IllegalArgumentException("Self Loop is Detected!");
         }
         adj[v].add(w);
         if (!directed) {
@@ -106,20 +120,27 @@ public class Graph implements IGraph {
     }
 
     @Override
-    public void show() {
-        System.out.println("顶点数V = " + V() + ", 边数E = " + E());
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("顶点数V = %d, 边数E = %d\n", vertices, edges));
         // 遍历所有顶点vertex(顶点都是按照编号顺序来地)，顶点是用从0开始的连续正整数表示时v才代表顶点，
         // 如果顶点不是用连续的正整数或者是用字符等形式来表示时，就要建立顶点数下标v和顶点实际含义的映射关系了，可以用map来表示
         // 参考 https://coding.imooc.com/learn/questiondetail/133447.html
         // vertices是vertex的复数形式，两者都是顶点的意思
         for (int v = 0; v < vertices; v++) {
-            System.out.print("vertex " + v + ":\t");
+            sb.append(String.format("vertex %d:\t", v));
             // 遍历顶点vertex的所有邻接点
             for (Integer w : adj[v]) {
-                System.out.print(w + "\t");
+                sb.append(String.format("%d\t", w));
             }
-            System.out.println();
+            sb.append("\n");
         }
+        return sb.toString();
+    }
+
+    @Override
+    public void show() {
+        System.out.println(toString());
     }
 
 

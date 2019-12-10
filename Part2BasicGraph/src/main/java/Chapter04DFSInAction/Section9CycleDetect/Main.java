@@ -11,7 +11,7 @@ import Chapter02GraphExpress.ReadGraph;
 public class Main {
 
     private static void showResult(String filePath) {
-        Graph graph = new Graph(7, false);
+        Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         GraphDFSCycleDetect graphDFSCycleDetect = new GraphDFSCycleDetect(graph);
         System.out.println("当前图中" + (graphDFSCycleDetect.hasCycle() ? "有" : "无") + "环");

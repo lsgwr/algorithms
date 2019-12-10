@@ -12,7 +12,7 @@ import Chapter02GraphExpress.ReadGraph;
 public class Main {
     public static void main(String[] args) {
         String filePath = "src/main/java/Chapter05BreadthFirstTraversal/Section2GraphBFS/graph.txt";
-        Graph graph = new Graph(7, false);
+        Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         GraphBFS graphBFS = new GraphBFS(graph);
         System.out.println("广度优先遍历顺序结果是：" + graphBFS.getOrderList());
