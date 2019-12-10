@@ -74,9 +74,13 @@ public class Graph implements IGraph {
         // if (hasEdge(v, w)) {
         //    return;
         // }
-        adj[v].add(w);
+        
         // v=w会生成自环边
-        if (v != w && !directed) {
+        if(v == w) {
+            throw new IllegalArgumentException("Self Loop is Detected!")
+        }
+        adj[v].add(w);
+        if (!directed) {
             // 无向图实际上是双向图，所以w到v也应该为true.如果是有向图这步就不用处理了
             adj[w].add(v);
         }
@@ -103,9 +107,10 @@ public class Graph implements IGraph {
 
     @Override
     public void show() {
-
+        System.out.println("顶点数V = " + V() + ", 边数E = " + E());
         // 遍历所有顶点vertex(顶点都是按照编号顺序来地)，顶点是用从0开始的连续正整数表示时v才代表顶点，
         // 如果顶点不是用连续的正整数或者是用字符等形式来表示时，就要建立顶点数下标v和顶点实际含义的映射关系了，可以用map来表示
+        // 参考 https://coding.imooc.com/learn/questiondetail/133447.html
         // vertices是vertex的复数形式，两者都是顶点的意思
         for (int v = 0; v < vertices; v++) {
             System.out.print("vertex " + v + ":\t");

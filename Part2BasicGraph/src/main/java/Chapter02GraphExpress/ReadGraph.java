@@ -33,7 +33,6 @@ public class ReadGraph {
             if (E < 0) {
                 throw new IllegalArgumentException("number of edges in a Graph must be nonnegative");
             }
-            System.out.println("顶点数V = " + V + ", 边数E = " + E);
             for (int i = 0; i < E; i++) {
                 int v = scanner.nextInt();
                 int w = scanner.nextInt();
