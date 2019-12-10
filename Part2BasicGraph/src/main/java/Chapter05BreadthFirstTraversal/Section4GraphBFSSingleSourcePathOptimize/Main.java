@@ -24,7 +24,7 @@ public class Main {
         int source = 0;
         int target = 6;
         String filePath = "src/main/java/Chapter05BreadthFirstTraversal/Section2GraphBFS/graph.txt";
-        Graph graph = new Graph(7, false);
+        Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         showResult(graph, source, target);
         // 5和0不在一个连通分量内，Section3有验证，此时路径为[]，表示无路径，所以这个方法也可以用于判断连通性，和并查集一起思考

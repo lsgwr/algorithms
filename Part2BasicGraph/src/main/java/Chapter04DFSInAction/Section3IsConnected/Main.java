@@ -30,7 +30,7 @@ public class Main {
     public static void main(String[] args) {
         // 连通图
         String filePath = "src/main/java/Chapter03DepthFirstTraversal/graph.txt";
-        Graph graph = new Graph(7, false);
+        Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         GraphDFS4IsConnected graphDFS1 = new GraphDFS4IsConnected(graph);
         System.out.println("深度优先遍历的结果是：" + graphDFS1.getOrderList());
@@ -46,7 +46,7 @@ public class Main {
 
         // 非连通图
         filePath = "src/main/java/Chapter03DepthFirstTraversal/graphNotConnected.txt";
-        graph = new Graph(7, false);
+        graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         GraphDFS4IsConnected graphDFS2 = new GraphDFS4IsConnected(graph);
         System.out.println("深度优先遍历的结果是：" + graphDFS2.getOrderList());

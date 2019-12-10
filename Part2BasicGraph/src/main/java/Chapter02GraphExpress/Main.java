@@ -9,7 +9,7 @@ package Chapter02GraphExpress;
 public class Main {
     public static void main(String[] args) {
         String filepath = "src/main/java/Chapter02GraphExpress/graph.txt";
-        Graph graph = new Graph(7, false);
+        Graph graph = new Graph(false);
         // 把Graph需要的信息从文件中读取出来并赋值，这里实现了读文件和Graph表示的解耦
         ReadGraph.init(graph, filepath);
         System.out.println("Graph express in TreeSet:");
