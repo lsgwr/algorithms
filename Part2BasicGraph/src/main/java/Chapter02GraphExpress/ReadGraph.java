@@ -26,8 +26,9 @@ public class ReadGraph {
             if (V < 0) {
                 throw new IllegalArgumentException("number of vertices in a Graph must be nonnegative");
             }
-            // 设置顶点数,边数在下面的addEdge()中累计
+            // 1.设置顶点数
             graph.setVertices(V);
+            // 2.设置边，边数在下面的addEdge()中累计
             int E = scanner.nextInt();
             if (E < 0) {
                 throw new IllegalArgumentException("number of edges in a Graph must be nonnegative");
@@ -39,6 +40,8 @@ public class ReadGraph {
                 assert w >= 0 && w < V;
                 graph.addEdge(v, w);
             }
+            // 3.初始化完顶点数和边数后显示下
+            System.out.println(String.format("顶点数V = %d, 边数E = %d", graph.V(), graph.E()));
         } catch (InputMismatchException e) {
             String token = scanner.next();
             throw new InputMismatchException("attempts to read an 'int' value from input stream, but the next token is \"" + token + "\"");
