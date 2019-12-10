@@ -20,7 +20,7 @@ public interface IGraph {
     /**
      * 确保v在有效范围
      *
-     * @param v 定点编号
+     * @param v 订点编号
      */
     void validateVertex(int v);
 
@@ -33,7 +33,7 @@ public interface IGraph {
     void addEdge(int v, int w);
 
     /**
-     * 判断定点v到定点w之间是否有路径连通
+     * 判断顶点v到顶点w之间是否有路径连通
      *
      * @param v 起点
      * @param w 终点

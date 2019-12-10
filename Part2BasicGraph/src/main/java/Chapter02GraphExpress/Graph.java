@@ -31,7 +31,7 @@ public class Graph implements IGraph {
         this.edges = 0;
         this.directed = directed;
         // 泛型数组需要强制转换，可以认为是Java语言的缺陷
-        adj = (TreeSet<Integer>[]) new TreeSet[vertices];
+        adj = (TreeSet<Integer>[]) new TreeSet[vertices]; // 每个顶点都有一组邻边组成邻接表，用TreeSet可以提高性能
         for (int i = 0; i < vertices; i++) {
             adj[i] = new TreeSet<>();
         }
@@ -60,7 +60,7 @@ public class Graph implements IGraph {
     }
 
     /**
-     * 添加边,在v和w之间建立一条边
+     * 添加边,在顶点v和顶点w之间建立一条边
      */
     @Override
     public void addEdge(int v, int w) {
