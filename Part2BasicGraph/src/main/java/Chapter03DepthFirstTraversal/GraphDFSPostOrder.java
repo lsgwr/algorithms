@@ -11,7 +11,7 @@ import Chapter02GraphExpress.Graph;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GraphDFS {
+public class GraphDFSPostOrder {
     private Graph graph;
 
     /**
@@ -24,7 +24,7 @@ public class GraphDFS {
      */
     private List<Integer> orderList = new ArrayList<>();
 
-    public GraphDFS(Graph graph) {
+    public GraphDFSPostOrder(Graph graph) {
         this.graph = graph;
         // 初始化访问数组，用图的顶点个数来访问
         visited = new boolean[graph.V()];
