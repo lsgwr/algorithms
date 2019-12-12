@@ -19,6 +19,8 @@ public class Main {
         System.out.println("深度优先遍历的结果是：" + graphDFS1.getOrderList());
         System.out.println("连通分量的个数是：" + graphDFS1.getConnectedComponentCount());
 
+        System.out.println();
+
         // 非连通图
         filePath = "src/main/java/Chapter03DepthFirstTraversal/graphNotConnected.txt";
         graph = new Graph(false);
@@ -28,3 +30,12 @@ public class Main {
         System.out.println("连通分量的个数是：" + graphDFS2.getConnectedComponentCount());
     }
 }
+/**
+ * 顶点数V = 7, 边数E = 8
+ * 深度优先遍历的结果是：[0, 1, 3, 2, 6, 5, 4]
+ * 连通分量的个数是：1
+ * <p>
+ * 顶点数V = 7, 边数E = 6
+ * 深度优先遍历的结果是：[0, 1, 3, 2, 6, 4, 5]
+ * 连通分量的个数是：2
+ */
