@@ -61,6 +61,7 @@ public class GraphDFSBiPartitionDetect {
         visited = new boolean[graph.V()];
         // 初始化颜色数组
         this.colors = new int[graph.V()];
+        // 初始化colors为-1，后面检测到二分图会更新这个数组，会有0和1两种
         Arrays.fill(this.colors, -1);
         // 从dfs(0)改成下面的代码，可以支持非连通的图,不用考虑连通分量的时候直接用dfs(v)即可
         for (int v = 0; v < graph.V(); v++) {
