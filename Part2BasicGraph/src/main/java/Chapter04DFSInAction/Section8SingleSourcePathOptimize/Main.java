@@ -17,7 +17,7 @@ public class Main {
         GraphDFSSingleSourcePathOptimize singleSourcePathDFSOptimize = new GraphDFSSingleSourcePathOptimize(graph, source, target);
         System.out.println(source + "--->" + target + "的路径:" + singleSourcePathDFSOptimize.path());
         // 因为优化后每个GraphDFSSingleSourcePathOptimize只是为了指定的source和target，并没有访问全部的节点,所以可以看到节点部分为true，部分为false
-        System.out.println("节点是否访问的情况是(每个数组下标代表一个定点)：" + Arrays.toString(singleSourcePathDFSOptimize.getVisited()));
+        System.out.println("节点是否访问的情况是(每个数组下标代表一个顶点)：" + Arrays.toString(singleSourcePathDFSOptimize.getVisited()));
     }
 
     public static void main(String[] args) {
