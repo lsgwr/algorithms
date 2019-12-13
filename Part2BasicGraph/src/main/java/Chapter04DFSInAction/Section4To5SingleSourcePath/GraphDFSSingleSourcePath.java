@@ -46,7 +46,8 @@ public class GraphDFSSingleSourcePath {
         this.pre = new int[graph.V()];
         // pre数组全部初始化为-1
         Arrays.fill(this.pre, -1);
-        // 因为单源路径问题是和连通分量无关的，所以dfs()要用最早没有考虑连通分量的那版
+        // 因为单源路径问题是和连通分量无关的，只需要在source所在的联通分量内找到target的路径，所以不需要考虑所有的联通分量，即dfs()要用最早没有考虑连通分量的那版
+        // 第一次进入时源头source的parent设置为了自己，实际设置成任何值都是可以的，我们在path函数中找到source就行了，并没有涉及source的父节点
         dfs(source, source);
     }
 
@@ -79,11 +80,12 @@ public class GraphDFSSingleSourcePath {
             int current = target;
             while (current != source) {
                 pathList.add(current);
+                // 不断向前找元素
                 current = pre[current];
             }
             // 起点要加上
             pathList.add(source);
-            // 因为是从source到target的路径，所以要颠倒下
+            // 因为是从source到target的路径，所以要逆序下
             Collections.reverse(pathList);
             return pathList;
         } else {
@@ -92,6 +94,12 @@ public class GraphDFSSingleSourcePath {
         }
     }
 
+    /**
+     * 记录每个顶点的前面一个被访问的顶点即parent的DFS实现
+     *
+     * @param v      当前顶点
+     * @param parent v的前面一个被访问的节点
+     */
     private void dfs(int v, int parent) {
         visited[v] = true;
         orderList.add(v);
