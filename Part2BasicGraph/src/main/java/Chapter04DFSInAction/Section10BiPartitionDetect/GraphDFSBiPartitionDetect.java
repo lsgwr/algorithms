@@ -68,6 +68,7 @@ public class GraphDFSBiPartitionDetect {
             if (!visited[v]) {
                 // 第一个节点染成蓝色(0)
                 if (!dfs(v, VertexColor.BLUE.getNum())) {
+                    // 某一个联通分量不是二分图，整个图就不是二分图了，直接返回，不再检测剩下的二分图了
                     biPartition = false;
                     // 一旦检测到二分图立马跳出，一定别忘
                     break;
@@ -106,7 +107,7 @@ public class GraphDFSBiPartitionDetect {
                     return false;
                 }
             } else if (colors[w] == colors[v]) {
-                // 如果w已经访问过，但是w作为v的邻接点和v的颜色相同，说明有二分图
+                // 如果w已经访问过，但是w作为v的邻接点和v的颜色相同，说明不是二分图
                 return false;
             }
         }

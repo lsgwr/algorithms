@@ -30,7 +30,7 @@ public class Main {
 
 /**
  * 结果输出：
- * <p>
+ * 
  * 顶点数V = 7, 边数E = 6
  * true
  * 当前图是二分图
