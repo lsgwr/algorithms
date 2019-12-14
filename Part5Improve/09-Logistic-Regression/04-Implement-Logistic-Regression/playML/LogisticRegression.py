@@ -10,6 +10,7 @@ class LogisticRegression:
         self._theta = None
 
     def _sigmoid(self, t):
+        """用于把输出结果y限制在0~1之内"""
         return 1. / (1. + np.exp(-t))
 
     def fit(self, X_train, y_train, eta=0.01, n_iters=1e4):
@@ -70,7 +71,7 @@ class LogisticRegression:
             "the feature number of X_predict must be equal to X_train"
 
         proba = self.predict_proba(X_predict)
-        return np.array(proba >= 0.5, dtype='int')
+        return np.array(proba >= 0.5, dtype='int') # 数组内的值为True地被转换为1，为False被转换为0
 
     def score(self, X_test, y_test):
         """根据测试数据集 X_test 和 y_test 确定当前模型的准确度"""
