@@ -60,7 +60,7 @@ public class GraphBFSConnectedComponents {
             int v = queue.remove();
             orderList.add(v);
             for (int w : graph.adj(v)) {
-                // 遍历v的所有顶点
+                // 遍历v的所有邻接点
                 if (visited[w] == -1) {
                     queue.add(w);
                     visited[w] = ccid;

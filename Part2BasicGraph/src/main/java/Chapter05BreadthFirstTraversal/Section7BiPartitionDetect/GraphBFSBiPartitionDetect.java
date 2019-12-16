@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 图的广度优先遍历实现环检测
+ * @Description : 图的广度优先遍历中的环检测
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2019-08-09 19:51
  * @email       : liangshanguang2@gmail.com
@@ -76,9 +76,9 @@ public class GraphBFSBiPartitionDetect {
      * @return
      */
     private boolean bfs(int source) {
-        // ArrayDeque既可以当队列又可以当栈来用，参考 https://github.com/19920625lsg/liuyubobobo-algorithms/tree/master/Part2Basic/src/main/java/Chapter03StackAndQueues/JavaBuiltIn
+        // ArrayDeque既可以当队列又可以当栈来用，参考 https://github.com/19920625lsg/algorithms/tree/master/Part2Basic/src/main/java/Chapter03StackAndQueues/JavaBuiltIn
         Queue<Integer> queue = new ArrayDeque<>();
-        queue.offer(source);
+        queue.add(source);
         visited[source] = true;
         // 起始点染成蓝色，等效于colors[s] = 0;
         colors[source] = VertexColor.BLUE.getNum();
@@ -86,14 +86,14 @@ public class GraphBFSBiPartitionDetect {
             int v = queue.remove();
             orderList.add(v);
             for (int w : graph.adj(v)) {
-                // 遍历v的所有顶点
+                // 遍历v的所有邻接点
                 if (!visited[w]) {
                     queue.add(w);
                     visited[w] = true;
                     // 颜色只有蓝(0)、绿(1)两种，w是v的邻接点，根据二分图的检测原理，w、v的颜色必须相反，只能一蓝一绿，蓝+绿 = 0 + 1 = 1,所以1-v的颜色 = 1-color = w的颜色
                     colors[w] = 1 - colors[v];
                 } else if (colors[w] == colors[v]) {
-                    // 如果w已经访问过，但是w作为v的邻接点和v的颜色相同，说明有二分图
+                    // 如果w已经访问过，但是w作为v的邻接点和v的颜色相同，说明不是二分图
                     return false;
                 }
             }
