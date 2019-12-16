@@ -36,23 +36,23 @@ public class GraphBFSConnectedComponents {
         Arrays.fill(visited, -1);
         // 从bfs(0)改成下面的代码，可以支持非连通的图,不用考虑连通分量的时候直接用bfs(v)即可
         for (int v = 0; v < graph.V(); v++) {
-            if (visited[v] == -1) {
+            if (visited[v] == -1) { // 被访问过地定点不会作为起始点进入bfs()
                 // 第二个参数表示当前连通分量的标志(多个连通分量内的元素在visited内用connectedComponentCount这个值进行标记)
                 bfs(v, connectedComponentCount);
-                // 当退出递归时，相当于结束了一个连通图的遍历，所以连通分量数加1
+                // 当退出bfs()时，相当于结束了一个连通图的遍历，所以连通分量数加1
                 connectedComponentCount++;
             }
         }
     }
 
     /**
-     * 广度优先遍历
+     * 广度优先遍历,非递归
      *
      * @param source 遍历的起点
      * @param ccid   当前连通分量的标记(同一个连通分量内的元素都在visited数组内用这个数值进行赋值标记)
      */
     private void bfs(int source, int ccid) {
-        // ArrayDeque既可以当队列又可以当栈来用，参考 https://github.com/19920625lsg/liuyubobobo-algorithms/tree/master/Part2Basic/src/main/java/Chapter03StackAndQueues/JavaBuiltIn
+        // ArrayDeque既可以当队列又可以当栈来用，参考 https://github.com/19920625lsg/algorithms/tree/master/Part2Basic/src/main/java/Chapter03StackAndQueues/JavaBuiltIn
         Queue<Integer> queue = new ArrayDeque<>();
         queue.offer(source);
         visited[source] = ccid;
