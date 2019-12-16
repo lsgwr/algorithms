@@ -53,9 +53,9 @@ public class GraphBFS {
             int v = queue.remove(); // 出队列
             orderList.add(v); // 出队列时加入到访问列表里
             for (int w: graph.adj(v)){
-                // 遍历v的所有顶点
+                // 遍历v的所有邻接点
                 if (!visited[w]){
-                    // 把未访问过的邻接点加入到队列中
+                    // 把没被访问过的邻接点加入到队列中
                     queue.add(w);
                     // 加入队列就认为被visit了
                     visited[w] = true;
