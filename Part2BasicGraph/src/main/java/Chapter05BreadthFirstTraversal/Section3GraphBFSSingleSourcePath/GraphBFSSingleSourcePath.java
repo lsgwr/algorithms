@@ -49,6 +49,7 @@ public class GraphBFSSingleSourcePath {
         Queue<Integer> queue = new ArrayDeque<>();
         queue.add(source);
         visited[source] = true;
+        // 起点的上一个节点可以认为是自己
         pre[source] = source;
         while (!queue.isEmpty()) {
             int v = queue.remove();
