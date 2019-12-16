@@ -22,7 +22,7 @@ public class GraphBFS {
     private boolean[] visited;
 
     /**
-     * 广度优先遍历的顺序结果(只有一种，不想DFS有前序、后序两种)
+     * 广度优先遍历的顺序结果(只有一种，不像DFS有前序、后序两种)
      */
     private List<Integer> orderList = new ArrayList<>();
 
@@ -38,22 +38,26 @@ public class GraphBFS {
     }
 
     /**
-     * 从source点开始进行广度优先遍历
+     * 从source点开始进行广度优先遍历，非递归实现
      *
      * @param source 起点
      */
     private void bfs(int source) {
-        // ArrayDeque既可以当队列又可以当栈来用，参考 https://github.com/19920625lsg/liuyubobobo-algorithms/tree/master/Part2Basic/src/main/java/Chapter03StackAndQueues/JavaBuiltIn
+        // ArrayDeque既可以当队列又可以当栈来用，参考 https://github.com/19920625lsg/algorithms/tree/master/Part2Basic/src/main/java/Chapter03StackAndQueues/JavaBuiltIn
         Queue<Integer> queue = new ArrayDeque<>();
-        queue.offer(source);
+        // 添加起始点source到队列
+        queue.add(source);
+        // 添加进队列就被认为是访问过了
         visited[source] = true;
-        while (!queue.isEmpty()) {
-            int v = queue.remove();
-            orderList.add(v);
+        while (!queue.isEmpty()) { // 队列不为空，说明图还没有遍历完
+            int v = queue.remove(); // 出队列
+            orderList.add(v); // 出队列时加入到访问列表里
             for (int w: graph.adj(v)){
                 // 遍历v的所有顶点
                 if (!visited[w]){
+                    // 把未访问过的邻接点加入到队列中
                     queue.add(w);
+                    // 加入队列就认为被visit了
                     visited[w] = true;
                 }
             }
