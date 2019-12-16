@@ -30,7 +30,7 @@ public class Solution {
     private int[][] grid;
 
     /**
-     * 判断grid中所有的点是否被访问，因为此时(x, y)共同缺点一个点，所以visited也是二维数组
+     * 判断grid中所有的点是否被访问，因为此时(x, y)共同确定一个点，所以visited也是二维数组
      */
     private boolean[][] visited;
 
@@ -75,7 +75,7 @@ public class Solution {
         for (int d = 0; d < dirs.length; d++) {
             int next_x = x + dirs[d][0];
             int next_y = y + dirs[d][1];
-            // 点(next_x, next_y)必须在grid区域内 + 没被访问过 + 是陆地(点(x, y)已经保障是陆地的前提下)
+            // 点(next_x, next_y)必须在grid区域内 + 没被访问过 + 是陆地(点(x, y)是陆地)
             if (inArea(next_x, next_y) && !visited[next_x][next_y] && grid[next_x][next_y] == 1) {
                 result += dfs(next_x, next_y);
             }
