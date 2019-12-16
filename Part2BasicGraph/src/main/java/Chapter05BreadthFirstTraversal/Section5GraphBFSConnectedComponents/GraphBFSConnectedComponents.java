@@ -54,7 +54,7 @@ public class GraphBFSConnectedComponents {
     private void bfs(int source, int ccid) {
         // ArrayDeque既可以当队列又可以当栈来用，参考 https://github.com/19920625lsg/algorithms/tree/master/Part2Basic/src/main/java/Chapter03StackAndQueues/JavaBuiltIn
         Queue<Integer> queue = new ArrayDeque<>();
-        queue.offer(source);
+        queue.add(source);
         visited[source] = ccid;
         while (!queue.isEmpty()) {
             int v = queue.remove();

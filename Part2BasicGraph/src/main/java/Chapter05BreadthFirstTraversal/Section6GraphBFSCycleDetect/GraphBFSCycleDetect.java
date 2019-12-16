@@ -42,9 +42,9 @@ public class GraphBFSCycleDetect {
      * 从source点开始进行广度优先遍历
      */
     private boolean bfs(int source) {
-        // ArrayDeque既可以当队列又可以当栈来用，参考 https://github.com/19920625lsg/liuyubobobo-algorithms/tree/master/Part2Basic/src/main/java/Chapter03StackAndQueues/JavaBuiltIn
+        // ArrayDeque既可以当队列又可以当栈来用，参考 https://github.com/19920625lsg/algorithms/tree/master/Part2Basic/src/main/java/Chapter03StackAndQueues/JavaBuiltIn
         Queue<Integer> queue = new ArrayDeque<>();
-        queue.offer(source);
+        queue.add(source);
         visited[source] = true;
         pre[source] = source;
         while (!queue.isEmpty()) {
@@ -57,6 +57,7 @@ public class GraphBFSCycleDetect {
                     visited[w] = true;
                     pre[w] = v;
                 } else if (pre[v] != w) {
+                    // 当检测到一个节点(当前节点current)的相邻节点已经被visited但是这个相邻节点不是current的上一个visited节点，就说明图中有环了
                     return true;
                 }
             }
