@@ -13,7 +13,7 @@ public class Main {
         System.out.println(source + "--->" + target + "的最短路径:" + unweightedGraphShortestPath.path());
         // 因为优化后每个GraphBFSSingleSourcePathOptimize只是为了指定的source和target，并没有访问全部的节点,所以可以看到节点部分为true，部分为false
         System.out.println("节点是否访问的情况是(每个数组下标代表一个定点)：" + Arrays.toString(unweightedGraphShortestPath.getVisited()));
-        System.out.println("0-->6的最短路径值时：" + unweightedGraphShortestPath.shortestDistance());
+        System.out.println("0-->6的最短路径值是：" + unweightedGraphShortestPath.shortestDistance());
         System.out.println();
     }
 
