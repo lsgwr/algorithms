@@ -14,6 +14,9 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class SolutionBFS {
+    /**
+     * 四联通偏移分量
+     */
     private int[][] dirs = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
     /**
      * 栅格的行数
