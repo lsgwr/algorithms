@@ -22,11 +22,11 @@
 
 > 二维点和一维的转换，然后就可以利用图论的标准实现来解决当前问题了
 
-![二维点和一维的转换](images/第6章_图论问题建模和floodfill/二维点和一维的转换.jpg)
+![二维点和一维的转换](images/第06章_图论问题建模和floodfill/二维点和一维的转换.jpg)
 
 ### 四联通分量(上右下左四个点的矢量差，顺时针旋转)
 图中使用的坐标系是屏幕坐标系，不是笛卡尔坐标系的(x, y)而是(行, 列)。四连通分量就是在当前的(行, 列)坐标上加上四联通分量得到的点就是四联通分量要找的点，如图中(2, 1)代表第3行第2列(下标从0开始)的点，(1, 1)、(2, 2)、(3, 1)、(2, 0)分别对应(2, 1)加上四联通分量后对应的点，其实就是(2, 1)的上、右、下、左(顺时针转一下即可)对应的点。下面的伪代码说明了怎么获取上右下左四个点的坐标。此外八联通有时也会用到，就是指当前点为中心的九宫格以外的其他8个点，可以用类似的方法进行表示(顺时针旋转，试试列出八联通的dirs)  
-![四联通分量](images/第6章_图论问题建模和floodfill/四联通分量.jpg)
+![四联通分量](images/第06章_图论问题建模和floodfill/四联通分量.jpg)
 
 ### 八联通情况下的 dirs 数组定义 
 
@@ -57,10 +57,10 @@ int[][] dirs = {{-1, 0}, {-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1,
 
 ## 6.5 更多floodfill的问题
 
-![更多floodfilee算法的问题1](images/第6章_图论问题建模和floodfill/更多floodfilee算法的问题1.jpg)
+![更多floodfilee算法的问题1](images/第06章_图论问题建模和floodfill/更多floodfilee算法的问题1.jpg)
 
-![更多floodfilee算法的问题2](images/第6章_图论问题建模和floodfill/更多floodfilee算法的问题2.jpg)
+![更多floodfilee算法的问题2](images/第06章_图论问题建模和floodfill/更多floodfilee算法的问题2.jpg)
 
-![更多floodfilee算法的问题3](images/第6章_图论问题建模和floodfill/更多floodfilee算法的问题3.jpg)
+![更多floodfilee算法的问题3](images/第06章_图论问题建模和floodfill/更多floodfilee算法的问题3.jpg)
 
-![更多floodfilee算法的问题4](images/第6章_图论问题建模和floodfill/更多floodfilee算法的问题4.jpg)
+![更多floodfilee算法的问题4](images/第06章_图论问题建模和floodfill/更多floodfilee算法的问题4.jpg)
