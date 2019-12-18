@@ -23,11 +23,33 @@ public class Main {
         ReadGraph.init(graph, filePath);
         System.out.println(new GraphDFSPostOrder(graph).getOrderList());
 
+        // DFS的非递归实现
+        filePath = "src/main/java/Chapter03DepthFirstTraversal/graph.txt";
+        graph = new Graph(false);
+        ReadGraph.init(graph, filePath);
+        System.out.println(new GraphDFSNoRecursion(graph).getOrderList());
 
-        // 非连通图
+        // 非连通图，用不支持非联通图的DFS
+        filePath = "src/main/java/Chapter03DepthFirstTraversal/graphNotConnected.txt";
+        graph = new Graph(false);
+        ReadGraph.init(graph, filePath);
+        System.out.println(new GraphDFSNoCC(graph).getOrderList());
+        // 非连通图，用支持非联通图的DFS
         filePath = "src/main/java/Chapter03DepthFirstTraversal/graphNotConnected.txt";
         graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         System.out.println(new GraphDFS(graph).getOrderList());
     }
 }
+/**
+ * 顶点数V = 7, 边数E = 8
+ * [0, 1, 3, 2, 6, 5, 4]
+ * 顶点数V = 7, 边数E = 8
+ * [5, 6, 2, 3, 4, 1, 0]
+ * 顶点数V = 7, 边数E = 8
+ * [0, 1, 2, 3, 6, 5, 4]
+ * 顶点数V = 7, 边数E = 6
+ * [0, 1, 3, 2, 6, 4]
+ * 顶点数V = 7, 边数E = 6
+ * [0, 1, 3, 2, 6, 4, 5]
+ */

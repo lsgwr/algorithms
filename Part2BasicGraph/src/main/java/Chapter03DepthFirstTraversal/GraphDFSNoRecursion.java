@@ -1,17 +1,19 @@
 /***********************************************************
- * @Description : 深度优先遍历(支持连通图和非连通图),基于递归实现
+ * @Description : 深度优先遍历(支持连通图和非连通图)，基于栈的非递归实现
+ *                其实递归的作用就类似于栈，后面讲BFS实际就是把本节的栈改为队列即可
  * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-08-06 23:20
+ * @date        : 2019-12-18 23:44
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
 package Chapter03DepthFirstTraversal;
 
 import Chapter02GraphExpress.Graph;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GraphDFS {
+public class GraphDFSNoRecursion {
     private Graph graph;
 
     /**
@@ -24,7 +26,7 @@ public class GraphDFS {
      */
     private List<Integer> orderList = new ArrayList<>();
 
-    public GraphDFS(Graph graph) {
+    public GraphDFSNoRecursion(Graph graph) {
         this.graph = graph;
         // 初始化访问数组，用图的顶点个数来访问
         visited = new boolean[graph.V()];
@@ -41,12 +43,19 @@ public class GraphDFS {
     }
 
     private void dfs(int v) {
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        stack.push(v);
         visited[v] = true;
         orderList.add(v);
-        for (Integer w : graph.adj(v)) {
-            if (!visited[w]) {
-                // w点没被访问的话就递归接着访问
-                dfs(w);
+        while (!stack.isEmpty()) {
+            int cur = stack.pop();
+            for (Integer w : graph.adj(cur)) {
+                if (!visited[w]) {
+                    // w点没被访问的话就递归接着访问
+                    stack.push(w);
+                    visited[w] = true;
+                    orderList.add(w);
+                }
             }
         }
     }
