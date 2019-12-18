@@ -87,11 +87,9 @@ public class FarmerCrossRiver {
     private List<String> getAdjs(String cur) {
         List<String> adjs = new ArrayList<>();
         List<String> adjsSafe = new ArrayList<>();
-        // 情况1：农民保持不变，其他每位都可以取反
-        adjs.add(toggle(cur, 1));
-        adjs.add(toggle(cur, 2));
-        adjs.add(toggle(cur, 3));
-        // 2.情况2：农民取反，其他每位都可以取反
+        // 情况1：农名空跑，只对农民取反
+        adjs.add(toggle(cur, 0));
+        // 2.情况2：农名带着东西跑，每次换两个标记位
         cur = toggle(cur, 0);
         adjs.add(toggle(cur, 1));
         adjs.add(toggle(cur, 2));
@@ -157,3 +155,8 @@ public class FarmerCrossRiver {
         System.out.println(path);
     }
 }
+/**
+ * 状态转换顺序是：
+ * <p>
+ * [0000, 1010, 0010, 1110, 0100, 1101, 0101, 1111]
+ */
