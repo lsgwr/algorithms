@@ -4,85 +4,156 @@
  * 2.如果没有农夫看着，羊会偷吃菜，狼会吃羊
  * 请考虑一种方法，让农夫能安全地安排这些东西和他自己过河
  * <p/>
- * 基于状态压缩的BFS实现
+ * 基于BFS的状态压缩字符串实现，核心解题思路：农夫不和羊在一起的时候，羊不能和狼或菜在一起
  * 把当前岸的物体作为状态，同时记录农夫是往对岸去还是回来
  * @author : 梁山广(Laing Shan Guang)
- * @date : 2019-12-17 15:31
+ * @date : 2019-12-18 17:34
  * @email : liangshanguang2@gmail.com
  ***********************************************************/
 package Chapter07AISearchAndBFS.Section4And5IQ;
 
-import java.util.ArrayDeque;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 public class FarmerCrossRiver {
 
     /**
-     * 岸边禁止留下的状态, 没有农夫看着，羊会偷吃菜，狼会吃羊
+     * 0表示在本岸，1表示在对岸，对应的下表分别代表农夫、狼、羊、菜
      */
-    private int[] deadends = {120, 23};
+    private static final String START = "0000";
+    /**
+     * 目标状态
+     */
+    private static final String FINAL = "1111";
 
     /**
-     * 记录四个物体是否全都到对岸了，true表示在对岸，非true表明在本岸
-     * 0->"农夫", 1->"狼", 2->"羊", 3->"菜"
+     * 是否被访问
      */
-    private boolean[] all = new boolean[4];
-
-    private Map<Integer, String> map = new HashMap<>();
+    private HashMap<String, Boolean> visited = new HashMap<>();
+    /**
+     * 记录父访问节点
+     */
+    private HashMap<String, String> pre = new HashMap<>();
 
     /**
-     * 当前岸最多有4个物体，农夫的标识为0，所以最大数是0123即123，这里取1000吧，保险点
+     * 判断要转移的下一个状态是否安全
+     *
+     * @param state "xxxx"格式的状态字符串
+     * @return 安全返回true，不安全返回false
      */
-    private boolean[] visited = new boolean[1000];
+    private boolean isSafe(String state) {
+        // 农夫不和羊在一起的时候，羊不能和狼或菜在一起.羊是不安全状态的交集，所以羊是切入点
+        char farmer = state.charAt(0);
+        char woof = state.charAt(1);
+        char sheep = state.charAt(2);
+        char vegetable = state.charAt(3);
 
-    /**
-     * 记录当前岸物体状态的上一个状态
-     */
-    private int[] pre = new int[1000];
-
-    public FarmerCrossRiver() {
-        String[] all = {"农夫", "狼", "羊", "菜"};
-        for (int i = 0; i < all.length; i++) {
-            // 建立好映射关系
-            map.put(i, all[i]);
+        if (farmer != sheep) {
+            // 农夫不和羊在一起的时候，羊不能和狼或菜在一起,在一起就是不安全。农夫和羊在一起的所有情况都是安全的
+            return (sheep != woof) && (sheep != vegetable);
         }
+        return true;
     }
 
     /**
-     * 获取当前的岸边的物体的状态
+     * 把index处的字符1变成0或者0变成1
+     *
+     * @param str   字符串
+     * @param index 要取反的索引
+     * @return 取反后的新字符串
      */
-    private int getCur() {
-        int cur = 0;
-        // 第一个是农夫，为0，不用管
-        for (int i = 1; i < all.length; i++) {
-            if (all[i]) {
+    private String toggle(String str, int index) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (i == index) {
+                if (c == '1') {
+                    sb.append('0');
+                } else if (c == '0') {
+                    sb.append('1');
+                }
                 continue;
             }
-            cur += Math.pow(10, 3 - i);
+            sb.append(c);
         }
-        return cur;
+        return sb.toString();
     }
 
-    public void bfs() {
-        Queue<Integer> queue = new ArrayDeque<>();
-        // 运输状态：农夫初始时肯定是带着羊往对岸(对应设置true)，此时本岸剩下狼和菜
-        all[0] = true;
-        all[2] = true;
-        // 记录当前岸的状态，离开本岸记为负
-        int init = -getCur();
-        queue.add(init);
-        while (!queue.isEmpty()) {
-            // 获取上一步的步骤
-            int cur = queue.remove();
-            if (cur > 0) {
-                // 大于0说明农夫回到了本岸
-                // Todo:
-            } else if (cur < 0) {
-                // 小于0说明农夫在对岸，不会有等于0的，因为等于0说明本岸空了，就说明目标达成了
-                // Todo:
+    /**
+     * 获取当前状态的邻接表，农民取反或保持原样 * 其他几个取反
+     *
+     * @param cur 当前状态
+     * @return 邻接表
+     */
+    private List<String> getAdjs(String cur) {
+        List<String> adjs = new ArrayList<>();
+        List<String> adjsSafe = new ArrayList<>();
+        // 情况1：农民保持不变，其他每位都可以取反
+        adjs.add(toggle(cur, 1));
+        adjs.add(toggle(cur, 2));
+        adjs.add(toggle(cur, 3));
+        // 2.情况2：农民取反，其他每位都可以取反
+        cur = toggle(cur, 0);
+        adjs.add(toggle(cur, 1));
+        adjs.add(toggle(cur, 2));
+        adjs.add(toggle(cur, 3));
+        // 去除不安全的状态
+        for (String adj : adjs) {
+            if (isSafe(adj)) {
+                adjsSafe.add(adj);
             }
         }
+        return adjsSafe;
+    }
+
+    /**
+     * 广度优先遍历找最优转换路径
+     */
+    private void bfs() {
+        Queue<String> queue = new ArrayDeque<>();
+        queue.add(START);
+        visited.put(START, true);
+        while (!queue.isEmpty()) {
+            // 当前状态
+            String cur = queue.remove();
+            // 求当前状态的邻接点
+            List<String> adjs = getAdjs(cur);
+            for (String adj : adjs) {
+                if (visited.get(adj) == null) {
+                    // 等于空表示该状态没被访问过
+                    queue.add(adj);
+                    visited.put(adj, true);
+                    pre.put(adj, cur);
+                    if (adj.equals(FINAL)) {
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * 起点到终点的路径，每个元素都是"xxxx"的格式
+     */
+    public List<String> getPath() {
+        List<String> path = new ArrayList<>();
+        if (visited.get(FINAL) == null) {
+            // 没到终点表示没有办法可以把所有物体运过去
+            return null;
+        }
+        String cur = FINAL;
+        while (!cur.equals(START)) {
+            path.add(cur);
+            cur = pre.get(cur);
+        }
+        path.add(START);
+        Collections.reverse(path);
+        return path;
+    }
+
+    public static void main(String[] args) {
+        FarmerCrossRiver farmerCrossRiver = new FarmerCrossRiver();
+        farmerCrossRiver.bfs();
+        List<String> path = farmerCrossRiver.getPath();
+        System.out.println(path);
     }
 }
