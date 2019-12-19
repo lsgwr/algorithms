@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 基于递归DFS实现地
+ * @Description : 基于递归DFS实现地查找桥的算法
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2019-12-19 19:15
  * @email       : liangshanguang2@gmail.com
