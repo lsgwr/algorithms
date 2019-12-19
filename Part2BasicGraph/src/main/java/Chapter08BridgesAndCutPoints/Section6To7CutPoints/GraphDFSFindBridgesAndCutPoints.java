@@ -123,7 +123,10 @@ public class GraphDFSFindBridgesAndCutPoints {
                 } else {
                     // 不是根节点时，对于v有一个孩子节点w，如果满足`low[w] >= ord[v]`，则v是割点
                     if (low[w] >= ord[v]) {
-                        cutPoints.add(v);
+                        if (!cutPoints.contains(v)) {
+                            // 之前没加过这个节点才加入
+                            cutPoints.add(v);
+                        }
                     }
                 }
 
