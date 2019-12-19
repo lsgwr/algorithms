@@ -15,24 +15,31 @@ public class Main {
         String filePath = "src/main/java/Chapter08BridgesAndCutPoints/Section1To4Bridges/graph.txt";
         Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
+        System.out.print("图中包含的桥为：");
         System.out.println(new GraphDFSFindBridges(graph).getBridges());
+        System.out.println();
 
         filePath = "src/main/java/Chapter08BridgesAndCutPoints/Section1To4Bridges/graph2.txt";
         graph = new Graph(false);
         ReadGraph.init(graph, filePath);
+        System.out.print("图中包含的桥为：");
         System.out.println(new GraphDFSFindBridges(graph).getBridges());
+        System.out.println();
 
         filePath = "src/main/java/Chapter08BridgesAndCutPoints/Section1To4Bridges/tree.txt";
         graph = new Graph(false);
         ReadGraph.init(graph, filePath);
+        System.out.print("图中包含的桥为：");
         System.out.println(new GraphDFSFindBridges(graph).getBridges());
     }
 }
 /**
  * 顶点数V = 7, 边数E = 8
- * [3-5]
+ * 图中包含的桥为：[3-5]
+ *
  * 顶点数V = 12, 边数E = 16
- * [6-8, 4-7, 3-5]
+ * 图中包含的桥为：[6-8, 4-7, 3-5]
+ *
  * 顶点数V = 7, 边数E = 6
- * [1-6, 0-1, 2-5, 3-2, 3-4, 0-3]
+ * 图中包含的桥为：[1-6, 0-1, 2-5, 3-2, 3-4, 0-3]
  */
