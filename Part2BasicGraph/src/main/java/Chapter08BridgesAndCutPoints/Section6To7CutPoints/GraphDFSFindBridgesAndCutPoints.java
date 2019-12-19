@@ -45,6 +45,11 @@ public class GraphDFSFindBridgesAndCutPoints {
      */
     private List<Edge> bridges = new ArrayList<>();
 
+    /**
+     * 割点
+     */
+    private List<Integer> cutPoints = new ArrayList<>();
+
     public GraphDFSFindBridgesAndCutPoints(Graph graph) {
         this.graph = graph;
         // 初始化访问数组，用图的顶点个数来访问
@@ -67,6 +72,13 @@ public class GraphDFSFindBridgesAndCutPoints {
     }
 
     /**
+     * 获取割点列表
+     */
+    public List<Integer> getCutPoints() {
+        return cutPoints;
+    }
+
+    /**
      * 获取图中所有的桥
      */
     public List<Edge> getBridges() {
@@ -84,18 +96,37 @@ public class GraphDFSFindBridgesAndCutPoints {
         orderList.add(v);
         ord[v] = cnt;
         low[v] = cnt;
+
+        // v节点的在DFS遍历树中的子节点数
+        int childCnt = 0;
         for (Integer w : graph.adj(v)) {
             if (!visited[w]) {
                 // 找到一个未被访问的点
                 cnt++;
+                // 节点v多个了子节点,v有效范围是v极其邻接点遍历的过程
+                childCnt++;
                 // w点没被访问的话就递归接着访问
                 dfs(w, v);
-                // 退出一层递归时，判断是否是桥，是桥就把边v-w加入到bridges中,不是桥需要更新当前节点v的low值为low[v]和low[w]的较小值
+                // 1.找桥：退出一层递归时，判断是否是桥，是桥就把边v-w加入到bridges中,不是桥需要更新当前节点v的low值为low[v]和low[w]的较小值
                 if (low[w] > ord[v]) {
                     bridges.add(new Edge(v, w));
                 } else {
                     low[v] = Math.min(low[v], low[w]);
                 }
+                // 2.找割点
+                if (v == parent) {
+                    // 两个相等代表v是根节点，从当前类构造函数可以可以看出
+                    if (childCnt > 1) {
+                        // 根节点有两个及以上的遍历树种子节点，则说明根节点是割点
+                        cutPoints.add(v);
+                    }
+                } else {
+                    // 不是根节点时，对于v有一个孩子节点w，如果满足`low[w] >= ord[v]`，则v是割点
+                    if (low[w] >= ord[v]) {
+                        cutPoints.add(v);
+                    }
+                }
+
             } else {
                 // visited[w]=true而且w不是v的父节点parent，说明存在环，更新low[v]为low[v]和Low[w]的较小值
                 if (w != parent) {
