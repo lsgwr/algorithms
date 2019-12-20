@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         // 连通图,前序遍历
-        String filePath = "src/main/java/Chapter09HamiltonLoop/Section1to3HamiltonLoop/graph.txt";
+        String filePath = "src/main/java/Chapter09HamiltonLoop/Section1to4HamiltonLoop/graph.txt";
         Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         System.out.print("哈密尔顿路径详情为：");
@@ -23,7 +23,7 @@ public class Main {
         System.out.println(path);
         System.out.println();
 
-        filePath = "src/main/java/Chapter09HamiltonLoop/Section1to3HamiltonLoop/graph2.txt";
+        filePath = "src/main/java/Chapter09HamiltonLoop/Section1to4HamiltonLoop/graph2.txt";
         graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         path = new GraphDFSHamiltonLoop(graph).getPath();
