@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class GraphDFSHamiltonPath {
-    private static final int START = 0;
+    private int START;
     private Graph graph;
 
     /**
@@ -36,12 +36,13 @@ public class GraphDFSHamiltonPath {
      */
     private List<Integer> orderList = new ArrayList<>();
 
-    public GraphDFSHamiltonPath(Graph graph) {
+    public GraphDFSHamiltonPath(Graph graph, int start) {
         this.graph = graph;
         // 初始化访问数组，用图的顶点个数来访问
         visited = new boolean[graph.V()];
         pre = new int[graph.V()];
-        // 根据哈密尔顿路径的特点，回溯法找从1个顶点开始遍历即可
+        this.START = start;
+        // 根据哈密尔顿路径的特点，根据传入的其实点开始进行DFS遍历
         dfs(START, START, graph.V());
     }
 
@@ -50,15 +51,15 @@ public class GraphDFSHamiltonPath {
     }
 
     /**
-     * 返回哈密尔顿环的路径
+     * 返回哈密尔顿路径
      */
     public List<Integer> getPath() {
         List<Integer> path = new ArrayList<>();
         if (end == -1) {
-            // 等于-1表示没找到哈密尔顿环
+            // 等于-1表示没找到哈密尔顿路径
             return path;
         }
-        // cur初始等于哈密尔顿环回到起点的前一个点
+        // cur初始等于哈密尔顿路径的最后一个节点
         int cur = end;
 
         while (cur != START) {
@@ -69,8 +70,6 @@ public class GraphDFSHamiltonPath {
         // 设置起点
         path.add(START);
         Collections.reverse(path);
-        // 终点为起点
-        path.add(START);
         return path;
     }
 
@@ -91,22 +90,21 @@ public class GraphDFSHamiltonPath {
             if (!visited[w]) {
                 // w点没被访问的话就递归接着访问
                 if (dfs(w, v, left)) {
-                    // 遍历过程中任何一层递归返回True说明找到了哈密尔顿环
+                    // 遍历过程中任何一层递归返回True说明找到了哈密尔顿路径
                     return true;
                 }
             } else {
                 // 如果w还没被访问
-                if (w == START && left == 0) {
-                    // 记录回到起点START顶点的前一个顶点，如果DFS执行完end不是-1了表明图中存在哈密尔顿路径
+                if (left == 0) { // 所有节点都已经被访问了
+                    // 如果DFS执行完end不是-1了表明图中存在哈密尔顿路径，返回True即可
                     end = v;
-                    // 如果回到了遍历起点并且所有节点都已经被访问了，说明存在哈密尔顿路径
                     return true;
                 }
             }
         }
         // 没找到要回退，所以要把v点设置为未被访问过，即设置为False
         visited[v] = false;
-        // 回退时，已经访问的节点要设置为未访问，所以
+        // 回退时，已经访问的节点要设置为未访问，所以剩下的节点数也要+1
         left++;
         return false;
     }
