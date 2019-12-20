@@ -42,25 +42,11 @@ public class GraphDFSHamiltonLoop {
         visited = new boolean[graph.V()];
         pre = new int[graph.V()];
         // 根据哈密尔顿路径的特点，回溯法找从1个顶点开始遍历即可
-        dfs(START, START);
+        dfs(START, START, graph.V());
     }
 
     public Iterable<Integer> getOrderList() {
         return orderList;
-    }
-
-    /**
-     * 查看是否所有节点都已经被访问
-     *
-     * @return
-     */
-    private boolean allVisited() {
-        for (int v = 0; v < graph.V(); v++) {
-            if (!visited[v]) {
-                return false;
-            }
-        }
-        return true;
     }
 
     /**
@@ -93,22 +79,24 @@ public class GraphDFSHamiltonLoop {
      *
      * @param v      当前递归遍历到的节点
      * @param parent v的上一个访问节点
+     * @param left   还剩下多少元素没被访问
      * @return 是否找到了哈密尔顿路径
      */
-    private boolean dfs(int v, int parent) {
+    private boolean dfs(int v, int parent, int left) {
         visited[v] = true;
         orderList.add(v);
         pre[v] = parent;
+        left--;
         for (Integer w : graph.adj(v)) {
             if (!visited[w]) {
                 // w点没被访问的话就递归接着访问
-                if (dfs(w, v)) {
+                if (dfs(w, v, left)) {
                     // 遍历过程中任何一层递归返回True说明找到了哈密尔顿环
                     return true;
                 }
             } else {
                 // 如果w还没被访问
-                if (w == START && allVisited()) {
+                if (w == START && left == 0) {
                     // 记录回到起点START顶点的前一个顶点，如果DFS执行完end不是-1了表明图中存在哈密尔顿路径
                     end = v;
                     // 如果回到了遍历起点并且所有节点都已经被访问了，说明存在哈密尔顿路径
@@ -118,6 +106,8 @@ public class GraphDFSHamiltonLoop {
         }
         // 没找到要回退，所以要把v点设置为未被访问过，即设置为False
         visited[v] = false;
+        // 回退时，已经访问的节点要设置为未访问，所以
+        left++;
         return false;
     }
 }
