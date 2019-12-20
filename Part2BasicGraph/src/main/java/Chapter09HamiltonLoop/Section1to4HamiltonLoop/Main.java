@@ -19,14 +19,14 @@ public class Main {
         Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         System.out.print("哈密尔顿路径详情为：");
-        List<Integer> path = new GraphDFSHamiltonLoop(graph).getPath();
+        List<Integer> path = new GraphDFSHamiltonLoop(graph).getLoop();
         System.out.println(path);
         System.out.println();
 
         filePath = "src/main/java/Chapter09HamiltonLoop/Section1to4HamiltonLoop/graph2.txt";
         graph = new Graph(false);
         ReadGraph.init(graph, filePath);
-        path = new GraphDFSHamiltonLoop(graph).getPath();
+        path = new GraphDFSHamiltonLoop(graph).getLoop();
         System.out.println(path);
     }
 }
