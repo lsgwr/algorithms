@@ -7,7 +7,7 @@
  * @date        : 2019/12/21 19:54
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter10EulerLoopAndEulerPath.Section1to3EulerLoop;
+package Chapter10EulerLoopAndEulerPath;
 
 import Chapter02GraphExpress.Graph;
 import Chapter04DFSInAction.Section1ConnectedComponents.GraphDFS4ConnectedComponents;
