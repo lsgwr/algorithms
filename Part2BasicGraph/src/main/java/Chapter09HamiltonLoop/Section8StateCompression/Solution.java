@@ -69,9 +69,9 @@ class Solution {
     private int[][] grid;
 
     /**
-     * 记录节点是否被访问了的数组
+     * 记录节点是否被访问了的整型变量，是状态压缩的核心
      */
-    private boolean[][] visited;
+    private int visited;
 
     /**
      * 1 表示起始方格。且只有一个起始方格。坐标压缩后的点
@@ -101,7 +101,8 @@ class Solution {
             return 0;
         }
         this.grid = grid;
-        this.visited = new boolean[R][C];
+        // 初始化所有的点都是未被访问的
+        this.visited = 0;
         for (int r = 0; r < R; r++) {
             for (int c = 0; c < C; c++) {
                 if (grid[r][c] == 1) {
@@ -131,12 +132,12 @@ class Solution {
         // 计算v点的行和列
         int[] point = unzip(v);
         int r = point[0], c = point[1];
-        visited[r][c] = true;
+        visited = StateCompression.setTrue(visited, v);
         left--;
 
         if (left == 0 && v == FINAL) {
             // 本次找到了一个符合条件的路径了，但是本题是要找出所有的，所以终点的访问状态要再设置为false.
-            visited[r][c] = false;
+            visited = StateCompression.setFalse(visited, v);
             // 本次的v即是终点，并且所有非障碍点都已经被访问了，则此次递归找到了一个哈密尔顿路径
             return 1;
         }
@@ -149,13 +150,13 @@ class Solution {
             // dir代表相当于当前点的位移
             int rNext = r + dir[0], cNext = c + dir[1];
             // 在栅格内+节点值等于0+没被访问 表示是我们可以走过的空方格
-            if (inGrid(rNext, cNext) && grid[rNext][cNext] != -1 && !visited[rNext][cNext]) {
+            if (inGrid(rNext, cNext) && grid[rNext][cNext] != -1 && !StateCompression.isTrue(visited, zip(rNext, cNext))) {
                 // w点没被访问的话就递归接着访问
                 cnt += dfs(zip(rNext, cNext), left);
             }
         }
         // 没找到要回退，所以要把v点设置为未被访问过，即设置为False
-        visited[r][c] = false;
+        visited = StateCompression.setFalse(visited, v);
         return cnt;
     }
 

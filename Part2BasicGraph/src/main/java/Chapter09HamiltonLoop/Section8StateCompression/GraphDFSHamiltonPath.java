@@ -19,7 +19,7 @@ public class GraphDFSHamiltonPath {
     /**
      * 存储顶点是否被访问的数组
      */
-    private boolean[] visited;
+    private int visited;
 
     /**
      * 记录顶点的访问顺序pre[w]=w表示w的上一个访问节点是v
@@ -38,8 +38,8 @@ public class GraphDFSHamiltonPath {
 
     public GraphDFSHamiltonPath(Graph graph, int start) {
         this.graph = graph;
-        // 初始化访问数组，用图的顶点个数来访问
-        visited = new boolean[graph.V()];
+        // 初始化访问变量，未访问时所有位置都是0，0代表false
+        visited = 0;
         pre = new int[graph.V()];
         this.START = start;
         // 根据哈密尔顿路径的特点，根据传入的其实点开始进行DFS遍历
@@ -83,12 +83,12 @@ public class GraphDFSHamiltonPath {
      * @return 是否找到了哈密尔顿路径
      */
     private boolean dfs(int v, int parent, int left) {
-        visited[v] = true;
+        visited = StateCompression.setTrue(visited, v);
         orderList.add(v);
         pre[v] = parent;
         left--;
         for (Integer w : graph.adj(v)) {
-            if (!visited[w]) {
+            if (!StateCompression.isTrue(visited, w)) {
                 // w点没被访问的话就递归接着访问
                 if (dfs(w, v, left)) {
                     // 遍历过程中任何一层递归返回True说明找到了哈密尔顿路径
@@ -104,7 +104,7 @@ public class GraphDFSHamiltonPath {
             }
         }
         // 没找到要回退，所以要把v点设置为未被访问过，即设置为False
-        visited[v] = false;
+        visited = StateCompression.setFalse(visited, v);
         return false;
     }
 }
