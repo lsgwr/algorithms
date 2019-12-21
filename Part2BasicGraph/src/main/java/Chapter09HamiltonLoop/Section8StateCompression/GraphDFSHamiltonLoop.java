@@ -7,6 +7,7 @@
 package Chapter09HamiltonLoop.Section8StateCompression;
 
 import Chapter02GraphExpress.Graph;
+import Chapter02GraphExpress.ReadGraph;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -108,5 +109,20 @@ public class GraphDFSHamiltonLoop {
         // 没找到要回退，所以要把v点设置为未被访问过，即设置为False
         visited = StateCompression.setFalse(visited, v);
         return false;
+    }
+
+    /**
+     * 顶点数V = 4, 边数E = 5
+     * 哈密尔顿回路详情为：[0, 2, 1, 3, 0]
+     */
+    public static void main(String[] args) {
+        // 连通图,前序遍历
+        String filePath = "src/main/java/Chapter09HamiltonLoop/Section1to4HamiltonLoop/graph.txt";
+        Graph graph = new Graph(false);
+        ReadGraph.init(graph, filePath);
+        System.out.print("哈密尔顿回路详情为：");
+        List<Integer> path = new GraphDFSHamiltonLoop(graph).getLoop();
+        System.out.println(path);
+        System.out.println();
     }
 }
