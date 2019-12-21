@@ -79,7 +79,8 @@ public class GraphDFSHamiltonLoop {
      *
      * @param v      当前递归遍历到的节点
      * @param parent v的上一个访问节点
-     * @param left   还剩下多少元素没被访问
+     * @param left   本次递归还剩下多少元素没被访问，一定注意left是本层递归中的局部变量，
+     *               不是在所有递归中都有效地！！回退到上一层递归left的意义就变了！！每层递归都有自己的left!!!
      * @return 是否找到了哈密尔顿回路
      */
     private boolean dfs(int v, int parent, int left) {
@@ -106,8 +107,6 @@ public class GraphDFSHamiltonLoop {
         }
         // 没找到要回退，所以要把v点设置为未被访问过，即设置为False
         visited[v] = false;
-        // 回退时，已经访问的节点要设置为未访问，所以剩下的节点数也要+1
-        left++;
         return false;
     }
 }
