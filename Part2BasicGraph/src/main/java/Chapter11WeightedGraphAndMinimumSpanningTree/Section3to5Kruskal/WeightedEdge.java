@@ -35,4 +35,12 @@ public class WeightedEdge implements Comparable<WeightedEdge> {
     public int compareTo(WeightedEdge that) {
         return this.weight - that.weight;
     }
+
+    public int getV() {
+        return v;
+    }
+
+    public int getW() {
+        return w;
+    }
 }

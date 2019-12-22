@@ -46,7 +46,19 @@ public class MinimumSpanningTreeKruskal {
         // edges排序，为了能排序必须自己实现Comparable接口
         Collections.sort(edges);
         // 2.取排序后权值最小的边，并检查和已有的边是否生成环，如果没有生成环，则把边加入到mst中
-        // Todo:判断是否有环
+        // 判断是否有环，用到了并查集，参考Part2Basic/Chapter11UnionFind
+        UnionFind uf = new UnionFind(graph.V());
+        // 因为edges已经从小到大排好序了，所以挨个取就好。
+        for (WeightedEdge edge : edges) {
+            int v = edge.getV();
+            int w = edge.getW();
+            // 新加入的两个顶点之前不联通，则可以加入到mst中
+            if (!uf.isConnected(v, w)){
+                mst.add(edge);
+                // v和w不连通就设置为联通
+                uf.unionElements(v, w);
+            }
+        }
     }
 
     /**
