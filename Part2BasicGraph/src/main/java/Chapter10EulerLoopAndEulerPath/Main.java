@@ -15,12 +15,12 @@ public class Main {
         String filePath = "src/main/java/Chapter10EulerLoopAndEulerPath/graph.txt";
         Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
-        System.out.println(new EulerLoop(graph).dfs());
+        System.out.println(new GraphDFSNoRecursionEulerLoop(graph).dfs());
 
         filePath = "src/main/java/Chapter10EulerLoopAndEulerPath/graph2.txt";
         graph = new Graph(false);
         ReadGraph.init(graph, filePath);
-        System.out.println(new EulerLoop(graph).dfs());
+        System.out.println(new GraphDFSNoRecursionEulerLoop(graph).dfs());
     }
 }
 /**
