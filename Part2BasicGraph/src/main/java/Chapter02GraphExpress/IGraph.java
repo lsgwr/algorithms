@@ -50,6 +50,14 @@ public interface IGraph {
     int degree(int v);
 
     /**
+     * 删除边v-w
+     *
+     * @param v 顶点v
+     * @param w 顶点w
+     */
+    void removeEdge(int v, int w);
+
+    /**
      * 打印当前的图
      */
     void show();

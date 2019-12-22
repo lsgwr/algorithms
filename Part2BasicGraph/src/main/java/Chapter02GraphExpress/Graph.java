@@ -120,6 +120,14 @@ public class Graph implements IGraph {
     }
 
     @Override
+    public void removeEdge(int v, int w) {
+        validateVertex(v);
+        validateVertex(w);
+        adj[v].remove(w);
+        adj[w].remove(v);
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("顶点数V = %d, 边数E = %d\n", vertices, edges));
