@@ -50,17 +50,17 @@ public class EulerLoop {
      * @return 欧拉回路的列表
      */
     public List<Integer> dfs() {
-        // 存储最终欧拉回路的list
-        List<Integer> result = new ArrayList<>();
-        if (!hasEulerLoop()) {
-            // 没有欧拉路径就返回null
-            return result;
-        }
         // 把原图深拷贝，防止影响原图对象
         Graph graph = (Graph) this.graph.clone();
         // 下面两个栈是Hierholzer算法的核心用到的两个栈
         Stack<Integer> curPath = new Stack<>();
-        Stack<Integer> loop = new Stack<>();
+        List<Integer> loop = new ArrayList<>();
+        // 存储最终欧拉回路的list
+        if (!hasEulerLoop()) {
+            // 没有欧拉路径就返回空列表
+            return loop;
+        }
+
         // 开始遍历的起点
         int vCur = 0;
         // 初始化加入下是为了能进while循环
@@ -76,15 +76,11 @@ public class EulerLoop {
                 vCur = w;
             } else {
                 // 当前元素没有邻接点了，肯定是欧拉回路上的，所以加入loop
-                loop.push(vCur);
+                loop.add(vCur);
                 // 回退到上一个顶点
                 vCur = curPath.pop();
             }
         }
-        // 最终的栈loop中存储地就是欧拉回路的逆序，所以我们从栈中全pop到列表result中即可
-        while (!loop.isEmpty()) {
-            result.add(loop.pop());
-        }
-        return result;
+        return loop;
     }
 }
