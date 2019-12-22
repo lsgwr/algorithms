@@ -10,7 +10,7 @@ package Chapter02GraphExpress;
 
 import java.util.TreeSet;
 
-public class Graph implements IGraph {
+public class Graph implements IGraph, Cloneable {
     /**
      * 图的顶点数
      */
@@ -161,5 +161,25 @@ public class Graph implements IGraph {
         validateVertex(v);
         // 邻接表本身v处就是表达地v的所有邻接点
         return adj[v];
+    }
+
+    /**
+     * 实现Graph对象的深拷贝(adj要完成拷贝过去)
+     *
+     * @return 深拷贝后的graph，在调用时不会改变原对象
+     * @throws CloneNotSupportedException 不支持Clone的异常
+     */
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        // 实现深拷贝
+        Graph cloned = (Graph) super.clone();
+        cloned.adj = new TreeSet[vertices];
+        for (int v = 0; v < vertices; v++) {
+            cloned.adj[v] = new TreeSet<>();
+            for (int w : adj[v]) {
+                cloned.adj[v].add(w);
+            }
+        }
+        return cloned;
     }
 }
