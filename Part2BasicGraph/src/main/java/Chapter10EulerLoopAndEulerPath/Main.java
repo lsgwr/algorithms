@@ -16,9 +16,16 @@ public class Main {
         Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         System.out.println(new EulerLoop(graph).dfs());
+
+        filePath = "src/main/java/Chapter10EulerLoopAndEulerPath/graph2.txt";
+        graph = new Graph(false);
+        ReadGraph.init(graph, filePath);
+        System.out.println(new EulerLoop(graph).dfs());
     }
 }
 /**
  * 顶点数V = 5, 边数E = 6
  * [0, 1, 2, 3, 4, 2, 0]
+ * 顶点数V = 11, 边数E = 15
+ * [0, 1, 2, 5, 1, 4, 5, 7, 8, 10, 9, 7, 6, 4, 3, 0]
  */
