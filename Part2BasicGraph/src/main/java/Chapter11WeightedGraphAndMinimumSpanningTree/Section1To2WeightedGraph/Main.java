@@ -8,7 +8,7 @@ package Chapter11WeightedGraphAndMinimumSpanningTree.Section1To2WeightedGraph;
 
 public class Main {
     public static void main(String[] args) {
-        String filepath = "src/main/java/Chapter11WeightedGraphAndMinimumSpanningTree/Section1WeightedGraph/graph.txt";
+        String filepath = "src/main/java/Chapter11WeightedGraphAndMinimumSpanningTree/Section1to2WeightedGraph/graph.txt";
         WeightedGraph graph = new WeightedGraph(false);
         ReadWeightedGraph.init(graph, filepath);
         System.out.println(graph);
