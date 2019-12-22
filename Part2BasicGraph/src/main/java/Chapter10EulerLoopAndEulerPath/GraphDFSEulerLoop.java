@@ -14,7 +14,6 @@ import Chapter04DFSInAction.Section1ConnectedComponents.GraphDFS4ConnectedCompon
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class GraphDFSEulerLoop {
     private Graph graph;
@@ -23,13 +22,13 @@ public class GraphDFSEulerLoop {
      */
     List<Integer> loop = new ArrayList<>();
 
-    public GraphDFSEulerLoop(Graph graph, int START) {
+    public GraphDFSEulerLoop(Graph graph, int start) {
         // 因为我们实现了Graph的深拷贝(clone函数)，所以赋值时是值传递，下面的修改不会影响原始的Graph
         this.graph = (Graph) graph.clone();
-        if (!hasEulerLoop()){
-            return ;
+        if (!hasEulerLoop()) {
+            return;
         }
-        dfs(START);
+        dfs(start);
     }
 
     /**
@@ -58,16 +57,12 @@ public class GraphDFSEulerLoop {
      * @return 欧拉回路的列表
      */
     public void dfs(int v) {
-       if (graph.degree(v)==0){
-           loop.add(v);
-       }else {
-           while (graph.degree(v)!=0){
-               int w = graph.adj(v).iterator().next();
-               graph.removeEdge(v, w);
-               dfs(w);
-           }
-           loop.add(v);
-       }
+        while (graph.degree(v) != 0) {
+            int w = graph.adj(v).iterator().next();
+            graph.removeEdge(v, w);
+            dfs(w);
+        }
+        loop.add(v);
     }
 
     public List<Integer> getLoop() {
