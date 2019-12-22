@@ -14,3 +14,14 @@ public class Main {
         System.out.println(graph);
     }
 }
+/**
+ * 顶点数V = 7, 边数E = 12
+ * 顶点数V = 7, 边数E = 12，完整的邻接表信息如下：
+ * v=0: (w=1, weight=2) (w=3, weight=7) (w=5, weight=2)
+ * v=1: (w=0, weight=2) (w=2, weight=1) (w=3, weight=4) (w=4, weight=3) (w=5, weight=5)
+ * v=2: (w=1, weight=1) (w=4, weight=4) (w=5, weight=4)
+ * v=3: (w=0, weight=7) (w=1, weight=4) (w=4, weight=1) (w=6, weight=5)
+ * v=4: (w=1, weight=3) (w=2, weight=4) (w=3, weight=1) (w=6, weight=7)
+ * v=5: (w=0, weight=2) (w=1, weight=5) (w=2, weight=4)
+ * v=6: (w=3, weight=5) (w=4, weight=7)
+ */
