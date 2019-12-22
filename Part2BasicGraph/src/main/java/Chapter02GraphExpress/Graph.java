@@ -170,16 +170,23 @@ public class Graph implements IGraph, Cloneable {
      * @throws CloneNotSupportedException 不支持Clone的异常
      */
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() {
         // 实现深拷贝
-        Graph cloned = (Graph) super.clone();
-        cloned.adj = new TreeSet[vertices];
-        for (int v = 0; v < vertices; v++) {
-            cloned.adj[v] = new TreeSet<>();
-            for (int w : adj[v]) {
-                cloned.adj[v].add(w);
+        Graph cloned = null;
+        try {
+            cloned = (Graph) super.clone();
+            cloned.adj = new TreeSet[vertices];
+            for (int v = 0; v < vertices; v++) {
+                cloned.adj[v] = new TreeSet<>();
+                for (int w : adj[v]) {
+                    cloned.adj[v].add(w);
+                }
             }
+            return cloned;
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
         }
-        return cloned;
+        // 出异常了就返回null
+        return null;
     }
 }
