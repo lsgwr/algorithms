@@ -1,8 +1,8 @@
 /***********************************************************
  * @Description : 最小生成树MST(Minimum Spanning Tree)的Prim算法实现
- *                基于有限队列(最小堆)来实现
+ * 基于最基础的多层for循环实现，时间复杂度为O(VE)
  * @author      : 梁山广(Liang Shan Guang)
- * @date        : 2019/12/22 22:22
+ * @date        : 2019/12/22 20:10
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
 package Chapter11WeightedGraphAndMinimumSpanningTree.Section7to9Prim;
@@ -13,22 +13,16 @@ import Chapter11WeightedGraphAndMinimumSpanningTree.Section3to5Kruskal.WeightedE
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
-public class MinimumSpanningTreePrim {
+public class MinimumSpanningTreePrimBasic {
     private WeightedGraph graph;
 
     /**
      * 最小生成树的顶点集合，按加入顺序来的，一定不要自己排序
      */
     private List<WeightedEdge> mst = new ArrayList<>();
-    /**
-     * 遍历的起始点
-     */
-    private int start = 0;
 
-    public MinimumSpanningTreePrim(WeightedGraph graph) {
+    public MinimumSpanningTreePrimBasic(WeightedGraph graph) {
         this.graph = graph;
         // 判断联通分量个数的
         GraphDFS4ConnectedComponents cc = new GraphDFS4ConnectedComponents(graph);
@@ -42,30 +36,27 @@ public class MinimumSpanningTreePrim {
     public void prim() {
         boolean[] visited = new boolean[graph.V()];
         // 初始化时进行(1, V-1)的prim计算
-        visited[start] = true;
-        // 存储边的有限队列(基于最小堆实现)
-        Queue<WeightedEdge> pq = new PriorityQueue<>();
-        // 初始时所有0的邻接边都是切分边
-        for (int w : graph.adj(start)) {
-            pq.add(new WeightedEdge(start, w, graph.getWeight(start, w)));
-        }
-        // 不算找最小横切边加入到mst中
-        while (!pq.isEmpty()){
-            // pq为表示所有的点都被考虑过了
-            WeightedEdge minEdge = pq.remove();
-            // 判断是否是合法的横切边
-            if (visited[minEdge.getV()] && visited[minEdge.getW()]){
-                continue;
-            }
-            mst.add(minEdge);
-            // 最小生成树多了一条边，需要扩展切分
-            int vNew = visited[minEdge.getV()]?minEdge.getW():minEdge.getV();
-            visited[vNew] = true;
-            for (int w : graph.adj(vNew)) {
-                if (!visited[w]){
-                    pq.add(new WeightedEdge(vNew, w, graph.getWeight(vNew, w)));
+        int vertices = graph.V();
+        visited[0] = true;
+        // 最终的最小生成树一共v-1条边，所以下标从1开始
+        for (int i = 1; i < vertices; i++) {
+            WeightedEdge minEdge = new WeightedEdge(-1, -1, Integer.MAX_VALUE);
+            for (int v = 0; v < vertices; v++) {
+                // 不断扩充切分
+                if (visited[v]) {
+                    for (int w : graph.adj(v)) {
+                        // !visited[w]表示边v-w是横切边
+                        if (!visited[w] && graph.getWeight(v, w) < minEdge.getWeight()) {
+                            // 不断更新到最小的横切边
+                            minEdge = new WeightedEdge(v, w, graph.getWeight(v, w));
+                        }
+                    }
                 }
             }
+            mst.add(minEdge);
+            // 更新顶点访问状态，true表示已经加入到最小生成树了，后面找横切边就不会遍历到对应的边了
+            visited[minEdge.getV()] = true;
+            visited[minEdge.getW()] = true;
         }
     }
 

@@ -17,6 +17,9 @@ public class Main {
         ReadWeightedGraph.init(graph, filepath);
         MinimumSpanningTreePrim prim = new MinimumSpanningTreePrim(graph);
         System.out.println(prim.getMst());
+
+        MinimumSpanningTreePrimBasic primBasic = new MinimumSpanningTreePrimBasic(graph);
+        System.out.println(primBasic.getMst());
     }
 }
 /**
