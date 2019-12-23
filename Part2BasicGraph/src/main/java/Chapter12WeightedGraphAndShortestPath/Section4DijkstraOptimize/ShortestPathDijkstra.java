@@ -8,8 +8,7 @@ package Chapter12WeightedGraphAndShortestPath.Section4DijkstraOptimize;
 
 import Chapter11WeightedGraphAndMinimumSpanningTree.Section1To2WeightedGraph.WeightedGraph;
 
-import java.util.Arrays;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class ShortestPathDijkstra {
     /**
@@ -29,6 +28,11 @@ public class ShortestPathDijkstra {
      * 是否找到了顶点到起始点的最小距离值
      */
     private boolean[] findShortest;
+
+    /**
+     * 记录访问顺序的数组
+     */
+    private int[] pre;
 
     /**
      * 存储顶点和顶点到起始点start的最小距离值(临时和最终的)
@@ -77,8 +81,13 @@ public class ShortestPathDijkstra {
 
         distances = new int[graph.V()];
         Arrays.fill(distances, Integer.MAX_VALUE);
+        // 初始化访问顺序数组
+        pre = new int[graph.V()];
+        Arrays.fill(pre, -1);
         // 起始点到起始点的最短距离为0
         distances[start] = 0;
+        // 起始点的上一个访问节点认为是自己
+        pre[start] = start;
         // 初始化所有的节点都没找到最短路径
         findShortest = new boolean[graph.V()];
         Arrays.fill(findShortest, false);
@@ -96,7 +105,7 @@ public class ShortestPathDijkstra {
             int curV = pq.remove().getV();
             // 因为一个节点可能因为更新最小距离值而被加入多次，所以pq弹出节点可能弹出已经确定最小值的点，
             // 因此我们需要判断下，是地话就直接跳过
-            if (findShortest[curV]){
+            if (findShortest[curV]) {
                 continue;
             }
             // 0到curV的最短路径就确定了
@@ -112,6 +121,7 @@ public class ShortestPathDijkstra {
                         // 可能一个顶点会被加入多次，但是不影响，因为每次pq取出地都是最小值，
                         // 而我们每次加入地一个新的节点的重复值只会更小，所以取最小值的时候一定能取到我们新加入地值
                         pq.add(new Node(w, distances[w]));
+                        pre[w] = curV;
                     }
                 }
             }
@@ -139,5 +149,24 @@ public class ShortestPathDijkstra {
     public int shortestDistanceTo(int v) {
         graph.validateVertex(v);
         return distances[v];
+    }
+
+    /**
+     * 获取起始点到顶点v的最短路劲轨迹
+     */
+    public Iterable<Integer> getPath(int v) {
+        List<Integer> path = new ArrayList<>();
+        if (!isConnectedTo(v)) {
+            return path;
+        }
+        int cur = v;
+        while (cur != start) {
+            path.add(cur);
+            cur = pre[cur];
+        }
+        // 加入起始点
+        path.add(start);
+        Collections.reverse(path);
+        return path;
     }
 }
