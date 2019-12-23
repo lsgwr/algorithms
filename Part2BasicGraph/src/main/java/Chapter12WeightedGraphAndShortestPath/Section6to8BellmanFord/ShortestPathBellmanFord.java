@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 无向有权图的最短路径算法之Bellman算法
+ * @Description : 无向有权图的最短路径算法之Bellman算法,时间复杂度为O(VE)
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2019/12/23 20:52
  * @email       : liangshanguang2@gmail.com
