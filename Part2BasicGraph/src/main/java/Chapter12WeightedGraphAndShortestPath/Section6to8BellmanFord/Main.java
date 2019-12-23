@@ -21,7 +21,7 @@ public class Main {
             System.out.println("图中存在负权环！");
         } else {
             for (int v = 0; v < graph.V(); v++) {
-                System.out.println(start + "到" + v + "的最短距离为：" + bellmanFord.shortestDistanceTo(v));
+                System.out.println(start + "到" + v + "的最短距离为：" + bellmanFord.shortestDistanceTo(v)+ ", 路径详情是：" + bellmanFord.getPath(v));
             }
         }
 
@@ -35,18 +35,18 @@ public class Main {
             System.out.println("图中存在负权环！");
         } else {
             for (int v = 0; v < graph.V(); v++) {
-                System.out.println(start + "到" + v + "的最短距离为：" + bellmanFord.shortestDistanceTo(v));
+                System.out.println(start + "到" + v + "的最短距离为：" + bellmanFord.shortestDistanceTo(v)+ ", 路径详情是：" + bellmanFord.getPath(v));
             }
         }
     }
 }
 /**
  * 顶点数V = 5, 边数E = 8
- * 0到0的最短距离为：0
- * 0到1的最短距离为：3
- * 0到2的最短距离为：2
- * 0到3的最短距离为：5
- * 0到4的最短距离为：6
+ * 0到0的最短距离为：0, 路径详情是：[0]
+ * 0到1的最短距离为：3, 路径详情是：[0, 2, 1]
+ * 0到2的最短距离为：2, 路径详情是：[0, 2]
+ * 0到3的最短距离为：5, 路径详情是：[0, 2, 1, 3]
+ * 0到4的最短距离为：6, 路径详情是：[0, 2, 1, 4]
  * 顶点数V = 5, 边数E = 8
  * 图中存在负权环！
  */

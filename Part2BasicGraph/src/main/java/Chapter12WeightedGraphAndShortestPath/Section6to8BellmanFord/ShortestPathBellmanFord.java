@@ -8,7 +8,10 @@ package Chapter12WeightedGraphAndShortestPath.Section6to8BellmanFord;
 
 import Chapter11WeightedGraphAndMinimumSpanningTree.Section1To2WeightedGraph.WeightedGraph;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class ShortestPathBellmanFord {
     /**
@@ -39,13 +42,30 @@ public class ShortestPathBellmanFord {
         return negativeCycle;
     }
 
+    /**
+     * 记录访问顺序的数组
+     */
+    private int[] pre;
+
     public ShortestPathBellmanFord(WeightedGraph graph, int start) {
         graph.validateVertex(start);
         this.start = start;
         this.graph = graph;
+        // 初始化访问顺序数组
+        pre = new int[graph.V()];
+        Arrays.fill(pre, -1);
         this.distances = new int[graph.V()];
         Arrays.fill(distances, Integer.MAX_VALUE);
         distances[start] = 0;
+        // 起始点的上一个访问节点认为是自己
+        pre[start] = start;
+        bellmanFord();
+    }
+
+    /**
+     * Bellman-Ford算法的核心
+     */
+    public void bellmanFord() {
         // 执行V-1次松弛操作
         for (int pass = 1; pass < graph.V(); pass++) {
             // 松弛所有的边
@@ -56,6 +76,7 @@ public class ShortestPathBellmanFord {
                         if (distances[v] + graph.getWeight(v, w) < distances[w]) {
                             // 对start-w进行start-v-w的松弛操作
                             distances[w] = distances[v] + graph.getWeight(v, w);
+                            pre[w] = v;
                         }
                     }
                 }
@@ -88,9 +109,28 @@ public class ShortestPathBellmanFord {
 
     public int shortestDistanceTo(int v) {
         graph.validateVertex(v);
-        if (negativeCycle){
+        if (negativeCycle) {
             throw new RuntimeException("图中存在负权环！");
         }
         return distances[v];
+    }
+
+    /**
+     * 获取起始点到顶点v的最短路劲轨迹
+     */
+    public Iterable<Integer> getPath(int v) {
+        List<Integer> path = new ArrayList<>();
+        if (!isConnectedTo(v)) {
+            return path;
+        }
+        int cur = v;
+        while (cur != start) {
+            path.add(cur);
+            cur = pre[cur];
+        }
+        // 加入起始点
+        path.add(start);
+        Collections.reverse(path);
+        return path;
     }
 }
