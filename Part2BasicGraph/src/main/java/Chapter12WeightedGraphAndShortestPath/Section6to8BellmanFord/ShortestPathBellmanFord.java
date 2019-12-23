@@ -38,7 +38,7 @@ public class ShortestPathBellmanFord {
     /**
      * 返回是否是负权环
      */
-    public boolean isNegativeCycle() {
+    public boolean hasNegativeCycle() {
         return negativeCycle;
     }
 

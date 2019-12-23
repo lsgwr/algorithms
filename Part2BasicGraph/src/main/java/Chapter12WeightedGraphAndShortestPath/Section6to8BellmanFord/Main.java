@@ -17,7 +17,7 @@ public class Main {
         ReadWeightedGraph.init(graph, filepath);
         int start = 0;
         ShortestPathBellmanFord bellmanFord = new ShortestPathBellmanFord(graph, 0);
-        if (bellmanFord.isNegativeCycle()) {
+        if (bellmanFord.hasNegativeCycle()) {
             System.out.println("图中存在负权环！");
         } else {
             for (int v = 0; v < graph.V(); v++) {
@@ -31,7 +31,7 @@ public class Main {
         ReadWeightedGraph.init(graph, filepath);
         start = 0;
         bellmanFord = new ShortestPathBellmanFord(graph, 0);
-        if (bellmanFord.isNegativeCycle()) {
+        if (bellmanFord.hasNegativeCycle()) {
             System.out.println("图中存在负权环！");
         } else {
             for (int v = 0; v < graph.V(); v++) {
