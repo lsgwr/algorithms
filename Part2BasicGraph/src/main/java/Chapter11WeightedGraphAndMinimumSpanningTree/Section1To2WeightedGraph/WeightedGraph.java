@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 无向有权图的最优表示(基于TreeMap的邻接表)
+ * @Description : 有权图的最优表示(基于TreeMap的邻接表)，支持有向和无向
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2019/12/22 15:34
  * @email       : liangshanguang2@gmail.com
@@ -162,4 +162,10 @@ public class WeightedGraph implements IWeightedGraph, Cloneable {
         return adj[v].keySet();
     }
 
+    /**
+     * 判断是否是有向图
+     */
+    public boolean isDirected() {
+        return directed;
+    }
 }
