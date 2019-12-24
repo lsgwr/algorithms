@@ -11,7 +11,7 @@ import Chapter02GraphExpress.Graph;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GraphDFSCycleDetect {
+public class GraphDFSCycleDetectDirected {
     private Graph graph;
 
     /**
@@ -26,7 +26,7 @@ public class GraphDFSCycleDetect {
      */
     private List<Integer> orderList = new ArrayList<>();
 
-    public GraphDFSCycleDetect(Graph graph) {
+    public GraphDFSCycleDetectDirected(Graph graph) {
         this.graph = graph;
         // 初始化访问数组，用图的顶点个数来访问
         visited = new boolean[graph.V()];
