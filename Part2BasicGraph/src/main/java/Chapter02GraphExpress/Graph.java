@@ -116,6 +116,7 @@ public class Graph implements IGraph, Cloneable {
 
     @Override
     public int degree(int v) {
+        // Todo:针对有向图的度比较麻烦，第13章最后讲
         return adj[v].size();
     }
 
@@ -124,7 +125,10 @@ public class Graph implements IGraph, Cloneable {
         validateVertex(v);
         validateVertex(w);
         adj[v].remove(w);
-        adj[w].remove(v);
+        if (!directed){
+            // 无向图才需要删除边w-v
+            adj[w].remove(v);
+        }
     }
 
     @Override
@@ -188,5 +192,12 @@ public class Graph implements IGraph, Cloneable {
         }
         // 出异常了就返回null
         return null;
+    }
+
+    /**
+     * 返回图片是否是有向图
+     */
+    public boolean isDirected() {
+        return directed;
     }
 }
