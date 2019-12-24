@@ -28,6 +28,9 @@ public class GraphDFSCycleDetect {
     private List<Integer> orderList = new ArrayList<>();
 
     public GraphDFSCycleDetect(Graph graph) {
+        if (graph.isDirected()){
+            throw new IllegalArgumentException("只能传入无向图！");
+        }
         this.graph = graph;
         // 初始化访问数组，用图的顶点个数来访问
         visited = new boolean[graph.V()];
