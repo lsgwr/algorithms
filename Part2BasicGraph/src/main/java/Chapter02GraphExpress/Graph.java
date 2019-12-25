@@ -27,6 +27,14 @@ public class Graph implements IGraph, Cloneable {
      * 邻接表，采用vector套vector的形式
      */
     private TreeSet<Integer>[] adj;
+    /**
+     * 所有顶点的入度
+     */
+    private int[] inDegrees;
+    /**
+     * 所有顶点的出度
+     */
+    private int[] outDegrees;
 
     public Graph(boolean directed) {
         this(0, directed);
@@ -36,6 +44,8 @@ public class Graph implements IGraph, Cloneable {
         this.vertices = vertices;
         this.edges = 0;
         this.directed = directed;
+        inDegrees = new int[vertices];
+        outDegrees = new int[vertices];
     }
 
 
@@ -54,6 +64,8 @@ public class Graph implements IGraph, Cloneable {
      */
     public void setVertices(int vertices) {
         this.vertices = vertices;
+        inDegrees = new int[vertices];
+        outDegrees = new int[vertices];
         // 泛型数组需要强制转换，可以认为是Java语言的缺陷
         adj = (TreeSet<Integer>[]) new TreeSet[vertices];
         for (int i = 0; i < vertices; i++) {
@@ -97,6 +109,10 @@ public class Graph implements IGraph, Cloneable {
         if (!directed) {
             // 无向图实际上是双向图，所以w到v也应该为true.如果是有向图这步就不用处理了
             adj[w].add(v);
+        } else {
+            // 有向图，入度和出度都要更新，因为是v-->w，所以v的出度+1，w的入度+1
+            outDegrees[v]++;
+            inDegrees[w]++;
         }
         // 边加1
         edges++;
@@ -117,17 +133,51 @@ public class Graph implements IGraph, Cloneable {
     @Override
     public int degree(int v) {
         // Todo:针对有向图的度比较麻烦，第13章最后讲
+        if (directed) {
+            throw new RuntimeException("degree()方法仅能用于无向图");
+        }
         return adj[v].size();
+    }
+
+    /**
+     * 顶点v的入度(其他边指向v的条数)
+     */
+    public int inDegree(int v) {
+        if (!directed){
+            throw new RuntimeException("inDegree()方法仅适用于有向图");
+        }
+        validateVertex(v);
+        return inDegrees[v];
+    }
+
+    /**
+     * 顶点v的出度(从v指向其他顶点的边数)
+     */
+    public int outDegree(int v) {
+        if (!directed){
+            throw new RuntimeException("outDegree()方法仅适用于有向图");
+        }
+        validateVertex(v);
+        return outDegrees[v];
     }
 
     @Override
     public void removeEdge(int v, int w) {
         validateVertex(v);
         validateVertex(w);
-        adj[v].remove(w);
-        if (!directed){
-            // 无向图才需要删除边w-v
-            adj[w].remove(v);
+        if (adj[v].contains(w)){
+            // 边数-1
+            edges--;
+            // v的邻接点包含w才进行删除边
+            adj[v].remove(w);
+            if (!directed) {
+                // 无向图才需要删除边w-v
+                adj[w].remove(v);
+            }else {
+                // 有向图需要更新入度和出度.v->w所以v的出度-1，w的入度-1
+                outDegrees[v]--;
+                inDegrees[w]--;
+            }
         }
     }
 
