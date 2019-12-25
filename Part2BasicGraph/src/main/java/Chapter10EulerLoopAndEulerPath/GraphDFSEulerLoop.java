@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 欧拉回路检测，满足如下3个条件
+ * @Description : 无向图欧拉回路检测，满足如下3个条件
  *                  1.无向
  *                  2.联通
  *                  3.每个点的度都是偶数
@@ -23,6 +23,9 @@ public class GraphDFSEulerLoop {
     List<Integer> loop = new ArrayList<>();
 
     public GraphDFSEulerLoop(Graph graph, int start) {
+        if (graph.isDirected()){
+            throw new RuntimeException("本类仅支持无向图");
+        }
         // 因为我们实现了Graph的深拷贝(clone函数)，所以赋值时是值传递，下面的修改不会影响原始的Graph
         this.graph = (Graph) graph.clone();
         if (!hasEulerLoop()) {
