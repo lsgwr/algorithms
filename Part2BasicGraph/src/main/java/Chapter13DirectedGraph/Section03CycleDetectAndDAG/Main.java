@@ -4,7 +4,7 @@
  * @date        : 2019/12/25 7:49
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter13DirectedGraph.Section3CycleDetectAndDAG;
+package Chapter13DirectedGraph.Section03CycleDetectAndDAG;
 
 import Chapter02GraphExpress.Graph;
 import Chapter02GraphExpress.ReadGraph;
