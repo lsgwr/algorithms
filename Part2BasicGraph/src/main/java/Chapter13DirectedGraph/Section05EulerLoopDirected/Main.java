@@ -40,7 +40,7 @@ public class Main {
         System.out.println(loop);
         System.out.println();
 
-        // 3.非递归无欧拉回路
+        // 4.非递归无欧拉回路
         filepath = "src/main/java/Chapter13DirectedGraph/Section05EulerLoopDirected/有向无权无欧拉回路图.txt";
         graph = new Graph(true);
         ReadGraph.init(graph, filepath);

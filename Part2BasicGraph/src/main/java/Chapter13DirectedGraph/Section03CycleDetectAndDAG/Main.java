@@ -19,11 +19,17 @@ public class Main {
 
     public static void main(String[] args) {
         // 1.无环
-        String filePath = "src/main/java/Chapter13DirectedGraph/Section3CycleDetectAndDAG/有向无权无权图.txt";
+        String filePath = "src/main/java/Chapter13DirectedGraph/Section03CycleDetectAndDAG/有向无权无权图.txt";
         showResult(filePath);
 
         // 2.有环
-        filePath = "src/main/java/Chapter13DirectedGraph/Section3CycleDetectAndDAG/有向无权有环图.txt";
+        filePath = "src/main/java/Chapter13DirectedGraph/Section03CycleDetectAndDAG/有向无权有环图.txt";
         showResult(filePath);
     }
 }
+/**
+ * 顶点数V = 5, 边数E = 5
+ * 当前图中无环
+ * 顶点数V = 5, 边数E = 6
+ * 当前图中有环
+ */
