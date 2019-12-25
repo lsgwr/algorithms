@@ -25,8 +25,8 @@ public class GraphDFSNoRecursionEulerLoopDirected {
     List<Integer> loop = new ArrayList<>();
 
     public GraphDFSNoRecursionEulerLoopDirected(Graph graph, int start) {
-        if (graph.isDirected()) {
-            throw new RuntimeException("本类仅支持无向图");
+        if (!graph.isDirected()) {
+            throw new RuntimeException("本类仅支持有向图");
         }
         // 因为我们实现了Graph的深拷贝(clone函数)，所以赋值时是值传递，下面的修改不会影响原始的Graph
         this.graph = (Graph) graph.clone();
