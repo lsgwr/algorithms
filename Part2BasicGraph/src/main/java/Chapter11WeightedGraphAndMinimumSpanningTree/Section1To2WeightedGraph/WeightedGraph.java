@@ -35,6 +35,12 @@ public class WeightedGraph implements IWeightedGraph, Cloneable {
         this.vertices = vertices;
         this.edges = 0;
         this.directed = directed;
+        // 泛型数组需要强制转换，可以认为是Java语言的缺陷
+        adj = (TreeMap<Integer, Integer>[]) new TreeMap[vertices];
+        for (int i = 0; i < vertices; i++) {
+            // 每个顶点都有一组邻边组成邻接表，用TreeMap可以提高性能
+            adj[i] = new TreeMap<>();
+        }
     }
 
 
