@@ -1,6 +1,7 @@
 /***********************************************************
- * @Description : :LeetCode LCP4.覆盖 多米诺骨牌问题
+ * @description : :LeetCode LCP4.覆盖 多米诺骨牌问题
  * https://leetcode-cn.com/problems/broken-board-dominoes/
+ * 基于BFS的匈牙利算法重做多米诺骨牌问题
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2019/12/27 18:58
  * @email       : liangshanguang2@gmail.com
