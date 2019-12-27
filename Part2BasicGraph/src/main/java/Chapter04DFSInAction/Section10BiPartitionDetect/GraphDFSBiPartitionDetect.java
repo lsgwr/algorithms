@@ -89,6 +89,13 @@ public class GraphDFSBiPartitionDetect {
     }
 
     /**
+     * 获取图划分后的二分图数组
+     */
+    public int[] getColors() {
+        return colors;
+    }
+
+    /**
      * dfs过程中检测当前图是否是二分图
      *
      * @param v     当前的顶点
