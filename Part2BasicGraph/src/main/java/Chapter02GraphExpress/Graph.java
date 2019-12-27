@@ -46,6 +46,12 @@ public class Graph implements IGraph, Cloneable {
         this.directed = directed;
         inDegrees = new int[vertices];
         outDegrees = new int[vertices];
+        // 泛型数组需要强制转换，可以认为是Java语言的缺陷
+        adj = (TreeSet<Integer>[]) new TreeSet[vertices];
+        for (int i = 0; i < vertices; i++) {
+            // 每个顶点都有一组邻边组成邻接表，用TreeSet可以提高性能
+            adj[i] = new TreeSet<>();
+        }
     }
 
 
