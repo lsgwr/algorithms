@@ -107,6 +107,7 @@ public class WeightedGraph implements IWeightedGraph, Cloneable {
         edges++;
     }
 
+
     /**
      * v和w之间是否存在边
      */
@@ -156,6 +157,19 @@ public class WeightedGraph implements IWeightedGraph, Cloneable {
         throw new IllegalArgumentException("边" + v + "-" + w + "不存在！");
     }
 
+    /**
+     * 设置路径v->w的权值为weight
+     */
+    public void setWeight(int v, int w, int weight) {
+        if (!hasEdge(v, w)){
+            throw new IllegalArgumentException(String.format("顶点%d和顶点%d之间没有边，无法设置边的权值!", v, w));
+        }
+        adj[v].put(w, weight);
+        if (!directed){
+            // 无向图要更新下w->v
+            adj[w].put(v, weight);
+        }
+    }
 
     /**
      * 返回顶点v的所有临边

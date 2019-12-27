@@ -1,5 +1,7 @@
 /***********************************************************
- * @Description : 网络最大流问题(基于多次BFS进行查找)
+ * @Description : 网络最大流问题(基于多次BFS进行查找)的Edmonds-Karp算法
+ * bfs以及增广路径的求解参考Chapter05BreadthFirstTraversal.Section3GraphBFSSingleSourcePath.GraphBFSSingleSourcePath.java
+ * 时间复杂度为O(V*E*E)，是个多项式级别的算法
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2019/12/26 23:39
  * @email       : liangshanguang2@gmail.com
@@ -79,7 +81,7 @@ public class MaxFlow {
         }
         // 不断进行bfs寻找增广路径
         while (true) {
-            List<Integer> augPath = getAugmentingPath();
+            List<Integer> augPath = getAugmentingPathByBfs();
             if (augPath.size() == 0) {
                 break;
             }
@@ -87,7 +89,7 @@ public class MaxFlow {
             int flow = Integer.MAX_VALUE;
             // 计算增广路径的权值最小值，作为增广路径的流量
             for (int i = 1; i < augPath.size(); i++) {
-                int v = augPath.get(i-1);
+                int v = augPath.get(i - 1);
                 int w = augPath.get(i);
                 // 不断更新本次增广路径上的最小流量值
                 flow = Math.min(flow, residualGraph.getWeight(v, w));
@@ -95,14 +97,22 @@ public class MaxFlow {
             // 不断累积每条增广路径的流量，最终找完所有的增广路径就得到了最终的网络最大流
             maxFlow += flow;
             // Todo:根据增广路径更新残量图residualGraph
+            for (int i = 1; i < augPath.size(); i++) {
+                int v = augPath.get(i - 1);
+                int w = augPath.get(i);
+                // 正向边 新的权值 = 原容量-流出的流量
+                residualGraph.setWeight(v, w, residualGraph.getWeight(v, w) - flow);
+                // 更新反向边的权值.。反向流中增加的流量为f
+                residualGraph.setWeight(w, v, residualGraph.getWeight(w, v) + flow);
+            }
         }
     }
 
     /**
      * 获取增广路径上所有顶点的集合，实际就是广度优先遍历
      */
-    private List<Integer> getAugmentingPath() {
-        // 残量网络进行bfs需要的变量，每次获取增广路径都要进行一次bfs，所以每次getAugmentingPath()都需要初始化visited和pre数组
+    private List<Integer> getAugmentingPathByBfs() {
+        // 残量网络进行bfs需要的变量，每次获取增广路径都要进行一次bfs，所以每次getAugmentingPathByBfs()都需要初始化visited和pre数组
         this.visited = new boolean[residualGraph.V()];
         // 给存储单源路径的数组赋值
         pre = new int[residualGraph.V()];
@@ -114,9 +124,10 @@ public class MaxFlow {
         visited[source] = true;
         // 起点的上一个节点可以认为是自己
         pre[source] = source;
+        // 在残量网络中进行bfs
         while (!queue.isEmpty()) {
             int v = queue.remove();
-            if (v==target){
+            if (v == target) {
                 // 到达汇点就可以退出了
                 break;
             }
@@ -130,9 +141,9 @@ public class MaxFlow {
             }
         }
         List<Integer> augPath = new ArrayList<>();
-        if (!visited[target]){
+        if (!visited[target]) {
             return augPath;
-        }else {
+        } else {
             // 找到了源点source到汇点target增广路径
             augPath = (List<Integer>) path(target);
         }
@@ -175,5 +186,23 @@ public class MaxFlow {
             // 没有路径就直接返回空集合
             return pathList;
         }
+    }
+
+    /**
+     * 获取最大流
+     */
+    public int getMaxFlow() {
+        return maxFlow;
+    }
+
+    /**
+     * 获取v->w之间的流量
+     */
+    public int getFlow(int v, int w) {
+        if (!networkGraph.hasEdge(v, w)){
+            throw new IllegalArgumentException(String.format("顶点%d和顶点%d之间没有边!", v, w));
+        }
+        // 不能用getWeight(v, w);，因为这个值是流出流量后剩余的权值，反向边的权值即允许逆序流回的流量，其值就是v->w走的流量
+        return residualGraph.getWeight(w, v);
     }
 }
