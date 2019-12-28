@@ -15,17 +15,30 @@ public class Main {
         String filepath = "src/main/java/Chapter15Matching/Section1to3Matching/graph.txt";
         Graph graph = new Graph(true);
         ReadGraph.init(graph, filepath);
-        HungarianBFS maxMatching = new HungarianBFS(graph);
-        System.out.println("最大匹配对数：" + maxMatching.getMaxMatch());
+        HungarianBFS maxMatchingBFS = new HungarianBFS(graph);
+        System.out.println("最大匹配对数：" + maxMatchingBFS.getMaxMatch());
         System.out.println();
 
         filepath = "src/main/java/Chapter15Matching/Section1to3Matching/graph2.txt";
         graph = new Graph(true);
         ReadGraph.init(graph, filepath);
-        maxMatching = new HungarianBFS(graph);
-        System.out.println("最大匹配对数：" + maxMatching.getMaxMatch());
+        maxMatchingBFS = new HungarianBFS(graph);
+        System.out.println("最大匹配对数：" + maxMatchingBFS.getMaxMatch());
+        System.out.println();
 
-        // Todo:2.基于DFS的匈牙利算法
+        // 2.基于DFS的匈牙利算法
+        filepath = "src/main/java/Chapter15Matching/Section1to3Matching/graph.txt";
+        graph = new Graph(true);
+        ReadGraph.init(graph, filepath);
+        HungarianDFS maxMatchingDFS = new HungarianDFS(graph);
+        System.out.println("最大匹配对数：" + maxMatchingDFS.getMaxMatch());
+        System.out.println();
+
+        filepath = "src/main/java/Chapter15Matching/Section1to3Matching/graph2.txt";
+        graph = new Graph(true);
+        ReadGraph.init(graph, filepath);
+        maxMatchingDFS = new HungarianDFS(graph);
+        System.out.println("最大匹配对数：" + maxMatchingDFS.getMaxMatch());
     }
 }
 /**

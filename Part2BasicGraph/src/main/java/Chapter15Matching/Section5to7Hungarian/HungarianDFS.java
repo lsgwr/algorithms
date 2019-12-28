@@ -61,16 +61,24 @@ public class HungarianDFS {
     /**
      * dfs找增广路径
      *
-     * @param source dfs遍历的起点
+     * @param source dfs遍历的起点，一定是二分图中左半部分的点
      * @return 本次dfs是否找到了增广路径
      */
     private boolean dfs(int source) {
         visited[source] = true;
         for (int u : graph.adj(source)) {
-            if (!visited[u]){
+            if (!visited[u]) {
                 visited[u] = true;
+                if (matching[u] == -1 || dfs(matching[u])) {
+                    // 等于-1表示未找到增广路径
+                    matching[source] = u;
+                    matching[u] = source;
+                    // u未被访问，即找到了1条增广路径,回到上一层递归
+                    return true;
+                }
             }
         }
+        return false;
     }
 
     /**
