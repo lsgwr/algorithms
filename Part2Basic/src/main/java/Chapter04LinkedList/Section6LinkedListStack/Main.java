@@ -38,12 +38,21 @@ public class Main {
 
         ArrayStack<Integer> arrayStack = new ArrayStack<>();
         double time1 = testStack(arrayStack, opCount);
-        System.out.println("ArrayStack, time: " + time1 + " s");
+        System.out.println("基于数组实现的栈ArrayStack, time: " + time1 + " s");
 
         LinkedListStack<Integer> linkedListStack = new LinkedListStack<>();
         double time2 = testStack(linkedListStack, opCount);
-        System.out.println("LinkedListStack, time: " + time2 + " s");
+        System.out.println("基于链表实现的栈LinkedListStack, time: " + time2 + " s");
+
+        JdkLinkedListStack<Integer> jdkLinkedListStack = new JdkLinkedListStack<>();
+        double time3 = testStack(jdkLinkedListStack, opCount);
+        System.out.println("基于JDK自带的链表实现的栈JdkLinkedListStack, time: " + time3 + " s");
 
         // 其实这个时间比较很复杂，因为LinkedListStack中包含更多的new操作
     }
 }
+/**
+ * 基于数组实现的栈ArrayStack, time: 0.0096867 s
+ * 基于链表实现的栈LinkedListStack, time: 0.0083597 s
+ * 基于JDK自带的链表实现的栈JdkLinkedListStack, time: 0.0082778 s
+ */

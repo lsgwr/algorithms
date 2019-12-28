@@ -59,3 +59,11 @@ public class LinkedListStack<Element> implements Stack<Element> {
         System.out.println(stack);
     }
 }
+/**
+ * Stack: top 0->NULL
+ * Stack: top 1->0->NULL
+ * Stack: top 2->1->0->NULL
+ * Stack: top 3->2->1->0->NULL
+ * Stack: top 4->3->2->1->0->NULL
+ * Stack: top 3->2->1->0->NULL
+ */

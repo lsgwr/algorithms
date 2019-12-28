@@ -44,8 +44,7 @@ public class JdkLinkedListStack<Element> implements Stack<Element> {
 
     @Override
     public String toString() {
-        String sb = "Stack: top " + list;
-        return sb;
+        return "Stack: top " + list;
     }
 
     public static void main(String[] args) {
@@ -58,3 +57,11 @@ public class JdkLinkedListStack<Element> implements Stack<Element> {
         System.out.println(stack);
     }
 }
+/**
+ * Stack: top [0]
+ * Stack: top [1, 0]
+ * Stack: top [2, 1, 0]
+ * Stack: top [3, 2, 1, 0]
+ * Stack: top [4, 3, 2, 1, 0]
+ * Stack: top [3, 2, 1, 0]
+ */
