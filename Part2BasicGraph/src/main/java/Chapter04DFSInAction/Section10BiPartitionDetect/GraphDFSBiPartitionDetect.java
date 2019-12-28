@@ -13,25 +13,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * 二分图染色过程中用到的颜色枚举,用于给定点染色
- */
-enum VertexColor {
-    BLUE(0, "蓝色"), GREEN(1, "绿色");
-
-    VertexColor(int num, String color) {
-        this.num = num;
-        this.color = color;
-    }
-
-    private int num;
-    private String color;
-
-    public int getNum() {
-        return num;
-    }
-}
-
 public class GraphDFSBiPartitionDetect {
     private Graph graph;
 
@@ -67,7 +48,7 @@ public class GraphDFSBiPartitionDetect {
         for (int v = 0; v < graph.V(); v++) {
             if (!visited[v]) {
                 // 第一个节点染成蓝色(0)
-                if (!dfs(v, VertexColor.BLUE.getNum())) {
+                if (!dfs(v, 0)) {
                     // 某一个联通分量不是二分图，整个图就不是二分图了，直接返回，不再检测剩下的二分图了
                     biPartition = false;
                     // 一旦检测到二分图立马跳出，一定别忘
