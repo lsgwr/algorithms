@@ -14,5 +14,4 @@ public class Main {
         ListNode result = (new Solution()).removeElements(head, 6);
         System.out.println(result);
     }
-
 }

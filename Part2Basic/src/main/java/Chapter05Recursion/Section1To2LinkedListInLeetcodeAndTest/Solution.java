@@ -22,20 +22,20 @@ class Solution {
             return null;
         }
 
-        // 如果中间遇到相等的节点
+        // 如果中间遇到相等的节点，经过前面对head的过滤，此时的head一定不等于val，即一定不是要删除的节点了，我们可以放心往下找了
         ListNode prev = head;
         while (prev.next != null) {
             // 如果中间遇到相等的值的话
             if (prev.next.val == val) {
                 ListNode delNode = prev.next;
                 prev.next = delNode.next;
-                delNode = null;
+                // 置为null，即脱离原链表，就会被JVM自动回收了
+                delNode.next = null;
             } else {
                 // 如果没遇到的话，就继续往下走
                 prev = prev.next;
             }
         }
-
         return head;
     }
 }
