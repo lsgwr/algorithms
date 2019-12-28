@@ -1,6 +1,6 @@
-# liuyubobobo-algorithms
+# algorithms
 
-> 慕课网刘宇波老师所有的算法视频教程在学习时自己的代码记录.后来又加了些其他的算法书籍和课程的学习
+> 慕课网刘宇波老师算法课程在学习时自己的学习笔记.后来又加了些其他的算法书籍和课程的学习
 
 - [Part1Basic](Part1Basic):算法基础，官方叫[《程序猿的内功修炼，学好算法与数据结构》](https://coding.imooc.com/learn/list/71.html) 
 
