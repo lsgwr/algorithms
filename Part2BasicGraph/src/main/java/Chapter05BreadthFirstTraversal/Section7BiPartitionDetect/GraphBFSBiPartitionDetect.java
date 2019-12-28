@@ -10,25 +10,6 @@ import Chapter02GraphExpress.Graph;
 
 import java.util.*;
 
-/**
- * 二分图染色过程中用到的颜色枚举,用于给定点染色
- */
-enum VertexColor {
-    BLUE(0, "蓝色"), GREEN(1, "绿色");
-
-    VertexColor(int num, String color) {
-        this.num = num;
-        this.color = color;
-    }
-
-    private int num;
-    private String color;
-
-    public int getNum() {
-        return num;
-    }
-}
-
 public class GraphBFSBiPartitionDetect {
 
     private Graph graph;
@@ -80,8 +61,8 @@ public class GraphBFSBiPartitionDetect {
         Queue<Integer> queue = new ArrayDeque<>();
         queue.add(source);
         visited[source] = true;
-        // 起始点染成蓝色，等效于colors[s] = 0;
-        colors[source] = VertexColor.BLUE.getNum();
+        // 起始点染成蓝色0，等效于colors[s] = 0;
+        colors[source] = 0;
         while (!queue.isEmpty()) {
             int v = queue.remove();
             orderList.add(v);
