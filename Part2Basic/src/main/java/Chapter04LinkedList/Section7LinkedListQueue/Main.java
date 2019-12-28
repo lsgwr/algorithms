@@ -38,14 +38,24 @@ public class Main {
 
         ArrayQueue<Integer> arrayQueue = new ArrayQueue<>();
         double time1 = testQueue(arrayQueue, opCount);
-        System.out.println("ArrayQueue, time: " + time1 + " s");
+        System.out.println("基于数组的队列ArrayQueue, time: " + time1 + " s");
 
         LoopQueue<Integer> loopQueue = new LoopQueue<>();
         double time2 = testQueue(loopQueue, opCount);
-        System.out.println("LoopQueue, time: " + time2 + " s");
+        System.out.println("基于循环队列LoopQueue, time: " + time2 + " s");
 
         LinkedListQueue<Integer> linkedListQueue = new LinkedListQueue<>();
         double time3 = testQueue(linkedListQueue, opCount);
-        System.out.println("LinkedListQueue, time: " + time3 + " s");
+        System.out.println("基于自己实现的链表构造的队列LinkedListQueue, time: " + time3 + " s");
+
+        JdkLinkedListQueue<Integer> jdkLinkedListQueue = new JdkLinkedListQueue<>();
+        double time4 = testQueue(jdkLinkedListQueue, opCount);
+        System.out.println("基于JDK自带的链表构造的队列JdkLinkedListQueue, time: " + time4 + " s");
     }
 }
+/**
+ * 基于数组的队列ArrayQueue, time: 2.561748501 s
+ * 基于循环队列LoopQueue, time: 0.0094739 s
+ * 基于自己实现的链表构造的队列LinkedListQueue, time: 0.008525399 s
+ * 基于JDK自带的链表构造的队列JdkLinkedListQueue, time: 0.0050826 s
+ */

@@ -108,7 +108,7 @@ public class LinkedListQueue<Element> implements Queue<Element> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Queue: front");
+        sb.append("Queue: front ");
         Node cur = head;
         while (cur != null) {
             sb.append(cur + "->");
@@ -131,3 +131,18 @@ public class LinkedListQueue<Element> implements Queue<Element> {
         }
     }
 }
+/**
+ * Queue: front 0->NULL tail
+ * Queue: front 0->1->NULL tail
+ * Queue: front 0->1->2->NULL tail
+ * Queue: front 1->2->NULL tail
+ * Queue: front 1->2->3->NULL tail
+ * Queue: front 1->2->3->4->NULL tail
+ * Queue: front 1->2->3->4->5->NULL tail
+ * Queue: front 2->3->4->5->NULL tail
+ * Queue: front 2->3->4->5->6->NULL tail
+ * Queue: front 2->3->4->5->6->7->NULL tail
+ * Queue: front 2->3->4->5->6->7->8->NULL tail
+ * Queue: front 3->4->5->6->7->8->NULL tail
+ * Queue: front 3->4->5->6->7->8->9->NULL tail
+ */
