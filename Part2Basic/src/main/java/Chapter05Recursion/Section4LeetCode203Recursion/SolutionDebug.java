@@ -18,12 +18,14 @@ class SolutionDebug {
      * @return
      */
     public ListNode removeElements(ListNode head, int val, int depth) {
+        // 下面两行是递归进入新层
         System.out.print(generateRecursionDepthStr(depth));
         System.out.println("第" + depth + "层递归：head=" + head + "，要找的值为节点值为：" + val);
         if (head == null) {
             return null;
         }
         head.next = removeElements(head.next, val, depth + 1);
+        // 下面两行是递归退出当前层
         System.out.print(generateRecursionDepthStr(depth));
         System.out.println("第" + depth + "层递归：head=" + head + "，要找的值为节点值为：" + val);
         // head节点要删除就直接跳过head节点，否则就返回原来的
