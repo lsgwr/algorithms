@@ -86,6 +86,7 @@ private void add(Node node, E e) {
         if (node.right == null) {
             // 执行完节点插入操作递归就会回退到上一层递归
             node.right = new Node(e);
+            size++;
         } else {
             // 没找到插入位置就继续往右侧递归
             add(node.right, e);
