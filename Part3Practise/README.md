@@ -1,4 +1,5 @@
 # [玩转算法面试 从真题到思维全面提升算法思维](https://coding.imooc.com/learn/list/82.html)
+> [刘老师关于自己的课程的学习建议](http://coding.imooc.com/learn/questiondetail/54345.html)
 
 + 第1章 算法面试到底是什么鬼?
   + 1-1 算法面试不仅仅是正确的回答问题  (19:37)
