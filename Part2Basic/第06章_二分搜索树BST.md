@@ -50,6 +50,11 @@
 [二分搜索树的基本代码结构](src/main/java/Chapter06BST/Section02BSTBasic/BST.java)
 
 ## 6.3 向二分搜索树中添加节点
+
+复习递归的组成部分
++ 1.递归终止条件
++ 2.递归组成逻辑
+
 向二分搜索树添加新元素
 + 若二叉树为空，直接把要插入的节点作为根节点
 + 若该节点要想插入到一个完整的二分搜索树中，我们需要从根节点出发与其比较，
@@ -183,5 +188,44 @@ private boolean contains(Node node, E e) {
  */
 public boolean contains(E e) {
     return contains(root, e);
+}
+```
+
+## 6.6 二分搜索树的前序遍历
+> 遍历操作就是把所有节点都访问一遍。前中后序遍历其实都相当于图的深度优先遍历DFS，想象着有一个栈在不断压入和弹出树的子节点即可。
+
+### 什么是遍历操作
+![什么是遍历操作](images/第06章_二分搜索树BST/什么是遍历操作.png)
+
+### 遍历操作的通用伪代码
+> 第1步访问节点的顺序在相对于2和3的位置决定了是前、中、后序遍历的哪一种
+![二分搜索树遍历的伪代码](images/第06章_二分搜索树BST/二分搜索树遍历的伪代码.png)
+
+实现代码如下：
+```java
+/**
+ * 遍历以node作为根节点的二分搜索树
+ */
+private void preOrder(Node node) {
+    // 递归终止条件
+    if (node == null) {
+        // 遍历到null节点就返回上一层递归
+        return;
+    }
+
+    // 递归组成逻辑
+    // 1.访问当前节点。需要存储时可以放到list中
+    System.out.print(node.e + " ");
+    // 2.遍历左子树
+    preOrder(node.left);
+    // 3.遍历右子树
+    preOrder(node.right);
+}
+
+/**
+ * 前序遍历
+ */
+public void preOrder() {
+    preOrder(root);
 }
 ```

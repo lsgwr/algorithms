@@ -69,10 +69,13 @@ public class BST<E extends Comparable<E>> {
      * @param e    要加入地元素e
      */
     private Node add(Node node, E e) {
-        // 只要碰到了为空的node，就一定要把我们的e作为节点添加到这里的，具体是作为左子树、右子树还是根节点到下面再进行设置
+        // 递归终止条件
         if (node == null) {
+            // 只要碰到了为空的node，就一定要把我们的e作为节点添加到这里的，具体是作为左子树、右子树还是根节点到下面再进行设置
             return new Node(e);
         }
+
+        // 递归组成逻辑
         if (e.compareTo(node.e) < 0) {
             // e小于根节点，往node的左子树继续遍历
             node.left = add(node.left, e);
@@ -97,10 +100,13 @@ public class BST<E extends Comparable<E>> {
      * 在以节点node为根节点的二分搜索树树中查找是否包含元素e
      */
     private boolean contains(Node node, E e) {
+        // 递归终止条件
         if (node == null) {
             // 遍历到到二叉树最底部了，还没找到，二分搜索树中肯定没有这个这个元素了
             return false;
         }
+
+        // 递归组成逻辑
         if (e.compareTo(node.e) < 0) {
             // e小于当前节点，向左递归
             return contains(node.left, e);
@@ -119,4 +125,32 @@ public class BST<E extends Comparable<E>> {
     public boolean contains(E e) {
         return contains(root, e);
     }
+
+    /**
+     * 遍历以node作为根节点的二分搜索树
+     */
+    private void preOrder(Node node) {
+        // 递归终止条件
+        if (node == null) {
+            // 遍历到null节点就返回上一层递归
+            return;
+        }
+
+        // 递归组成逻辑
+        // 1.访问当前节点。需要存储时可以放到list中
+        System.out.print(node.e + " ");
+        // 2.遍历左子树
+        preOrder(node.left);
+        // 3.遍历右子树
+        preOrder(node.right);
+    }
+
+    /**
+     * 前序遍历
+     */
+    public void preOrder() {
+        preOrder(root);
+    }
+
+
 }
