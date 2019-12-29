@@ -127,7 +127,7 @@ public class BST<E extends Comparable<E>> {
     }
 
     /**
-     * 遍历以node作为根节点的二分搜索树
+     * 前序遍历以node作为根节点的二分搜索树
      */
     private void preOrder(Node node) {
         // 递归终止条件
@@ -152,5 +152,55 @@ public class BST<E extends Comparable<E>> {
         preOrder(root);
     }
 
+    /**
+     * 中序遍历以node作为根节点的二分搜索树
+     */
+    private void inOrder(Node node) {
+        // 递归终止条件
+        if (node == null) {
+            // 遍历到null节点就返回上一层递归
+            return;
+        }
 
+        // 递归组成逻辑
+        // 2.遍历左子树
+        inOrder(node.left);
+        // 1.访问当前节点。需要存储时可以放到list中
+        System.out.print(node.e + " ");
+        // 3.遍历右子树
+        inOrder(node.right);
+    }
+
+    /**
+     * 中序遍历
+     */
+    public void inOrder() {
+        inOrder(root);
+    }
+
+    /**
+     * 后序遍历以node作为根节点的二分搜索树
+     */
+    private void postOrder(Node node) {
+        // 递归终止条件
+        if (node == null) {
+            // 遍历到null节点就返回上一层递归
+            return;
+        }
+
+        // 递归组成逻辑
+        // 2.遍历左子树
+        postOrder(node.left);
+        // 3.遍历右子树
+        postOrder(node.right);
+        // 1.访问当前节点。需要存储时可以放到list中
+        System.out.print(node.e + " ");
+    }
+
+    /**
+     * 后序遍历
+     */
+    public void postOrder() {
+        postOrder(root);
+    }
 }

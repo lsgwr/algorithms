@@ -229,3 +229,75 @@ public void preOrder() {
     preOrder(root);
 }
 ```
+
+## 6.7 中序遍历和后续遍历
+> 上一节有提"访问当前节点"步骤的位置决定是了前序、中序还是后序遍历，中序和后序的伪代码如下：
+
+### 中序遍历
+![中序遍历](images/第06章_二分搜索树BST/中序遍历伪代码.png)
+> 中序遍历有个特殊性质：中序遍历的结果是从小到大排序地~~
+![中序遍历的结果是从小到大排好序地](images/第06章_二分搜索树BST/中序遍历的结果是从小到大排好序地.png)
+
+代码实现：
+
+```java
+/**
+ * 中序遍历以node作为根节点的二分搜索树
+ */
+private void inOrder(Node node) {
+    // 递归终止条件
+    if (node == null) {
+        // 遍历到null节点就返回上一层递归
+        return;
+    }
+
+    // 递归组成逻辑
+    // 2.遍历左子树
+    inOrder(node.left);
+    // 1.访问当前节点。需要存储时可以放到list中
+    System.out.print(node.e + " ");
+    // 3.遍历右子树
+    inOrder(node.right);
+}
+
+/**
+ * 中序遍历
+ */
+public void inOrder() {
+    inOrder(root);
+}
+```
+### 后序遍历
+![后序遍历](images/第06章_二分搜索树BST/后序遍历伪代码.png)
+
+后序遍历应用
+> 为二分搜索树释放内存
+
+代码实现：
+```java
+/**
+ * 后序遍历以node作为根节点的二分搜索树
+ */
+private void postOrder(Node node) {
+    // 递归终止条件
+    if (node == null) {
+        // 遍历到null节点就返回上一层递归
+        return;
+    }
+
+    // 递归组成逻辑
+    // 2.遍历左子树
+    postOrder(node.left);
+    // 3.遍历右子树
+    postOrder(node.right);
+    // 1.访问当前节点。需要存储时可以放到list中
+    System.out.print(node.e + " ");
+}
+
+/**
+ * 后序遍历
+ */
+public void postOrder() {
+    postOrder(root);
+}
+```
