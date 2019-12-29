@@ -6,7 +6,7 @@
  ***********************************************************/
 package Chapter07SetAndMap.Section1SetBasicAndBSTSet;
 
-import Chapter06BST.和玩转数据结构CPP版第5章前8节重复.BST;
+import Chapter06BST.Part1BasicChapter05BST.BST;
 
 public class BSTSet<Element extends Comparable<Element>> implements Set<Element> {
 

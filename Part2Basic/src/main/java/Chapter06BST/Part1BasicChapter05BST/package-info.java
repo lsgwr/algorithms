@@ -4,4 +4,4 @@
  *               https://coding.imooc.com/learn/list/71.html
  *               第5章的前8节的BST代码实现(Java版本的实现)
  */
-package Chapter06BST.和玩转数据结构CPP版第5章前8节重复;
+package Chapter06BST.Part1BasicChapter05BST;

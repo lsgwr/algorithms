@@ -7,7 +7,7 @@
  * @date        : 2018/5/16 22:19
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter06BST.和玩转数据结构CPP版第5章前8节重复;
+package Chapter06BST.Part1BasicChapter05BST;
 
 // package Chapter5BinarySearchTree.Section8DeleteNode;
 
