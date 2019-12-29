@@ -44,3 +44,7 @@
 + 存储的元素必须具有**可比性**(`实现Comparable接口`)
 
 ![二分搜索树更多的性质](images/第06章_二分搜索树BST/二分搜索树更多的性质.png)
+
+### 二分搜索树的基本代码结构
+
+[二分搜索树的基本代码结构](src/main/java/Chapter06BST/Section02BSTBasic/BST.java)

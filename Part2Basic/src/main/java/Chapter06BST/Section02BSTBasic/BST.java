@@ -1,10 +1,10 @@
 /***********************************************************
- * @Description : 二分搜索树的实现，本章所有节的知识点汇总起来地最佳实现
+ * @Description : 二分搜索树的基本实现
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2019/12/29 19:45
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter06BST;
+package Chapter06BST.Section02BSTBasic;
 
 /**
  * @param <E> E表示Element，继承Comparable使得二叉树的元素是可比较的
@@ -43,7 +43,7 @@ public class BST<E extends Comparable<E>> {
 
     public BST() {
         this.root = null;
-        this.size = 0;
+        this.size=0;
     }
 
     /**
@@ -55,10 +55,9 @@ public class BST<E extends Comparable<E>> {
 
     /**
      * 判断二分搜索树是否为空
-     *
      * @return 通过节点总数是否为0来进行判断
      */
-    public boolean isEmpty() {
-        return this.size == 0;
+    public boolean isEmpty(){
+        return this.size==0;
     }
 }
