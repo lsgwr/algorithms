@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 移除链表中的元素,
+ * @Description : 移除链表中的元素，有重复值的话都删除
  * https://leetcode-cn.com/problems/remove-linked-list-elements/
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/16 20:46
@@ -11,12 +11,8 @@ class Solution {
     public ListNode removeElements(ListNode head, int val) {
         // 如果头节点就是要删除的节点
         while (head != null && head.val == val) {
-            // 暂存头结点
-            ListNode delNode = head;
-            // 头指针后移1位
+            // 头指针后移，就相当于释放先前的头指针了
             head = head.next;
-            // 置为null，就会被JVM自动回收了
-            delNode.next = null;
         }
         // 如果所有的节点都和要删除的节点相等，经过上面的循环，到这里链表已经为空了
         if (head == null) {
@@ -28,10 +24,8 @@ class Solution {
         while (prev.next != null) {
             // 如果中间遇到相等的值的话
             if (prev.next.val == val) {
-                ListNode delNode = prev.next;
-                prev.next = delNode.next;
-                // 置为null，即脱离原链表，就会被JVM自动回收了
-                delNode.next = null;
+                // 释放pre.next
+                prev.next = prev.next.next;
             } else {
                 // 如果没遇到的话，就继续往下走
                 prev = prev.next;
