@@ -155,4 +155,33 @@ public void add(E e) {
 ```
 
 ## 6.5 查询操作
+> 和上一节添加元素的逻辑很相似
 
+```java
+/**
+ * 在以节点node为根节点的二分搜索树树中查找是否包含元素e
+ */
+private boolean contains(Node node, E e) {
+    if (node == null) {
+        // 遍历到到二叉树最底部了，还没找到，二分搜索树中肯定没有这个这个元素了
+        return false;
+    }
+    if (e.compareTo(node.e) < 0) {
+        // e小于当前节点，向左递归
+        return contains(node.left, e);
+    } else if (e.compareTo(node.e) > 0) {
+        // e大于当前节点，向右递归
+        return contains(node.right, e);
+    } else {
+        // e等于当前节点，返回true
+        return true;
+    }
+}
+
+/**
+ * 看二分搜索树种是否包含元素e
+ */
+public boolean contains(E e) {
+    return contains(root, e);
+}
+```
