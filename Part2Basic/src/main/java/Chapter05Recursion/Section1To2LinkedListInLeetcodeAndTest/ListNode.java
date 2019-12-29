@@ -28,6 +28,7 @@ public class ListNode {
         ListNode cur = this;
         for (int i = 1; i < arr.length; i++) {
             cur.next = new ListNode(arr[i]);
+            // cur指向cur.next
             cur = cur.next;
         }
     }
@@ -41,7 +42,8 @@ public class ListNode {
         StringBuilder s = new StringBuilder();
         ListNode cur = this;
         while (cur != null) {
-            s.append(cur.val + "->");
+            s.append(cur.val).append("->");
+            // cur指向cur.next
             cur = cur.next;
         }
         s.append("NULL");

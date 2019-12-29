@@ -18,13 +18,12 @@ class Solutio2 {
             if (prev.next.val == val) {
                 ListNode delNode = prev.next;
                 prev.next = delNode.next;
-                delNode = null;
+                delNode.next = null;
             } else {
                 // 如果没遇到的话，就继续往下走
                 prev = prev.next;
             }
         }
-
         return dummyHead.next;
     }
 }

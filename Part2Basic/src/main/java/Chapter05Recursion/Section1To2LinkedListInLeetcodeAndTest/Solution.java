@@ -1,5 +1,6 @@
 /***********************************************************
- * @Description : 
+ * @Description : 移除链表中的元素,
+ * https://leetcode-cn.com/problems/remove-linked-list-elements/
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/16 20:46
  * @email       : liangshanguang2@gmail.com
@@ -12,7 +13,7 @@ class Solution {
         while (head != null && head.val == val) {
             // 暂存头结点
             ListNode delNode = head;
-            // 头指针后移以为
+            // 头指针后移1位
             head = head.next;
             // 置为null，就会被JVM自动回收了
             delNode.next = null;
