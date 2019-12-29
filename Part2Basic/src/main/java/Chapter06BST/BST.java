@@ -68,43 +68,29 @@ public class BST<E extends Comparable<E>> {
      * @param node 二分搜索树的根节点
      * @param e    要加入地元素e
      */
-    private void add(Node node, E e) {
+    private Node add(Node node, E e) {
+        // 只要碰到了为空的node，就一定要把我们的e作为节点添加到这里的，具体是作为左子树、右子树还是根节点到下面再进行设置
+        if (node == null) {
+            return new Node(e);
+        }
         if (e.compareTo(node.e) < 0) {
             // e小于根节点，往node的左子树继续遍历
-            if (node.left == null) {
-                // 执行完节点插入操作递归就会回退到上一层递归
-                node.left = new Node(e);
-                size++;
-            } else {
-                // 没找到插入位置就继续往左侧递归
-                add(node.left, e);
-            }
+            node.left = add(node.left, e);
         } else if (e.compareTo(node.e) > 0) {
-            // e小于根节点，往node的右子树继续遍历
-            if (node.right == null) {
-                // 执行完节点插入操作递归就会回退到上一层递归
-                node.right = new Node(e);
-                size++;
-            } else {
-                // 没找到插入位置就继续往右侧递归
-                add(node.right, e);
-            }
+            // e大于根节点，往node的右子树继续遍历
+            node.right = add(node.right, e);
         }
-        // 如果和遍历到的节点相等即e.compareTo(node.e)==0，不做插入操作。因为我们实现的二分搜索树不允许有重复元素。
-        // 这里我们直接不处理这种情况，递归会直接回退到上一层递归
+        // 如果和遍历到的节点相等即e.compareTo(node.e)==0则直接跳过，不做任何处理，因为我们实现的二分搜索树不允许有重复元素。
+
+        // 当这个node是把e给new出来地就设置到子节点为空的上面去；如果不是new出来地相当于把已有的二分搜索树中的节点关系又设置一次
+        return node;
     }
 
     /**
      * 向二分搜索树中添加元素e
      */
     public void add(E e) {
-        if (root == null) {
-            // 如果二分搜索树为空，直接把要加入的节点作为新节点
-            root = new Node(e);
-            size++;
-        } else {
-            add(root, e);
-        }
+        root = add(root, e);
     }
 
 
