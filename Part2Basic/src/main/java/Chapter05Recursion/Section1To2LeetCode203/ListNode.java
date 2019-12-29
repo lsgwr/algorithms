@@ -4,7 +4,7 @@
  * @date        : 2018/5/16 20:45
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter05Recursion.Section1To2LinkedListInLeetcodeAndTest;
+package Chapter05Recursion.Section1To2LeetCode203;
 
 public class ListNode {
     int val;

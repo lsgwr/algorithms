@@ -5,7 +5,7 @@
  * @date        : 2018/5/16 20:46
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter05Recursion.Section1To2LinkedListInLeetcodeAndTest;
+package Chapter05Recursion.Section1To2LeetCode203;
 
 class Solution {
     public ListNode removeElements(ListNode head, int val) {
