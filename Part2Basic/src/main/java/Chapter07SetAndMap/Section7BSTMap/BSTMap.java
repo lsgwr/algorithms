@@ -6,7 +6,7 @@
  ***********************************************************/
 package Chapter07SetAndMap.Section7BSTMap;
 
-import Chapter06BST.BST;
+import Chapter06BST.和玩转数据结构CPP版第5章前8节重复.BST;
 import Chapter07SetAndMap.Section5MapBasic.Map;
 
 public class BSTMap<Key extends Comparable<Key>, Value> implements Map<Key, Value> {

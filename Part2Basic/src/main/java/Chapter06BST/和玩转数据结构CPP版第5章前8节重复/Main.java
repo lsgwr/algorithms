@@ -4,7 +4,7 @@
  * @date        : 2018/5/16 22:43
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter06BST;
+package Chapter06BST.和玩转数据结构CPP版第5章前8节重复;
 
 import java.util.Random;
 
