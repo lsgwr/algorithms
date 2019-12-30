@@ -12,7 +12,7 @@
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
 package Chapter06BST;
-
+//import Chapter06BST.teacher.BST;
 public class Main {
     public static void main(String[] args) {
         BST<Integer> bst = new BST<>();
@@ -55,7 +55,11 @@ public class Main {
         // 8.删除最大元素，可以debug看树的新结构，不断删除最大元素就实现了降序排列
         System.out.print("刪除最大元素：");
         System.out.println(bst.removeMax());
-        System.out.println();
+
+        // 9.删除元素5，只剩6->3->4，6是根节点，3是6的左节点，4是3的右节点
+        System.out.print("刪除元素5后：");
+        bst.remove(5);
+        bst.preOrder();
     }
 }
 /**

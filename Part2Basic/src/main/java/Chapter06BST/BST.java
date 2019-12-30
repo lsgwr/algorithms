@@ -6,8 +6,6 @@
  ***********************************************************/
 package Chapter06BST;
 
-import Chapter03StackAndQueues.Section5ArrayQueue.ArrayQueue;
-
 import java.util.ArrayDeque;
 import java.util.Queue;
 
@@ -360,7 +358,7 @@ public class BST<E extends Comparable<E>> {
      * @param e 节点的值
      */
     public void remove(E e) {
-        remove(root, e);
+        root = remove(root, e);
     }
 
     /**
@@ -381,9 +379,11 @@ public class BST<E extends Comparable<E>> {
         if (e.compareTo(node.e) < 0) {
             // 要找的值比当前节点小，向左递归
             node.left = remove(node.left, e);
+            return node;
         } else if (e.compareTo(node.e) > 0) {
             // 要找的值比当前节点大，向右递归
             node.right = remove(node.right, e);
+            return node;
         } else {
             // node.e == e 找到相等的节点了，下面删除指定值的节点
             if (node.left == null) {
@@ -404,18 +404,15 @@ public class BST<E extends Comparable<E>> {
             }
             // node的左右子树都不为空，就找node的右子树的最小值来代替node
             Node minimumRight = minimum(node.right);
-            // 替换当前节点node的左右子树
-            minimumRight.left = node.left;
+            // 警告：下面两行代码一定不要颠倒，一定要先设置right再设置left，否则会出现迭代引用！
             // 选出node右子树最小元素来代替node，那么右子树最小元素就要从原来位置删掉
             minimumRight.right = removeMin(node.right);
+            // 替换当前节点node的左右子树
+            minimumRight.left = node.left;
             // 释放node的引用
-            node.left=null;
-            node.right=null;
+            node.left = node.right = null;
             // 返回给上一级来设置父节点
             return minimumRight;
         }
-
-        // 递归结束，一层层把当前节点返回给父节点设置下节点间关系
-        return node;
     }
 }
