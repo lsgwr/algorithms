@@ -281,4 +281,76 @@ public class BST<E extends Comparable<E>> {
         }
         return maximum(root).e;
     }
+
+    /**
+     * 从二分搜索树种删除最小元素并返回
+     *
+     * @return 删除的最小元素
+     */
+    public E removeMin() {
+        // 这里先记录下最小值，防止下面removeMin()后树结构变了
+        E min = minimum();
+        // 这个递归函数返回地是新子树的根节点，不是我们要找地最小值
+        root = removeMin(root);
+        // 直接用我们前面找到的最小元素来返回
+        return min;
+    }
+
+    /**
+     * 删除以node作为根节点的二分搜索树中的最小节点，并返回删除节点后的新的二分搜索树的根节点
+     *
+     * @param node 根节点
+     */
+    private Node removeMin(Node node) {
+        // 递归终止条件
+        if (node.left == null) {
+            // 递归遍历到左子树为空，说明找到了最小节点node
+            // node.right是否为空都可以正常返回给上一级的父节点来设置父节点的左节点直接指向当前节点的右子树
+            Node rightNode = node.right;
+            node.right = null;
+            size--;
+            return rightNode;
+        }
+
+        // 递归组成逻辑
+        // 当左节点不是null时就正常往下递归，返回当前节点给上一层节点设置下自己的左节点
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    /**
+     * 从二分搜索树种删除最大元素并返回
+     *
+     * @return 删除的最大元素
+     */
+    public E removeMax() {
+        // 这里先记录下最大值，removeMax()后树结构变了
+        E max = maximum();
+        // 这个递归函数返回地是新子树的根节点，不是我们要找地最大值
+        root = removeMax(root);
+        // 直接用我们前面找到的最大元素来返回
+        return max;
+    }
+
+    /**
+     * 删除以node作为根节点的二分搜索树中的最大节点，并返回删除节点后的新的二分搜索树的根节点
+     *
+     * @param node 根节点
+     */
+    private Node removeMax(Node node) {
+        // 递归终止条件
+        if (node.right == null) {
+            // 递归遍历到右子树为空，说明找到了最大节点node
+            // node.left是否为空都可以正常返回给上一级的父节点来设置父节点的右节点直接指向当前节点的左子树
+            Node leftNode = node.left;
+            node.left = null;
+            size--;
+            return leftNode;
+        }
+
+        // 递归组成逻辑
+        // 当右节点不是null时就正常往下递归，返回当前节点给上一层节点设置下自己的右节点
+        node.right = removeMax(node.right);
+        return node;
+    }
 }

@@ -47,6 +47,15 @@ public class Main {
         // 6.查找二叉树的最大值
         System.out.print("二分搜索树的最大值为：");
         System.out.println(bst.maximum());
+
+        // 7.刪除最小元素，可以debug看树的新结构，不断删除最小元素就实现了升序排列
+        System.out.print("刪除最小元素：");
+        System.out.println(bst.removeMin());
+
+        // 8.删除最大元素，可以debug看树的新结构，不断删除最大元素就实现了降序排列
+        System.out.print("刪除最大元素：");
+        System.out.println(bst.removeMax());
+        System.out.println();
     }
 }
 /**
@@ -56,4 +65,6 @@ public class Main {
  * 层序遍历的结果为：5 3 6 2 4 8
  * 二分搜索树的最小值为：2
  * 二分搜索树的最大值为：8
+ * 刪除最小元素：2
+ * 刪除最大元素：8
  */
