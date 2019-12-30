@@ -322,3 +322,35 @@ public void postOrder() {
 ### 6.10 层序遍历
 > 和图的BFS类似，参考[图中的BFS遍历](Part2BasicGraph/第05章_图的广度优先遍历.md#51-从树的广度优先遍历到图的广度优先遍历)和[dfs和bfs的神奇联系](../Part2BasicGraph/第05章_图的广度优先遍历.md#510-dfs和bfs的神奇联系)，一般用地是基于队列的非递归实现。
 ![层序遍历](images/第06章_二分搜索树BST/层序遍历.png)
+
+代码实现如下：
+
+```java
+ /**
+  * 层序遍历
+  */
+public void levelOrder() {
+    levelOrder(root);
+}
+
+/**
+  * 层序遍历以node作为根节点的二分搜索树
+  *
+  * @param root 二分搜索树的根节点
+  */
+private void levelOrder(Node root) {
+    Queue<Node> queue = new ArrayDeque<>();
+    queue.add(root);
+    while (!queue.isEmpty()) {
+        Node node = queue.remove();
+        // 每次弹出一个元素就打印下
+        System.out.print(node.e + " ");
+        if (node.left != null) {
+            queue.add(node.left);
+        }
+        if (node.right != null) {
+            queue.add(node.right);
+        }
+    }
+}
+```
