@@ -353,4 +353,69 @@ public class BST<E extends Comparable<E>> {
         node.right = removeMax(node.right);
         return node;
     }
+
+    /**
+     * 删除指定值的结点
+     *
+     * @param e 节点的值
+     */
+    public void remove(E e) {
+        remove(root, e);
+    }
+
+    /**
+     * 删除
+     *
+     * @param node 二分搜索树的根节点
+     * @param e    待删除节点的值
+     * @return 要挂载到当前节点父节点的子树
+     */
+    private Node remove(Node node, E e) {
+        // 递归终止条件
+        if (node == null) {
+            return null;
+        }
+
+        // 递归组成逻辑
+        // 还没找到就接着往下找
+        if (e.compareTo(node.e) < 0) {
+            // 要找的值比当前节点小，向左递归
+            node.left = remove(node.left, e);
+        } else if (e.compareTo(node.e) > 0) {
+            // 要找的值比当前节点大，向右递归
+            node.right = remove(node.right, e);
+        } else {
+            // node.e == e 找到相等的节点了，下面删除指定值的节点
+            if (node.left == null) {
+                Node rightNode = node.right;
+                // 释放引用
+                node.right = null;
+                size--;
+                // 左节点为空，把node的右子树挂接到node的父亲节点即可
+                return rightNode;
+            }
+            if (node.right == null) {
+                Node leftNode = node.left;
+                // 释放引用
+                node.left = null;
+                size--;
+                // 右节点为空，把node的左子树挂接到node的父亲节点即可
+                return leftNode;
+            }
+            // node的左右子树都不为空，就找node的右子树的最小值来代替node
+            Node minimumRight = minimum(node.right);
+            // 替换当前节点node的左右子树
+            minimumRight.left = node.left;
+            // 选出node右子树最小元素来代替node，那么右子树最小元素就要从原来位置删掉
+            minimumRight.right = removeMin(node.right);
+            // 释放node的引用
+            node.left=null;
+            node.right=null;
+            // 返回给上一级来设置父节点
+            return minimumRight;
+        }
+
+        // 递归结束，一层层把当前节点返回给父节点设置下节点间关系
+        return node;
+    }
 }
