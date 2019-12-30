@@ -34,10 +34,16 @@ public class Main {
         System.out.print("后序遍历的结果为：");
         bst.postOrder();
         System.out.println();
+
+        // 4.层序遍历测试
+        System.out.print("层序遍历的结果为：");
+        bst.levelOrder();
+        System.out.println();
     }
 }
 /**
  * 前序遍历的结果为：5 3 2 4 6 8
  * 中序遍历的结果为：2 3 4 5 6 8
  * 后序遍历的结果为：2 4 3 8 6 5
+ * 层序遍历的结果为：5 3 6 2 4 8
  */

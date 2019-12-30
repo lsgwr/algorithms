@@ -6,6 +6,11 @@
  ***********************************************************/
 package Chapter06BST;
 
+import Chapter03StackAndQueues.Section5ArrayQueue.ArrayQueue;
+
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 /**
  * @param <E> E表示Element，继承Comparable使得二叉树的元素是可比较的，可以用compareTo()方法进行比较
  * @author liangshanguang
@@ -202,5 +207,33 @@ public class BST<E extends Comparable<E>> {
      */
     public void postOrder() {
         postOrder(root);
+    }
+
+    /**
+     * 层序遍历
+     */
+    public void levelOrder() {
+        levelOrder(root);
+    }
+
+    /**
+     * 层序遍历以node作为根节点的二分搜索树
+     *
+     * @param root 二分搜索树的根节点
+     */
+    private void levelOrder(Node root) {
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Node node = queue.remove();
+            // 每次弹出一个元素就打印下
+            System.out.print(node.e + " ");
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
     }
 }
