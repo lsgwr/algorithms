@@ -260,5 +260,25 @@ public class BST<E extends Comparable<E>> {
         return minimum(root).e;
     }
 
+    /**
+     * 寻找以node作为跟节点的二分搜索树的最大节点
+     *
+     * @param node 根节点
+     */
+    private Node maximum(Node node) {
+        if (node.right == null) {
+            return node;
+        }
+        return maximum(node.right);
+    }
 
+    /**
+     * 寻找二分搜索树的最大元素
+     */
+    public E maximum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST为空！无法找最小值");
+        }
+        return maximum(root).e;
+    }
 }

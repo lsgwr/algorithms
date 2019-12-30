@@ -43,6 +43,10 @@ public class Main {
         // 5.查找二叉树的最小值
         System.out.print("二分搜索树的最小值为：");
         System.out.println(bst.minimum());
+
+        // 6.查找二叉树的最大值
+        System.out.print("二分搜索树的最大值为：");
+        System.out.println(bst.maximum());
     }
 }
 /**
@@ -51,4 +55,5 @@ public class Main {
  * 后序遍历的结果为：2 4 3 8 6 5
  * 层序遍历的结果为：5 3 6 2 4 8
  * 二分搜索树的最小值为：2
+ * 二分搜索树的最大值为：8
  */
