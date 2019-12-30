@@ -39,6 +39,10 @@ public class Main {
         System.out.print("层序遍历的结果为：");
         bst.levelOrder();
         System.out.println();
+
+        // 5.查找二叉树的最小值
+        System.out.print("二分搜索树的最小值为：");
+        System.out.println(bst.minimum());
     }
 }
 /**
@@ -46,4 +50,5 @@ public class Main {
  * 中序遍历的结果为：2 3 4 5 6 8
  * 后序遍历的结果为：2 4 3 8 6 5
  * 层序遍历的结果为：5 3 6 2 4 8
+ * 二分搜索树的最小值为：2
  */

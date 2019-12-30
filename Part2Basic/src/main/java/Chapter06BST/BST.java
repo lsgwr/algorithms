@@ -77,6 +77,7 @@ public class BST<E extends Comparable<E>> {
         // 递归终止条件
         if (node == null) {
             // 只要碰到了为空的node，就一定要把我们的e作为节点添加到这里的，具体是作为左子树、右子树还是根节点到下面再进行设置
+            size++;
             return new Node(e);
         }
 
@@ -236,4 +237,28 @@ public class BST<E extends Comparable<E>> {
             }
         }
     }
+
+    /**
+     * 寻找以node作为跟节点的二分搜索树的最小节点
+     *
+     * @param node 根节点
+     */
+    private Node minimum(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+        return minimum(node.left);
+    }
+
+    /**
+     * 寻找二分搜索树的最小元素
+     */
+    public E minimum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST为空！无法找最小值");
+        }
+        return minimum(root).e;
+    }
+
+
 }
