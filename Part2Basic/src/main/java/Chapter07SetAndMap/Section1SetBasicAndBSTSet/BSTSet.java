@@ -6,11 +6,12 @@
  ***********************************************************/
 package Chapter07SetAndMap.Section1SetBasicAndBSTSet;
 
-import Chapter06BST.Part1BasicChapter05BST.BST;
+
+import Chapter06BST.BST;
 
 public class BSTSet<Element extends Comparable<Element>> implements Set<Element> {
 
-    private BST<Element, Element> bst;
+    private BST<Element> bst;
 
     public BSTSet() {
         bst = new BST<>();
@@ -18,23 +19,23 @@ public class BSTSet<Element extends Comparable<Element>> implements Set<Element>
 
     @Override
     public void add(Element element) {
-        bst.insert(element, element);
+        bst.add(element);
     }
 
     @Override
     public void delete(Element element) {
-        bst.deleteNode(element);
+        bst.remove(element);
     }
 
     @Override
     public boolean contain(Element element) {
         // 这里的element实际指地是key哈
-        return bst.contain(element);
+        return bst.contains(element);
     }
 
     @Override
     public int getSize() {
-        return bst.size();
+        return bst.getSize();
     }
 
     @Override
