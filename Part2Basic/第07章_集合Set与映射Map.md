@@ -51,3 +51,7 @@ class Solution {
 ### 有序映射TreeMap和无序映射HashMap
 + TreeMap基于平衡二分搜索树实现(红黑树)
 + HashMap基于哈希表实现
+
+## 7.9 LeetCode上关于Set和Map的问题
++ [349.求数组交集](https://leetcode-cn.com/problems/intersection-of-two-arrays/)
++ [350.求数组交集II](https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/comments/)
