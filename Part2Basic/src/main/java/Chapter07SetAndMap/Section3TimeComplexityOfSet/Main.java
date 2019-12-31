@@ -35,7 +35,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String filename = "/Users/liangshanguang/Program/Algorithm/liuyubobobo-algorithms/Part2Basic/src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt";
+        String filename = "src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt";
 
         BSTSet<String> bstSet = new BSTSet<>();
         double time1 = testSet(bstSet, filename);
@@ -50,3 +50,14 @@ public class Main {
     }
 
 }
+/**
+ * src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt
+ * Total words: 125901
+ * Total different words: 6530
+ * AVLTree Set: 0.085380201 s
+ *
+ * src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt
+ * Total words: 125901
+ * Total different words: 6530
+ * Linked List Set: 2.0119759 s
+ */

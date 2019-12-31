@@ -16,7 +16,7 @@ public class Main {
         System.out.println("Pride and Prejudice");
 
         ArrayList<String> words1 = new ArrayList<>();
-        String filename = "/Users/liangshanguang/Program/Algorithm/liuyubobobo-algorithms/Part2Basic/src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt";
+        String filename = "src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt";
         if (FileOperation.readFile(filename, words1)) {
             System.out.println("Total words: " + words1.size());
 
@@ -33,7 +33,7 @@ public class Main {
         System.out.println("A Tale of Two Cities");
 
         ArrayList<String> words2 = new ArrayList<>();
-        filename = "/Users/liangshanguang/Program/Algorithm/liuyubobobo-algorithms/Part2Basic/src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/a-tale-of-two-cities.txt";
+        filename = "src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/a-tale-of-two-cities.txt";
         if (FileOperation.readFile(filename, words2)) {
             System.out.println("Total words: " + words2.size());
 
@@ -45,3 +45,12 @@ public class Main {
         }
     }
 }
+/**
+ * Pride and Prejudice
+ * Total words: 125901
+ * Total different words: 6530
+ *
+ * A Tale of Two Cities
+ * Total words: 141489
+ * Total different words: 9944
+ **/
