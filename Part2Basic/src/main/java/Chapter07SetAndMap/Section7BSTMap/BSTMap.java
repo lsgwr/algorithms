@@ -1,5 +1,7 @@
 /***********************************************************
- * @Description : 基于BST实现地Map,效率要更高
+ * @Description : 基于BST实现地Map,效率要更高。
+ * 第1节实现地BST只支持传入一个1个E，为了支持传入键值对，所以用其他的实现了
+ * 比如玩转数据结构C++版里写的 Chapter06BST.Part1BasicChapter05BST.BST
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/17 23:46
  * @email       : liangshanguang2@gmail.com

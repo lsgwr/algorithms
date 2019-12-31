@@ -15,7 +15,7 @@ public class Main {
         System.out.println("Pride and Prejudice");
 
         ArrayList<String> words = new ArrayList<>();
-        String filename = "/Users/liangshanguang/Program/Algorithm/liuyubobobo-algorithms/Part2Basic/src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt";
+        String filename = "src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt";
         if (FileOperation.readFile(filename, words)) {
             System.out.println("Total words: " + words.size());
 
@@ -37,3 +37,10 @@ public class Main {
         System.out.println();
     }
 }
+/**
+ * Pride and Prejudice
+ * Total words: 125901
+ * Total different words: 6530
+ * Frequency of PRIDE : 53
+ * Frequency of PREJUDICE : 11
+ */

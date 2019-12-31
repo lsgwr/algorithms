@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 基于链表实现地Map
+ * @Description : 基于链表实现地Map，之所以重写是因为原来的链表至支持传入一个元素
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/17 22:24
  * @email       : liangshanguang2@gmail.com

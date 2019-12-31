@@ -34,3 +34,20 @@ class Solution {
     }
 }
 ```
+
+## 7.5~7.8 映射Map
+### 基于BST和LinkedList都可以实现Map，但是节点需要改装下,需要支持键值对
+> 基于BST的实现要比基于LinkedList时间复杂度低很多
++ [基于BST的Map实现](src/main/java/Chapter07SetAndMap/Section7BSTMap/BSTMap.java)
++ [基于LinkedList的Map实现](src/main/java/Chapter07SetAndMap/Section7BSTMap/BSTMap.java)
+![基于BST和二分搜索属都可以实现Map](https://img.mukewang.com/szimg/5e0b35010001a12219201080.jpg)
+
+### 基于LinkedList的Map和基于BST的MAP比较
+![基于LinkedList的Map和基于BST的MAP比较](https://img.mukewang.com/szimg/5e0b39c50001ea9b19201080.jpg)
+
+### 测试两种实现的性能
++ [测试代码](src/main/java/Chapter07SetAndMap/Section8TestMap/Main.java)
+
+### 有序映射TreeMap和无序映射HashMap
++ TreeMap基于平衡二分搜索树实现(红黑树)
++ HashMap基于哈希表实现
