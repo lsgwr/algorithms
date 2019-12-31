@@ -470,3 +470,79 @@ private Node removeMax(Node node) {
     > ![删除任意值的元素3](images/第06章_二分搜索树BST/删除任意值的元素3.png)
   
 3中的算法是在1962年由Hibbard提出的，名称叫`Hibbard Deletion`
+
+```java
+/**
+ * 删除指定值的结点
+ *
+ * @param e 节点的值
+ */
+public void remove(E e) {
+    root = remove(root, e);
+}
+
+/**
+ * 删除
+ *
+ * @param node 二分搜索树的根节点
+ * @param e    待删除节点的值
+ * @return 要挂载到当前节点父节点的子树
+ */
+private Node remove(Node node, E e) {
+    // 递归终止条件
+    if (node == null) {
+        return null;
+    }
+
+    // 递归组成逻辑
+    // 还没找到就接着往下找
+    if (e.compareTo(node.e) < 0) {
+        // 要找的值比当前节点小，向左递归
+        node.left = remove(node.left, e);
+        return node;
+    } else if (e.compareTo(node.e) > 0) {
+        // 要找的值比当前节点大，向右递归
+        node.right = remove(node.right, e);
+        return node;
+    } else {
+        // node.e == e 找到相等的节点了，下面删除指定值的节点
+        if (node.left == null) {
+            Node rightNode = node.right;
+            // 释放引用
+            node.right = null;
+            size--;
+            // 左节点为空，把node的右子树挂接到node的父亲节点即可
+            return rightNode;
+        }
+        if (node.right == null) {
+            Node leftNode = node.left;
+            // 释放引用
+            node.left = null;
+            size--;
+            // 右节点为空，把node的左子树挂接到node的父亲节点即可
+            return leftNode;
+        }
+        // node的左右子树都不为空，就找node的右子树的最小值来代替node
+        Node minimumRight = minimum(node.right);
+        // 警告：下面两行代码一定不要颠倒，一定要先设置right再设置left，否则会出现迭代引用！
+        // 选出node右子树最小元素来代替node，那么右子树最小元素就要从原来位置删掉
+        minimumRight.right = removeMin(node.right);
+        // 替换当前节点node的左右子树
+        minimumRight.left = node.left;
+        // 释放node的引用
+        node.left = node.right = null;
+        // 返回给上一级来设置父节点
+        return minimumRight;
+    }
+}
+```
+
+## 6.13 BST的更多操作
+> 自己尝试写一下~
+
++ floor：小于目标值的最大值
++ ceil：大于目标值的最小值
++ rank：在BST中的排名
++ select：选出指定排名的元素(引入size用于统计每个子树的节点个数)
++ 支持重复元素的二分搜索树，引入count(相同元素存了几个)
++ [LeetCode上树相关的问题](https://leetcode-cn.com/tag/tree/)
