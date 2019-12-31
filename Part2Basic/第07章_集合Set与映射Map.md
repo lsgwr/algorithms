@@ -6,11 +6,11 @@
 + [基于BST的Set](src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/BSTSet.java)
 + [基于LinkedList的Map](src/main/java/Chapter07SetAndMap/Section2LinkedListSet/LinkedListSet.java)
 
-![BST和LinkedList都属于动态数据结构](https://img.mukewang.com/szimg/5e0b2b370001bb3b19201080.jpg)
+![BST和LinkedList都属于动态数据结构](images/第07章_集合与映射/BST和LinkedList都属于动态数据结构.png)
 
 ### BSTSet和LinkedList的时间复杂度比较
 > O(h)即O(logn)
-![BSTSet和LinkedList的时间复杂度比较](https://img.mukewang.com/szimg/5e0b2e4b0001dc9e19201080.jpg)
+![BSTSet和LinkedList的时间复杂度比较](images/第07章_集合与映射/BSTSet和LinkedList的时间复杂度比较.png)
 + BSTSet存储节点是有序集合，类似TreeSet
 + LinkedListSet存储节点是无序集合，类似HashSet
 
@@ -40,10 +40,10 @@ class Solution {
 > 基于BST的实现要比基于LinkedList时间复杂度低很多
 + [基于BST的Map实现](src/main/java/Chapter07SetAndMap/Section7BSTMap/BSTMap.java)
 + [基于LinkedList的Map实现](src/main/java/Chapter07SetAndMap/Section7BSTMap/BSTMap.java)
-![基于BST和二分搜索属都可以实现Map](https://img.mukewang.com/szimg/5e0b35010001a12219201080.jpg)
+> ![基于BST和LinkedList都可以实现Map](images/第07章_集合与映射/基于BST和LinkedList都可以实现Map.png)
 
 ### 基于LinkedList的Map和基于BST的MAP比较
-![基于LinkedList的Map和基于BST的MAP比较](https://img.mukewang.com/szimg/5e0b39c50001ea9b19201080.jpg)
+![基于LinkedList的Map和基于BST的MAP比较](images/第07章_集合与映射/基于LinkedList的Map和基于BST的MAP比较.png)
 
 ### 测试两种实现的性能
 + [测试代码](src/main/java/Chapter07SetAndMap/Section8TestMap/Main.java)
