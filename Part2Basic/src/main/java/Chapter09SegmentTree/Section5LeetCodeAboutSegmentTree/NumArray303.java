@@ -4,7 +4,9 @@
  * @date        : 2018/5/19 13:27
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter09SegmentTree;
+package Chapter09SegmentTree.Section5LeetCodeAboutSegmentTree;
+
+import Chapter09SegmentTree.Section1to4SegmentTreeImpl.SegmentTree;
 
 public class NumArray303 {
     private SegmentTree<Integer> segmentTree;

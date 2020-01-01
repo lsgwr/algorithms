@@ -4,12 +4,18 @@
  * @date        : 2018/5/18 23:02
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter09SegmentTree;
+package Chapter09SegmentTree.Section1to4SegmentTreeImpl;
 
 import java.util.Arrays;
 
 public class SegmentTree<E> {
+    /**
+     * 线段树，开辟4个data的长度即可
+     */
     private E[] tree;
+    /**
+     * 存储原始数据的数组
+     */
     private E[] data;
     private Merger<E> merger;
 
@@ -17,7 +23,9 @@ public class SegmentTree<E> {
         this.data = (E[]) new Object[arr.length];
         this.merger = merger;
         // 数组复制
-        System.arraycopy(arr, 0, data, 0, arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
         tree = (E[]) new Object[4 * arr.length];
         buildSegmentTree(0, 0, data.length - 1);
     }
@@ -128,6 +136,9 @@ public class SegmentTree<E> {
         tree[treeIndex] = merger.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
     }
 
+    /**
+     * 获取E中指定下标对应的值
+     */
     public E get(int index) {
         if (index < 0 || index >= data.length) {
             throw new IllegalArgumentException("Index is illegal");
@@ -135,7 +146,9 @@ public class SegmentTree<E> {
         return data[index];
     }
 
-
+    /**
+     * 获取数据的个数
+     */
     public int getSize() {
         return data.length;
     }
