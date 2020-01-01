@@ -1,6 +1,7 @@
 /***********************************************************
- * @Description : 这个课里的MaxHeap因为使用了前面自己封装的Array，
- * 很多常用的方法对构造最大堆很有用。
+ * @Description : 基于索引从0开始的动态数组Array的最大堆
+ * 这个课里的MaxHeap因为使用了前面自己封装的Array，Array类很多
+ * 常用的方法对构造最大堆很有用。比如addLast、addFirst、swap等
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2020/1/1 11:17
  * @email       : liangshanguang2@gmail.com
@@ -17,15 +18,17 @@ public class MaxHeap<E extends Comparable<E>> {
     private Array<E> data;
 
     public MaxHeap(int capacity) {
+        // 初始化时设置动态数组容量
         data = new Array<>(capacity);
     }
 
     public MaxHeap() {
+        // 初始化空数组，动态扩缩容
         data = new Array<>();
     }
 
     public MaxHeap(E[] arr) {
-        // 忘记传入arr了简直日了
+        // 直接根绝外面传入的数组对动态数据进行初始化
         data = new Array<>(arr);
         for (int i = parent(arr.length - 1); i >= 0; i--) {
             siftDown(i);
