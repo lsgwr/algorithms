@@ -1,26 +1,31 @@
 /***********************************************************
- * @Description : LeetCode题目303
- * https://leetcode-cn.com/problems/range-sum-query-immutable/
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2018/5/19 13:27
+ * @Description : 303. 区域和检索 - 数组不可变
+ * 必须考虑传入的数组为空的情况
+ * 本题只考察了线段树查询
+ * @author      : 梁山广(Liang Shan Guang)
+ * @date        : 2020/1/1 23:27
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter09SegmentTree.Section5LeetCodeAboutSegmentTree;
+package Chapter09SegmentTree.Section5LeetCodeAboutSegmentTreeQuery;
 
 import Chapter09SegmentTree.Section1to4SegmentTreeImpl.Merger;
 import Chapter09SegmentTree.Section1to4SegmentTreeImpl.SegmentTree;
 
-public class NumArray303 {
+public class NumArray {
+    /**
+     * 存储nums地线段树
+     */
     private SegmentTree<Integer> segmentTree;
 
-    public NumArray303(int[] nums) {
+    public NumArray(int[] nums) {
         if (nums.length > 0) {
-            Integer[] data = new Integer[nums.length];
-            // 注意这里不能用System.arrayCopy()函数，因为data和nums的数据类型不同
+            // 1.必须要把基础类转成包装类，否则会在给new SegmentTree时出错
+            Integer[] numsObj = new Integer[nums.length];
             for (int i = 0; i < nums.length; i++) {
-                data[i] = nums[i];
+                numsObj[i] = nums[i];
             }
-            segmentTree = new SegmentTree<>(data, new Merger<Integer>() {
+            // 2.声明SegmentTree和自定义的合并规则
+            segmentTree = new SegmentTree<>(numsObj, new Merger<Integer>() {
                 @Override
                 public Integer merge(Integer a, Integer b) {
                     return a + b;
@@ -30,17 +35,24 @@ public class NumArray303 {
     }
 
     public int sumRange(int i, int j) {
+        // 线段树为空，一般是因为上面用户传入了空nums
         if (segmentTree == null) {
             throw new IllegalArgumentException("Segment Tree is null");
         }
+        // [i, j]时闭区间
         return segmentTree.query(i, j);
     }
 
     public static void main(String[] args) {
         int[] nums = {-2, 0, 3, -5, 2, -1};
-        NumArray303 obj = new NumArray303(nums);
+        NumArray obj = new NumArray(nums);
         System.out.println(obj.sumRange(0, 2));
         System.out.println(obj.sumRange(2, 5));
         System.out.println(obj.sumRange(0, 5));
     }
 }
+/***
+ * 1
+ * -1
+ * -3
+ */
