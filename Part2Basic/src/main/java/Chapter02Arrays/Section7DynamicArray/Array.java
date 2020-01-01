@@ -8,11 +8,11 @@ package Chapter02Arrays.Section7DynamicArray;
 
 import java.util.Arrays;
 
-public class Array<Element> {
+public class Array<E> {
     /**
      * 存储数据的数组
      */
-    private Element[] data;
+    private E[] data;
     /**
      * 数组的容量(最多能容纳多少个元素)
      */
@@ -30,12 +30,12 @@ public class Array<Element> {
     public Array(int capacity) {
         this.capacity = capacity;
         // 泛型数组不能直接声明
-        data = (Element[]) new Object[capacity];
+        data = (E[]) new Object[capacity];
         size = 0;
     }
 
-    public Array(Element[] arr) {
-        data = (Element[]) new Object[arr.length];
+    public Array(E[] arr) {
+        data = (E[]) new Object[arr.length];
         for (int i = 0; i < arr.length; i++) {
             data[i] = arr[i];
         }
@@ -75,9 +75,9 @@ public class Array<Element> {
      * 向data中的index位置插入一个元素e
      *
      * @param index   data中下标为index的元素
-     * @param element 要插入的元素
+     * @param e 要插入的元素
      */
-    public void insert(int index, Element element) {
+    public void insert(int index, E e) {
 
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("插入元素失败！index的范围必须在[0, size)");
@@ -90,7 +90,7 @@ public class Array<Element> {
         for (int i = size - 1; i >= index; i--) {
             data[i + 1] = data[i];
         }
-        data[index] = element;
+        data[index] = e;
         size++;
     }
 
@@ -102,7 +102,7 @@ public class Array<Element> {
     private void resize(int newCapacity) {
         // 新的容量赋值
         this.capacity = newCapacity;
-        Element[] newData = (Element[]) new Object[newCapacity];
+        E[] newData = (E[]) new Object[newCapacity];
         for (int i = 0; i < size; i++) {
             newData[i] = data[i];
         }
@@ -113,21 +113,21 @@ public class Array<Element> {
     /**
      * 向所有元素最后加一个元素
      */
-    public void addLast(Element element) {
-        insert(size, element);
+    public void addLast(E e) {
+        insert(size, e);
     }
 
     /**
      * 向所有元素开始位置加一个元素
      */
-    public void addFirst(Element element) {
-        insert(0, element);
+    public void addFirst(E e) {
+        insert(0, e);
     }
 
     /**
      * 获取指定位置的元素
      */
-    public Element get(int index) {
+    public E get(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("index的范围必须在[0, size)");
         }
@@ -137,14 +137,14 @@ public class Array<Element> {
     /**
      * 获取最后的元素
      */
-    public Element getLast() {
+    public E getLast() {
         return get(size - 1);
     }
 
     /**
      * 获取第一个元素
      */
-    public Element getFirst() {
+    public E getFirst() {
         return get(0);
     }
 
@@ -152,25 +152,25 @@ public class Array<Element> {
      * 更新指定位置的元素
      *
      * @param index   要更新的位置
-     * @param element 更新后的元素
+     * @param e 更新后的元素
      */
-    public void set(int index, Element element) {
+    public void set(int index, E e) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("index的范围必须在[0, size)");
         }
-        data[index] = element;
+        data[index] = e;
     }
 
     /**
      * 是否包含指定元素
      *
-     * @param element 要查找的元素
+     * @param e 要查找的元素
      * @return 是否包含的标志位
      */
-    public boolean contain(Element element) {
+    public boolean contain(E e) {
         for (int i = 0; i < size; i++) {
             // 非基本数据类型不能直接用==比较
-            if (data[i].equals(element)) {
+            if (data[i].equals(e)) {
                 return true;
             }
         }
@@ -180,12 +180,12 @@ public class Array<Element> {
     /**
      * 查找指定元素
      *
-     * @param element 要查找的元素
+     * @param e 要查找的元素
      * @return 找到的元素在data中的位置
      */
-    public int find(Element element) {
+    public int find(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[i].equals(element)) {
+            if (data[i].equals(e)) {
                 return i;
             }
         }
@@ -199,11 +199,11 @@ public class Array<Element> {
      * @param index 待删除的位置
      * @return 删除的元素的值
      */
-    public Element remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("index的范围必须在[0, size)");
         }
-        Element ret = data[index];
+        E ret = data[index];
         // index位置开始，每个元素往前挪一位
         for (int i = index + 1; i < size; i++) {
             data[i - 1] = data[i];
@@ -223,7 +223,7 @@ public class Array<Element> {
      *
      * @return 删除的元素
      */
-    public Element removeFirst() {
+    public E removeFirst() {
         return remove(0);
     }
 
@@ -232,17 +232,17 @@ public class Array<Element> {
      *
      * @return 删除的元素
      */
-    public Element removeLast() {
+    public E removeLast() {
         return remove(size - 1);
     }
 
     /**
      * 删除指定值的元素，不适用于存在重复元素的情况。自己改下很容易地
      *
-     * @param element 元素的值
+     * @param e 元素的值
      */
-    public void removeElement(Element element) {
-        int index = find(element);
+    public void removeE(E e) {
+        int index = find(e);
         // 找到地话
         if (index != -1) {
             remove(index);
@@ -255,7 +255,7 @@ public class Array<Element> {
             throw new IllegalArgumentException("Index is illegal.");
         }
 
-        Element t = data[i];
+        E t = data[i];
         data[i] = data[j];
         data[j] = t;
     }
@@ -264,7 +264,7 @@ public class Array<Element> {
     @Override
     public String toString() {
         // 输出的时候要把不是NULL的元素提取出来
-        Element[] dataWithOutNull = (Element[]) new Object[size];
+        E[] dataWithOutNull = (E[]) new Object[size];
         System.arraycopy(data, 0, dataWithOutNull, 0, size);
         return "capacity=" + capacity +
                 ", size=" + size +

@@ -1,16 +1,20 @@
 /***********************************************************
- * @Description : 这个课里的MaxHeap因为使用了前面自己封装的Array，更加灵活了，值得学习下
+ * @Description : 这个课里的MaxHeap因为使用了前面自己封装的Array，
+ * 很多常用的方法对构造最大堆很有用。
  * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2018/5/18 00:42
+ * @date        : 2020/1/1 11:17
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
 package Chapter08HeapAndPriorityQueue.Section2to5Heap;
 
 import Chapter02Arrays.Section7DynamicArray.Array;
 
-public class MaxHeap<Element extends Comparable<Element>> {
+public class MaxHeap<E extends Comparable<E>> {
 
-    private Array<Element> data;
+    /**
+     * 存放节点的数组
+     */
+    private Array<E> data;
 
     public MaxHeap(int capacity) {
         data = new Array<>(capacity);
@@ -20,7 +24,7 @@ public class MaxHeap<Element extends Comparable<Element>> {
         data = new Array<>();
     }
 
-    public MaxHeap(Element[] arr) {
+    public MaxHeap(E[] arr) {
         // 忘记传入arr了简直日了
         data = new Array<>(arr);
         for (int i = parent(arr.length - 1); i >= 0; i--) {
@@ -69,8 +73,8 @@ public class MaxHeap<Element extends Comparable<Element>> {
     /**
      * 向堆中添加元素
      */
-    public void insert(Element element) {
-        data.addLast(element);
+    public void insert(E e) {
+        data.addLast(e);
         siftUp(data.getSize() - 1);
     }
 
@@ -85,7 +89,7 @@ public class MaxHeap<Element extends Comparable<Element>> {
     /**
      * 看堆中的最大元素
      */
-    public Element getMax() {
+    public E getMax() {
         if (data.getSize() == 0) {
             throw new IllegalArgumentException("Can not getMax when heap is empty.");
         }
@@ -95,9 +99,9 @@ public class MaxHeap<Element extends Comparable<Element>> {
     /**
      * 取出堆中最大元素
      */
-    public Element popMax() {
+    public E popMax() {
 
-        Element ret = getMax();
+        E ret = getMax();
 
         data.swap(0, data.getSize() - 1);
         data.removeLast();
@@ -129,9 +133,9 @@ public class MaxHeap<Element extends Comparable<Element>> {
     /**
      * 取出堆中的最大元素，并且替换成元素e
      */
-    public Element replace(Element e) {
+    public E replace(E e) {
 
-        Element ret = getMax();
+        E ret = getMax();
         data.set(0, e);
         siftDown(0);
         return ret;
