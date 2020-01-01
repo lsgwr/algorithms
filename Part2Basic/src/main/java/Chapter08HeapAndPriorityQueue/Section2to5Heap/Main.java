@@ -73,7 +73,7 @@ public class Main {
 
         int[] arr = new int[testData.length];
         for (int i = 0; i < testData.length; i++) {
-            arr[i] = minHeap.popMax();
+            arr[i] = minHeap.popMin();
         }
         // 最小堆每次弹出最小值，所以后面的值肯定比前面的值大
         for (int i = 1; i < testData.length; i++) {
@@ -121,6 +121,8 @@ public class Main {
     }
 }
 /***
+ * 下面是只测试最大堆未heapify和heapify后的性能比较
+ *
  * 1w数据时：
  * Test MaxHeap completed.
  * Without heapify: 0.0086161 s

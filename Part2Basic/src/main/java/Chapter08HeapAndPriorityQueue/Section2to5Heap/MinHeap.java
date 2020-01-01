@@ -1,7 +1,7 @@
 /***********************************************************
  * @Description : 基于索引从0开始的动态数组Array的最小堆
  * 这个课里的MinHeap因为使用了前面自己封装的Array，Array类很多
- * 常用的方法对构造最大堆很有用。比如addLast、addFirst、swap等
+ * 常用的方法对构造最小堆很有用。比如addLast、addFirst、swap等
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2020/1/1 17:21
  * @email       : liangshanguang2@gmail.com
@@ -107,9 +107,9 @@ public class MinHeap<E extends Comparable<E>> {
     }
 
     /**
-     * 取出堆中最大元素
+     * 取出堆中最小元素
      */
-    public E popMax() {
+    public E popMin() {
         E ret = getMin();
         // 交换根节点和最后一个节点
         data.swap(0, data.getSize() - 1);
