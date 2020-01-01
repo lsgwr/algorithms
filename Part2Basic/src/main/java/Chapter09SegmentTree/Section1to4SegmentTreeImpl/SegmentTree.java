@@ -27,6 +27,7 @@ public class SegmentTree<E> {
             data[i] = arr[i];
         }
         tree = (E[]) new Object[4 * arr.length];
+        // 构建线段树
         buildSegmentTree(0, 0, data.length - 1);
     }
 
@@ -37,20 +38,24 @@ public class SegmentTree<E> {
      */
     private void buildSegmentTree(int treeIndex, int l, int r) {
         assert (l <= r);
-        // 当只有一个元素的时候
+        // 递归终止条件
         if (l == r) {
+            // 当只有一个元素的时候，即到了线段树的最下层叶子节点的位置
             tree[treeIndex] = data[l];
             return;
         }
+
+        // 递归逻辑
         // 获取左孩子的索引
         int leftTreeIndex = leftChild(treeIndex);
         int rightTreeIndex = rightChild(treeIndex);
         // 确定左右区间的分界点，[leftTreeIndex, mid] [mid+1, rightTreeIndex]
+        // 中间位置 当(l+r)/2会有溢出问题，，可以使用l+(r-l)/2来解决
         int mid = l + (r - l) / 2;
         buildSegmentTree(leftTreeIndex, l, mid);
         buildSegmentTree(rightTreeIndex, mid + 1, r);
 
-        // 这里根据业务特点决定每个节点的值是sum、max、min、avg等.综合两段子树来得到父节点的数据
+        // 这里根据业务特点决定每个节点的值是sum、max、min、avg等.综合左右子树来得到父节点的数据
         tree[treeIndex] = merger.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
     }
 
@@ -169,8 +174,10 @@ public class SegmentTree<E> {
 
     @Override
     public String toString() {
-        return "SegmentTree{" +
-                "tree=" + Arrays.toString(tree) +
-                '}';
+        return "SegmentTree { \n" +
+                "  dataSize=" + data.length
+                + ", \n  data=" + Arrays.asList(data) + ", \n  treeSize=" + tree.length +
+                ", \n  tree=" + Arrays.toString(tree) +
+                "\n}";
     }
 }
