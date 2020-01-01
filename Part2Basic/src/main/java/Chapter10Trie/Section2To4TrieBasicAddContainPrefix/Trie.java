@@ -11,7 +11,7 @@ import java.util.TreeMap;
 public class Trie {
     private class Node {
         /**
-         * 当前节点所属的链路能不能形成一个单词
+         * 当前节点所属的到根节点的链路能不能形成一个单词
          */
         public boolean isWord;
         /**
