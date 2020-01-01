@@ -28,11 +28,9 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     public MaxHeap(E[] arr) {
-        // 直接根据外面传入的数组对动态数据进行初始化
+        // 直接根据外面传入的数组对整理成最大堆
         data = new Array<>(arr);
-        for (int i = parent(arr.length - 1); i >= 0; i--) {
-            siftDown(i);
-        }
+        heapify();
     }
 
     /**
@@ -148,6 +146,19 @@ public class MaxHeap<E extends Comparable<E>> {
         data.set(0, e);
         siftDown(0);
         return ret;
+    }
+
+    /**
+     * 将任意数组整理成堆
+     */
+    public void heapify() {
+        // 初始化的数组，靠上层的节点肯定索引小，所以不断循环进行下沉即可
+        // parent(arr.length - 1)表示最后一个非叶子节点
+        // i--的过程就是不断向最大堆上面遍历的过程
+        int lastNotLeaf = parent(data.getSize() - 1);
+        for (int i = lastNotLeaf; i >= 0; i--) {
+            siftDown(i);
+        }
     }
 }
 

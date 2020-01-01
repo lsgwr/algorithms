@@ -37,7 +37,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int N = 1000;
+        int N = 100000;
 
         Random random = new Random();
         Integer[] testData = new Integer[N];
