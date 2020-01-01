@@ -38,14 +38,14 @@ public class SegmentTree<E> {
      */
     private void buildSegmentTree(int treeIndex, int l, int r) {
         assert (l <= r);
-        // 递归终止条件
+        // 1.递归终止条件
         if (l == r) {
             // 当只有一个元素的时候，即到了线段树的最下层叶子节点的位置
             tree[treeIndex] = data[l];
             return;
         }
 
-        // 递归逻辑
+        // 2.递归具体逻辑
         // 获取左孩子的索引
         int leftTreeIndex = leftChild(treeIndex);
         int rightTreeIndex = rightChild(treeIndex);
@@ -75,7 +75,7 @@ public class SegmentTree<E> {
     }
 
     /**
-     * 递归查找
+     * 在以treeIndex为跟的线段树种[l...r]的范围内，搜索区间[queryL...queryR]的值
      *
      * @param treeIndex 开始查找的根节点
      * @param l         区间左边界
@@ -85,23 +85,28 @@ public class SegmentTree<E> {
      * @return 查询并Merge后的结果
      */
     private E query(int treeIndex, int l, int r, int queryL, int queryR) {
-        // 当区间完全重合的时候，直接返回根节点的值就行
+        // 1.递归终止条件
         if (l == queryL && r == queryR) {
+            // 当区间边界和指定的完全重合的时候，直接返回根节点的值就行
             return tree[treeIndex];
         }
+
+        // 2.递归具体逻辑
         // 获取左孩子的索引
         int leftTreeIndex = leftChild(treeIndex);
         int rightTreeIndex = rightChild(treeIndex);
+        // 中间位置 当(l+r)/2会有溢出问题，，可以使用l+(r-l)/2来解决
         int mid = l + (r - l) / 2;
+        // 只在右侧或者只在左侧，都可以直接计算结果后返回
         if (queryL >= mid + 1) {
-            // 只在右侧找
+            // 2.1 只在右侧找，因为左边界都比左右子树的中间位置大，所以一定在右侧找
             return query(rightTreeIndex, mid + 1, r, queryL, queryR);
         } else if (queryR <= mid) {
-            // 只在左侧找
+            // 2.2 只在左侧找，因为右边界都比左右子树的中间位置小，所以一定在左侧找
             return query(leftTreeIndex, l, mid, queryL, queryR);
         }
 
-        // 在左右两侧各有一部分,要分开查，然后合并
+        // 2.3在左右两侧各有一部分,不会有一个区间完全满足我们的查找边界[queryL, queryR]，所以要分开查，然后用自定义的Merge计算最终的结果
         E leftResult = query(leftTreeIndex, l, mid, queryL, mid);
         E rightResult = query(rightTreeIndex, mid + 1, r, mid + 1, queryR);
         return merger.merge(leftResult, rightResult);
