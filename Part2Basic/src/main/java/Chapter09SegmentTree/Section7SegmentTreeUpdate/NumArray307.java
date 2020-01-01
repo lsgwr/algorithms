@@ -1,11 +1,13 @@
 /***********************************************************
  * @Description : LeetCode题目307
+ * https://leetcode-cn.com/problems/verbal-arithmetic-puzzle/
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/19 13:27
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter09SegmentTree.Section5LeetCodeAboutSegmentTree;
+package Chapter09SegmentTree.Section7SegmentTreeUpdate;
 
+import Chapter09SegmentTree.Section1to4SegmentTreeImpl.Merger;
 import Chapter09SegmentTree.Section1to4SegmentTreeImpl.SegmentTree;
 
 public class NumArray307 {
@@ -18,7 +20,12 @@ public class NumArray307 {
             for (int i = 0; i < nums.length; i++) {
                 data[i] = nums[i];
             }
-            segmentTree = new SegmentTree<>(data, (a, b) -> a + b);
+            segmentTree = new SegmentTree<>(data, new Merger<Integer>() {
+                @Override
+                public Integer merge(Integer a, Integer b) {
+                    return a + b;
+                }
+            });
         }
     }
 

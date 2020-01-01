@@ -1,11 +1,13 @@
 /***********************************************************
  * @Description : LeetCode题目303
+ * https://leetcode-cn.com/problems/range-sum-query-immutable/
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/19 13:27
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
 package Chapter09SegmentTree.Section5LeetCodeAboutSegmentTree;
 
+import Chapter09SegmentTree.Section1to4SegmentTreeImpl.Merger;
 import Chapter09SegmentTree.Section1to4SegmentTreeImpl.SegmentTree;
 
 public class NumArray303 {
@@ -18,7 +20,12 @@ public class NumArray303 {
             for (int i = 0; i < nums.length; i++) {
                 data[i] = nums[i];
             }
-            segmentTree = new SegmentTree<>(data, (a, b) -> a + b);
+            segmentTree = new SegmentTree<>(data, new Merger<Integer>() {
+                @Override
+                public Integer merge(Integer a, Integer b) {
+                    return a + b;
+                }
+            });
         }
     }
 
