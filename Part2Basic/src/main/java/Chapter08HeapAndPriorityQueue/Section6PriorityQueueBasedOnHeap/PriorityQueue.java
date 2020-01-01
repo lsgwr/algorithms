@@ -9,8 +9,8 @@ package Chapter08HeapAndPriorityQueue.Section6PriorityQueueBasedOnHeap;
 import Chapter03StackAndQueues.Section5ArrayQueue.Queue;
 import Chapter08HeapAndPriorityQueue.Section2to5Heap.MaxHeap;
 
-public class PriorityQueue<Element extends Comparable<Element>> implements Queue<Element> {
-    private MaxHeap<Element> maxHeap;
+public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
+    private MaxHeap<E> maxHeap;
 
     public PriorityQueue() {
         maxHeap = new MaxHeap<>();
@@ -27,17 +27,17 @@ public class PriorityQueue<Element extends Comparable<Element>> implements Queue
     }
 
     @Override
-    public void enqueue(Element element) {
-        maxHeap.insert(element);
+    public void enqueue(E e) {
+        maxHeap.add(e);
     }
 
     @Override
-    public Element dequeue() {
+    public E dequeue() {
         return maxHeap.popMax();
     }
 
     @Override
-    public Element getFront() {
+    public E getFront() {
         return maxHeap.getMax();
     }
 }

@@ -76,15 +76,27 @@ public class MaxHeap<E extends Comparable<E>> {
     /**
      * 向堆中添加元素
      */
-    public void insert(E e) {
+    public void add(E e) {
         data.addLast(e);
+        // 新加入的元素一定在末尾，所以上浮它即可
         siftUp(data.getSize() - 1);
     }
 
+    /**
+     * 上浮data中索引为k的元素
+     *
+     * @param k 索引
+     */
     private void siftUp(int k) {
-
-        while (k > 0 && data.get(parent(k)).compareTo(data.get(k)) < 0) {
+        // 索引k处的元素
+        E kE = data.get(k);
+        // k元素的父元素
+        E parentE = data.get(parent(k));
+        // 只要k处节点大于其父亲节点，就交换两个节点继续上浮
+        while (k > 0 && kE.compareTo(parentE) > 0) {
+            // k和父亲节点交换
             data.swap(k, parent(k));
+            // 交换会更新k为父亲节点的索引
             k = parent(k);
         }
     }

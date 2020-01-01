@@ -74,8 +74,8 @@ public class Array<E> {
     /**
      * 向data中的index位置插入一个元素e
      *
-     * @param index   data中下标为index的元素
-     * @param e 要插入的元素
+     * @param index data中下标为index的元素
+     * @param e     要插入的元素
      */
     public void insert(int index, E e) {
 
@@ -151,8 +151,8 @@ public class Array<E> {
     /**
      * 更新指定位置的元素
      *
-     * @param index   要更新的位置
-     * @param e 更新后的元素
+     * @param index 要更新的位置
+     * @param e     更新后的元素
      */
     public void set(int index, E e) {
         if (index < 0 || index > size) {
@@ -249,6 +249,9 @@ public class Array<E> {
         }
     }
 
+    /**
+     * 交换数组中i和j位置的元素
+     */
     public void swap(int i, int j) {
 
         if (i < 0 || i >= size || j < 0 || j >= size) {
