@@ -4,8 +4,7 @@
  * @date        : 2018/5/18 00:31
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter08HeapAndPriorityQueue.HeapOfThisLesson;
-
+package Chapter08HeapAndPriorityQueue.Part1BasicChapter4HeapAndSort;
 
 import java.util.Random;
 

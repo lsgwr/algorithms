@@ -5,4 +5,4 @@
  *               第四章完全重复，此处直接那里代码拿过来复用(MinHeap第8章最小生成树)。
  *               不在做本章的课了.
  */
-package Chapter08HeapAndPriorityQueue.HeapFromAnotherLesson;
+package Chapter08HeapAndPriorityQueue.Part1BasicChapter4HeapAndSort;

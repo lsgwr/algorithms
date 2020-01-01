@@ -1,18 +1,21 @@
 /***********************************************************
- * @Description : 最小堆
+ * @Description : 直接利用外面的数组初始化一个堆
  * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2018/5/11 00:24
+ * @date        : 2018/4/19 00:42
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter08HeapAndPriorityQueue.HeapFromAnotherLesson;
+package Chapter08HeapAndPriorityQueue.Part1BasicChapter4HeapAndSort;
 
-public class MinHeap<Item extends Comparable> {
+/**
+ * 在堆的有关操作中，需要比较堆中元素的大小，所以Item需要extends Comparable
+ */
+public class MaxHeap<Item extends Comparable> {
     /**
-     * 数据内容
+     * 最大堆中的数据
      */
     protected Item[] data;
     /**
-     * 元素数量
+     * 最大堆中的元素数量
      */
     protected int count;
     /**
@@ -20,18 +23,22 @@ public class MinHeap<Item extends Comparable> {
      */
     protected int capacity;
 
-    MinHeap(int capacity) {
-        // 不能直接生成泛型数组，所以要下面这么做
-        data = (Item[]) new Comparable[capacity + 1];
+    /**
+     * 联众构造方式的区别
+     * 直接输入数组的方式构造堆，其复杂度为O(n);将n个元素挨个插入空堆来构造堆，复杂度是O(nlogn)
+     */
+    public MaxHeap(int capacity) {
+        // 不能直接声明泛型数组，只能先声明再强制转换
+        this.data = (Item[]) new Comparable[capacity + 1];
         count = 0;
         this.capacity = capacity;
     }
 
     /**
-     * 直接输入完整的数组进行最小堆化(Heapify)
-     * 核心在于从(n/2结果取整)下标位置的元素开始到下标为0的元素依次执行shiftDown,好好理解4-5老师前8分钟的图示
+     * 直接输入完整的数组进行最大堆化(Heapify)
+     * 核心在于从floor(n/2)下标位置的元素开始到下标为0的元素一次执行shiftDown,好好理解4-5老师前8分钟的图示
      */
-    MinHeap(Item arr[]) {
+    public MaxHeap(Item arr[]) {
         int n = arr.length;
         // 声明空间，还没赋值
         data = (Item[]) new Comparable[n + 1];
@@ -43,11 +50,28 @@ public class MinHeap<Item extends Comparable> {
         // 堆中元素个数为n了
         count = n;
         // 核心 : 从floor(n/2)下标位置的元素开始到下标为0的元素一次执行shiftDown,好好理解4-5老师前8分钟的图示
-        // 执行完，就根据数组生成一个最小堆了
+        // 执行完，就根据数组生成一个最大堆了
         for (int i = count / 2; i >= 1; i--) {
             shiftDown(i);
         }
     }
+
+    /**
+     * 获取堆中元素个数
+     *
+     * @return 堆中元素个数
+     */
+    public int size() {
+        return count;
+    }
+
+    /**
+     * 堆是否为空
+     */
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
 
     /**
      * 交换堆中索引为i和j的两个元素
@@ -58,14 +82,15 @@ public class MinHeap<Item extends Comparable> {
         data[j] = t;
     }
 
+
     /**
      * 上浮的私有函数
      */
     private void shiftUp(int k) {
         // k > 1是因为到根节点时就没父节点了，不需要再比较了
-        while (k > 1 && data[k / 2].compareTo(data[k]) > 0) {
-            // 如果当前元素的父元素(在数组中的下表为整除2)比当前元素还大，
-            // 则不符合最小堆的定义，那么就交换一下
+        while (k > 1 && data[k / 2].compareTo(data[k]) < 0) {
+            // 如果当前元素的父元素(在数组中的下表为整除2)比当前元素还小，
+            // 则不符合最大堆的定义，那么就交换一下
             swap(k / 2, k);
             k /= 2;
         }
@@ -80,16 +105,16 @@ public class MinHeap<Item extends Comparable> {
         while (2 * k <= count) {
             // 获取子孩子下标
             int j = 2 * k;
-            // 存在右孩子并且右孩子小于左孩子，那么右孩子有父节点交换(左右两个子节点的较小值)
-            if (j + 1 <= count && data[j + 1].compareTo(data[j]) < 0) {
+            // 存在右孩子并且右孩子大于左孩子，那么右孩子有父节点交换
+            if (j + 1 <= count && data[j + 1].compareTo(data[j]) > 0) {
                 // 选择右节点作为下面与k处节点进行交换
                 j++;
             }
-            // 父节点比两个子节点的较小值还小，那么不需要交换
-            if (data[k].compareTo(data[j]) <= 0) {
+            // 父节点比两个子节点的较大值还大，那么不需要交换
+            if (data[k].compareTo(data[j]) >= 0) {
                 break;
             }
-            // 父节点大于孩子节点的较小值，那么就和较小值的子节点交换
+            // 父节点小于孩子节点的较大值，那么就和较大值的子节点交换
             swap(k, j);
             // 把换后的子节点作为父节点，接着往下走
             k = j;
@@ -98,23 +123,9 @@ public class MinHeap<Item extends Comparable> {
 
 
     /**
-     * 获取最小堆的大小
-     */
-    int size() {
-        return count;
-    }
-
-    /**
-     * 判断最小堆是否为空
-     */
-    boolean isEmpty() {
-        return count == 0;
-    }
-
-    /**
      * 插入元素
      */
-    void insert(Item item) {
+    public void insert(Item item) {
         // 防止后面的++count越界
         assert (count + 1 <= capacity);
         // 插入新元素，元素数加1,之所以用++count而不用count++是因为数组下标从1开始
@@ -124,54 +135,37 @@ public class MinHeap<Item extends Comparable> {
     }
 
     /**
-     * 弹出最小值(根节点的对象)
+     * 弹出最大值(根节点的对象)
      */
-    Item popMin() {
+    public Item popMax() {
         // 保证堆不为空
         assert (count > 0);
-        // 最小元素为第一个元素
-        Item min = data[1];
-        // 移出最小元素后，需要把最下面的元素移到上面去
+        // 最大元素为第一个元素
+        Item max = data[1];
+        // 移出最大元素后，需要把最下面的元素移到上面去
         swap(1, count);
         // 少了最后一个元素
         count--;
         // 将换上去(到最上面了,根元素，下标为1)的最后一个元素下移
         shiftDown(1);
-        return min;
+        return max;
     }
 
-    // 获取堆中的最小元素(即堆顶元素)
-    Item getMin() {
+    // 获取堆中的最大元素(即堆顶元素)
+    Item getMax() {
         assert (count > 0);
         return data[1];
     }
 
-    /**
-     * 测试 MinHeap
-     */
     public static void main(String[] args) {
-
-        MinHeap<Integer> minHeap = new MinHeap<Integer>(100);
-        // 堆中元素个数
-        int N = 100;
-        // 堆中元素取值范围[0, M)
-        int M = 100;
-        for (int i = 0; i < N; i++) {
-            minHeap.insert(new Integer((int) (Math.random() * M)));
+        MaxHeap<Integer> maxHeap = new MaxHeap<>(100);
+        for (int i = 0; i < 31; i++) {
+            maxHeap.insert((int) (Math.random() * i));
         }
-
-        Integer[] arr = new Integer[N];
-        // 将minheap中的数据逐渐使用extractMin取出来
-        // 取出来的顺序应该是按照从小到大的顺序取出来的
-        for (int i = 0; i < N; i++) {
-            arr[i] = minHeap.popMin();
-            System.out.print(arr[i] + " ");
+        System.out.println(maxHeap.size());
+        while (!maxHeap.isEmpty()) {
+            System.out.print(maxHeap.popMax() + " ");
         }
         System.out.println();
-
-        // 确保arr数组是从小到大排列的
-        for (int i = 1; i < N; i++) {
-            assert arr[i - 1] <= arr[i];
-        }
     }
 }

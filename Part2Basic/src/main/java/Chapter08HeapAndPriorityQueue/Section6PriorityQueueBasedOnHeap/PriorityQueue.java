@@ -4,10 +4,10 @@
  * @date        : 2018/5/18 08:08
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter08HeapAndPriorityQueue.Section6PriorityQueue;
+package Chapter08HeapAndPriorityQueue.Section6PriorityQueueBasedOnHeap;
 
 import Chapter03StackAndQueues.Section5ArrayQueue.Queue;
-import Chapter08HeapAndPriorityQueue.HeapOfThisLesson.MaxHeap;
+import Chapter08HeapAndPriorityQueue.Section2to5Heap.MaxHeap;
 
 public class PriorityQueue<Element extends Comparable<Element>> implements Queue<Element> {
     private MaxHeap<Element> maxHeap;

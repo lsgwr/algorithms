@@ -4,7 +4,7 @@
  * @date        : 2018/5/18 00:42
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter08HeapAndPriorityQueue.HeapOfThisLesson;
+package Chapter08HeapAndPriorityQueue.Section2to5Heap;
 
 import Chapter02Arrays.Section7DynamicArray.Array;
 
