@@ -28,7 +28,7 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     public MaxHeap(E[] arr) {
-        // 直接根绝外面传入的数组对动态数据进行初始化
+        // 直接根据外面传入的数组对动态数据进行初始化
         data = new Array<>(arr);
         for (int i = parent(arr.length - 1); i >= 0; i--) {
             siftDown(i);
@@ -79,7 +79,7 @@ public class MaxHeap<E extends Comparable<E>> {
     public void add(E e) {
         data.addLast(e);
         // 新加入的元素一定在末尾，所以上浮它即可
-        siftUp(data.getSize() - 1);
+        shiftUp(data.getSize() - 1);
     }
 
     /**
@@ -87,13 +87,9 @@ public class MaxHeap<E extends Comparable<E>> {
      *
      * @param k 索引
      */
-    private void siftUp(int k) {
-        // 索引k处的元素
-        E kE = data.get(k);
-        // k元素的父元素
-        E parentE = data.get(parent(k));
-        // 只要k处节点大于其父亲节点，就交换两个节点继续上浮
-        while (k > 0 && kE.compareTo(parentE) > 0) {
+    private void shiftUp(int k) {
+        // 只要k处节点大于其父亲节点，就交换两个节点继续上浮。不断更新k但要保证k>0
+        while (k > 0 && data.get(k).compareTo(data.get(parent(k))) > 0) {
             // k和父亲节点交换
             data.swap(k, parent(k));
             // 交换会更新k为父亲节点的索引
@@ -108,6 +104,7 @@ public class MaxHeap<E extends Comparable<E>> {
         if (data.getSize() == 0) {
             throw new IllegalArgumentException("Can not getMax when heap is empty.");
         }
+        // 0为根节点，根节点位置就是最大值
         return data.get(0);
     }
 
@@ -115,31 +112,29 @@ public class MaxHeap<E extends Comparable<E>> {
      * 取出堆中最大元素
      */
     public E popMax() {
-
         E ret = getMax();
-
+        // 交换根节点和最后一个节点
         data.swap(0, data.getSize() - 1);
+        // 删除最后一个节点，此时最大值就被正式删除了
         data.removeLast();
+        // 调整新的二叉堆直到满足最大堆的性质
         siftDown(0);
-
+        // 返回前面暂存的最大节点
         return ret;
     }
 
     private void siftDown(int k) {
-
         while (leftChild(k) < data.getSize()) {
             /* 在此轮循环中,data[k]和data[j]交换位置 */
             int j = leftChild(k);
-            if (j + 1 < data.getSize() &&
-                    data.get(j + 1).compareTo(data.get(j)) > 0) {
+            // j+1表右孩子，首先要在数组索引范围内，而且右孩子比左孩子大，则j取左右孩子中的较大值即右孩子的索引
+            if (j + 1 < data.getSize() && data.get(j + 1).compareTo(data.get(j)) > 0) {
                 j++;
             }
             // data[j] 是 leftChild 和 rightChild 中的最大值
-
             if (data.get(k).compareTo(data.get(j)) >= 0) {
                 break;
             }
-
             data.swap(k, j);
             k = j;
         }
@@ -149,7 +144,6 @@ public class MaxHeap<E extends Comparable<E>> {
      * 取出堆中的最大元素，并且替换成元素e
      */
     public E replace(E e) {
-
         E ret = getMax();
         data.set(0, e);
         siftDown(0);
