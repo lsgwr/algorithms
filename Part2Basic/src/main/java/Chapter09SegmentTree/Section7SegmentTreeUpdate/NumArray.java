@@ -57,10 +57,17 @@ public class NumArray {
         System.out.println(obj.sumRange(0, 2));
         System.out.println(obj.sumRange(2, 5));
         System.out.println(obj.sumRange(0, 5));
+        obj.update(2, 0); // {-2, 0, 0, -5, 2, -1}
+        System.out.println(obj.sumRange(0, 2)); // -2+0+0
+        System.out.println(obj.sumRange(2, 5)); // 0+(-5)+2+(-1)
+        System.out.println(obj.sumRange(0, 5)); // -2+0+0+(-5)+2+(-1)
     }
 }
 /***
  * 1
  * -1
  * -3
+ * -2
+ * -4
+ * -6
  */

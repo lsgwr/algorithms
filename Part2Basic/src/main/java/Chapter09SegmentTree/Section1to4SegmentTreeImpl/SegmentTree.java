@@ -95,6 +95,7 @@ public class SegmentTree<E> {
         // 获取左孩子的索引
         int leftTreeIndex = leftChild(treeIndex);
         int rightTreeIndex = rightChild(treeIndex);
+        // 确定左右区间的分界点，[leftTreeIndex, mid] [mid+1, rightTreeIndex]
         // 中间位置 当(l+r)/2会有溢出问题，，可以使用l+(r-l)/2来解决
         int mid = l + (r - l) / 2;
         // 只在右侧或者只在左侧，都可以直接计算结果后返回
@@ -124,25 +125,41 @@ public class SegmentTree<E> {
         update(0, 0, data.length - 1, index, e);
     }
 
+    /**
+     * 以treeIndex为根的线段树中更新index的值为e
+     *
+     * @param treeIndex 递归过程中子树的根节点
+     * @param l 更新时查找的左边界
+     * @param r 更新时查找的右边界
+     * @param index 要更新的点在data中的下标
+     * @param e 要更新为的新的值
+     */
     private void update(int treeIndex, int l, int r, int index, E e) {
+        // 1.递归终止条件
         if (l == r) {
+            // 当区间边界和指定的完全重合的时候，说明此时l==r==index，直接更新根节点的值就行。
+            // 注意我们是线段树，每个节点的索引都是一个范围
             tree[treeIndex] = e;
             return;
         }
+
+        // 2.递归具体逻辑
         // 获取左孩子的索引
         int leftTreeIndex = leftChild(treeIndex);
         int rightTreeIndex = rightChild(treeIndex);
         // 确定左右区间的分界点，[leftTreeIndex, mid] [mid+1, rightTreeIndex]
+        // 中间位置 当(l+r)/2会有溢出问题，，可以使用l+(r-l)/2来解决
         int mid = l + (r - l) / 2;
         // 一定是大于等于，别只写成大于哈
         if (index >= mid + 1) {
-            // 右子树中查找
+            // 2.1 index在右侧子树
             update(rightTreeIndex, mid + 1, r, index, e);
         } else {
-            // 左子树中查找
+            // 2.2 index在左侧子树
             update(leftTreeIndex, l, mid, index, e);
         }
 
+        // 2.3 递归返回的过程中，要往上跟新父节点的值
         tree[treeIndex] = merger.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
     }
 
