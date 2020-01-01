@@ -9,36 +9,78 @@ package Chapter08HeapAndPriorityQueue.Section6PriorityQueueBasedOnOurHeap;
 
 import Chapter03StackAndQueues.Section5ArrayQueue.Queue;
 import Chapter08HeapAndPriorityQueue.Section2to5Heap.MaxHeap;
+import Chapter08HeapAndPriorityQueue.Section2to5Heap.MinHeap;
 
 public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
+    /**
+     * 最大堆
+     */
     private MaxHeap<E> maxHeap;
+    /**
+     * 最小堆
+     */
+    private MinHeap<E> minHeap;
+
+    /**
+     * 和JDK自带的PriorityQueue一致，默认是最小堆
+     */
+    private boolean isMax = false;
 
     public PriorityQueue() {
-        maxHeap = new MaxHeap<>();
+        minHeap = new MinHeap<>();
+    }
+
+    public PriorityQueue(boolean isMax) {
+        this.isMax = isMax;
+        if (isMax) {
+            maxHeap = new MaxHeap<>();
+        } else {
+            minHeap = new MinHeap<>();
+        }
     }
 
     @Override
     public int getSize() {
-        return maxHeap.size();
+        if (isMax) {
+            return maxHeap.size();
+        } else {
+            return minHeap.size();
+        }
     }
 
     @Override
     public boolean isEmpty() {
-        return maxHeap.isEmpty();
+        if (isMax) {
+            return maxHeap.isEmpty();
+        } else {
+            return minHeap.isEmpty();
+        }
     }
 
     @Override
     public void enqueue(E e) {
-        maxHeap.add(e);
+        if (isMax) {
+            maxHeap.add(e);
+        } else {
+            minHeap.add(e);
+        }
     }
 
     @Override
     public E dequeue() {
-        return maxHeap.popMax();
+        if (isMax) {
+            return maxHeap.popMax();
+        } else {
+            return minHeap.popMin();
+        }
     }
 
     @Override
     public E getFront() {
-        return maxHeap.getMax();
+        if (isMax) {
+            return maxHeap.getMax();
+        } else {
+            return minHeap.getMin();
+        }
     }
 }
