@@ -213,3 +213,21 @@ private boolean match(Node node, String word, int index) {
 > 每个Node节点加一个weight属性，每次加入节点都要更新权重，每个单词都有自己的权重，多个前缀相同单词的相同前缀要把多个单词的权重加起来
 + [代码实现](src/main/java/Chapter10Trie/Section6Leetcode677MapSum/TrieWeighted.java)
 + [实际问题：leetcode677](src/main/java/Chapter10Trie/Section6Leetcode677MapSum/MapSum.java)
+
+## 10.7 更多Trie相关的话题
+### 删除操作
+### Trie最大的问题：空间
+> 可以用压缩字典树(Compressed Trie)来做
+
+![压缩字典树](https://img1.sycdn.imooc.com/szimg/5e0d99040001b67e19201080.jpg)
+
+### 字符串匹配
++ KMP
++ Boyer-Moore
++ Rabin-Karp
+
+### 文件压缩
++ Huffman
+
+### 模式匹配
+### 编译原理
