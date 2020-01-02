@@ -16,7 +16,7 @@ public class Main {
         System.out.println("Pride and Prejudice");
 
         ArrayList<String> words = new ArrayList<>();
-        String filename = "/Users/liangshanguang/Program/Algorithm/liuyubobobo-algorithms/Part2Basic/src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt";
+        String filename = "src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt";
         if (FileOperation.readFile(filename, words)) {
             System.out.println("Total words: " + words.size());
             // ++++++++++++++++++++++计算BSTSet的处理时间++++++++++++++++++++++++
@@ -40,7 +40,7 @@ public class Main {
             Trie trie = new Trie();
             // 添加单词
             for (String word : words) {
-                trie.insert(word);
+                trie.add(word);
             }
             // 查询单词
             for (String word : words) {
@@ -55,3 +55,13 @@ public class Main {
         System.out.println();
     }
 }
+/**
+ * 单词量越大，Trie的性能越高
+ * <p>
+ * Pride and Prejudice
+ * Total words: 125901
+ * Total different words: 6530
+ * BSTSet : 0.0392041 s
+ * Total different words: 6530
+ * Trie : 0.0381644 s
+ */

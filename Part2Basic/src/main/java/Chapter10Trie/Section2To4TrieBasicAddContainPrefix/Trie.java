@@ -1,5 +1,6 @@
 /***********************************************************
- * @Description : Trie的基本实现，只针对英文单词
+ * @Description : Trie的基本实现
+ * 只针对英文单词，所以不用泛型类，只用字符串即可,Trie中的每个节点都是一个字符Character
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/19 18:12
  * @email       : liangshanguang2@gmail.com
@@ -56,12 +57,12 @@ public class Trie {
      *
      * @param word 要添加的单词
      */
-    public void insert(String word) {
+    public void add(String word) {
         // 开始从根节点开始
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
-            //  当在当前节点指向的孩子节点中不存在要插入的字符c的时候。为null表示不存在，才执行插入动作
+            //  当在当前节点指向的孩子节点中不存在要插入的字符c的时候。为null表示不存在，把字符串作为新的Trie节点插入
             if (cur.next.get(c) == null) {
                 cur.next.put(c, new Node());
             }
@@ -92,7 +93,7 @@ public class Trie {
             }
             cur = cur.next.get(c);
         }
-        // 到达字符串的最后一个字符,及时有这个单词，但是isWord不为True也表明没有被标记过。不算包含这个单词
+        // 到达字符串的最后一个字符,即使有这个单词，但是isWord不为True也表明没有被标记过。不算包含这个单词
         return cur.isWord;
     }
 
