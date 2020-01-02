@@ -210,5 +210,6 @@ private boolean match(Node node, String word, int index) {
 + [代码实现：用增强的TrieRegex来解决211号问题](src/main/java/Chapter10Trie/Section5Leetcode211TrieAndPatternMatch/WordDictionary.java)
 
 ## 10.6 带权重的Trie树
+> 每个Node节点加一个weight属性，每次加入节点都要更新权重，每个单词都有自己的权重，多个前缀相同单词的相同前缀要把多个单词的权重加起来
 + [代码实现](src/main/java/Chapter10Trie/Section6Leetcode677MapSum/TrieWeighted.java)
-+ [实际问题：leetcode677]
++ [实际问题：leetcode677](src/main/java/Chapter10Trie/Section6Leetcode677MapSum/MapSum.java)
