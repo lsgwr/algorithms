@@ -10,7 +10,7 @@
  ***********************************************************/
 package Chapter11UnionFind;
 
-public class UnionFind {
+public class UnionFind implements UF {
     /**
      * 数据之间连接的情况，这里是数组指针.parent[i]标是下标为i的元素的父元素下标
      */
@@ -56,14 +56,16 @@ public class UnionFind {
     /**
      * 判断下标为p和q的点是否有同样的根，就可以判断p和q是否是连接在一起地了
      */
-    boolean isConnected(int p, int q) {
+    @Override
+    public boolean isConnected(int p, int q) {
         return find(p) == find(q);
     }
 
     /**
      * 连接两个元素p和q
      */
-    void unionElements(int p, int q) {
+    @Override
+    public void unionElements(int p, int q) {
         // 找到p元素对应的根
         int pRoot = find(p);
         int qRoot = find(q);
@@ -85,5 +87,13 @@ public class UnionFind {
             // 把新的并查集层数+1
             rank[qRoot] += 1;
         }
+    }
+
+    /**
+     * 获取并查集内的元素个数
+     */
+    @Override
+    public int getSize() {
+        return count;
     }
 }
