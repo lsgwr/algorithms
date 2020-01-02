@@ -4,7 +4,7 @@
  * @date        : 2020/1/2 22:51
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter11UnionFind.Section4TestUFAndOptimizeBySize;
+package Chapter11UnionFind.Section4TestUF;
 
 import Chapter11UnionFind.UF;
 
