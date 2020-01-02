@@ -15,7 +15,7 @@ public class Main {
         // 并查集一共的节点数
         int size = 100000;
         // 要进行union操作次数
-        int m = 10000;
+        int m = 100000;
 
         UF uf1 = new Chapter11UnionFind.Section2QuickFind.UnionFind(size);
         System.out.println("11.2节 基于id数组的UnionFind实现：" + TestUF.test(uf1, m) + "s");
