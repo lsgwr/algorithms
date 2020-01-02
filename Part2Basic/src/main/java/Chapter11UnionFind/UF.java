@@ -1,3 +1,9 @@
+/***********************************************************
+ * @Description : 并查集的基础接口
+ * @author      : 梁山广(Laing Shan Guang)
+ * @date        : 2020/1/2 18:58
+ * @email       : liangshanguang2@gmail.com
+ ***********************************************************/
 package Chapter11UnionFind;
 
 public interface UF {
