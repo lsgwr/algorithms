@@ -31,7 +31,17 @@ public class UnionFind implements UF {
 
     @Override
     public void unionElements(int p, int q) {
-
+        int pID = find(p);
+        int qID = find(q);
+        if (pID == qID) {
+            return;
+        }
+        // pID的元素改成qID或者qID改成pID都可以，这里我们把pID的元素改成qID
+        for (int i = 0; i < id.length; i++) {
+            if (id[i] == pID) {
+                id[i] = qID;
+            }
+        }
     }
 
     @Override
