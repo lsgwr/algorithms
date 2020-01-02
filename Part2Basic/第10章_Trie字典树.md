@@ -219,7 +219,7 @@ private boolean match(Node node, String word, int index) {
 ### Trie最大的问题：空间
 > 可以用压缩字典树(Compressed Trie)来做
 
-![压缩字典树](https://img1.sycdn.imooc.com/szimg/5e0d99040001b67e19201080.jpg)
+![压缩字典树](images/第10章_Trie字典树/压缩字典树.jpg)
 
 ### 字符串匹配
 + KMP
