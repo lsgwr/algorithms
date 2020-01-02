@@ -208,3 +208,7 @@ private boolean match(Node node, String word, int index) {
 
 + [代码实现：支持正则的增强Trie](src/main/java/Chapter10Trie/Section5Leetcode211TrieAndPatternMatch/TrieRegex.java)
 + [代码实现：用增强的TrieRegex来解决211号问题](src/main/java/Chapter10Trie/Section5Leetcode211TrieAndPatternMatch/WordDictionary.java)
+
+## 10.6 带权重的Trie树
++ [代码实现](src/main/java/Chapter10Trie/Section6Leetcode677MapSum/TrieWeighted.java)
++ [实际问题：leetcode677]
