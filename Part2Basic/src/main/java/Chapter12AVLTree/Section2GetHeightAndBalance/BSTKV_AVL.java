@@ -104,7 +104,7 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
     }
 
     /**
-     * 向以节点Node为根节点的二分搜索树树中添加新的元素e，递归实现
+     * 向以节点Node为根节点的二分搜索树树中添加新的元素键值对节点，递归实现
      *
      * @param node 二分搜索树的根节点
      * @param key  要加入地节点的键
