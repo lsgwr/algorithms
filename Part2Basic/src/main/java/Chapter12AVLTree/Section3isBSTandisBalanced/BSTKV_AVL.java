@@ -1,11 +1,12 @@
 /***********************************************************
  * @Description : 基于第6章“支持键值对的二分搜索树BSTKV.java”实现地二分平衡树
  * 6.2 实现了基本的节点高度和节点平衡因子的检测
+ * 6.3 实现是否是BST和是否是平衡二叉树的判断函数
  * @author      : 梁山广(Liang Shan Guang)
- * @date        : 2020/1/3 21:00
+ * @date        : 2020/1/3 21:56
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter12AVLTree.Section2GetHeightAndBalance;
+package Chapter12AVLTree.Section3isBSTandisBalanced;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
