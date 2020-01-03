@@ -36,6 +36,14 @@ public class BSTKV<K extends Comparable<K>, V> {
             left = null;
             right = null;
         }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "key=" + key +
+                    ", val=" + val +
+                    '}';
+        }
     }
 
     /**
