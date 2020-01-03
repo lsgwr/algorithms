@@ -546,3 +546,4 @@ private Node remove(Node node, E e) {
 + select：选出指定排名的元素(引入size用于统计每个子树的节点个数)
 + 支持重复元素的二分搜索树，引入count(相同元素存了几个)
 + [LeetCode上树相关的问题](https://leetcode-cn.com/tag/tree/)
++ [node的节点从值改为键值对BSTKV.java](src/main/java/Chapter06BST/BSTKV.java)，对应的测试类问[MainKV.java](src/main/java/Chapter06BST/MainKV.java)
