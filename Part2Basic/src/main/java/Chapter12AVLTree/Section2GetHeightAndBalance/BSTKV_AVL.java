@@ -35,6 +35,11 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
          */
         public int height;
 
+        /**
+         * 平衡因子，当前节点左子树高度减去右子树高度的差值
+         */
+        public int balance;
+
         public Node(K key, V val) {
             this.key = key;
             this.val = val;
@@ -45,13 +50,11 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
             height = 1;
         }
 
-        @Override
-        public String toString() {
-            return "Node{" +
-                    "key=" + key +
-                    ", val=" + val +
-                    ", height=" + height +
-                    '}';
+        public Node(K key, V val, int height, int balance) {
+            this.key = key;
+            this.val = val;
+            this.height = height;
+            this.balance = balance;
         }
     }
 
@@ -127,7 +130,15 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
             // 如果和遍历到的节点相等即key.compareTo(node.key)==0，则进行节点值更新
             node.val = val;
         }
-
+        // 更新当前节点和其往上节点的高度。平衡二叉树某个节点的高度值=max(左子树高度值，右子树高度值) + 1
+        // +1时因为父亲节点比子节点高一层。叶子节点的高度值认为是1，左右子树为空高度认为是0
+        node.height = Math.max(getHeight(node.left), getHeight(node.right)) + 1;
+        // 获取节点的平衡因子，即node节点的左右子树的高度差的。子树为空平衡因子认为是0，即balance=左子树高度-右子树高度值
+        node.balance = getHeight(node.left) - getHeight(node.right);
+        if (Math.abs(node.balance) > 1) {
+            // 如果左右子树的高度差超过了1(平衡二叉树任何一个节点的左右子树高度差不大于1)，说明不是平衡二叉树了
+            System.out.println("节点左右子树高度差超过1啦：" + node.balance);
+        }
         // 当这个node是把key给new出来地就设置到子节点为空的上面去；如果不是new出来地相当于把已有的二分搜索树中的节点关系又设置一次
         return node;
     }
