@@ -15,7 +15,7 @@
 + 之所以要区分一棵树是否平衡，就是因为需要知道这棵树的操作复杂度是什么量级的。比如说“堆是一种平衡树”，实际上就是从操作复杂度说“堆的各种操作（insert、extract）的复杂度都是 O(logn)”。
 
 ## 12.2 结算节点的高度和平衡因子
-> 只在add函数中更新节点高度height和节点平衡因为balance
+> 只在add函数中更新节点高度height和节点平衡因子balance
 ```java
 /**
      * 向以节点Node为根节点的二分搜索树树中添加新的键值对节点，递归实现
@@ -146,3 +146,20 @@ private boolean isBalanced(Node node) {
 ### 本节相关代码
 + [实现代码](src/main/java/Chapter12AVLTree/Section3isBSTandisBalanced/BSTKV_AVL.java)
 + [测试代码](src/main/java/Chapter12AVLTree/Section3isBSTandisBalanced/Main.java)
+
+## 12.4 旋转操作的基本原理
+> 新的节点加入会使得二叉树不再平衡(不满足上一届BST和AVL的性质)，所以需要调整点使得二叉树重新平衡，这些操作下面会看到和旋转一样，一次我们称之为旋转操作
+
+### 在什么是维护平衡(即旋转)？
+> 加入新节点后，沿着新节点的插入的置向上维护平衡性
+![沿着新节点的插入的置向上维护平衡性](images/第12章_AVL平衡树/沿着新节点的插入的置向上维护平衡性.png)
+
+进行旋转的时机是在add中当更新节点高度和平衡因子后
+```java
+// 更新当前节点和其往上节点的高度。平衡二叉树某个节点的高度值=max(左子树高度值，右子树高度值) + 1
+// +1时因为父亲节点比子节点高一层。叶子节点的高度值认为是1，左右子树为空高度认为是0
+node.height = Math.max(getHeight(node.left), getHeight(node.right)) + 1;
+// 获取节点的平衡因子，即node节点的左右子树的高度差的。子树为空平衡因子认为是0，即balance=左子树高度-右子树高度值
+node.balance = getHeight(node.left) - getHeight(node.right);
+// Todo：加入新节点后通过旋转使得二叉树重新平衡
+```
