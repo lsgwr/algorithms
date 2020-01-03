@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 基于支持键值对的二分搜索树BSTKV.java实现地二分平衡树
+ * @Description : 基于第6章“支持键值对的二分搜索树BSTKV.java”实现地二分平衡树
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2020/1/3 21:00
  * @email       : liangshanguang2@gmail.com
@@ -30,12 +30,19 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
          */
         public Node left, right;
 
+        /**
+         * 节点的高度值
+         */
+        public int height;
 
         public Node(K key, V val) {
             this.key = key;
             this.val = val;
             left = null;
             right = null;
+            // 初始当前节点还没被加入BST中，我们认为是叶子节点，高度认为是1
+            // 后面添加节点时再更新height
+            height = 1;
         }
 
         @Override
@@ -43,6 +50,7 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
             return "Node{" +
                     "key=" + key +
                     ", val=" + val +
+                    ", height=" + height +
                     '}';
         }
     }
@@ -79,6 +87,20 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
     }
 
     /**
+     * 获取指定节点的高度值
+     *
+     * @param node 要查询高度的节点
+     * @return node节点的高度
+     */
+    private int getHeight(Node node) {
+        if (node == null) {
+            // 空间点的高度值我们认为是0
+            return 0;
+        }
+        return node.height;
+    }
+
+    /**
      * 向以节点Node为根节点的二分搜索树树中添加新的元素e，递归实现
      *
      * @param node 二分搜索树的根节点
@@ -90,6 +112,7 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
         if (node == null) {
             // 只要碰到了为空的node，就一定要把我们的e作为节点添加到这里的，具体是作为左子树、右子树还是根节点到下面再进行设置
             size++;
+            // 新加地节点刚开始都是叶子节点，所以Node的默认构造函数把height设置为1没问题，
             return new Node(key, val);
         }
 
@@ -100,8 +123,10 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
         } else if (key.compareTo(node.key) > 0) {
             // key大于根节点的key，往node的右子树继续遍历
             node.right = add(node.right, key, val);
+        } else {
+            // 如果和遍历到的节点相等即key.compareTo(node.key)==0，则进行节点值更新
+            node.val = val;
         }
-        // 如果和遍历到的节点相等即key.compareTo(node.key)==0则直接跳过，不做任何处理，因为我们实现的二分搜索树不允许有重复元素。
 
         // 当这个node是把key给new出来地就设置到子节点为空的上面去；如果不是new出来地相当于把已有的二分搜索树中的节点关系又设置一次
         return node;

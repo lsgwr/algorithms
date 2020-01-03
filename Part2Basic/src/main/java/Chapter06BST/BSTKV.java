@@ -99,8 +99,10 @@ public class BSTKV<K extends Comparable<K>, V> {
         } else if (key.compareTo(node.key) > 0) {
             // key大于根节点的key，往node的右子树继续遍历
             node.right = add(node.right, key, val);
+        }else {
+            // 如果和遍历到的节点相等即key.compareTo(node.key)==0，则进行节点值更新
+            node.val = val;
         }
-        // 如果和遍历到的节点相等即key.compareTo(node.key)==0则直接跳过，不做任何处理，因为我们实现的二分搜索树不允许有重复元素。
 
         // 当这个node是把key给new出来地就设置到子节点为空的上面去；如果不是new出来地相当于把已有的二分搜索树中的节点关系又设置一次
         return node;
