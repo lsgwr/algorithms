@@ -61,10 +61,88 @@ private Node add(Node node, K key, V val) {
 ## 12.3 检查是否是二分搜索树BST和平衡二叉树AVL的要求
 > 设计函数检查当前的二叉树是否满足如下特点：
 
-+ 二分搜索树BST的特点：
-  + 任意一个节点的左子树中的所有节点都小于这个节点
-  + 任意一个节点的右子树中的所有节点都大于这个节点
-+ 平衡二叉树AVL的特点：
-  + 满足BST的特点
-  + 对任意一个节点，其左子树和右子树的高度差不能超过1
-  
+### 判断是否是二分搜索树BST
+> 二分搜索树BST的特点：
++ 任意一个节点的左子树中的所有节点都小于这个节点
++ 任意一个节点的右子树中的所有节点都大于这个节点
+
+本节我们用地实际是"BST的中序遍历结果是升序的"这一个地6章得到的结论。
+
+把遍历结果引用传值加入到keys列表中很巧妙
+
+```java
+ /**
+ * 判断当前的二叉树是否仍然是一棵二分搜索树BST
+ */
+public boolean isBST() {
+    List<K> keys = new ArrayList<>();
+    inOrder(root, keys);
+    // BST的中序遍历结果的一个特殊性质就是遍历结果是升序的
+    for (int i = 1; i < keys.size(); i++) {
+        if (keys.get(i - 1).compareTo(keys.get(i)) > 0) {
+            // 升序表明前面的节点应该小于后面的节点，当前面的节点大于后面的节点时，就说明二叉树不时BST的
+            return false;
+        }
+    }
+    return true;
+}
+/**
+ * 中序遍历以node作为根节点的二分搜索树,把遍历到的节点顺序加入到list中
+ */
+private void inOrder(Node node, List<K> keys) {
+    // 递归终止条件
+    if (node == null) {
+        // 遍历到null节点就返回上一层递归
+        return;
+    }
+
+    // 递归组成逻辑
+    // 2.遍历左子树
+    inOrder(node.left, keys);
+    // 1.访问当前节点。需要存储时可以放到list中
+    // 访问节点可以是打印也可以是存储到list中
+    // System.out.print(node.key + ":" + node.val + " ");
+    keys.add(node.key);
+    // 3.遍历右子树
+    inOrder(node.right, keys);
+}
+```
+### 判断是否是平衡二叉树AVL
+>  平衡二叉树AVL的特点：
+
++ 满足BST的特点
++ 对任意一个节点，其左子树和右子树的高度差不能超过1
+```java
+
+/**
+ * 判断当前的二叉树是否是平衡二叉树，每个节点的平衡因子balance值的绝对值不能大于1
+ */
+public boolean isBalanced() {
+    return isBalanced(root);
+}
+
+/**
+ * 遍历当前二叉树的所有节点，看其balance值的绝对值是否大于1
+ *
+ * @param node 当前遍历到的子树的根节点
+ * @return 是否是平衡二叉树
+ */
+private boolean isBalanced(Node node) {
+    // 1.递归终止条件
+    if (node == null) {
+        // 递归到底了，空子树可以看做是平衡二叉树
+        return true;
+    }
+    if (Math.abs(node.balance) > 1) {
+        return false;
+    }
+
+    // 2.递归具体逻辑
+    // 左右子树递归进行遍历，两个都为平衡二叉树，整体的二叉树才是平衡二叉树
+    return isBalanced(node.left) && isBalanced(node.right);
+}
+```
+
+### 本节相关代码
++ [实现代码](src/main/java/Chapter12AVLTree/Section3isBSTandisBalanced/BSTKV_AVL.java)
++ [测试代码](src/main/java/Chapter12AVLTree/Section3isBSTandisBalanced/Main.java)
