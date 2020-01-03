@@ -40,6 +40,8 @@ public class Main {
     }
 }
 /**
+ * 从下面的结果可以看到我们第6章实现的二分搜索树是很不平衡的~
+ * <p>
  * Pride and Prejudice
  * Total words: 125901
  * 节点左右子树高度差超过1啦：3
