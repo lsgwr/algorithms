@@ -163,3 +163,10 @@ node.height = Math.max(getHeight(node.left), getHeight(node.right)) + 1;
 node.balance = getHeight(node.left) - getHeight(node.right);
 // Todo：加入新节点后通过旋转使得二叉树重新平衡
 ```
+
+### 加入新节点导致原二叉树失衡的例子
++ 例子1
+  >![二叉树失衡举例1](images/第12章_AVL平衡树/二叉树失衡举例1.png)
++ 例子2
+  >![二叉树失衡举例2](images/第12章_AVL平衡树/二叉树失衡举例2.png)
+
