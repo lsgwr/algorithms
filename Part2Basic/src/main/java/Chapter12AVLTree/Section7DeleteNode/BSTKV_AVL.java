@@ -154,6 +154,9 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
      * @return 根据左右子树计算得到的高度
      */
     private int calHeight(Node node) {
+        if (node == null) {
+            return 0;
+        }
         // 不需要考虑node为null的情况，因为getHeight()已经考虑到了，node子节点为空直接返回0，不影响下面的计算
         return Math.max(getHeight(node.left), getHeight(node.right)) + 1;
     }
@@ -165,7 +168,9 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
      * @return 平衡因子
      */
     private int calBalance(Node node) {
-        // 不需要考虑node为null的情况，因为getHeight()已经考虑到了，node子节点为空直接返回0，不影响下面的计算
+        if (node == null) {
+            return 0;
+        }
         return getHeight(node.left) - getHeight(node.right);
     }
 
@@ -230,6 +235,9 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
      * @return 旋转后新的根节点
      */
     private Node rotateToReBalance(Node node) {
+        if (node == null) {
+            return null;
+        }
         // 获取节点的平衡因子，即node节点的左右子树的高度差的。子树为空平衡因子认为是0，即balance=左子树高度-右子树高度值
         int balance = calBalance(node);
         // 下面这3行可以打开用于观察旋转过程中平衡因子的变化
@@ -613,8 +621,13 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
      *
      * @param key 节点的键
      */
-    public void remove(K key) {
-        root = remove(root, key);
+    public V remove(K key) {
+        Node node = getNode(root, key);
+        if(node != null){
+            root = remove(root, key);
+            return node.val;
+        }
+        return null;
     }
 
     /**
@@ -650,19 +663,19 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
                 size--;
                 // 左节点为空，把node的右子树挂接到node的父亲节点即可
                 retNode = rightNode;
-            }else if (node.right == null) {
+            } else if (node.right == null) {
                 Node leftNode = node.left;
                 // 释放引用
                 node.left = null;
                 size--;
                 // 右节点为空，把node的左子树挂接到node的父亲节点即可
                 retNode = leftNode;
-            }else {
+            } else {
                 // node的左右子树都不为空，就找node的右子树的最小值来代替node
                 Node minimumRight = minimum(node.right);
                 // 警告：下面两行代码一定不要颠倒，一定要先设置right再设置left，否则会出现迭代引用！
                 // 选出node右子树最小元素来代替node，那么右子树最小元素就要从原来位置删掉
-                minimumRight.right = removeMin(node.right);
+                minimumRight.right = remove(node.right, minimumRight.key);
                 // 替换当前节点node的左右子树
                 minimumRight.left = node.left;
                 // 释放node的引用

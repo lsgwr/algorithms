@@ -5,11 +5,12 @@
  * @date        : 2020/1/4 15:59
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter12AVLTree.Section4to6RotateToReBalance;
+package Chapter12AVLTree.Section7DeleteNode;
 
 import Chapter07SetAndMap.Section1SetBasicAndBSTSet.FileOperation;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,7 +20,7 @@ public class Main {
         String filename = "src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt";
         if (FileOperation.readFile(filename, words)) {
             // 排序后看看性能，这样最能测AVL的实现好不好，排序后加入节点后整个BST会蜕化成一条链表，新加入的节点都要遍历整个BST才能找到自己的位置
-            // Collections.sort(words);
+            Collections.sort(words);
             System.out.println("Total words: " + words.size());
 
             BSTKV_AVL<String, Integer> avl = new BSTKV_AVL<>();
@@ -30,7 +31,7 @@ public class Main {
                 } else {
                     // 不存在就插入进去，词频初始化为1
                     avl.add(word, 1);
-                    if (!avl.isBalanced()){
+                    if (!avl.isBalanced()) {
                         // 添加节点都会进行旋转再平衡，一次输出下面的内容就说明我们的算法有问题
                         System.out.println("二叉树是否是平衡二叉树：" + avl.isBalanced());
                     }
@@ -43,6 +44,21 @@ public class Main {
             System.out.println("二叉树是否是二分搜索树BST：" + avl.isBST());
             // 还没进行平衡处理，肯定是不平衡的
             System.out.println("二叉树是否是平衡二叉树：" + avl.isBalanced());
+
+            // 下面进行删除操作，只要重要任何一个步骤不再是BST或者AVL了，就报错
+            int count = 0;
+            for (int i = 0; i < words.size(); i++) {
+                String word = words.get(i);
+                avl.remove(word);
+                if (!avl.isBST()) {
+                    System.out.println("不再是BST啦！");
+                }
+                if (!avl.isBalanced()) {
+                    count++;
+//                    System.out.println("不再是平衡二叉树啦！" + word);
+                }
+            }
+            System.out.println(count);
         }
     }
 }
