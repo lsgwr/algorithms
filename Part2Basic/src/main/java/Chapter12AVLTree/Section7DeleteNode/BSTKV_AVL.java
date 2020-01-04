@@ -621,7 +621,7 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
     }
 
     /**
-     * 删除指定值的结点
+     * 删除指定值的结点，并且仍要保持为平衡二分搜索树
      *
      * @param key 节点的键
      */
