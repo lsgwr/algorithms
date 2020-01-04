@@ -230,6 +230,11 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
      * @return 旋转后新的根节点
      */
     private Node rotateToReBalance(Node node) {
+        if (node == null) {
+            return null;
+        }
+        // 更新节点的height，这个无比要做，要不会下面的平衡操作都是白搭~~！！！
+        node.height = calHeight(node);
         // 获取节点的平衡因子，即node节点的左右子树的高度差的。子树为空平衡因子认为是0，即balance=左子树高度-右子树高度值
         int balance = calBalance(node);
         // 下面这3行可以打开用于观察旋转过程中平衡因子的变化
