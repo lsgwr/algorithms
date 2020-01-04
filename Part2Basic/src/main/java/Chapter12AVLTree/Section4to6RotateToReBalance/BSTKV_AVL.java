@@ -255,6 +255,10 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
         node.height = calHeight(node);
         // 获取节点的平衡因子，即node节点的左右子树的高度差的。子树为空平衡因子认为是0，即balance=左子树高度-右子树高度值
         int balance = calBalance(node);
+        // 下面这3行可以打开用于观察旋转过程中平衡因子的变化
+        // if (Math.abs(balance) > 1) {
+        //     System.out.println(balance);
+        // }
         // Todo：加入新节点后通过旋转使得二叉树重新平衡。
         // 注意：添加节点后，高度和平衡因子的更新是在递归回退即从下往上遍历树的时候发生地，所以node节点失衡时，下面的节点肯定都更新过了高度和平衡因子
         // 旋转情形1：node左子树的左侧添加的节点导致node点不再平衡。两个左所以叫LL
