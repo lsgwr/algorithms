@@ -268,7 +268,16 @@ private Node add(Node node, K key, V val) {
 然后用LL的右旋转使得二叉树重新平衡。
 
 综上：LR问题的解决方案是先左旋转然后右旋转。LR转LL是左旋转，LL转平衡是右旋转
-
+```java
+// 旋转情形3：node左子树的右侧添加的节点导致node点不再平衡。先左后右所以叫LR
+if (balance > 1 && calBalance(node.left) < 0) {
+    // 旋转后返回给上一层新的根节点，上面失衡的节点会继续按照旋转的流程使自己再次平衡，直到递归结束，整个二叉树也就再次平衡了
+    // 先对y的左孩子x执行一次左旋转，把问题转换成LL。node.left变成旋转后新的节点
+    node.left = rotateLeft(node.left);
+    // LL问题需要再对新的树执行一次右旋转
+    return rotateRight(node);
+}
+```
 ### 4.先右旋转再左旋转
 > 不平衡是因为在`从下往上首个不平衡点(绿色标出)`的右孩子的左侧新加入节点导致二叉树失衡，先右后左，所以叫RL
 
@@ -281,3 +290,13 @@ private Node add(Node node, K key, V val) {
 然后用RR的右旋转使得二叉树重新平衡。
 
 综上：RL问题的解决方案先右旋转然后左旋转。RL转RR是右旋转，RR转平衡是左旋转
+```java
+// 旋转情形4：node右子树的左侧添加的节点导致node点不再平衡。先右后左所以叫RL
+if (balance < -1 && calBalance(node.right) > 0) {
+    // 旋转后返回给上一层新的根节点，上面失衡的节点会继续按照旋转的流程使自己再次平衡，直到递归结束，整个二叉树也就再次平衡了
+    // 先对y的右孩子x执行一次右旋转，把问题转换成RR。node.right变成旋转后新的节点
+    node.right = rotateRight(node.right);
+    // RR问题需要再对新的树执行一次左旋转
+    return rotateLeft(node);
+}
+```

@@ -257,14 +257,30 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
         int balance = calBalance(node);
         // Todo：加入新节点后通过旋转使得二叉树重新平衡。
         // 注意：添加节点后，高度和平衡因子的更新是在递归回退即从下往上遍历树的时候发生地，所以node节点失衡时，下面的节点肯定都更新过了高度和平衡因子
-        // 旋转情形1：node左侧的左侧添加的节点导致node点不再平衡。calBalance(node.left) >= 0表明左子树整体平衡因子为
+        // 旋转情形1：node左子树的左侧添加的节点导致node点不再平衡。两个左所以叫LL
         if (balance > 1 && calBalance(node.left) >= 0) {
             // 旋转后返回给上一层新的根节点，上面失衡的节点会继续按照旋转的流程使自己再次平衡，直到递归结束，整个二叉树也就再次平衡了
             return rotateRight(node);
         }
-        // 旋转情形2：node右侧的右侧添加的节点导致node点不再平衡
+        // 旋转情形2：node右子树的右侧添加的节点导致node点不再平衡。两个右所以叫RR
         if (balance < -1 && calBalance(node.right) <= 0) {
             // 旋转后返回给上一层新的根节点，上面失衡的节点会继续按照旋转的流程使自己再次平衡，直到递归结束，整个二叉树也就再次平衡了
+            return rotateLeft(node);
+        }
+        // 旋转情形3：node左子树的右侧添加的节点导致node点不再平衡。先左后右所以叫LR
+        if (balance > 1 && calBalance(node.left) < 0) {
+            // 旋转后返回给上一层新的根节点，上面失衡的节点会继续按照旋转的流程使自己再次平衡，直到递归结束，整个二叉树也就再次平衡了
+            // 先对y的左孩子x执行一次左旋转，把问题转换成LL。node.left变成旋转后新的节点
+            node.left = rotateLeft(node.left);
+            // LL问题需要再对新的树执行一次右旋转
+            return rotateRight(node);
+        }
+        // 旋转情形4：node右子树的左侧添加的节点导致node点不再平衡。先右后左所以叫RL
+        if (balance < -1 && calBalance(node.right) > 0) {
+            // 旋转后返回给上一层新的根节点，上面失衡的节点会继续按照旋转的流程使自己再次平衡，直到递归结束，整个二叉树也就再次平衡了
+            // 先对y的右孩子x执行一次右旋转，把问题转换成RR。node.right变成旋转后新的节点
+            node.right = rotateRight(node.right);
+            // RR问题需要再对新的树执行一次左旋转
             return rotateLeft(node);
         }
         // 当这个node是把key给new出来地就设置到子节点为空的上面去；如果不是new出来地相当于把已有的二分搜索树中的节点关系又设置一次
