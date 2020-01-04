@@ -16,6 +16,11 @@ import java.util.Queue;
  */
 public class BSTKV_RBTree<K extends Comparable<K>, V> {
     /**
+     * 红黑树节点颜色的静态变量
+     */
+    private static final boolean RED = true, BLACK = false;
+
+    /**
      * 二分搜索树每个节点的封装类。Node是BST的内部类，所以属性可以设置为public
      */
     private class Node {
@@ -29,12 +34,19 @@ public class BSTKV_RBTree<K extends Comparable<K>, V> {
          * 节点e的左子节点和右子节点
          */
         public Node left, right;
+        /**
+         * 节点颜色，因为只有红黑两种可能，所以用布尔变量表示。我们约定true为红色，false为黑色
+         */
+        private boolean color;
 
         public Node(K key, V val) {
             this.key = key;
             this.val = val;
             left = null;
             right = null;
+            // 默认每个点的初始颜色是红色(true)，因为我们新加入的节点一般都是和现有的节点做成3节点或4节点，
+            // 当表示成红黑树节点时，新加入的节点往往都是在红色的位置上，初始化成红色省心
+            color = RED;
         }
 
         @Override
@@ -78,6 +90,17 @@ public class BSTKV_RBTree<K extends Comparable<K>, V> {
     }
 
     /**
+     * 判断节点node是否为红色，考虑空的情况
+     */
+    private boolean isRed(Node node) {
+        if (node == null) {
+            // 空节点被认为是黑节点
+            return BLACK;
+        }
+        return node.color;
+    }
+
+    /**
      * 向以节点Node为根节点的二分搜索树树中添加新的元素e，递归实现
      *
      * @param node 二分搜索树的根节点
@@ -99,7 +122,7 @@ public class BSTKV_RBTree<K extends Comparable<K>, V> {
         } else if (key.compareTo(node.key) > 0) {
             // key大于根节点的key，往node的右子树继续遍历
             node.right = add(node.right, key, val);
-        }else {
+        } else {
             // 如果和遍历到的节点相等即key.compareTo(node.key)==0，则进行节点值更新
             node.val = val;
         }
@@ -168,7 +191,7 @@ public class BSTKV_RBTree<K extends Comparable<K>, V> {
         if (node == null) {
             // 原来不存在这个节点就加入
             add(key, valNew);
-        }else {
+        } else {
             node.val = valNew;
         }
     }
