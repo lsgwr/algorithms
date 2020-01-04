@@ -170,3 +170,8 @@ node.balance = getHeight(node.left) - getHeight(node.right);
 + 例子2
   >![二叉树失衡举例2](images/第12章_AVL平衡树/二叉树失衡举例2.png)
 
+
+### 旋转的原理
+> 以右旋为例，自己好好推导下~~
+![右旋转](images/第12章_AVL平衡树/右旋转.png)
+
