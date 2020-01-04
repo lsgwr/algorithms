@@ -40,11 +40,6 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
          */
         public int height;
 
-        /**
-         * 平衡因子，当前节点左子树高度减去右子树高度的差值
-         */
-        public int balance;
-
         public Node(K key, V val) {
             this.key = key;
             this.val = val;
@@ -55,11 +50,10 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
             height = 1;
         }
 
-        public Node(K key, V val, int height, int balance) {
+        public Node(K key, V val, int height) {
             this.key = key;
             this.val = val;
             this.height = height;
-            this.balance = balance;
         }
     }
 
@@ -129,7 +123,7 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
             // 递归到底了，空子树可以看做是平衡二叉树
             return true;
         }
-        if (Math.abs(node.balance) > 1) {
+        if (Math.abs(getBalance(node)) > 1) {
             return false;
         }
 
@@ -150,6 +144,40 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
             return 0;
         }
         return node.height;
+    }
+
+    /**
+     * 计算节点node的平衡因子，即当前节点左子树高度减去右子树高度的差值
+     *
+     * @param node 当前节点
+     * @return 平衡因子
+     */
+    private int getBalance(Node node) {
+        return getHeight(node.left) - getHeight(node.right);
+    }
+
+    /**
+     * 旋转情形1：不平衡发生在节点y左侧的左侧，需要进行右旋转
+     * 向右旋转的核心代码：x.right = y; y.left = T3
+     * // 对节点y进行向右旋转操作，返回旋转后新的根节点x
+     * //        y                              x
+     * //       / \                           /   \
+     * //      x   T4     向右旋转 (y)        z     y
+     * //     / \       - - - - - - - ->    / \   / \
+     * //    z   T3                       T1  T2 T3 T4
+     * //   / \
+     * // T1   T2
+     *
+     * @param y 二叉树中首个发现平衡因子大于1的节点
+     * @return 旋转后新的根节点x
+     */
+    private Node rightRotate(Node y) {
+        Node x = y.left;
+        Node T3 = x.right;
+        x.right = y;
+        y.left = T3;
+        // 更新节点的Height
+        return x;
     }
 
     /**
@@ -183,8 +211,13 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
         // +1时因为父亲节点比子节点高一层。叶子节点的高度值认为是1，左右子树为空高度认为是0
         node.height = Math.max(getHeight(node.left), getHeight(node.right)) + 1;
         // 获取节点的平衡因子，即node节点的左右子树的高度差的。子树为空平衡因子认为是0，即balance=左子树高度-右子树高度值
-        node.balance = getHeight(node.left) - getHeight(node.right);
-        // Todo：加入新节点后通过旋转使得二叉树重新平衡
+        int balance = getBalance(node);
+        // Todo：加入新节点后通过旋转使得二叉树重新平衡。
+        // 注意：添加节点后，高度和平衡因子的更新是在递归回退即从下往上遍历树的时候发生地，所以node节点失衡时，下面的节点肯定都更新过了高度和平衡因子
+        // 旋转情形1：node左侧的左侧添加的节点导致node点不再平衡
+        if (balance > 1 && getBalance(node.left) >= 0) {
+
+        }
         // 当这个node是把key给new出来地就设置到子节点为空的上面去；如果不是new出来地相当于把已有的二分搜索树中的节点关系又设置一次
         return node;
     }
