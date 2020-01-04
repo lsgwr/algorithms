@@ -190,7 +190,7 @@ node.balance = getHeight(node.left) - getHeight(node.right);
  * @param y 二叉树中首个发现平衡因子大于1的节点
  * @return 旋转后新的根节点x
  */
-private Node rightRotate(Node y) {
+private Node rotateRight(Node y) {
     Node x = y.left;
     Node T3 = x.right;
     // 右旋转的核心
@@ -207,7 +207,7 @@ private Node add(Node node, K key, V val) {
    // 旋转情形1：node左侧的左侧添加的节点导致node点不再平衡
    if (balance > 1 && calBalance(node.left) >= 0) {
        // 旋转后返回给上一层新的根节点，上面失衡的节点会继续按照旋转的流程使自己再次平衡，直到递归结束，整个二叉树也就再次平衡了
-       return rightRotate(node);
+       return rotateRight(node);
    }
    ......
 }
@@ -215,7 +215,6 @@ private Node add(Node node, K key, V val) {
 
 ### 二、左旋转
 > 在右侧的右侧新加入的节点导致二叉树失衡
-
 ![左旋转](images/第12章_AVL平衡树/左旋转.png)
 ```java
 /**
