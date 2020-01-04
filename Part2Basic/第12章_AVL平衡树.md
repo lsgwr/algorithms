@@ -445,3 +445,153 @@ private Node remove(Node node, K key) {
     return rotateToReBalance(retNode);
 }
 ```
+
+> 总结：经过上面的四种旋转和删除操作(remove、removeMin、removeMax)，我们把节点旋转再平衡的操作封装成了如下的函数(核心是`rotateToReBalance()`)~方便节点增删时直接调用
+
+```java
+/**
+ * 获取指定节点的高度值
+ *
+ * @param node 要查询高度的节点
+ * @return node节点的高度
+ */
+private int getHeight(Node node) {
+    if (node == null) {
+        // 空间点的高度值我们认为是0
+        return 0;
+    }
+    return node.height;
+}
+
+/**
+ * 计算节点的高度
+ * 节点的高度值= max(左子树高度值，右子树高度值) + 1
+ *
+ * @param node 当前高度
+ * @return 根据左右子树计算得到的高度
+ */
+private int calHeight(Node node) {
+    if (node == null) {
+        return 0;
+    }
+    // 不需要考虑node为null的情况，因为getHeight()已经考虑到了，node子节点为空直接返回0，不影响下面的计算
+    return Math.max(getHeight(node.left), getHeight(node.right)) + 1;
+}
+
+/**
+ * 计算节点node的平衡因子，即当前节点左子树高度减去右子树高度的差值
+ *
+ * @param node 当前节点
+ * @return 平衡因子
+ */
+private int calBalance(Node node) {
+    if (node == null) {
+        return 0;
+    }
+    return getHeight(node.left) - getHeight(node.right);
+}
+
+/**
+ * 旋转情形1：不平衡发生在节点y左侧的左侧，需要进行右旋转
+ * 向右旋转的核心代码：x.right = y; y.left = T3
+ * // 对节点y进行向右旋转操作，返回旋转后新的根节点x
+ * //        y                              x
+ * //       / \                           /   \
+ * //      x   T4     向右旋转 (y)        z     y
+ * //     / \       - - - - - - - ->    / \   / \
+ * //    z   T3                       T1  T2 T3 T4
+ * //   / \
+ * // T1   T2
+ *
+ * @param y 二叉树中首个发现平衡因子大于1的节点
+ * @return 旋转后新的根节点x
+ */
+private Node rotateRight(Node y) {
+    Node x = y.left;
+    Node T3 = x.right;
+    // 右旋转的核心
+    x.right = y;
+    y.left = T3;
+    // 更新节点的Height，从上面注释的图可以看到z及其子树不用更新，T3和T4也不需要，只需要更新y和x即可
+    y.height = calHeight(y);
+    x.height = calHeight(x);
+    return x;
+}
+
+/**
+ * 旋转情形2：不平衡发生在节点y右侧的右侧，需要进行左旋转
+ * 向右旋转的核心代码：x.left = y; y.right = T3
+ * // 对节点y进行向左旋转操作，返回旋转后新的根节点x
+ * //    y                             x
+ * //  /  \                          /   \
+ * // T4   x      向左旋转 (y)       y     z
+ * //     / \   - - - - - - - ->   / \   / \
+ * //   T3  z                     T4 T3 T1 T2
+ * //      / \
+ * //     T1 T2
+ *
+ * @param y 二叉树中首个发现平衡因子小于-1的节点
+ * @return 旋转后新的根节点x
+ */
+private Node rotateLeft(Node y) {
+    Node x = y.right;
+    Node T3 = x.left;
+    // 坐旋转过程
+    x.left = y;
+    y.right = T3;
+    // 更新height
+    y.height = calHeight(y);
+    x.height = calHeight(x);
+    return x;
+}
+
+/**
+ * 根绝当前节点的平衡因子判断是否需要进行旋转
+ *
+ * @param node 当前节点
+ * @return 旋转后新的根节点
+ */
+private Node rotateToReBalance(Node node) {
+    if (node == null) {
+        return null;
+    }
+    // 更新节点的height，这个无比要做，要不会下面的平衡操作都是白搭~~！！！
+    // 更新当前节点和其往上节点的高度。平衡二叉树某个节点的高度值=max(左子树高度值，右子树高度值) + 1
+    // +1时因为父亲节点比子节点高一层。叶子节点的高度值认为是1，左右子树为空高度认为是0
+    node.height = calHeight(node);
+    // 获取节点的平衡因子，即node节点的左右子树的高度差的。子树为空平衡因子认为是0，即balance=左子树高度-右子树高度值
+    int balance = calBalance(node);
+    // 下面这3行可以打开用于观察旋转过程中平衡因子的变化
+    // if (Math.abs(balance) > 1) {
+    //     System.out.println(balance);
+    // }
+    // 旋转情形1：node左子树的左侧添加的节点导致node点不再平衡。两个左所以叫LL
+    if (balance > 1 && calBalance(node.left) >= 0) {
+        // 旋转后返回给上一层新的根节点，上面失衡的节点会继续按照旋转的流程使自己再次平衡，直到递归结束，整个二叉树也就再次平衡了
+        return rotateRight(node);
+    }
+    // 旋转情形2：node右子树的右侧添加的节点导致node点不再平衡。两个右所以叫RR
+    if (balance < -1 && calBalance(node.right) <= 0) {
+        // 旋转后返回给上一层新的根节点，上面失衡的节点会继续按照旋转的流程使自己再次平衡，直到递归结束，整个二叉树也就再次平衡了
+        return rotateLeft(node);
+    }
+    // 旋转情形3：node左子树的右侧添加的节点导致node点不再平衡。先左后右所以叫LR
+    if (balance > 1 && calBalance(node.left) < 0) {
+        // 旋转后返回给上一层新的根节点，上面失衡的节点会继续按照旋转的流程使自己再次平衡，直到递归结束，整个二叉树也就再次平衡了
+        // 先对y的左孩子x执行一次左旋转，把问题转换成LL。node.left变成旋转后新的节点
+        node.left = rotateLeft(node.left);
+        // LL问题需要再对新的树执行一次右旋转
+        return rotateRight(node);
+    }
+    // 旋转情形4：node右子树的左侧添加的节点导致node点不再平衡。先右后左所以叫RL
+    if (balance < -1 && calBalance(node.right) > 0) {
+        // 旋转后返回给上一层新的根节点，上面失衡的节点会继续按照旋转的流程使自己再次平衡，直到递归结束，整个二叉树也就再次平衡了
+        // 先对y的右孩子x执行一次右旋转，把问题转换成RR。node.right变成旋转后新的节点
+        node.right = rotateRight(node.right);
+        // RR问题需要再对新的树执行一次左旋转
+        return rotateLeft(node);
+    }
+    // 不需要维护平衡，直接返回原节点
+    return node;
+}
+```
