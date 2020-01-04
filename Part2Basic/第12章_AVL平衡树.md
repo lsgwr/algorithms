@@ -372,3 +372,76 @@ public class PerformanceTest {
 ## 12.7 AVL节点的删除
 > 在第6章BST中删除节点的基础上考虑到LL、RR、LR、RL四种旋转再平衡的情况即可，和添加节点时完全相同
 
+```java
+/**
+ * 删除指定值的结点
+ *
+ * @param key 节点的键
+ */
+public V remove(K key) {
+    Node node = getNode(root, key);
+    if(node != null){
+        root = remove(root, key);
+        return node.val;
+    }
+    return null;
+}
+
+/**
+ * 删除
+ *
+ * @param node 二分搜索树的根节点
+ * @param key  待删除节点的键
+ * @return 要挂载到当前节点父节点的子树
+ */
+private Node remove(Node node, K key) {
+    // 递归终止条件
+    if (node == null) {
+        return null;
+    }
+
+    // 递归组成逻辑
+    // 还没找到就接着往下找
+    Node retNode;
+    if (key.compareTo(node.key) < 0) {
+        // 要找的值比当前节点小，向左递归
+        node.left = remove(node.left, key);
+        retNode = node;
+    } else if (key.compareTo(node.key) > 0) {
+        // 要找的值比当前节点大，向右递归
+        node.right = remove(node.right, key);
+        retNode = node;
+    } else {
+        // node.key == key 找到相等的节点了，下面删除指定值的节点
+        if (node.left == null) {
+            Node rightNode = node.right;
+            // 释放引用
+            node.right = null;
+            size--;
+            // 左节点为空，把node的右子树挂接到node的父亲节点即可
+            retNode = rightNode;
+        } else if (node.right == null) {
+            Node leftNode = node.left;
+            // 释放引用
+            node.left = null;
+            size--;
+            // 右节点为空，把node的左子树挂接到node的父亲节点即可
+            retNode = leftNode;
+        } else {
+            // node的左右子树都不为空，就找node的右子树的最小值来代替node
+            Node minimumRight = minimum(node.right);
+            // 警告：下面两行代码一定不要颠倒，一定要先设置right再设置left，否则会出现迭代引用！
+            // 选出node右子树最小元素来代替node，那么右子树最小元素就要从原来位置删掉
+            minimumRight.right = removeMin(node.right);
+            // 替换当前节点node的左右子树
+            minimumRight.left = node.left;
+            // 释放node的引用
+            node.left = node.right = null;
+            // 返回给上一级来设置父节点
+            retNode = minimumRight;
+        }
+    }
+    // 删除前再进行一次平衡操作
+    return rotateToReBalance(retNode);
+}
+```
