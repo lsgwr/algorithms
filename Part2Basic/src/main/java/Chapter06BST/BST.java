@@ -404,7 +404,7 @@ public class BST<E extends Comparable<E>> {
             }
             // node的左右子树都不为空，就找node的右子树的最小值来代替node
             Node minimumRight = minimum(node.right);
-            // 警告：下面两行代码一定不要颠倒，一定要先设置right再设置left，否则会出现迭代引用！
+            // 警告：下面两行代码一定不要颠倒，一定要先设置right再设置left，否则会出现迭代引用！因为下面那行改变了node.right的结构。参考问题:https://coding.imooc.com/learn/questiondetail/143936.html
             // 选出node右子树最小元素来代替node，那么右子树最小元素就要从原来位置删掉
             minimumRight.right = removeMin(node.right);
             // 替换当前节点node的左右子树
