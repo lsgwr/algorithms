@@ -202,7 +202,7 @@ private Node rightRotate(Node y) {
     return x;
 }
 
-public void add(Node node){
+private Node add(Node node, K key, V val) {
    ......
    // 旋转情形1：node左侧的左侧添加的节点导致node点不再平衡
    if (balance > 1 && calBalance(node.left) >= 0) {
@@ -215,7 +215,45 @@ public void add(Node node){
 
 ### 二、左旋转
 > 在右侧的右侧新加入的节点导致二叉树失衡
+
 ![左旋转](images/第12章_AVL平衡树/左旋转.png)
->
+```java
+/**
+ * 旋转情形2：不平衡发生在节点y右侧的右侧，需要进行左旋转
+ * 向右旋转的核心代码：x.left = y; y.right = T3
+ * // 对节点y进行向左旋转操作，返回旋转后新的根节点x
+ * //    y                             x
+ * //  /  \                          /   \
+ * // T4   x      向左旋转 (y)       y     z
+ * //     / \   - - - - - - - ->   / \   / \
+ * //   T3  z                     T4 T3 T1 T2
+ * //      / \
+ * //     T1 T2
+ *
+ * @param y 二叉树中首个发现平衡因子小于-1的节点
+ * @return 旋转后新的根节点x
+ */
+private Node rotateLeft(Node y) {
+    Node x = y.right;
+    Node T3 = x.left;
+    // 坐旋转过程
+    x.left = y;
+    y.right = T3;
+    // 更新height
+    y.height = calHeight(y);
+    x.height = calHeight(x);
+    return x;
+}
+private Node add(Node node, K key, V val) {
+    ......
+    // 旋转情形2：node右侧的右侧添加的节点导致node点不再平衡
+    if (balance < -1 && calBalance(node.right) <= 0) {
+        // 旋转后返回给上一层新的根节点，上面失衡的节点会继续按照旋转的流程使自己再次平衡，直到递归结束，整个二叉树也就再次平衡了
+        return rotateLeft(node);
+    }
+    ......
+}
+```
+
 
 
