@@ -49,5 +49,5 @@ public class Main {
  * Frequency of PRIDE : 53
  * Frequency of PREJUDICE : 11
  * 二叉树是否是二分搜索树BST：true
- * 二叉树是否是平衡二叉树：false
+ * 二叉树是否是平衡二叉树：true
  */
