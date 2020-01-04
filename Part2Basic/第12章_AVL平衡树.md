@@ -607,4 +607,4 @@ private Node rotateToReBalance(Node node) {
 + [测试代码](src/main/java/Chapter12AVLTree/Section8SetAndMapBasedOnAVL/MainMap.java)
 
 ### AVL树的局限性
-> 旋转次数过多~很影响性能~为了解决这个问题~诞生了第13章的红黑树
+> 旋转次数过多，很影响性能。为了解决这个问题~诞生了第13章的红黑树
