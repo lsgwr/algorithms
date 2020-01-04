@@ -372,9 +372,11 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
     public void set(K key, V valNew) {
         Node node = getNode(root, key);
         if (node == null) {
-            throw new IllegalArgumentException("您要更新的键值对在BST中不存在！");
+            // 不存在就把节点加入进去
+            add(key, valNew);
+        }else {
+            node.val = valNew;
         }
-        node.val = valNew;
     }
 
     /**
@@ -627,7 +629,7 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
      */
     public V remove(K key) {
         Node node = getNode(root, key);
-        if(node != null){
+        if (node != null) {
             root = remove(root, key);
             return node.val;
         }
