@@ -46,7 +46,6 @@ public class Main {
             System.out.println("二叉树是否是平衡二叉树：" + avl.isBalanced());
 
             // 下面进行删除操作，只要重要任何一个步骤不再是BST或者AVL了，就报错
-            int count = 0;
             for (int i = 0; i < words.size(); i++) {
                 String word = words.get(i);
                 avl.remove(word);
@@ -54,11 +53,9 @@ public class Main {
                     System.out.println("不再是BST啦！");
                 }
                 if (!avl.isBalanced()) {
-                    count++;
-//                    System.out.println("不再是平衡二叉树啦！" + word);
+                    System.out.println("不再是平衡二叉树啦！" + word);
                 }
             }
-            System.out.println(count);
         }
     }
 }

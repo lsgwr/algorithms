@@ -234,6 +234,8 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
             return null;
         }
         // 更新节点的height，这个无比要做，要不会下面的平衡操作都是白搭~~！！！
+        // 更新当前节点和其往上节点的高度。平衡二叉树某个节点的高度值=max(左子树高度值，右子树高度值) + 1
+        // +1时因为父亲节点比子节点高一层。叶子节点的高度值认为是1，左右子树为空高度认为是0
         node.height = calHeight(node);
         // 获取节点的平衡因子，即node节点的左右子树的高度差的。子树为空平衡因子认为是0，即balance=左子树高度-右子树高度值
         int balance = calBalance(node);
@@ -298,9 +300,6 @@ public class BSTKV_AVL<K extends Comparable<K>, V> {
             // 如果和遍历到的节点相等即key.compareTo(node.key)==0，则进行节点值更新
             node.val = val;
         }
-        // 更新当前节点和其往上节点的高度。平衡二叉树某个节点的高度值=max(左子树高度值，右子树高度值) + 1
-        // +1时因为父亲节点比子节点高一层。叶子节点的高度值认为是1，左右子树为空高度认为是0
-        node.height = calHeight(node);
         // 加入新节点后通过旋转使得二叉树重新平衡。
         // 注意：添加节点后，高度的更新是在递归回退即从下往上遍历树的时候发生地，所以node节点失衡时，下面的节点肯定都更新过了高度
         // 当这个node是把key给new出来地就设置到子节点为空的上面去；如果不是new出来地相当于把已有的二分搜索树中的节点关系又设置一次

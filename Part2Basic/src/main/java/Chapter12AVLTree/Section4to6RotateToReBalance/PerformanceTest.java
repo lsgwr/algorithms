@@ -75,6 +75,6 @@ public class PerformanceTest {
 }
 /**
  * Pride and Prejudice
- * 未经旋转前的BST耗时：19.2616994s
- * 经过旋转后的BST(即AVL)耗时：0.0535379s
+ * 未经旋转前的BST耗时：25.2243362s
+ * 经过旋转后的BST(即AVL)耗时：0.0496628s
  */
