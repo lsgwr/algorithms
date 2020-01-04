@@ -39,7 +39,7 @@ public class Main {
 
         BSTSet<String> bstSet = new BSTSet<>();
         double time1 = testSet(bstSet, filename);
-        System.out.println("AVLTree Set: " + time1 + " s");
+        System.out.println("BST Set: " + time1 + " s");
 
         System.out.println();
 
@@ -54,7 +54,7 @@ public class Main {
  * src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt
  * Total words: 125901
  * Total different words: 6530
- * AVLTree Set: 0.085380201 s
+ * BST Set: 0.085380201 s
  *
  * src/main/java/Chapter07SetAndMap/Section1SetBasicAndBSTSet/pride-and-prejudice.txt
  * Total words: 125901
