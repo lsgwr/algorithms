@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 
+ * @Description : 基于链表的集合
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/5/17 00:30
  * @email       : liangshanguang2@gmail.com
@@ -9,29 +9,29 @@ package Chapter07SetAndMap.Section2LinkedListSet;
 import Chapter04LinkedList.Section5Delete.LinkedList;
 import Chapter07SetAndMap.Section1SetBasicAndBSTSet.Set;
 
-public class LinkedListSet<Element> implements Set<Element> {
+public class LinkedListSet<E> implements Set<E> {
 
-    private LinkedList<Element> list;
+    private LinkedList<E> list;
 
     public LinkedListSet() {
         list = new LinkedList<>();
     }
 
     @Override
-    public void add(Element element) {
-        if (!list.contain(element)) {
-            list.addFirst(element);
+    public void add(E e) {
+        if (!list.contain(e)) {
+            list.addFirst(e);
         }
     }
 
     @Override
-    public void delete(Element element) {
-        list.deleteElement(element);
+    public void delete(E e) {
+        list.deleteElement(e);
     }
 
     @Override
-    public boolean contain(Element element) {
-        return list.contain(element);
+    public boolean contain(E e) {
+        return list.contain(e);
     }
 
     @Override

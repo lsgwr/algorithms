@@ -13,7 +13,7 @@ import Chapter07SetAndMap.Section7BSTMap.BSTMap;
 
 import java.util.ArrayList;
 
-public class Main {
+public class MainMap {
     private static double testMap(Map<String, Integer> map, String filename) {
 
         long startTime = System.nanoTime();

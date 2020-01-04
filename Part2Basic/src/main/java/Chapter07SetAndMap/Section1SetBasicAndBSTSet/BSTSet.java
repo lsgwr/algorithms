@@ -9,28 +9,28 @@ package Chapter07SetAndMap.Section1SetBasicAndBSTSet;
 
 import Chapter06BST.BST;
 
-public class BSTSet<Element extends Comparable<Element>> implements Set<Element> {
+public class BSTSet<E extends Comparable<E>> implements Set<E> {
 
-    private BST<Element> bst;
+    private BST<E> bst;
 
     public BSTSet() {
         bst = new BST<>();
     }
 
     @Override
-    public void add(Element element) {
-        bst.add(element);
+    public void add(E e) {
+        bst.add(e);
     }
 
     @Override
-    public void delete(Element element) {
-        bst.remove(element);
+    public void delete(E e) {
+        bst.remove(e);
     }
 
     @Override
-    public boolean contain(Element element) {
-        // 这里的element实际指地是key哈
-        return bst.contains(element);
+    public boolean contain(E e) {
+        // 这里的e实际指地是key哈
+        return bst.contains(e);
     }
 
     @Override
