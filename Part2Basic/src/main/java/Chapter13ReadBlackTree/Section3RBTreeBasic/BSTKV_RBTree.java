@@ -1,10 +1,10 @@
 /***********************************************************
- * @Description : 节点支持键(Key)值(Value)对的二分搜索树实现，本章所有节的知识点汇总起来地最佳实现。
+ * @Description : 基于支持键值对的二分搜索树实现红黑树
  * @author      : 梁山广(Liang Shan Guang)
- * @date        : 2020/1/3 19:43
+ * @date        : 2020/1/5 00:32
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter06BST;
+package Chapter13ReadBlackTree.Section3RBTreeBasic;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -14,7 +14,7 @@ import java.util.Queue;
  * @param <V> 即Val，是键值对的值即value
  * @author liangshanguang
  */
-public class BSTKV<K extends Comparable<K>, V> {
+public class BSTKV_RBTree<K extends Comparable<K>, V> {
     /**
      * 二分搜索树每个节点的封装类。Node是BST的内部类，所以属性可以设置为public
      */
@@ -56,7 +56,7 @@ public class BSTKV<K extends Comparable<K>, V> {
      */
     private int size;
 
-    public BSTKV() {
+    public BSTKV_RBTree() {
         root = null;
         size = 0;
     }
