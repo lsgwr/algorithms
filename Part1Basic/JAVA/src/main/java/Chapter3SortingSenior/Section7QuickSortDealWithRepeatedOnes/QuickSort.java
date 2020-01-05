@@ -81,3 +81,6 @@ public class QuickSort {
         SortTestHelper.testSort("Chapter3SortingSenior.Section7QuickSortDealWithRepeatedOnes.QuickSort", arr);
     }
 }
+/**
+ * QuickSort : 212ms
+ */

@@ -78,3 +78,6 @@ public class MergeSort {
         // SortTestHelper.printArray(arr);
     }
 }
+/**
+ * MergeSort : 296ms
+ */

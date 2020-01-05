@@ -72,3 +72,6 @@ public class QuickSort {
         SortTestHelper.testSort("Chapter3SortingSenior.Section6QuickSortDealWithNearlyOrderedArray.QuickSort", arr);
     }
 }
+/**
+ * QuickSort : 235ms
+ */
