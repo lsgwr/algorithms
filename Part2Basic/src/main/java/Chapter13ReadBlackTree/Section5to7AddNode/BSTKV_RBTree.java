@@ -6,7 +6,7 @@
  * @date        : 2020/1/5 10:56
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter13ReadBlackTree.Section5AddNode;
+package Chapter13ReadBlackTree.Section5to7AddNode;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
