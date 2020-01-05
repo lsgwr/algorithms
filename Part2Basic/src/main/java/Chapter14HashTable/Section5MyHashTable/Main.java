@@ -1,14 +1,15 @@
 /***********************************************************
- * @Description : 红黑树和BST、AVL的性能比较
+ * @Description : 哈希表、红黑树、BST、AVL的性能比较
  * 分别测试
  * 没经过旋转的BST非平衡二叉树：Chapter12AVLTree.Section3isBSTandisBalanced.BSTKV_AVL
  * 经过了旋转的BST即平衡二叉树avl：Chapter12AVLTree.Section4to6RotateToReBalance.BSTKV_AVL
  * 绝对黑平衡的红黑树
+ * 哈希表：空间换时间，性能最高
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2020/1/5 16:06
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter13ReadBlackTree.Section8PerformanceTest;
+package Chapter14HashTable.Section5MyHashTable;
 
 import Chapter06BST.BSTKV;
 import Chapter07SetAndMap.Section1SetBasicAndBSTSet.FileOperation;
@@ -86,12 +87,33 @@ public class Main {
             endTime = System.nanoTime();
             // 从结果中可以看到红黑树的效率确实最高，比平衡树还高一点，数据量越大效果会越明显
             System.out.println("保持绝对黑平衡的红黑树耗时：" + (endTime - startTime) / 1000000000.0 + "s");
+
+            // 4.自己实现地哈希表(空间换时间，性能最高)
+            startTime = System.nanoTime();
+            HashTable<String, Integer> hashTable = new HashTable<>(131071);
+            for (String word : words) {
+                if (hashTable.contains(word)) {
+                    // 之前存在地话就词频+1
+                    hashTable.set(word, hashTable.get(word) + 1);
+                } else {
+                    // 不存在就插入进去，词频初始化为1
+                    hashTable.add(word, 1);
+                }
+            }
+            // 查询操作时最消耗性能的，最能看出不平衡的BST和平衡的BST(即AVL)的性能差异
+            for (String word : words) {
+                hashTable.contains(word);
+            }
+            endTime = System.nanoTime();
+            // 从结果中可以看到红黑树的效率确实最高，比平衡树还高一点，数据量越大效果会越明显
+            System.out.println("自己实现地哈希表：" + (endTime - startTime) / 1000000000.0 + "s");
         }
     }
 }
 /**
  * Pride and Prejudice
- * 未经旋转前的BST耗时：18.8530839s
- * 经过旋转后的BST(即AVL)耗时：0.0531075s
- * 保持绝对黑平衡的红黑树耗时：0.0504671s
+ * 未经旋转前的BST耗时：24.9147723s
+ * 经过旋转后的BST(即AVL)耗时：0.0511122s
+ * 保持绝对黑平衡的红黑树耗时：0.0465389s
+ * 自己实现地哈希表：0.0370802s
  */
