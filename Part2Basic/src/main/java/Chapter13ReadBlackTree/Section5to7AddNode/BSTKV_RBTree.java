@@ -104,7 +104,7 @@ public class BSTKV_RBTree<K extends Comparable<K>, V> {
 
     /**
      * 新加入节点后进行左旋转
-     * node.right = x.left;
+     * node.right = T2;
      * x.left=node;
      * x.color = node.color;
      * node.color = RED
@@ -121,10 +121,42 @@ public class BSTKV_RBTree<K extends Comparable<K>, V> {
     private Node rotateLeft(Node node) {
         // 暂存节点
         Node x = node.right;
+        Node T2 = x.left;
         // 左旋转
-        node.right = x.left;
+        node.right = T2;
         x.left = node;
         // 更新颜色
+        x.color = node.color;
+        node.color = RED;
+        return x;
+    }
+
+    /**
+     * 新加入节点后进行右旋转
+     * 下面的伪代码
+     * node.left = T1
+     * x.right = node
+     * x.color = node.color
+     * node.color = RED
+     * flipColors()
+     * 下面是图示：
+     * //     node                   x
+     * //    /   \     右旋转       /  \
+     * //   x    T2   ------->   y   node
+     * //  / \                       /  \
+     * // y  T1                     T1  T2
+     *
+     * @param node 新加入节点的父节点
+     * @return 右旋转后原本以node作为根节点的子树的新的根节点
+     */
+    private Node rotateRight(Node node) {
+        // 暂存节点
+        Node x = node.left;
+        Node T1 = x.right;
+        // 右旋转
+        node.left = T1;
+        x.right = node;
+        // 颜色更新
         x.color = node.color;
         node.color = RED;
         return x;
