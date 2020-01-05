@@ -1,22 +1,24 @@
 /***********************************************************
- * @Description : 基于BSTKV的平衡二叉树的检测
+ * @Description : 红黑树和BST、AVL的性能比较
  * 分别测试
- * 没经过旋转的BST，非平衡二叉树：Chapter12AVLTree.Section3isBSTandisBalanced.BSTKV_AVL
- * 经过了旋转的BST，是平衡二叉树：Chapter12AVLTree.Section4to6RotateToReBalance.BSTKV_AVL
+ * 没经过旋转的BST非平衡二叉树：Chapter12AVLTree.Section3isBSTandisBalanced.BSTKV_AVL
+ * 经过了旋转的BST即平衡二叉树avl：Chapter12AVLTree.Section4to6RotateToReBalance.BSTKV_AVL
+ * 绝对黑平衡的红黑树
  * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2020/1/4 15:59
+ * @date        : 2020/1/5 16:06
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter12AVLTree.Section4to6RotateToReBalance;
+package Chapter13ReadBlackTree.Section8PerformanceTest;
 
 import Chapter06BST.BSTKV;
 import Chapter07SetAndMap.Section1SetBasicAndBSTSet.FileOperation;
 import Chapter12AVLTree.Section7DeleteNode.BSTKV_AVL;
+import Chapter13ReadBlackTree.Section5to7AddNode.BSTKV_RBTree;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class PerformanceTest {
+public class Main {
     public static void main(String[] args) {
         System.out.println("Pride and Prejudice");
         long startTime, endTime;
@@ -46,9 +48,9 @@ public class PerformanceTest {
             endTime = System.nanoTime();
             System.out.println("未经旋转前的BST耗时：" + (endTime - startTime) / 1000000000.0 + "s");
 
-            // 2.旋转后的二分搜索树
+            // 2.旋转后的二分搜索树即AVL
             startTime = System.nanoTime();
-            Chapter12AVLTree.Section7DeleteNode.BSTKV_AVL<String, Integer> avl = new BSTKV_AVL<>();
+            BSTKV_AVL<String, Integer> avl = new BSTKV_AVL<>();
             for (String word : words) {
                 if (avl.contains(word)) {
                     // 之前存在地话就词频+1
@@ -64,11 +66,33 @@ public class PerformanceTest {
             }
             endTime = System.nanoTime();
             System.out.println("经过旋转后的BST(即AVL)耗时：" + (endTime - startTime) / 1000000000.0 + "s");
+
+            // 3.旋转后保持绝对黑平衡的二分搜索树即红黑树
+            // 2.旋转后的二分搜索树即AVL
+            startTime = System.nanoTime();
+            BSTKV_RBTree<String, Integer> rbTree = new BSTKV_RBTree<>();
+            for (String word : words) {
+                if (rbTree.contains(word)) {
+                    // 之前存在地话就词频+1
+                    rbTree.set(word, rbTree.get(word) + 1);
+                } else {
+                    // 不存在就插入进去，词频初始化为1
+                    rbTree.add(word, 1);
+                }
+            }
+            // 查询操作时最消耗性能的，最能看出不平衡的BST和平衡的BST(即AVL)的性能差异
+            for (String word : words) {
+                rbTree.contains(word);
+            }
+            endTime = System.nanoTime();
+            // 从结果中可以看到红黑树的效率确实最高，比平衡树还高一点，数据量越大效果会越明显
+            System.out.println("保持绝对黑平衡的红黑树耗时：" + (endTime - startTime) / 1000000000.0 + "s");
         }
     }
 }
 /**
  * Pride and Prejudice
- * 未经旋转前的BST耗时：18.7074056s
- * 经过旋转后的BST(即AVL)耗时：0.0710882s
+ * 未经旋转前的BST耗时：18.8530839s
+ * 经过旋转后的BST(即AVL)耗时：0.0531075s
+ * 保持绝对黑平衡的红黑树耗时：0.0504671s
  */
