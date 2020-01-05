@@ -103,6 +103,34 @@ public class BSTKV_RBTree<K extends Comparable<K>, V> {
     }
 
     /**
+     * 新加入节点后进行左旋转
+     * node.right = x.left;
+     * x.left=node;
+     * x.color = node.color;
+     * node.color = RED
+     * 图示如下：
+     * //   node                     x
+     * //  /   \     左旋转         /  \
+     * // T1   x   --------->   node   T3
+     * //     / \              /   \
+     * //    T2 T3            T1   T2
+     *
+     * @param node 新加入节点的父节点
+     * @return 左旋转后原本以node作为根节点的子树的新的根节点
+     */
+    private Node rotateLeft(Node node) {
+        // 暂存节点
+        Node x = node.right;
+        // 左旋转
+        node.right = x.left;
+        x.left = node;
+        // 更新颜色
+        x.color = node.color;
+        node.color = RED;
+        return x;
+    }
+
+    /**
      * 向以节点Node为根节点的红黑树中添加新的键值对元素，递归实现
      *
      * @param node 红黑树的根节点
