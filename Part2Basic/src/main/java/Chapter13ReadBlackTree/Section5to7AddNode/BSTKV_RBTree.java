@@ -131,6 +131,18 @@ public class BSTKV_RBTree<K extends Comparable<K>, V> {
     }
 
     /**
+     * 把以node为根的节点和左右孩子节点的颜色进行翻转(红变黑，黑变红)
+     * 红黑树中新插入的节点和已有节点组成了4节点，而且是平衡的一个小树，则需要进行颜色翻转.
+     *
+     * @param node 要翻转子树的根节点
+     */
+    private void flipColors(Node node) {
+        node.color = RED;
+        node.left.color = BLACK;
+        node.right.color = BLACK;
+    }
+
+    /**
      * 向以节点Node为根节点的红黑树中添加新的键值对元素，递归实现
      *
      * @param node 红黑树的根节点
