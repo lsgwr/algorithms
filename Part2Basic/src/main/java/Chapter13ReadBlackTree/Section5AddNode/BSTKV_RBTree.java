@@ -103,11 +103,12 @@ public class BSTKV_RBTree<K extends Comparable<K>, V> {
     }
 
     /**
-     * 向以节点Node为根节点的二分搜索树树中添加新的元素e，递归实现
+     * 向以节点Node为根节点的红黑树中添加新的键值对元素，递归实现
      *
-     * @param node 二分搜索树的根节点
+     * @param node 红黑树的根节点
      * @param key  要加入地节点的键
      * @param val  要加入地节点的值
+     * @return 当前子树添加节点后的红黑树的根节点
      */
     private Node add(Node node, K key, V val) {
         // 递归终止条件
@@ -134,10 +135,12 @@ public class BSTKV_RBTree<K extends Comparable<K>, V> {
     }
 
     /**
-     * 向二分搜索树中添加键值对节点(key, val)
+     * 向红黑树中添加键值对节点(key, val)
      */
     public void add(K key, V val) {
         root = add(root, key, val);
+        // 保持根节点为黑色
+        root.color = BLACK;
     }
 
     /**
