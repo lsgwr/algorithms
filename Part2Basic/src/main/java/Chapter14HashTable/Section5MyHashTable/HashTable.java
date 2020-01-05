@@ -32,6 +32,12 @@ public class HashTable<K, V> {
         this(97);
     }
 
+    /**
+     * 哈希表的核心，将任意的数据类型的数据转变为整型，从而直接用索引访问要访问的数据，效率最高
+     *
+     * @param key
+     * @return
+     */
     private int hash(K key) {
         return (key.hashCode() & 0x7fffffff) % M;
     }
