@@ -175,6 +175,28 @@ public class BSTKV_RBTree<K extends Comparable<K>, V> {
     }
 
     /**
+     * 红黑树的颜色和节点平衡
+     *
+     * @param node 要维护的节点
+     * @return 维护后新的根节点
+     */
+    private Node rbManage(Node node) {
+        // 左孩子不是红色，右孩子是红色，就左旋转
+        if (!isRed(node.left) && isRed(node.right)) {
+            node = rotateLeft(node);
+        }
+        // 左孩子是红色，左孩子的左孩子还是红色，就左旋转
+        if (isRed(node.left) && isRed(node.left.left)) {
+            node = rotateRight(node);
+        }
+        // 左孩子和右孩子都是红色
+        if (isRed(node.left) && isRed(node.right)) {
+            flipColors(node);
+        }
+        return node;
+    }
+
+    /**
      * 向以节点Node为根节点的红黑树中添加新的键值对元素，递归实现
      *
      * @param node 红黑树的根节点
@@ -203,7 +225,7 @@ public class BSTKV_RBTree<K extends Comparable<K>, V> {
         }
 
         // 当这个node是把key给new出来地就设置到子节点为空的上面去；如果不是new出来地相当于把已有的二分搜索树中的节点关系又设置一次
-        return node;
+        return rbManage(node);
     }
 
     /**
