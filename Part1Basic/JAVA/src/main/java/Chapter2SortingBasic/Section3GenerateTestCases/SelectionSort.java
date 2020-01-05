@@ -49,6 +49,7 @@ public class SelectionSort {
     public static void main(String[] args) {
         // 测试自定义的算法辅助函数
         int N = 20;
+        // 生成随机数组用于排序
         Integer[] arr = SortTestHelper.generateRandomArray(N, 0, 100);
         sort(arr);
         SortTestHelper.printArray(arr);

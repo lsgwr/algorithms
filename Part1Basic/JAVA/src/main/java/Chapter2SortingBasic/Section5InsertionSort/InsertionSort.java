@@ -55,3 +55,6 @@ public class InsertionSort {
         SortTestHelper.testSort("Chapter2SortingBasic.Section5InsertionSort.InsertionSort", arr);
     }
 }
+/**
+ * InsertionSort : 102ms
+ */

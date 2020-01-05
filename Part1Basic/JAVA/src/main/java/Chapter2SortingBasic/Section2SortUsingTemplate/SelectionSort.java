@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 
+ * @Description : 只要实现了compareTo接口的都可以来排序，支持了更多类型
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/4/14 11:13
  * @email       : liangshanguang2@gmail.com
@@ -75,7 +75,7 @@ public class SelectionSort {
         }
         System.out.println();
 
-        // 5.自定义对象排序
+        // 5.自定义对象排序，按照分数排序
         Student[] students = new Student[4];
         students[0] = new Student("B", 78);
         students[1] = new Student("A", 86);
@@ -88,3 +88,13 @@ public class SelectionSort {
         System.out.println();
     }
 }
+/**
+ * 1 2 3 4 5 6 7 8 9 10
+ * 1.1 2.2 3.3 4.4
+ * A B C D
+ * abc abd bbc dba
+ * Student(name=G, score=34)
+ * Student(name=B, score=78)
+ * Student(name=D, score=78)
+ * Student(name=A, score=86)
+ */

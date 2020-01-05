@@ -53,3 +53,6 @@ public class SelectionSort {
         SortTestHelper.testSort("Chapter2SortingBasic.Section4DetectPerformance.SelectionSort", arr);
     }
 }
+/**
+ * SelectionSort : 9056ms
+ */

@@ -49,8 +49,11 @@ public class SelectionSort {
         int[] arr = {3, 6, 8, 4, 2, 9, 10, 7, 1, 5};
         sort(arr);
         for (int i : arr) {
-            System.out.print(i+" ");
+            System.out.print(i + " ");
         }
         System.out.println();
     }
 }
+/**
+ * 1 2 3 4 5 6 7 8 9 10
+ */

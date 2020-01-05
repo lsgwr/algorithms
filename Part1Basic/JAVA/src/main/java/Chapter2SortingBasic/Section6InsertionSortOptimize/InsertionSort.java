@@ -1,7 +1,7 @@
 /***********************************************************
  * @Description : 2-6 插入排序优化，通过临时变量tmp来减少交换次数.
  *                    插入排序比选择排序优秀地一点在于可以提前结束
- *                    循环，不想选择排序一样，平均每次都要遍历一半
+ *                    循环，不像选择排序一样，平均每次都要遍历一半
  *                    的数组元素。所以，越是近似有序的数组，越适合
  *                    插入排序
  * @author      : 梁山广(Laing Shan Guang)
@@ -59,3 +59,6 @@ public class InsertionSort {
         SortTestHelper.testSort("Chapter2SortingBasic.Section6InsertionSortOptimize.InsertionSort", arr);
     }
 }
+/**
+ * InsertionSort : 121ms
+ */
