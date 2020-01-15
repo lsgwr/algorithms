@@ -42,8 +42,8 @@ class Solution {
                     find = false;
                     break;
                 }else {
-                    // 能找到但是频率不同
-                    if (freqTmp[p.charAt(i)] != freq[p.charAt(i)]){
+                    // 能找到但是频率小，出现频率大于等于可以
+                    if (freqTmp[p.charAt(i)] < freq[p.charAt(i)]){
                         find = false;
                         break;
                     }
@@ -92,11 +92,13 @@ class Solution {
      * S = "abc", T = "acd"  ==> ""
      * S = "abc", T = "cba"  ==> abc
      * S = "bbaa", T = "aba"  ==>baa
+     * S = "aaaaaaaaaaaabbbbbcdd", T = "abcdd"  ==> abbbbbcdd
+     *
      */
     public static void main(String[] args) {
-        String S = "bbaa";
+        String S = "aaaaaaaaaaaabbbbbcdd";
         // cba、acd都测测
-        String T = "aba";
+        String T = "abcdd";
         System.out.println(new Solution().minWindow(S, T));
     }
 }
