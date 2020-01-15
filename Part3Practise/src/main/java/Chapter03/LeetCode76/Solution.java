@@ -41,6 +41,12 @@ class Solution {
                     // 有一个p中的字母在s中找不到，直接跳出
                     find = false;
                     break;
+                }else {
+                    // 能找到但是频率不同
+                    if (freqTmp[p.charAt(i)] != freq[p.charAt(i)]){
+                        find = false;
+                        break;
+                    }
                 }
             }
             if (find) {
@@ -80,10 +86,17 @@ class Solution {
         }
     }
 
+    /**
+     * 想到的异常用例：
+     * S = "aa", T = "a"  ==> "a"
+     * S = "abc", T = "acd"  ==> ""
+     * S = "abc", T = "cba"  ==> abc
+     * S = "bbaa", T = "aba"  ==>baa
+     */
     public static void main(String[] args) {
-        String S = "abc";
+        String S = "bbaa";
         // cba、acd都测测
-        String T = "cba";
+        String T = "aba";
         System.out.println(new Solution().minWindow(S, T));
     }
 }
