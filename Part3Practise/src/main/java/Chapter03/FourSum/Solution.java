@@ -17,8 +17,8 @@ class Solution {
      * @param target 要求的目标值
      * @return 符合条件的下标对
      */
-    public List<int[]> twoSum(int[] nums, int target) {
-        List<int[]> resultList = new ArrayList<>();
+    public List<List<Integer>> twoSum(int[] nums, int target) {
+        List<List<Integer>> resultList = new ArrayList<>();
         // 值和索引组成Map
         Map<Integer, Integer> mapValIndex = new HashMap<>();
         int len = nums.length;
@@ -26,7 +26,7 @@ class Solution {
             Integer index = mapValIndex.get(target - nums[i]);
             if (index != null) {
                 // 找到了一个满足条件地
-                resultList.add(new int[]{index, i});
+                resultList.add(new ArrayList<>(Arrays.asList(index, i)));
             }
             // 加入当前节点
             mapValIndex.put(nums[i], i);
@@ -40,7 +40,7 @@ class Solution {
      * @param nums 数组
      * @return 所有满足三个数之和的元素对
      */
-    public List<List<Integer>> threeSum(int[] nums) {
+    public List<List<Integer>> threeSum(int[] nums, int target) {
         // 这个排序很重要！！可能省掉下面大量的Collections.sort()
         Arrays.sort(nums);
         Set<List<Integer>> result = new HashSet<>();
@@ -59,12 +59,12 @@ class Solution {
                 continue;
             }
             // 注意twoSum返回地是nums的索引下标
-            List<int[]> twoSumResultList = twoSum(Arrays.copyOfRange(nums, 0, i), -nums[i]);
-            for (int[] twoSumResult : twoSumResultList) {
+            List<List<Integer>> twoSumResultList = twoSum(Arrays.copyOfRange(nums, 0, i), target - nums[i]);
+            for (List<Integer> twoSumResult : twoSumResultList) {
                 // 找到的两个索引不能和当前索引相等
-                if (twoSumResult.length == 2) {
+                if (twoSumResult.size() == 2) {
                     // 这个是set，会自动去重
-                    result.add(Arrays.asList(nums[twoSumResult[0]], nums[twoSumResult[1]], nums[i]));
+                    result.add(Arrays.asList(nums[twoSumResult.get(0)], nums[twoSumResult.get(1)], nums[i]));
                 }
             }
         }
@@ -73,7 +73,8 @@ class Solution {
 
 
     public List<List<Integer>> fourSum(int[] nums, int target) {
-
+        // Todo:
+        return null;
     }
 
     /**
@@ -82,8 +83,8 @@ class Solution {
      * {-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6}  ==> [[-4,-2,6],[-4,0,4],[-4,1,3],[-4,2,2],[-2,-2,4],[-2,0,2]]
      */
     public static void main(String[] args) {
-        int[] nums = {-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6};
-        List<List<Integer>> lists = new Solution().threeSum(nums);
+        int[] nums = {-1, 0, 1, 2, -1, -4};
+        List<List<Integer>> lists = new Solution().threeSum(nums, 0);
         System.out.println(lists);
     }
 }
