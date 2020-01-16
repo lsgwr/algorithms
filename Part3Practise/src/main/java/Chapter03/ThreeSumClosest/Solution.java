@@ -5,7 +5,7 @@
  * @date        : 2020/1/17 00：19
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter03.ThreeClosest;
+package Chapter03.ThreeSumClosest;
 
 import java.util.*;
 
@@ -81,8 +81,6 @@ class Solution {
             return nums[0] + nums[1] + nums[2];
         }
         Arrays.sort(nums);
-        // 临时的targetTmp和target的距离
-        int distance = Integer.MAX_VALUE;
         int minTarget = nums[0] + nums[1] + nums[2];
         int maxTarget = nums[len - 3] + nums[len - 2] + nums[len - 1];
         if (target >= maxTarget) {
@@ -91,20 +89,20 @@ class Solution {
         if (target <= minTarget) {
             return minTarget;
         }
-        for (int targetTmp = minTarget; targetTmp <= maxTarget; targetTmp++) {
-            if (threeSum(nums, targetTmp).size() != 0) {
-                // 距离有在不断接近
-                if (Math.abs(targetTmp - target) < Math.abs(distance)) {
-                    // 更新距离值
-                    distance = targetTmp - target;
-                    // 如果距离到0了，直接返回，不可能有更接近地了
-                    if (distance == 0) {
-                        return target;
-                    }
-                }
+        // 临时的targetTmp和target的距离，从最小开始找，只要找到一个就退出，即是最小的distance
+        int distance = 0;
+        int maxDistance = Math.max(maxTarget - target, target - minTarget);
+        // target一定在minTarget和maxTarget之间了
+        while (distance < maxDistance) {
+            if (target + distance <= maxTarget && threeSum(nums, target + distance).size() != 0) {
+                return target + distance;
             }
+            if (target - distance >= minTarget && threeSum(nums, target - distance).size() != 0) {
+                return target - distance;
+            }
+            distance++;
         }
-        return target + distance;
+        return -1;
     }
 
     public static void main(String[] args) {
