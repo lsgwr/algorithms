@@ -25,7 +25,7 @@ class Solution {
         for (int i = 0; i < len; i++) {
             Integer index = mapValIndex.get(target - nums[i]);
             if (index != null) {
-                // 找到就退出，因为用例保证了答案是唯一地了
+                // 找到了一个满足条件地
                 resultList.add(new int[]{index, i});
             }
             // 加入当前节点
@@ -48,19 +48,23 @@ class Solution {
             return new ArrayList<>();
         }
         int len = nums.length;
-        for (int i = 0; i < len; i++) {
-            int target = -nums[i];
+        for (int i = 2; i < len; i++) {
+            // 时间优化
+            if (nums[i] == nums[i - 1] && nums[i] == nums[i - 2]) {
+                if (nums[i] == 0) {
+                    // 把三个0加进去
+                    result.add(new ArrayList<>(Arrays.asList(0, 0, 0)));
+                }
+                // 三个连续相等地，第3个开始就不用看了
+                continue;
+            }
             // 注意twoSum返回地是nums的索引下标
-            List<int[]> twoSumResultList = twoSum(Arrays.copyOfRange(nums, 0, i), target);
+            List<int[]> twoSumResultList = twoSum(Arrays.copyOfRange(nums, 0, i), -nums[i]);
             for (int[] twoSumResult : twoSumResultList) {
-                List<Integer> resultTmp = new ArrayList<>();
                 // 找到的两个索引不能和当前索引相等
                 if (twoSumResult.length == 2) {
-                    resultTmp.add(nums[twoSumResult[0]]);
-                    resultTmp.add(nums[twoSumResult[1]]);
-                    resultTmp.add(nums[i]);
                     // 这个是set，会自动去重
-                    result.add(resultTmp);
+                    result.add(Arrays.asList(nums[twoSumResult[0]], nums[twoSumResult[1]], nums[i]));
                 }
             }
         }
