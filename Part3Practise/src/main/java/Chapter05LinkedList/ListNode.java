@@ -13,4 +13,16 @@ public class ListNode {
     public ListNode(int x) {
         val = x;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        ListNode cur = this;
+        while (cur != null) {
+            sb.append(cur.val).append(" -> ");
+            cur = cur.next;
+        }
+        sb.append("NULL");
+        return sb.toString();
+    }
 }
