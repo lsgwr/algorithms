@@ -21,7 +21,7 @@
  ***********************************************************/
 package Chapter07BSTAndRecursion.InverseBinaryTree;
 
-import Chapter07BSTAndRecursion.Codec;
+import Chapter07BSTAndRecursion.LeetCode297BST序列化和反序列化.Codec;
 import Chapter07BSTAndRecursion.TreeNode;
 
 public class Solution {

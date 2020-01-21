@@ -4,8 +4,10 @@
  * @date        : 2019/8/22 08:16
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package Chapter07BSTAndRecursion;
+package Chapter07BSTAndRecursion.LeetCode297BST序列化和反序列化;
 
+
+import Chapter07BSTAndRecursion.TreeNode;
 
 import java.util.Arrays;
 import java.util.LinkedList;
