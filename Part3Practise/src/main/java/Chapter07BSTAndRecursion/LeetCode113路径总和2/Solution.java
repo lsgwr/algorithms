@@ -47,9 +47,10 @@ class Solution {
      * -5
      */
     public static void main(String[] args) {
-        Integer[] arr = {1, -2, -3, 1, 3, -2, null, -1};
-        int sum = 2;
-        TreeNode root = BSTUtil.convert(arr);
+        String data = "[5,4,8,11,null,13,4,7,2,null,null,5,1]";
+        int sum = 22;
+        Codec codec = new Codec();
+        TreeNode root = codec.deserialize(data);
         System.out.println(new Solution().pathSum(root, sum));
     }
 }
