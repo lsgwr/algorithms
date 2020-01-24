@@ -6,7 +6,7 @@
  ***********************************************************/
 package Chapter07BSTAndRecursion.LeetCode113路径总和2;
 
-import Chapter07BSTAndRecursion.BSTUtil;
+import Chapter07BSTAndRecursion.LeetCode297BST序列化和反序列化.Codec;
 import Chapter07BSTAndRecursion.TreeNode;
 
 import java.util.ArrayList;
