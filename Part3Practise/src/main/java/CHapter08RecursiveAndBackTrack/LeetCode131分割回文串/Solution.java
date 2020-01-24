@@ -58,12 +58,11 @@ class Solution {
         }
         for (int i = 1; i <= s.length(); i++) {
             String tmp = s.substring(0, i);
-            if (isPalindrome(tmp)) {
-                palindromes.add(tmp);
-            } else {
+            if (!isPalindrome(tmp)) {
                 // 不是回文串就直接退出本层递归
                 continue;
             }
+            palindromes.add(tmp);
             getAllPalindromes(s.substring(i), palindromes, result);
             // 退出本层递归，需要移除一个回文串
             palindromes.remove(palindromes.size() - 1);

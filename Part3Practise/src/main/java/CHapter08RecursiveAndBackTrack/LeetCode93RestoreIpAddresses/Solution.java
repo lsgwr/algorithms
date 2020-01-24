@@ -12,15 +12,19 @@ import java.util.List;
 
 class Solution {
 
-    private String checkIp(List<String> numList) {
-        StringBuffer sb = new StringBuffer();
+    private boolean validId(String ip) {
+        if (ip.length() > 1 && ip.charAt(0) == '0') {
+            return false;
+        }
+        if (ip.length() > 3 || Integer.parseInt(ip) > 255) {
+            return false;
+        }
+        return true;
+    }
+
+    private String concatList(List<String> numList) {
+        StringBuilder sb = new StringBuilder();
         for (String numStr : numList) {
-            if (numStr.length() > 1 && numStr.charAt(0) == '0') {
-                return "";
-            }
-            if (numStr.length() > 3 || Integer.parseInt(numStr) > 255) {
-                return "";
-            }
             sb.append(numStr).append(".");
         }
         // 最后的一个.要去掉
@@ -31,26 +35,20 @@ class Solution {
     // 递归过程：不断取字符串的前几个字符，每出现一个合法的字符串就接着往下取
     private void findIp(String s, List<String> numList, List<String> result) {
         if (numList.size() == 4) {
-            String ip = checkIp(numList);
-            if (!"".equals(ip)) {
-                result.add(ip);
-            }
+            result.add(concatList(numList));
             // 当s字符串已经被分割成空时，分割完毕，退出本层递归即可
             return;
         }
-        if (s.length() == 1) {
-            numList.add(s);
-            // i往后的字符串
-            findIp("", numList, result);
-            // 退出上一层递归，就要从numList中删除最后一个num
-            numList.remove(numList.size() - 1);
-        }
-        for (int i = 1; i < s.length(); i++) {
+        for (int i = 1; i <= s.length(); i++) {
             if (numList.size() == 3) {
                 // 前面已经分成3份了，这里直接把剩下的作为IP即可
                 i = s.length();
             }
-            numList.add(s.substring(0, i));
+            String tmp = s.substring(0, i);
+            if (!validId(tmp)) {
+                continue;
+            }
+            numList.add(tmp);
             // i往后的字符串
             findIp(s.substring(i), numList, result);
             // 退出上一层递归，就要从numList中删除最后一个num
@@ -74,7 +72,7 @@ class Solution {
      * "010010"  ==> [0.10.0.10, 0.100.1.0]
      */
     public static void main(String[] args) {
-        String s = "25525511135";
+        String s = "0000";
         System.out.println(new Solution().restoreIpAddresses(s));
     }
 }
