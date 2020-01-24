@@ -11,15 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
-    private void calCombinations(List<Integer> numList, List<Integer> curList, List<List<Integer>> result, int k) {
+    private void calCombinations(int[] nums, int start, List<Integer> curList, List<List<Integer>> result, int k) {
         if (curList.size() == k) {
             result.add(new ArrayList<>(curList));
             return;
         }
-        for (int i = 0; i < numList.size(); i++) {
-            curList.add(numList.get(i));
-            List<Integer> numListNext = new ArrayList<>(numList.subList(i + 1, numList.size()));
-            calCombinations(numListNext, curList, result, k);
+        for (int i = start; i < nums.length; i++) {
+            curList.add(nums[i]);
+            calCombinations(nums,i+1, curList, result, k);
             // 递归退出就删除一个元素
             curList.remove(curList.size() - 1);
         }
@@ -28,11 +27,11 @@ public class Solution {
     public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> curList = new ArrayList<>();
-        List<Integer> numList = new ArrayList<>();
+        int[] nums = new int[n];
         for (int i = 0; i < n; i++) {
-            numList.add(i + 1);
+            nums[i] = i+1;
         }
-        calCombinations(numList, curList, result, k);
+        calCombinations(nums, 0, curList, result, k);
         return result;
     }
 
