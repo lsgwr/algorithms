@@ -1,19 +1,14 @@
-# 第08章 递归和回溯
+/***********************************************************
+ * @Description : 
+ * @author      : 梁山广(Liang Shan Guang)
+ * @date        : 2020/1/24 10:49
+ * @email       : liangshanguang2@gmail.com
+ ***********************************************************/
+package CHapter08RecursiveAndBackTrack.LeetCode17;
 
-## 8-1 树形问题 [17.电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/) 
+import java.util.ArrayList;
+import java.util.List;
 
-```txt
-给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
-
-给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。
-示例:
-
-输入："23"
-输出：["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
-```
-![第17号问题](images/第08章_递归与回溯/第17号问题.png)
-
-```java
 class Solution {
     // 每个按键(数组的下标)对应的可能的字符串，0和1不对应任何字符，所以这里为空
     String[] letterMap = {
@@ -63,4 +58,3 @@ class Solution {
         }
     }
 }
-```
