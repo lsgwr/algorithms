@@ -26,7 +26,6 @@ public class Solution3 {
 
     public int fib(int n) {
         List<Integer> memo = new ArrayList<>(n + 1);
-        ;
         for (int i = 0; i < n + 1; i++) {
             memo.add(-1);
         }
