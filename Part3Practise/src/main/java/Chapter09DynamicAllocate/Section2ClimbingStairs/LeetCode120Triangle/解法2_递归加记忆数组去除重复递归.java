@@ -30,7 +30,6 @@ public class 解法2_递归加记忆数组去除重复递归 {
             List<Integer> rowList = triangle.get(i);
             for (int j = 0; j < rowList.size(); j++) {
                 //计算当前点的最小值，如果没有计算过才进行计算
-                // Todo
                 memo[i][j] = recursive(i, j, triangle);
             }
         }
