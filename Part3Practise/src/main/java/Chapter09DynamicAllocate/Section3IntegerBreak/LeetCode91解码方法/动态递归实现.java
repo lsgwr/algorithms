@@ -9,6 +9,30 @@
 package Chapter09DynamicAllocate.Section3IntegerBreak.LeetCode91解码方法;
 
 public class 动态递归实现 {
+    public int numDecodings2(String s) {
+        int n = s.length();
+        if (n == 0) {
+            return 0;
+        }
+        int[] memo = new int[n + 1];
+        memo[0] = 1;
+        memo[1] = s.charAt(0) != '0' ? 1 : 0;
+        for (int i = 2; i <= n; i++) {
+            if (s.charAt(i - 1) != '0') {
+                int num = Integer.parseInt(s.substring(i - 2, i));
+                if (num <= 26) {
+                    memo[i] = memo[i - 1] + memo[i - 2];
+                } else {
+                    memo[i] = memo[i - 1];
+                }
+            } else {
+                memo[i] = memo[i - 1];
+            }
+        }
+        return memo[n];
+    }
+
+    // 不知道为啥，只有从后向前的这种才可以
     public int numDecodings(String s) {
         int n = s.length();
         if (n == 0) {
@@ -32,7 +56,7 @@ public class 动态递归实现 {
 
     public static void main(String[] args) {
         // 6
-        String s = "1243423435465";
+        String s = "120";
         System.out.println(new 动态递归实现().numDecodings(s));
     }
 }
