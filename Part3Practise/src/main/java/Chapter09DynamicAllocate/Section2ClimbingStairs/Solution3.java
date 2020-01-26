@@ -7,18 +7,20 @@
 package Chapter09DynamicAllocate.Section2ClimbingStairs;
 
 
-import java.util.Arrays;
-
 public class Solution3 {
 
 
     public int climbStairs(int n) {
+        if(n == 1 || n ==2){
+            return n;
+        }
         /**
          * 记忆数组memory，用于存储子问题是否已经被访问
          */
         int[] memo = new int[n + 1];
-        Arrays.fill(memo, -1);
-        for (int i = 2; i <= n; i++) {
+        memo[1] = 1;
+        memo[2] = 2;
+        for (int i = 3; i <= n; i++) {
             memo[i] = memo[i - 1] + memo[i - 2];
         }
         return memo[n];

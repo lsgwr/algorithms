@@ -18,7 +18,7 @@ public class Solution2 {
      */
     public static int[] memo;
 
-    int calcWays(int n) {
+    public int climbStairs(int n) {
         num++;
         if (n == 0) {
             return 1;
@@ -28,13 +28,9 @@ public class Solution2 {
         }
 
         if (memo[n] == -1) {
-            memo[n] = calcWays(n - 1) + calcWays(n - 2);
+            memo[n] = climbStairs(n - 1) + climbStairs(n - 2);
         }
         return memo[n];
-    }
-
-    public int climbStairs(int n) {
-        return calcWays(n);
     }
 
     public static void main(String[] args) {

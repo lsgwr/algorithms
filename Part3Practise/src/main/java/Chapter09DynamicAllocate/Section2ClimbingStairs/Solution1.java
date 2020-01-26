@@ -10,7 +10,7 @@ public class Solution1 {
 
     public static int num;
 
-    int calcWays(int n) {
+    public int climbStairs(int n) {
         num++;
         if (n == 0) {
             return 1;
@@ -19,11 +19,7 @@ public class Solution1 {
             return 1;
         }
 
-        return calcWays(n - 1) + calcWays(n - 2);
-    }
-
-    public int climbStairs(int n) {
-        return calcWays(n);
+        return climbStairs(n - 1) + climbStairs(n - 2);
     }
 
     public static void main(String[] args) {
