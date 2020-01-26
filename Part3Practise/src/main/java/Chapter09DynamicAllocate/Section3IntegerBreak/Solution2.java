@@ -17,26 +17,27 @@ public class Solution2 {
      */
     private static int[] memo;
 
+    private int max3(int a, int b, int c) {
+        return Math.max(a, Math.max(b, c));
+    }
+
     private int intBreak(int n) {
+        if (memo[n] != -1) {
+            return memo[n];
+        }
         num++;
         if (n == 1) {
             return 1;
         }
-
-        // 如果这次子问题之前已经计算过了，就直接跳过，避免计算重复子问题
-        if (memo[n] != -1) {
-            return memo[n];
-        }
         // 整数乘积的最大值,初始化要很小
-        int mulMax = -1;
+        int result = -1;
         // 一定注意别忘了等号
         for (int i = 1; i <= n - 1; i++) {
-            // 如果当前不再继续拆分地话
-            mulMax = Math.max(mulMax, i * (n - i));
-            // n = i + (n - i)，和继续拆分的进行比较，看最大值
-            mulMax = Math.max(mulMax, i * intBreak(n - i));
+            // 1.如果当前不再继续拆分地话，剩下的就是n-i。此时最小值是i*(n-i)
+            // 2.继续拆分地话，则递归求前一步的拆分结果，即i * integerBreak(n - i)
+            result = max3(result, i * (n - i), i * intBreak(n - i));
         }
-        memo[n] = mulMax;
+        memo[n] = result;
         return memo[n];
     }
 
@@ -48,8 +49,8 @@ public class Solution2 {
 
     public static void main(String[] args) {
         int n = 10;
-        int mulMax = new Solution2().integerBreak(n);
-        System.out.println(n + "拆分后的整数的最大乘积是：" + mulMax);
+        int result = new Solution2().integerBreak(n);
+        System.out.println(n + "拆分后的整数的最大乘积是：" + result);
         System.out.println("共进入递归函数：" + num + "次");
     }
 }

@@ -13,7 +13,7 @@ public class Solution3 {
     /**
      * 求三个数的最大值
      */
-    private int max(int a, int b, int c) {
+    private int max3(int a, int b, int c) {
         return Math.max(a, Math.max(b, c));
     }
 
@@ -23,16 +23,14 @@ public class Solution3 {
          */
         int[] memo = new int[n + 1];
         Arrays.fill(memo, -1);
-
         memo[1] = 1;
         for (int i = 2; i <= n; i++) {
             // 求解memo[i]，求n的最大积问题转化为求子问题i的最大积问题
             for (int j = 0; j <= i - 1; j++) {
                 // i = j + (i - j),第一种情况是i-j就不继续分割了，第二种情况是继续分割，因为i-j一定小于i，所以从memo数组里取即可.最后和memo[i]去最大值
-                memo[i] = max(memo[i], j * (i - j), j * memo[i - j]);
+                memo[i] = max3(memo[i], j * (i - j), j * memo[i - j]);
             }
         }
-
         return memo[n];
     }
 
