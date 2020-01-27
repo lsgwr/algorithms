@@ -35,12 +35,13 @@ public class Solution3Dynamic {
         boolean[] memo = new boolean[C + 1];
         // 数组初始化为false
         Arrays.fill(memo, false);
+        // 当容量为1到C时，看看第一个元素能不能正好把容量填满，能填满直接设置为true
         for (int i = 0; i < C + 1; i++) {
             memo[i] = (nums[0] == i);
         }
 
         // 背包问题的核心过程
-        for (int i = 0; i < n; i++) { // i代表物体编号
+        for (int i = 1; i < n; i++) { // i代表物体编号
             for (int j = C; j >= nums[i]; j--) { // j代表当前背包的容量
                 memo[j] = memo[j] || memo[j - nums[i]];
             }
