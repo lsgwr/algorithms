@@ -5,7 +5,7 @@
  * @date        : 2020/1/29 19:01
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package 线性表.数组.T220.存在重复元素III;
+package 线性表.数组.T220_存在重复元素III;
 
 import java.util.TreeSet;
 
