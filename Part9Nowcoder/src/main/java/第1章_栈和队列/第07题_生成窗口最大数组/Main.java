@@ -22,9 +22,11 @@ public class Main {
                 qmax.pollLast();
             }
             qmax.addLast(i);
+            // 窗口头元素过期
             if (qmax.peekFirst() == i - w) {
                 qmax.pollFirst();
             }
+            // 一旦窗口宽度达到就弹出当前窗口内的最大值
             if (i >= w - 1) {
                 res[index++] = arr[qmax.peekFirst()];
             }
