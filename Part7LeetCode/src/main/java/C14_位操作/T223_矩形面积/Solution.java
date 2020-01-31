@@ -18,8 +18,7 @@ public class Solution {
         if (C < E || G < A || D < F || H < B) {
             return area;
         }
-        final int intersection = Math.max(Math.min(C, G) - Math.max(A, E), 0) *
-                Math.max(Math.min(D, H) - Math.max(B, F), 0);
+        final int intersection = Math.max(Math.min(C, G) - Math.max(A, E), 0) * Math.max(Math.min(D, H) - Math.max(B, F), 0);
         return area - intersection;
     }
 }
