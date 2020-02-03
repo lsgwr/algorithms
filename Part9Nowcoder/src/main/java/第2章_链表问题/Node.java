@@ -6,18 +6,18 @@
  ***********************************************************/
 package 第2章_链表问题;
 
-public class ListNode {
+public class Node {
     public int val;
-    public ListNode next;
+    public Node next;
 
-    public ListNode(int x) {
+    public Node(int x) {
         val = x;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        ListNode cur = this;
+        Node cur = this;
         while (cur != null) {
             sb.append(cur.val).append(" -> ");
             cur = cur.next;

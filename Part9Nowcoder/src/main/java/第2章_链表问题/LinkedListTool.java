@@ -13,21 +13,21 @@ public class LinkedListTool {
      * @param nums 数组
      * @return 创建的链表的头节点
      */
-    public static ListNode create(int[] nums) {
+    public static Node create(int[] nums) {
         if (nums.length == 0) {
             return null;
         }
-        ListNode head = new ListNode(nums[0]);
-        ListNode cur = head;
+        Node head = new Node(nums[0]);
+        Node cur = head;
         for (int i = 1; i < nums.length; i++) {
-            cur.next = new ListNode(nums[i]);
+            cur.next = new Node(nums[i]);
             cur = cur.next;
         }
         return head;
     }
 
-    public static void show(ListNode head) {
-        ListNode curr = head;
+    public static void show(Node head) {
+        Node curr = head;
         while (curr != null) {
             System.out.print(curr.val + " -> ");
             curr = curr.next;
