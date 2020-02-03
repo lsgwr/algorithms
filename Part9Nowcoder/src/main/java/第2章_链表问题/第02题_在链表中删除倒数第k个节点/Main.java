@@ -8,16 +8,16 @@
 package 第2章_链表问题.第02题_在链表中删除倒数第k个节点;
 
 import 第2章_链表问题.LinkedListTool;
-import 第2章_链表问题.Node;
+import 第2章_链表问题.ListNode;
 
 import java.util.Scanner;
 
 public class Main {
-    public static Node removeLastKthNode(Node head, int k) {
+    public static ListNode removeLastKthNode(ListNode head, int k) {
         if (head == null || k < 1) {
             return head;
         }
-        Node cur = head;
+        ListNode cur = head;
         while (cur != null) {
             k--;
             cur = cur.next;
@@ -45,8 +45,8 @@ public class Main {
         for (int i = 0; i < N; i++) {
             nums[i] = sc.nextInt();
         }
-        Node head = LinkedListTool.create(nums);
-        Node newHead = removeLastKthNode(head, k);
+        ListNode head = LinkedListTool.create(nums);
+        ListNode newHead = removeLastKthNode(head, k);
         while (newHead != null) {
             System.out.print(newHead.val + " ");
             newHead = newHead.next;
