@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 第02题_在链表中删除倒数第k个节点
+ * @Description : 第02题_在链表中删除倒数第k个节点，LeetCode 19
  * https://www.nowcoder.com/practice/e5d90aac4c8b4628aa70d9b6597c0560
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2020/1/29 12:18
