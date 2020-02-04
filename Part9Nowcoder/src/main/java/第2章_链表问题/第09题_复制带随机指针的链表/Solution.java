@@ -7,6 +7,9 @@
  ***********************************************************/
 package 第2章_链表问题.第09题_复制带随机指针的链表;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class Node {
     int val;
     Node next;
@@ -21,39 +24,21 @@ class Node {
 
 public class Solution {
     public Node copyRandomList(Node head) {
-        if (head == null) {
-            return null;
-        }
+        Map<Node, Node> map = new HashMap<>();
         Node cur = head;
-        Node next = null;
-        // 1.复制并连接每一个节点
-        while (cur != null) {
-            next = cur.next;
-            cur.next = new Node(cur.val);
-            cur.next.next = next;
-            cur = next;
+        while(cur != null){
+            // 1.复制节点
+            map.put(cur, new Node(cur.val));
+            cur = cur.next;
         }
-
-        // 2.设置复制节点的rand指针
         cur = head;
-        Node curCopy = null;
-        while (cur != null) {
-            next = cur.next.next;
-            curCopy = cur.next;
-            curCopy.random = cur.random != null ? cur.random.next : null;
-            cur = next;
+        while(cur != null){
+            // 2.复制rand指针
+            map.get(cur).next = map.get(cur.next);
+            // 3.赋值random指针
+            map.get(cur).random = map.get(cur.random);
+            cur = cur.next;
         }
-
-        // 3.拆分成两个链表
-        Node res = head.next;
-        cur = head;
-        while (cur != null) {
-            next = cur.next.next;
-            curCopy = cur.next;
-            cur.next = next;
-            curCopy.next = next != null ? next.next : null;
-            cur = next;
-        }
-        return res;
+        return map.get(head);
     }
 }
