@@ -20,6 +20,7 @@ class 动态规划3_空间压缩 {
                 return 0;
             }
         }
+        // 空间压缩，因为要求j为amount的dp[i][j]所以我们只保留一列即可，i循环到最后，就是最后一列了，即所有货币组成amount由多少种方法
         // dp[j]表示表示用所有的货币组成钱数j的方法数
         int[] dp = new int[amount + 1];
         for (int j = 0; coins[0] * j <= amount; j++) {
