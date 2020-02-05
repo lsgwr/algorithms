@@ -1,5 +1,7 @@
 /***********************************************************
- * @Description : https://leetcode-cn.com/problems/russian-doll-envelopes/
+ * @Description : T354_信封嵌套问题
+ * https://leetcode-cn.com/problems/russian-doll-envelopes/
+ * 参考第300号问题(最长上升子序列)，先把一个维度排序后，堆第二个维度排序即可
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2020/2/5 17:58
  * @email       : liangshanguang2@gmail.com
