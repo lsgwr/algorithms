@@ -1,5 +1,7 @@
+package C12_动态规划.T221_最大正方形;
+
 // 动态规划法：https://leetcode-cn.com/problems/maximal-square/solution/zui-da-zheng-fang-xing-by-leetcode/
-class Solution {
+class Solution2 {
     private int min3(int a, int b, int c){
         return Math.min(Math.min(a, b), c);
     }
