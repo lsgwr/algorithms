@@ -71,3 +71,6 @@ public class Main {
         System.out.println(Arrays.toString(arr));
     }
 }
+/**
+ * [5, 12, 18, 24, 30, 36, 39, 42, 58]
+ */
