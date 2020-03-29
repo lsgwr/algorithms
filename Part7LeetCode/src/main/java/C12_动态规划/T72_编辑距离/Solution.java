@@ -11,6 +11,13 @@ package C12_动态规划.T72_编辑距离;
  * 二维动规， 时间复杂度O(n*m)， 空间复杂度O(n*m)
  */
 public class Solution {
+    /**
+     * 求3个数的最小值
+     */
+    private int min3(int a, int b, int c) {
+        return Math.min(Math.min(a, b), c);
+    }
+
     public int minDistance(String str1, String str2) {
         int m = str1.length();
         int n = str2.length();
