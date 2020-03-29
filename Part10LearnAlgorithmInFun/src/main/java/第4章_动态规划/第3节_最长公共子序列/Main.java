@@ -7,12 +7,11 @@
  ***********************************************************/
 package 第4章_动态规划.第3节_最长公共子序列;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    private List<Character> result;
+
+    private char[] result;
 
     /**
      * 最长公共子序列
@@ -44,6 +43,23 @@ public class Main {
                 }
             }
         }
+
+        // 打印路径
+        int i = m, j = n;
+        int len = 0;
+        result = new char[dp[m][n]];
+        while (dp[i][j] != 0) {
+            if (dp[i][j] == dp[i - 1][j]) {
+                i--;
+            } else if (dp[i][j] == dp[i][j - 1]) {
+                j--;
+            } else {
+                result[len++] = str1.charAt(i-1);
+                i--;
+                j--;
+            }
+        }
+
         return dp[m][n];
     }
 
@@ -54,6 +70,7 @@ public class Main {
         String s2 = sc.next();
         Main main = new Main();
         int maxLen = main.longestCommonSubsequence(s1, s2);
-        System.out.println("最长公共子序列长度为：" + maxLen + ", 值为：" + main.result);
+        System.out.println("最长公共子序列长度为：" + maxLen);
+        System.out.println("最长公共子序列的具体值为："+new StringBuilder(new String(main.result)).reverse());
     }
 }
