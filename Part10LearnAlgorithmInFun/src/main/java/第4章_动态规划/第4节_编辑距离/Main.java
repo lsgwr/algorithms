@@ -1,17 +1,24 @@
 /***********************************************************
- * @Description : 72.编辑距离
+ * @Description : 编辑距离，代码模式和上一节的最长公共子序列很像
+ * LeetCode72 https://leetcode-cn.com/problems/edit-distance/
  * @author      : 梁山广(Liang Shan Guang)
- * @date        : 2020/1/31 21:07
+ * @date        : 2020/3/29 20:03
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package C12_动态规划.T72_编辑距离;
+package 第4章_动态规划.第4节_编辑距离;
 
-/**
- * Edit Distance
- * 二维动规， 时间复杂度O(n*m)， 空间复杂度O(n*m)
- */
-public class Solution {
-    public int minDistance(String str1, String str2) {
+import java.util.Scanner;
+
+public class Main {
+    /**
+     * 求3个数的最小值
+     */
+    private int min3(int a, int b, int c) {
+        return Math.min(Math.min(a, b), c);
+    }
+
+
+    public int editDistance(String str1, String str2) {
         int m = str1.length();
         int n = str2.length();
         // dp[i][j]代表str1[0...i]和str2[0...j]的最长公共子序列.注意此时的下标从1开始
@@ -37,4 +44,14 @@ public class Solution {
         }
         return dp[m][n];
     }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String word1 = sc.next();
+        String word2 = sc.next();
+        System.out.println(new Main().editDistance(word1, word2));
+    }
 }
+/**
+ * 4
+ */
