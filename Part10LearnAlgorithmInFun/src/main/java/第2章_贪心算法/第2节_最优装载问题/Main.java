@@ -9,7 +9,7 @@ package 第2章_贪心算法.第2节_最优装载问题;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Solution {
+public class Main {
 
     private int maxLoad(int[] w, int c) {
         // 按照古董重量排序
@@ -41,7 +41,7 @@ public class Solution {
         for (int i = 0; i < n; i++) {
             w[i] = sc.nextInt();
         }
-        int ans = new Solution().maxLoad(w, c);
+        int ans = new Main().maxLoad(w, c);
         System.out.println("能装入的古董最大数量为：" + ans);
     }
 }

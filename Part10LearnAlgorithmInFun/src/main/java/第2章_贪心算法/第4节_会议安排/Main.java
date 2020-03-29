@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class Solution {
+public class Main {
     static class Meet {
         public Meet() {
         }
@@ -80,25 +80,11 @@ public class Solution {
         for (int i = 0; i < n; i++) {
             meets[i] = new Meet(sc.nextInt(), sc.nextInt(), i + 1);
         }
-        int maxMeetingsArrange = new Solution().maxMeetingsArrange(meets);
+        int maxMeetingsArrange = new Main().maxMeetingsArrange(meets);
         System.out.println("最多可以安排" + maxMeetingsArrange + "个会议");
     }
 }
 /**
-输入如下：
-10
-3 6
-1 4
-5 7
-2 5
-5 9
-3 8
-8 11
-6 10
-8 12
-12 14
-
-输出如下：
  排完续的会议时间如下：
  会议编号  开始时间  结束时间
  2			1			4

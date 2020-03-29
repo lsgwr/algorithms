@@ -8,7 +8,7 @@ package 第2章_贪心算法.第3节_背包问题;
 
 import java.util.*;
 
-public class Solution {
+public class Main {
 
     /**
      * 宝物对象
@@ -69,7 +69,7 @@ public class Solution {
             treasure.cp = treasure.value / treasure.weight;
             treasureList.add(treasure);
         }
-        double sum = new Solution().takeMostTreasure(treasureList, m);
+        double sum = new Main().takeMostTreasure(treasureList, m);
         System.out.println("装入宝物的最大价值是：" + sum);
     }
 }
