@@ -63,7 +63,7 @@ n0 + n1 + n2 - 1 = 1 * n1 + 2 * n2   ==>  n0 = n2 + 1
 
 ### 二分搜索树的基本代码结构
 
-[二分搜索树的基本代码结构](src/main/java/Chapter06BST/Section02BSTBasic/BST.java)
+[二分搜索树的基本代码结构](src/main/java/Chapter06BST/BST.java)
 
 ## 6.3 向二分搜索树中添加节点
 
@@ -336,7 +336,7 @@ public void postOrder() {
 + 非递归中我们自己维护一个栈。通过把节点和子节点压栈和入栈来实现节点的访问顺序控制
 
 ## 6.10 层序遍历
-> 和图的BFS类似，参考[图中的BFS遍历](Part2BasicGraph/第05章_图的广度优先遍历.md#51-从树的广度优先遍历到图的广度优先遍历)和[dfs和bfs的神奇联系](../Part2BasicGraph/第05章_图的广度优先遍历.md#510-dfs和bfs的神奇联系)，一般用地是基于队列的非递归实现。
+> 和图的BFS类似，参考[图中的BFS遍历](../Part2BasicGraph/第05章_图的广度优先遍历.md#51-从树的广度优先遍历到图的广度优先遍历)和[dfs和bfs的神奇联系](../Part2BasicGraph/第05章_图的广度优先遍历.md#510-dfs和bfs的神奇联系)，一般用地是基于队列的非递归实现。
 ![层序遍历](images/第06章_二分搜索树BST/层序遍历.png)
 
 ### 代码实现如下：
