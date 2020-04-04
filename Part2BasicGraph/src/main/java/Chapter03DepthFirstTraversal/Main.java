@@ -11,46 +11,60 @@ import Chapter02GraphExpress.ReadGraph;
 
 public class Main {
     public static void main(String[] args) {
-        // 连通图,前序遍历
+        System.out.println("连通图,前序遍历:");
         String filePath = "src/main/java/Chapter03DepthFirstTraversal/graph.txt";
         Graph graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         System.out.println(new GraphDFS(graph).getOrderList());
+        System.out.println();
 
-        // 连通图,后序遍历
+        System.out.println("连通图,后序遍历:");
         filePath = "src/main/java/Chapter03DepthFirstTraversal/graph.txt";
         graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         System.out.println(new GraphDFSPostOrder(graph).getOrderList());
+        System.out.println();
 
-        // DFS的非递归实现
+        System.out.println("DFS的非递归实现:");
         filePath = "src/main/java/Chapter03DepthFirstTraversal/graph.txt";
         graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         System.out.println(new GraphDFSNoRecursion(graph).getOrderList());
+        System.out.println();
 
-        // 非连通图，用不支持非联通图的DFS
+        System.out.println("非连通图，用不支持非联通图的DFS:");
         filePath = "src/main/java/Chapter03DepthFirstTraversal/graphNotConnected.txt";
         graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         System.out.println(new GraphDFSNoCC(graph).getOrderList());
+        System.out.println();
 
-        // 非连通图，用支持非联通图的DFS
+        System.out.println("非连通图，用支持非联通图的DFS:");
         filePath = "src/main/java/Chapter03DepthFirstTraversal/graphNotConnected.txt";
         graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         System.out.println(new GraphDFS(graph).getOrderList());
+        System.out.println();
     }
 }
 /**
+ * 连通图,前序遍历:
  * 顶点数V = 7, 边数E = 8
  * [0, 1, 3, 2, 6, 5, 4]
+ *
+ * 连通图,后序遍历:
  * 顶点数V = 7, 边数E = 8
  * [5, 6, 2, 3, 4, 1, 0]
+ *
+ * DFS的非递归实现:
  * 顶点数V = 7, 边数E = 8
  * [0, 1, 2, 3, 6, 5, 4]
+ *
+ * 非连通图，用不支持非联通图的DFS:
  * 顶点数V = 7, 边数E = 6
  * [0, 1, 3, 2, 6, 4]
+ *
+ * 非连通图，用支持非联通图的DFS:
  * 顶点数V = 7, 边数E = 6
  * [0, 1, 3, 2, 6, 4, 5]
  */
