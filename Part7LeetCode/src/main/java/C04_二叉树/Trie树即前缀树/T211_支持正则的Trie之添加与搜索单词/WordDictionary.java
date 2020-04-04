@@ -6,7 +6,7 @@
  * @date        : 2020/4/4 15:42
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package C04_二叉树.Trie树即前缀树.T211_添加与搜索单词;
+package C04_二叉树.Trie树即前缀树.T211_支持正则的Trie之添加与搜索单词;
 
 import java.util.TreeMap;
 
