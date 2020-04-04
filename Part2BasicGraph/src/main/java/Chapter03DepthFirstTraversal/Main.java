@@ -34,6 +34,7 @@ public class Main {
         graph = new Graph(false);
         ReadGraph.init(graph, filePath);
         System.out.println(new GraphDFSNoCC(graph).getOrderList());
+
         // 非连通图，用支持非联通图的DFS
         filePath = "src/main/java/Chapter03DepthFirstTraversal/graphNotConnected.txt";
         graph = new Graph(false);
