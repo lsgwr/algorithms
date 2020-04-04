@@ -51,7 +51,7 @@ public class GraphDFSBiPartitionDetect {
                 if (!dfs(v, 0)) {
                     // 某一个联通分量不是二分图，整个图就不是二分图了，直接返回，不再检测剩下的二分图了
                     biPartition = false;
-                    // 一旦检测到二分图立马跳出，一定别忘
+                    // 一旦检测到不是二分图立马跳出，一定别忘
                     break;
                 }
             }
