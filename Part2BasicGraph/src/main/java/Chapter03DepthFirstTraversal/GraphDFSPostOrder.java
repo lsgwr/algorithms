@@ -30,6 +30,7 @@ public class GraphDFSPostOrder {
         visited = new boolean[graph.V()];
         // 从dfs(0)改成下面的代码，可以支持非连通的图,不用考虑连通分量的时候直接用dfs(v)即可
         for (int v = 0; v < graph.V(); v++) {
+            // 访问过表示在之前的联通分量已经走到过了
             if (!visited[v]) {
                 dfs(v);
             }
