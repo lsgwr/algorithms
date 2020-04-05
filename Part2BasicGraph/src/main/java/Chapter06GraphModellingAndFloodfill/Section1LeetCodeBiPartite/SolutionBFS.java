@@ -46,7 +46,8 @@ public class SolutionBFS {
         // 颜色必须显式初始化
         Arrays.fill(colors, -1);
         for (int v = 0; v < graph.length; v++) {
-            if (!visited[v]) { // 一定注意v顶没被访问才进行新一轮的bfs，因为只要联通分量的一个元素被遍历了，那么这个联通分量内的一定都被遍历了
+            // 一定注意v顶没被访问才进行新一轮的bfs，因为只要联通分量的一个元素被遍历了，那么这个联通分量内的一定都被遍历了
+            if (!visited[v]) {
                 if (!bfs(v)) {
                     isBi = false;
                     break;
@@ -70,10 +71,14 @@ public class SolutionBFS {
         queue.add(source);
         // 加入到队列就认为被访问过了
         visited[source] = true;
-        while (!queue.isEmpty()) { // 队列不为空就可以一直往下bfs
-            int v = queue.remove(); // 获取栈顶元素v
-            for (int w : graph[v]) { // 遍历v的邻接点
-                if (!visited[w]) { // 如果w还没被访问，就把元素加入到队列里
+        // 队列不为空就可以一直往下bfs
+        while (!queue.isEmpty()) {
+            // 获取队顶元素v
+            int v = queue.remove();
+            // 遍历v的邻接点
+            for (int w : graph[v]) {
+                // 如果w还没被访问，就把元素加入到队列里
+                if (!visited[w]) {
                     queue.add(w);
                     visited[w] = true;
                     // 颜色必须和父节点颜色相反
