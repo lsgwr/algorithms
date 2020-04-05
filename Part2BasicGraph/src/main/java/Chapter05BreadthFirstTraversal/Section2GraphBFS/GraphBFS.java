@@ -43,15 +43,18 @@ public class GraphBFS {
      * @param source 起点
      */
     private void bfs(int source) {
-        // ArrayDeque既可以当队列又可以当栈来用，参考 https://github.com/19920625lsg/algorithms/tree/master/Part2Basic/src/main/java/Chapter03StackAndQueues/JavaBuiltIn
+        // ArrayDeque既可以当队列又可以当栈来用，参考 https://gitee.com/lsgwr/algorithms/tree/master/Part2Basic/src/main/java/Chapter03StackAndQueues/JavaBuiltIn
         Queue<Integer> queue = new ArrayDeque<>();
         // 添加起始点source到队列
         queue.add(source);
         // 添加进队列就被认为是访问过了
         visited[source] = true;
-        while (!queue.isEmpty()) { // 队列不为空，说明图还没有遍历完
-            int v = queue.remove(); // 出队列
-            orderList.add(v); // 出队列时加入到访问列表里
+        // 队列不为空，说明图还没有遍历完
+        while (!queue.isEmpty()) {
+            // 出队列
+            int v = queue.remove();
+            // 出队列时加入到访问列表里
+            orderList.add(v);
             for (int w: graph.adj(v)){
                 // 遍历v的所有邻接点
                 if (!visited[w]){
