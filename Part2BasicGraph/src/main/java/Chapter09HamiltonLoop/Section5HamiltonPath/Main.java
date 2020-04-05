@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 哈密尔顿路径测试
+ * @Description : 哈密尔顿路径测试：起点选择地不同会影响哈密尔顿路径的查找
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2019/12/20 23:25
  * @email       : liangshanguang2@gmail.com

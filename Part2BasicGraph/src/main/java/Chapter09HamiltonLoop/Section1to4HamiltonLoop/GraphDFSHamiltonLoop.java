@@ -96,7 +96,7 @@ public class GraphDFSHamiltonLoop {
                     return true;
                 }
             } else {
-                // 如果w还没被访问
+                // 如果w已经被访问，且w回到了起始点+恰好所有定点都被访问，说明存在哈密尔顿回路
                 if (w == START && left == 0) {
                     // 记录回到起点START顶点的前一个顶点，如果DFS执行完end不是-1了表明图中存在哈密尔顿回路
                     end = v;

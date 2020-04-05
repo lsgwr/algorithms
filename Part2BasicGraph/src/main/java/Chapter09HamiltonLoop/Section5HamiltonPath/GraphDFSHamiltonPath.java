@@ -95,8 +95,8 @@ public class GraphDFSHamiltonPath {
                     return true;
                 }
             } else {
-                // 如果w还没被访问
-                if (left == 0) { // 所有节点都已经被访问了
+                // 如果w已经被访问，且所有的节点都已经被访问了
+                if (left == 0) {
                     // 如果DFS执行完end不是-1了表明图中存在哈密尔顿路径，返回True即可
                     end = v;
                     return true;
