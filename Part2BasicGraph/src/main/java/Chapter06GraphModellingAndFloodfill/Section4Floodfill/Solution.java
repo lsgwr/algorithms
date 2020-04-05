@@ -72,12 +72,12 @@ public class Solution {
         // 进来后至少有一个点v被访问了，所以连通分量的节点数初始化为1
         int result = 1;
         // 遍历节点(x, y)所有的邻接点,判断是陆地的
-        for (int d = 0; d < dirs.length; d++) {
-            int next_x = x + dirs[d][0];
-            int next_y = y + dirs[d][1];
-            // 点(next_x, next_y)必须在grid区域内 + 没被访问过 + 是陆地(点(x, y)是陆地)
-            if (inArea(next_x, next_y) && !visited[next_x][next_y] && grid[next_x][next_y] == 1) {
-                result += dfs(next_x, next_y);
+        for (int[] dir : dirs) {
+            int nextX = x + dir[0];
+            int nextY = y + dir[1];
+            // 点(nextX, nextY)必须在grid区域内 + 没被访问过 + 是陆地(点(x, y)是陆地)
+            if (inArea(nextX, nextY) && !visited[nextX][nextY] && grid[nextX][nextY] == 1) {
+                result += dfs(nextX, nextY);
             }
         }
         return result;
@@ -88,5 +88,20 @@ public class Solution {
      */
     private boolean inArea(int x, int y) {
         return x >= 0 && x < R && y >= 0 && y < C;
+    }
+
+    public static void main(String[] args) {
+        int[][] grid = {
+                {0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+                {0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
+                {0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}
+        };
+        Solution solution = new Solution();
+        System.out.println(solution.maxAreaOfIsland(grid));
     }
 }

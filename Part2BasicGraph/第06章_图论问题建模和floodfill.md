@@ -53,7 +53,11 @@ int[][] dirs = {{-1, 0}, {-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1,
 
 实际是可以直接用(x, y)来表达图的顶点了，而且也不需要显示地构建图了，只需要利用骄傲DFS或BFS的思想即可
 
-+ [实现代码](src/main/java/Chapter06GraphModellingAndFloodfill/Section4Floodfill/Solution.java)
+
++ [经典实现代码，基于递归的DFS实现](src/main/java/Chapter06GraphModellingAndFloodfill/Section4Floodfill/Solution.java)
++ [BFS实现](src/main/java/Chapter06GraphModellingAndFloodfill/Section4Floodfill/SolutionBFS.java)
++ [递归的DFS实现](src/main/java/Chapter06GraphModellingAndFloodfill/Section4Floodfill/SolutionDFS递归实现.java)
++ [非递归的DFS实现](src/main/java/Chapter06GraphModellingAndFloodfill/Section4Floodfill/SolutionDFS非递归实现.java)
 
 ## 6.5 更多floodfill的问题
 

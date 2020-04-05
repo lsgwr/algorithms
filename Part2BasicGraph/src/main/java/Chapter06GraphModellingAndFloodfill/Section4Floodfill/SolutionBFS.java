@@ -77,22 +77,25 @@ public class SolutionBFS {
      *
      * @param r 遍历起点的行序号
      * @param c 遍历起点的列序号
-     * @return
+     * @return (r,c)所在的联通分量内点的个数
      */
     private int bfs(int r, int c) {
         Queue<Integer> rQueue = new ArrayDeque<>();
         Queue<Integer> cQueue = new ArrayDeque<>();
-        // 当前行和列加入对应的栈
+        // 当前行和列加入对应的队列
         rQueue.add(r);
         cQueue.add(c);
-        // 加入到栈后就认为是被访问过了
+        // 加入到队列后就认为是被访问过了
         visited[r][c] = true;
         // 当前遍历的起点起始深度就是1
         int maxCur = 1;
-        while (!rQueue.isEmpty() && !cQueue.isEmpty()) { // 行栈和列栈都不为空就接着沿着点进行深度遍历
-            // 从栈里弹出要遍历其邻接点的点
-            int rCur = rQueue.remove(); // 当前行
-            int cCur = cQueue.remove(); // 当前列
+        // 行队列和列队列都不为空就接着沿着点进行深度遍历
+        while (!rQueue.isEmpty() && !cQueue.isEmpty()) {
+            // 从队列里弹出要遍历其邻接点的点
+            // 当前行
+            int rCur = rQueue.remove();
+            // 当前列
+            int cCur = cQueue.remove();
             // 遍历(r, c)的所有邻接点，顺时针上右下左四个点进行遍历
             for (int[] dir : dirs) {
                 // dir代表相当于当前点的位移
@@ -118,7 +121,7 @@ public class SolutionBFS {
      *
      * @param r 行号
      * @param c 列号
-     * @return
+     * @return 点(r, c)是否在栅格内
      */
     private boolean inGrid(int r, int c) {
         return r >= 0 && r < R && c >= 0 && c < C;
