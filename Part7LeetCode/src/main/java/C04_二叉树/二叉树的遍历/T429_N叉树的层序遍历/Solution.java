@@ -40,6 +40,8 @@ class Solution {
             int size = queue.size();
             // 一次性把当前层的节点全部弹出
             List<Integer> levelList = new ArrayList<>();
+            // size的作用在于区分树的层，不用单独处理层了，和BFS一起对比看下好好学体会下
+            // BFS的实现 https://gitee.com/lsgwr/algorithms/blob/master/Part2BasicGraph/src/main/java/Chapter05BreadthFirstTraversal/Section2GraphBFS/GraphBFS.java#L41
             while(size-- > 0){
                 Node node = queue.remove();
                 levelList.add(node.val);
