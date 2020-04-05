@@ -3,15 +3,14 @@
  *                https://leetcode-cn.com/problems/max-area-of-island/
  *                优化：实际解决洪泛问题并不需要显示地构造图，栅格grid可以直接看做为一个图，直接看做图进行遍历，含节点做多的联通分量就是我们要求地最大岛面积
  *                注意栅格是屏幕坐标系，坐标点用(r, c)表示，第一个坐标是行(自上往下递增)，第二个坐标是列(自左往右递增)
- *                基于非递归的bfs实现
+ *                基于非递归的DFS实现
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2019-12-16 20:27
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-// package Chapter06GraphModellingAndFloodfill.Section4Floodfill;
-package C08_广度优先搜索.T695_岛屿的最大面积;
+package C09_深度优先搜索.T695_岛屿最大面积.非递归实现;
+
 import java.util.ArrayDeque;
-import java.util.Queue;
 
 public class Solution {
     private int[][] dirs = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
@@ -59,10 +58,10 @@ public class Solution {
         // 要遍历所有的联通分量(每个点都要作为起始点试试)
         for (int r = 0; r < R; r++) {
             for (int c = 0; c < C; c++) {
-                // 点没被访问而且是陆地，才会进行bfs遍历
+                // 点没被访问而且是陆地，才会进行DFS遍历
                 if (!visited[r][c] && grid[r][c] == 1) {
-                    // 把本次bfs的结果和前面已经得到的最大值进行比较，取较大值
-                    max = Math.max(max, bfs(r, c));
+                    // 把本次dfs的结果和前面已经得到的最大值进行比较，取较大值
+                    max = Math.max(max, dfs(r, c));
                 }
             }
         }
@@ -74,26 +73,26 @@ public class Solution {
      *
      * @param r 遍历起点的行序号
      * @param c 遍历起点的列序号
-     * @return 当前联通分量内的点的个数
+     * @return (r,c)所在的联通分量内点的个数
      */
-    private int bfs(int r, int c) {
-        Queue<Integer> rQueue = new ArrayDeque<>();
-        Queue<Integer> cQueue = new ArrayDeque<>();
-        // 当前行和列加入对应的队列
-        rQueue.add(r);
-        cQueue.add(c);
-        // 加入到队列后就认为是被访问过了
+    private int dfs(int r, int c) {
+        ArrayDeque<Integer> rStack = new ArrayDeque<>();
+        ArrayDeque<Integer> cStack = new ArrayDeque<>();
+        // 当前行和列加入对应的栈
+        rStack.push(r);
+        cStack.push(c);
+        // 加入到栈后就认为是被访问过了
         visited[r][c] = true;
-        // 当前遍历的起点肯定是陆地(maxAreaOfIsland里面调用bfs时限制了)，所以此次dfs起始面积应该就有1了
+        // 当前遍历的起点起始深度就是1
         int maxCur = 1;
-        // 行队列和列队列都不为空就接着沿着点进行深度遍历
-        while (!rQueue.isEmpty() && !cQueue.isEmpty()) {
+        // 行栈和列栈都不为空就接着沿着点进行深度遍历
+        while (!rStack.isEmpty() && !cStack.isEmpty()) {
             // 从栈里弹出要遍历其邻接点的点
             // 当前行
-            int rCur = rQueue.remove();
+            int rCur = rStack.pop();
             // 当前列
-            int cCur = cQueue.remove();
-            // 遍历点(r, c)的所有邻接点，顺时针上右下左四个点进行遍历
+            int cCur = cStack.pop();
+            // 遍历(r, c)的所有邻接点，顺时针上右下左四个点进行遍历
             for (int[] dir : dirs) {
                 // dir代表相当于当前点的位移
                 int rNext = rCur + dir[0];
@@ -103,12 +102,13 @@ public class Solution {
                 if (inGrid(rNext, cNext) && !visited[rNext][cNext] && grid[rNext][cNext] == 1) {
                     // 遍历一层就加1
                     maxCur++;
-                    rQueue.add(rNext);
-                    cQueue.add(cNext);
+                    rStack.push(rNext);
+                    cStack.push(cNext);
                     visited[rNext][cNext] = true;
                 }
             }
         }
+
         return maxCur;
     }
 
@@ -123,19 +123,19 @@ public class Solution {
         return r >= 0 && r < R && c >= 0 && c < C;
     }
 
-     public static void main(String[] args) {
-         int[][] grid = {
-                 {0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
-                 {0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-                 {0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
-                 {0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0},
-                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
-                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
-                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}
-         };
-         Solution solution = new Solution();
-         // 对于上面这个给定矩阵应返回 6。注意答案不应该是 11 ，因为岛屿只能包含水平或垂直的四个方向的1
-         System.out.println(solution.maxAreaOfIsland(grid));
-     }
+    public static void main(String[] args) {
+        int[][] grid = {
+                {0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+                {0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
+                {0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}
+        };
+        Solution solution = new Solution();
+        // 对于上面这个给定矩阵应返回 6。注意答案不应该是 11 ，因为岛屿只能包含水平或垂直的四个方向的1
+        System.out.println(solution.maxAreaOfIsland(grid));
+    }
 }
