@@ -39,8 +39,16 @@ public class GraphBFS {
 
     /**
      * 从source点开始进行广度优先遍历，非递归实现
+     /**
+     *          1
+     *        / | \
+     *       /  |  \
+     *      3   2  4
+     *     / \
+     *    5  6
+     * bfs遍历结果：[1,3,2,4,5,6]
      *
-     * @param source 起点
+     * @param source 图遍历的起点
      */
     private void bfs(int source) {
         // ArrayDeque既可以当队列又可以当栈来用，参考 https://gitee.com/lsgwr/algorithms/tree/master/Part2Basic/src/main/java/Chapter03StackAndQueues/JavaBuiltIn
