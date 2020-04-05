@@ -61,6 +61,18 @@ int[][] dirs = {{-1, 0}, {-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1,
 
 ## 6.5 更多floodfill的问题
 
++ [130.被包围的水域](../Part7LeetCode/src/main/java/C09_深度优先搜索/T130_被围绕的水域/Solution.java)
++ [200.岛屿数量](../Part7LeetCode/src/main/java/C09_深度优先搜索/T200_岛屿数量/Solution.java)
++ [529.扫雷游戏](https://leetcode-cn.com/problems/minesweeper/)
+  > 待做
++ [733.图像渲染](https://leetcode-cn.com/problems/flood-fill/)
+  > 待做
++ [827.最大人工岛](https://leetcode-cn.com/problems/making-a-large-island/)
+  > 待做
++ [1020.飞地的数量](https://leetcode-cn.com/problems/number-of-enclaves/)
+  > 待做
++ [1034.边框着色](https://leetcode-cn.com/problems/coloring-a-border/)
+  > 待做
 ![更多floodfilee算法的问题1](images/第06章_图论问题建模和floodfill/更多floodfilee算法的问题1.jpg)
 
 ![更多floodfilee算法的问题2](images/第06章_图论问题建模和floodfill/更多floodfilee算法的问题2.jpg)
