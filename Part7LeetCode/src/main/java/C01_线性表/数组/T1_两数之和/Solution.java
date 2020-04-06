@@ -8,6 +8,7 @@
  ***********************************************************/
 package C01_线性表.数组.T1_两数之和;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,5 +25,11 @@ public class Solution {
             map.put(nums[i], i);
         }
         return null;
+    }
+    public static void main(String[] args) {
+        int[] numbers = {2, 7, 11, 15};
+        int target = 9;
+        int[] result = new Solution().twoSum(numbers, target);
+        System.out.println(Arrays.toString(result));
     }
 }
