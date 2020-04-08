@@ -64,23 +64,21 @@ class Solution {
     private boolean dfs(int v, Map<Integer, List<Integer>> mapAdj) {
         visited[v] = true;
         onPath[v] = true;
-        if (mapAdj.get(v) == null) {
-            // 如果没有邻接边，要把onPath[v]设置回去，防止影响前置路径
-            onPath[v] = false;
-            return false;
-        }
-        for (Integer w : mapAdj.get(v)) {
-            if (!visited[w]) {
-                // w点没被访问的话就递归接着访问
-                if (dfs(w, mapAdj)) {
-                    // dfs递归往下访问，遇到有环就可以直接返回true了
+        if (mapAdj.get(v) != null) {
+             for (Integer w : mapAdj.get(v)) {
+                if (!visited[w]) {
+                    // w点没被访问的话就递归接着访问
+                    if (dfs(w, mapAdj)) {
+                        // dfs递归往下访问，遇到有环就可以直接返回true了
+                        return true;
+                    }
+                } else if (onPath[w]) {
+                    //这个else分支就是有向图环检测的核心，即在我们的向前路径onPath上。不用无向图中的w!=parent是因为有向图中一条边如果是双向地也可以认为有环
                     return true;
                 }
-            } else if (onPath[w]) {
-                //这个else分支就是有向图环检测的核心，即在我们的向前路径onPath上。不用无向图中的w!=parent是因为有向图中一条边如果是双向地也可以认为有环
-                return true;
             }
         }
+       
         // 递归回退时把标记取消
         onPath[v] = false;
         return false;
