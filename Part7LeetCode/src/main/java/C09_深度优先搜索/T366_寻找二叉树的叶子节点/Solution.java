@@ -7,11 +7,36 @@
  ***********************************************************/
 package C09_深度优先搜索.T366_寻找二叉树的叶子节点;
 
+/* -----------------------------------
+ *  WARNING:
+ * -----------------------------------
+ *  Your code may fail to compile
+ *  because it contains public class
+ *  declarations.
+ *  To fix this, please remove the
+ *  "public" keyword from your class
+ *  declarations.
+ */
+
 import C04_二叉树.TreeNode;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
 class Solution {
     /**
      * DFS回溯过程中删除节点
@@ -24,24 +49,25 @@ class Solution {
         while (root != null) {
             // 只要root不为null，就一直往下进行
             List<Integer> leafs = new ArrayList<>();
-            dfs(root, leafs);
+            root = dfs(root, leafs);
             leafsList.add(leafs);
         }
         return leafsList;
     }
 
-    private void dfs(TreeNode root, List<Integer> leafs) {
+    private TreeNode dfs(TreeNode root, List<Integer> leafs) {
         if (root == null) {
-            return;
+            return null;
         }
         if (root.left == null && root.right == null) {
             // 到了叶子节点
             leafs.add(root.val);
-            // 删除当前叶子节点
-            root = null;
-            return;
+            // 相当于删除当前节点了
+            return null;
         }
-        dfs(root.left, leafs);
-        dfs(root.right, leafs);
+        root.left = dfs(root.left, leafs);
+        root.right = dfs(root.right, leafs);
+        return root;
     }
 }
+

@@ -1,3 +1,9 @@
+package C09_深度优先搜索.T339_嵌套列表权重和;
+
+import C09_深度优先搜索.T364_加权嵌套序列和II.NestedInteger;
+
+import java.util.List;
+
 /**
  * // This is the interface that allows for creating nested lists.
  * // You should not implement it, or speculate about its implementation

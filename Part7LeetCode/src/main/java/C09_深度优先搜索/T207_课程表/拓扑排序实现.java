@@ -1,4 +1,8 @@
-class Solution {
+package C09_深度优先搜索.T207_课程表;
+
+import java.util.*;
+
+class SolutionTopoSort {
     /**
      * 拓扑排序结果
      */
