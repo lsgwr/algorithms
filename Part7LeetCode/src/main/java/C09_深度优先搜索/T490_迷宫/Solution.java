@@ -68,6 +68,9 @@ class Solution {
                 if (!inGrid(nextR, nextC) || grid[nextR][nextC] == 1) {
                     // 如果当前到达边界或者碰到墙了，下一步出不去了，此时达到我们的目的地而且停下来了
                     return true;
+                } else {
+                    // 到达了目的地还能继续往后滑，那么目的地就标记为未访问，方便后面再次经过
+                    visited[start[0]][start[1]] = false;
                 }
             } else {
                 // 说明一开始的起点就是终点，不需要动，直接返回true即可
@@ -85,12 +88,17 @@ class Solution {
                     start[1] = nextC;
                     // 标记访问节点
                     visited[start[0]][start[1]] = true;
-                    if (start[0] == destination[0] && start[1] == destination[1]) {
-                        return true;
-                    }
                     // 不断更新下一个继续滑行的坐标
                     nextR = start[0] + preDir[0];
                     nextC = start[1] + preDir[1];
+                    if (start[0] == destination[0] && start[1] == destination[1]) {
+                        // 上一次的方向不为空，判断小球下一步的位置
+                        if (!inGrid(nextR, nextC) || grid[nextR][nextC] == 1) {
+                            // 如果当前到达边界或者碰到墙了，下一步出不去了，此时达到我们的目的地而且停下来了
+                            return true;
+                        }
+                    }
+
                 }
             }
         }
@@ -109,10 +117,20 @@ class Solution {
         return false;
     }
 
+    /**
+     * [0,4]
+     * [4,4]
+     * <p>
+     * [4,3]
+     * [0,1]
+     * <p>
+     * [0,4]
+     * [1,2]
+     */
     public static void main(String[] args) {
         int[][] maze = {{0, 0, 1, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 1, 0}, {1, 1, 0, 1, 1}, {0, 0, 0, 0, 0}};
-        int[] start = {0, 4};
-        int[] destination = {4, 4};
+        int[] start = {4, 3};
+        int[] destination = {0, 1};
         System.out.println(new Solution().hasPath(maze, start, destination));
     }
 }
