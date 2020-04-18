@@ -1,9 +1,11 @@
+package C09_深度优先搜索.T505_迷宫II;
+
 import java.util.Arrays;
 
 /**
  * 参考：https://leetcode-cn.com/problems/the-maze-ii/solution/mi-gong-ii-by-leetcode/
  */
-class Solution {
+class SolutionDFS {
     /**
      * 四联通问题，可以移动的四个方向
      */
@@ -99,6 +101,6 @@ class Solution {
         int[][] maze = {{0, 0, 1, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 1, 0}, {1, 1, 0, 1, 1}, {0, 0, 0, 0, 0}};
         int[] start = {0, 4};
         int[] destination = {4, 4};
-        System.out.println(new Solution().shortestDistance(maze, start, destination));
+        System.out.println(new SolutionDFS().shortestDistance(maze, start, destination));
     }
 }
