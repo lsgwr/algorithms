@@ -46,7 +46,7 @@ class Solution {
             Arrays.fill(row, Integer.MAX_VALUE);
         }
         this.grid = maze;
-        bfs(start, destination);
+        bfs(start);
         return dist[destination[0]][destination[1]] == Integer.MAX_VALUE ? -1 : dist[destination[0]][destination[1]];
     }
 
@@ -58,9 +58,8 @@ class Solution {
      * 我们就会把 (i, j) 再次加入队列中。并不断更新distance
      *
      * @param start       起点坐标
-     * @param destination 目标点坐标
      */
-    private void bfs(int[] start, int[] destination) {
+    private void bfs(int[] start) {
         Queue<Integer> rQueue = new ArrayDeque<>();
         Queue<Integer> cQueue = new ArrayDeque<>();
         // 当前行和列加入对应的队列
