@@ -7,11 +7,12 @@
 package C08_广度优先搜索.T675_为高尔夫比赛砍树;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
 public class Solution {
-    private int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    private final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     private int R;
     private int C;
     private List<List<Integer>> grid;
@@ -87,11 +88,6 @@ public class Solution {
                 if (inGrid(rNext, cNext) && !visited[rNext][cNext] && grid.get(rNext).get(cNext) != 0) {
                     visited[rNext][cNext] = true;
                     distance[rNext][cNext] = distance[rCur][cCur] + 1;
-                    if (grid.get(rNext).get(cNext) == 1){
-                        // 如果是可以行走的地面才继续往后走
-                        rQueue.add(rNext);
-                        cQueue.add(cNext);
-                    }
                     // 找到了要砍地树
                     if (grid.get(rNext).get(cNext) == treeHeight) {
                         // 砍完树，树的高度变为1
@@ -101,11 +97,41 @@ public class Solution {
                         cStartLast = cNext;
                         // 找到要砍的树了，直接返回距离
                         return distance[rNext][cNext];
+                    }else {
+                        // 如果是可以行走的地面(空地或者不是遥看地树)才继续往后走
+                        rQueue.add(rNext);
+                        cQueue.add(cNext);
                     }
                 }
             }
         }
         // 最后也没找到，返回-1
+        System.out.println("高度为：" + treeHeight + "的树找不到啦！");
         return -1;
+    }
+
+    /**
+     * [[1,2,3],[0,0,4],[7,6,5]]
+     * [[1,2,3],[0,0,0],[7,6,5]]
+     * [[2,3,4],[0,0,5],[8,7,6]]
+     * [[54581641,64080174,24346381,69107959],[86374198,61363882,68783324,79706116],[668150,92178815,89819108,94701471],[83920491,22724204,46281641,47531096],[89078499,18904913,25462145,60813308]]
+     */
+    public static void main(String[] args) {
+        int[][] numsAr = {
+                {54581641, 64080174, 24346381, 69107959},
+                {86374198, 61363882, 68783324, 79706116},
+                {668150, 92178815, 89819108, 94701471},
+                {83920491, 22724204, 46281641, 47531096},
+                {89078499, 18904913, 25462145, 60813308}
+        };
+        List<List<Integer>> forest = new ArrayList<>();
+        for (int[] nums : numsAr) {
+            List<Integer> numList = new ArrayList<>();
+            for (int num : nums) {
+                numList.add(num);
+            }
+            forest.add(numList);
+        }
+        System.out.println(new Solution().cutOffTree(forest));
     }
 }
