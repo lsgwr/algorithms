@@ -1,4 +1,5 @@
-import java.lang.reflect.Array;
+package C09_深度优先搜索.T694_不同岛屿的数量;
+
 import java.util.*;
 
 class Solution {
