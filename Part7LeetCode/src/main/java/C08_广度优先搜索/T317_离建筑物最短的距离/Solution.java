@@ -1,5 +1,7 @@
 /***********************************************************
  * @Description : 317. 离建筑物最近的距离
+ * https://leetcode-cn.com/problems/shortest-distance-from-all-buildings/
+ * 本质还是单源最短路径问题
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2020/4/19 22:04
  * @email       : liangshanguang2@gmail.com
@@ -9,6 +11,9 @@ package C08_广度优先搜索.T317_离建筑物最短的距离;
 import java.util.ArrayDeque;
 
 public class Solution {
+    /**
+     * 四联通问题
+     */
     private final int[][] dirs = {{1, 0}, {0, 1}, {0, -1}, {-1, 0}};
     private int[][] grid;
     private int R;
@@ -22,6 +27,7 @@ public class Solution {
         C = grid[0].length;
         this.grid = grid;
         int minDistanceSum = Integer.MAX_VALUE;
+        // 尝试在所有的空地建设大楼，看看到周围的建筑物的距离，取最小值
         for (int r = 0; r < R; r++) {
             for (int c = 0; c < C; c++) {
                 if (grid[r][c] == 0) {
