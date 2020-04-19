@@ -2,6 +2,9 @@
  * @Description : 1102.得分最高的路径
  * https://leetcode-cn.com/problems/path-with-maximum-minimum-value/
  * 无向有权图的DFS遍历问题
+ * 参考教程：
+ *      * https://leetcode-cn.com/problems/path-with-maximum-minimum-value/solution/java-dfs-er-fen-by-gaaakki/
+ *      * https://leetcode-cn.com/problems/path-with-maximum-minimum-value/solution/python3-dfs-by-luoyuchieh/
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2020/4/19 10:42
  * @email       : liangshanguang2@gmail.com
@@ -30,6 +33,11 @@ public class Solution {
     private boolean[][] visited;
 
     /**
+     * 记录边权重的数组
+     */
+    private int[][] edgeWeightGrid;
+
+    /**
      * 判断点是否在栅格内
      *
      * @param r 行
@@ -42,56 +50,55 @@ public class Solution {
     public int maximumMinimumPath(int[][] A) {
         R = A.length;
         C = A[0].length;
-        visited = new boolean[R][C];
-        // 存储所有起点到终点的路径
-        List<List<int[]>> pathList = new ArrayList<>();
-        // 记录实时路径的List
-        List<int[]> path = new ArrayList<>();
-        // DFS遍历找到所有(0, 0)到(R-1, C-1)的路径
-        dfs(0, 0, path, pathList);
-        // 从path中选取路径加权和最大的路径
-        int maxScore = 0;
-        for (List<int[]> pathCur : pathList) {
-            // 路径的得分为该路径上的最小值
-            int score = Integer.MAX_VALUE;
-            for (int[] edge : pathCur) {
-                // 不断取最小值
-                score = Math.min(score, A[edge[0]][edge[1]]);
+        edgeWeightGrid = A;
+        int result = 0;
+        int lo = 1;
+        // 得分最高的路径中的最小值一定小于等于A[0][0], A[-1][-1]中的较小值
+        int hi = Math.min(A[0][0], A[R - 1][C - 1]);
+        // 在[1, min(A[0][0], A[-1][-1])]这个区间中进行二分查找：
+        while (lo <= hi) {
+            // 取中间点
+            int mid = lo + (hi - lo) / 2;
+            // 每次DFS都要重新初始化这个数组
+            visited = new boolean[R][C];
+            // 如果存在一条路径中的所有值比查找的值大，就更新搜索范围，不断缩小，当while退出时，result就是要求的路径最小值中的最大值
+            if (dfs(0, 0, mid)) {
+                // 存在一条路径中的所有值比查找的值大
+                result = mid;
+                // 要找的最大值在右侧
+                lo = mid + 1;
+            } else {
+                // 不存在一条路径中的所有值比查找的值大，说明在左侧
+                hi = mid - 1;
             }
-            // 最终该路径的最小分数和总路径上的最大分数取较大值
-            maxScore = Math.max(score, maxScore);
         }
-        return maxScore;
+        // 并把区间更新到右边的区间进行查找，否则在左边的区间查找．用这个方法进行剪枝，可以提高效率，防止超时
+        return result;
     }
 
     /**
-     * DFS遍历找到所有(0, 0)到(R-1, C-1)的路径
+     * 是否存在一条路径中的所有值比查找的值大
      *
-     * @param r        当前的行
-     * @param c        当前的列
-     * @param path     当前的DFS路径
-     * @param pathList 所有(0, 0)到(R-1, C-1)的路径列表
+     * @param r      当前的行
+     * @param c      当前的列
+     * @param maxCur 当前的所有路径上最小分数中的最大值
+     * @return 存在一条路径中的所有值比查找的值大则返回true，否则返回false
      */
-    private void dfs(int r, int c, List<int[]> path, List<List<int[]>> pathList) {
+    private boolean dfs(int r, int c, int maxCur) {
         visited[r][c] = true;
-        path.add(new int[]{r, c});
         if (r == R - 1 && c == C - 1) {
-            // 复制一份当前路径到路径列表中
-            pathList.add(new ArrayList<>(path));
-            // 到了目的地就开始回溯
-            return;
+            return true;
         }
         for (int[] dir : dirs) {
             int rNext = r + dir[0];
             int cNext = c + dir[1];
-            if (inGrid(rNext, cNext) && !visited[rNext][cNext]) {
-                dfs(rNext, cNext, path, pathList);
-                // 回溯过程中要把点的情况设置回去
-                visited[rNext][cNext] = false;
-                // 之前加地点也要在回溯过程中退出去
-                path.remove(path.size() - 1);
+            if (inGrid(rNext, cNext) && !visited[rNext][cNext] && edgeWeightGrid[rNext][cNext] >= maxCur) {
+                if (dfs(rNext, cNext, maxCur)) {
+                    return true;
+                }
             }
         }
+        return false;
     }
 
     /**
