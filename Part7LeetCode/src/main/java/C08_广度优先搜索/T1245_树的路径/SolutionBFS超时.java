@@ -6,13 +6,13 @@
  * @date        : 2020/4/19 12:50
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package C09_深度优先搜索.T1245_树的路径;
+package C08_广度优先搜索.T1245_树的路径;
 
 import java.util.ArrayDeque;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Solution {
+public class SolutionBFS超时 {
     /**
      * adj[i]表示点i的所有邻接点
      */
@@ -75,6 +75,6 @@ public class Solution {
 
     public static void main(String[] args) {
         int[][] edges = {{0, 1}, {0, 2}};
-        System.out.println(new Solution().treeDiameter(edges));
+        System.out.println(new SolutionBFS超时().treeDiameter(edges));
     }
 }
