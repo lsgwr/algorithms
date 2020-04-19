@@ -27,10 +27,15 @@ public class Solution {
      * value[i]表示第i个节点的值
      */
     private int[] value;
+    /**
+     * 记录每个节点是否删除，一旦删除就不能再往下遍历了
+     */
+    private boolean[] deleted;
 
     public int deleteTreeNodes(int nodes, int[] parent, int[] value) {
         this.parent = parent;
         this.value = value;
+        deleted = new boolean[nodes];
         // 记录每个节点的孩子节点
         children = new Set[nodes];
         for (int i = 0; i < nodes; i++) {
@@ -57,8 +62,9 @@ public class Solution {
         // 到了叶子节点，直接返回叶子节点的值即可
         if (children[node].size() == 0) {
             if (value[node] == 0) {
-                // 叶子节点值为空，可以看作空子树，可以直接删除点了
-                children[parent[node]].remove(node);
+                // 叶子节点值为空，可以看作空子树，可以直接删除点了，直接删除会引起ConcurrentModificationException
+                // 所以用额外的数据标记下
+                deleted[node] = true;
                 return 0;
             } else {
                 return value[node];
@@ -72,8 +78,8 @@ public class Solution {
         }
         // 看看子树的节点总和是否为0了
         if (treeSum == 0) {
-            // 为0则要把当前的节点node从其父节点中删除
-            children[parent[node]].remove(node);
+            // 为0则要把当前的节点node从其父节点中删除，为了防止ConcurrentModificationException所以用数组标记下
+            deleted[node] = true;
             // 把0返回给父节点，因为已经清空了
             return 0;
         } else {
@@ -88,8 +94,14 @@ public class Solution {
      * @param node 当前遍历到的节点
      */
     private void sumNodes(int node) {
-        // 访问到一个节点就+1
-        result++;
+        if (deleted[node]) {
+            // 节点已经标记为删除就不再往下走了
+            return;
+        } else {
+            // 访问到一个节点就+1
+            result++;
+        }
+
         for (int child : children[node]) {
             // 遍历每个child，继续dfs
             sumNodes(child);
