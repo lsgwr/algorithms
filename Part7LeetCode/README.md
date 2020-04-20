@@ -13,3 +13,4 @@
   + [317.离建筑物最近的距离](https://leetcode-cn.com/problems/shortest-distance-from-all-buildings/)
   + [505.迷宫II](https://leetcode-cn.com/problems/the-maze-ii/)
 + 2.有向图的相关算法熟悉和完善，比如环检测要能得到所有的环、欧拉回路和哈密尔顿回路、最短路径等算法
+  + [787.K站中转内最便宜的航班](https://leetcode-cn.com/problems/cheapest-flights-within-k-stops/)：实际是有向有权图的最短路径问题即Dijkstra算法
