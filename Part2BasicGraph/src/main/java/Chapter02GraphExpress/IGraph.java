@@ -63,7 +63,7 @@ public interface IGraph {
     void show();
 
     /**
-     * 返回当前的图的迭代器，方便进行循环遍历
+     * 返回顶点v的邻接表的迭代器，方便进行循环遍历v的所有邻接点
      *
      * @param v
      * @return
