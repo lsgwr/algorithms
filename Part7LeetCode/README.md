@@ -16,7 +16,10 @@
   + [787.K站中转内最便宜的航班](https://leetcode-cn.com/problems/cheapest-flights-within-k-stops/)：实际是有向有权图的最短路径问题即Dijkstra算法
 + 3.BFS
  + [286.墙与门](https://leetcode-cn.com/problems/walls-and-gates/) ：单源最短路径distance数组的使用
- + [994.腐烂的橘子](https://leetcode-cn.com/problems/rotting-oranges/)：类似公司的考题杨树林抑制剂
+ + [994.腐烂的橘子](https://leetcode-cn.com/problems/rotting-oranges/)，好好体会下需要记录层次的BFS的实现，类似题目有
+  + [公司的考题杨树林抑制剂](T994_腐烂的橘子/类似公司的考题杨树林抑制剂.md)
+  + [102.二叉树的层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)
+  + [429.N叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/)
 + 4.DFS
   + [505.迷宫II](https://leetcode-cn.com/problems/the-maze-ii/)：是对DFS和BFS的双重锻炼，要学会灵活运用DFS和BFS，单源最短路径问题要利用这个题好好复习下
   + [1102.得分最高的路径](https://leetcode-cn.com/problems/path-with-maximum-minimum-value/)：DFS超时的解决方案，利用二分法进行剪枝
