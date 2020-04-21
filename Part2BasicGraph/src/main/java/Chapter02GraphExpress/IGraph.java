@@ -20,7 +20,7 @@ public interface IGraph {
     /**
      * 确保v在有效范围
      *
-     * @param v 订点编号
+     * @param v 顶点编号
      */
     void validateVertex(int v);
 
