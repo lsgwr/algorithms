@@ -41,29 +41,24 @@ class Solution {
      * @param root N叉树的根节点
      */
     public List<List<Integer>> levelOrder(Node root) {
-        List<List<Integer>> list = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
         if(root == null){
-            return list;
+            return result;
         }
-        Queue<Node> queue = new ArrayDeque<>();
-        queue.add(root);
-        while(!queue.isEmpty()){
-            int size = queue.size();
-            // 一次性把当前层的节点全部弹出
-            List<Integer> levelList = new ArrayList<>();
-            // size的作用在于区分树的层，不用单独处理层了，和BFS一起对比看下好好学体会下
-            // BFS的实现 https://gitee.com/lsgwr/algorithms/blob/master/Part2BasicGraph/src/main/java/Chapter05BreadthFirstTraversal/Section2GraphBFS/GraphBFS.java#L41
-            while(size-- > 0){
-                Node node = queue.remove();
-                levelList.add(node.val);
-                for (Node child : node.children) {
-                    if (child!=null){
-                        queue.add(child);
-                    }
+        List<Node> levelList = new ArrayList<>();
+        levelList.add(root);
+        while(!levelList.isEmpty()){
+            List<Integer> levelResult = new ArrayList<>();
+            List<Node> newLevelList = new ArrayList<>();
+            for(Node node : levelList){
+                levelResult.add(node.val);
+                for(Node child : node.children){
+                    newLevelList.add(child);
                 }
             }
-            list.add(levelList);
+            result.add(levelResult);
+            levelList = newLevelList;
         }
-        return list;
+        return result;
     }
 }

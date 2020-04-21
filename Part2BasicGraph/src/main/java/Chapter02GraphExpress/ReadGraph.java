@@ -18,8 +18,8 @@ import java.util.Scanner;
 public class ReadGraph {
     private static Scanner scanner;
 
-    public static void init(Graph graph, String fileName) {
-        readFile(fileName);
+    public static void init(Graph graph, String filepath) {
+        readFile(filepath);
 
         try {
             int V = scanner.nextInt();
@@ -51,19 +51,19 @@ public class ReadGraph {
 
     }
 
-    private static void readFile(String filename) {
-        assert filename != null;
+    private static void readFile(String filepath) {
+        assert filepath != null;
         try {
-            File file = new File(filename);
+            File file = new File(filepath);
             if (file.exists()) {
                 FileInputStream fis = new FileInputStream(file);
                 scanner = new Scanner(new BufferedInputStream(fis), "UTF-8");
                 scanner.useLocale(Locale.ENGLISH);
             } else {
-                throw new IllegalArgumentException(filename + "doesn't exist.");
+                throw new IllegalArgumentException(filepath + "doesn't exist.");
             }
         } catch (IOException ioe) {
-            throw new IllegalArgumentException("Could not open " + filename, ioe);
+            throw new IllegalArgumentException("Could not open " + filepath, ioe);
         }
     }
 

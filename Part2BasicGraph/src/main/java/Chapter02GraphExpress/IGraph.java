@@ -8,7 +8,7 @@ package Chapter02GraphExpress;
 
 public interface IGraph {
     /**
-     * 返回定点数
+     * 返回顶点数
      */
     int V();
 
@@ -20,7 +20,7 @@ public interface IGraph {
     /**
      * 确保v在有效范围
      *
-     * @param v 订点编号
+     * @param v 顶点编号
      */
     void validateVertex(int v);
 
@@ -63,7 +63,7 @@ public interface IGraph {
     void show();
 
     /**
-     * 返回当前的图的迭代器，方便进行循环遍历
+     * 返回顶点v的邻接表的迭代器，方便进行循环遍历v的所有邻接点
      *
      * @param v
      * @return

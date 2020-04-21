@@ -16,3 +16,14 @@ public class Main {
         graph.show();
     }
 }
+/**
+ * 顶点数V = 7, 边数E = 9
+ * 顶点数V = 7, 边数E = 9
+ * vertex 0:	1	3
+ * vertex 1:	0	2	6
+ * vertex 2:	1	3	5
+ * vertex 3:	0	2	4
+ * vertex 4:	3	5
+ * vertex 5:	2	4	6
+ * vertex 6:	1	5
+ */
