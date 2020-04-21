@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***********************************************************
- * @Description : 994. 腐烂的橘子，类似公司的考题，杨树林抑制剂
+ * @Description : 994.腐烂的橘子，类似公司的考题"杨树林抑制剂"和"102号问题二叉树的层序遍历"
+ *              总结：这种需要记录广度优先遍历层次的问题几乎都是这么个做法
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2020/4/20 19:21
  * @email       : liangshanguang2@gmail.com

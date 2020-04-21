@@ -1,6 +1,8 @@
 /***********************************************************
  * @Description : 102.二叉树的层次遍历
  * https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+ 广度优先遍历的一种特殊情形，即不同的层进行区分，所有需要一次性把所有上一轮加入的所有邻接点弹出，
+ 再把下一轮所有的邻接点一次性加入，和994号问题腐烂的橘子类似
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2020/1/30 19:55
  * @email       : liangshanguang2@gmail.com
@@ -9,35 +11,32 @@ package C04_二叉树.二叉树的遍历.T102_二叉树的层次遍历;
 
 import C04_二叉树.TreeNode;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> list = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
         if(root == null){
-            return list;
+            return result;
         }
-        Queue<TreeNode> queue = new ArrayDeque<>();
-        queue.add(root);
-        while(!queue.isEmpty()){
-            int size = queue.size();
-            // 一次性把当前层的节点全部弹出
-            List<Integer> levelList = new ArrayList<>();
-            while(size-- > 0){
-                TreeNode node = queue.remove();
-                levelList.add(node.val);
+        List<TreeNode> nodeList = new ArrayList<>();
+        nodeList.add(root);
+        while(!nodeList.isEmpty()){
+            List<Integer> resultLevel = new ArrayList<>();
+            List<TreeNode> newNodeList = new ArrayList<>();
+            for(TreeNode node : nodeList){
+                resultLevel.add(node.val);
                 if(node.left != null){
-                    queue.add(node.left);
+                    newNodeList.add(node.left);
                 }
                 if(node.right != null){
-                    queue.add(node.right);
+                    newNodeList.add(node.right);
                 }
             }
-            list.add(levelList);
+            result.add(resultLevel);
+            nodeList = new ArrayList<>(newNodeList);
         }
-        return list;
+        return result;
     }
 }
