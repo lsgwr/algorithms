@@ -8,7 +8,7 @@ package Chapter02GraphExpress;
 
 public interface IGraph {
     /**
-     * 返回定点数
+     * 返回顶点数
      */
     int V();
 
