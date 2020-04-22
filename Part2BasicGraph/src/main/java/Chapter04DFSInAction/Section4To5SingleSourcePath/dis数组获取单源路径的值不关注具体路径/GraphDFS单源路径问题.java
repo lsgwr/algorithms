@@ -3,11 +3,11 @@
  * @author      : 梁山广(Liang Shan Guang)
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
-package com.huawei.l00379880.Chapter04DFSInAction.S04单源路径问题;
 
 import com.huawei.l00379880.Chapter02GraphExpress.Graph;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -41,7 +41,9 @@ public class GraphDFS单源路径问题 {
         this.graph = graph;
         visited = new boolean[graph.V()];
         pre = new int[graph.V()];
+        Arrays.fill(pre, -1);
         dis = new int[graph.V()];
+        Arrays.fill(dis, -1);
         // 起点到起点的距离为0，还是显式初始化好
         this.src = src;
         dis[src] = 0;
@@ -66,6 +68,9 @@ public class GraphDFS单源路径问题 {
      * @return list列表
      */
     public List<Integer> getPath(int dst) {
+        if (pre[dst] == -1) {
+            return null;
+        }
         List<Integer> path = new ArrayList<>();
         int cur = dst;
         while (cur != src) {
