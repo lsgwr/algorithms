@@ -57,12 +57,12 @@ public class GraphBFS {
         queue.add(source);
         // 添加进队列就被认为是访问过了
         visited[source] = true;
+        // 访问到就要加入到order中
+        orderList.add(v);
         // 队列不为空，说明图还没有遍历完
         while (!queue.isEmpty()) {
             // 出队列
             int v = queue.remove();
-            // 出队列时加入到访问列表里
-            orderList.add(v);
             for (int w: graph.adj(v)){
                 // 遍历v的所有邻接点
                 if (!visited[w]){
@@ -70,6 +70,8 @@ public class GraphBFS {
                     queue.add(w);
                     // 加入队列就认为被visit了
                     visited[w] = true;
+                    // 访问到就要加入到order中
+                    orderList.add(v);
                 }
             }
         }
