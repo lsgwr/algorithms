@@ -3,3 +3,11 @@
 + [01_算法基础课](https://www.acwing.com/activity/content/11/)
 + [02_算法提高课](https://www.acwing.com/activity/content/16/)
 + [03_算法竞赛进阶指南](https://www.acwing.com/activity/content/6/)
+
+## 课上需要做的
++ 1.理解老师讲的主要讲思想
++ 2.课后会布置指定数目的例题，要好好理解并做完
+
+## 课下需要做的
++ 1.把老师总结的模板背过
++ 2.利用所背过的模板做几道题，每道题白板默写3~5遍，保证彻底熟练了
