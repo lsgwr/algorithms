@@ -13,6 +13,8 @@
 - [Part8Python3DataScienceHandbook](Part8Python3DataScienceHandbook):机器学习必备，[《Python数据科学手册》by Jake VanderPlas](https://github.com/jakevdp/PythonDataScienceHandbook)
 - [Part9Nowcoder](https://www.nowcoder.com/ta/programmer-code-interview-guide):左程云老师的书《程序员代码面试指南》，学习过程中的笔记
 - [Part10LearnAlgorithmInFun](https://item.jd.com/15217435879.html) 主要是一些高级算法的常见题目
+- `进行中`[Part11DP](Part11DP) 动态规划相关的学习
+- `进行中`[Part12AcWing](Part12AcWing) AcWing网站上相关活动的学习
 
 # [数据结构与算法学习思维导图](https://www.processon.com/mindmap/5e070a12e4b0125e2924e136)
 > 在线访问链接： https://www.processon.com/view/link/5e073b2ee4b0c1ff2113ed77
