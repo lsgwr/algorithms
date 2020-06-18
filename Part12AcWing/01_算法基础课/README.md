@@ -1,4 +1,5 @@
-# AcWing上的算法基础课
+# [AcWing上的算法基础课](https://www.acwing.com/activity/content/11/)
+> 打开地址：https://www.acwing.com/activity/content/punch_the_clock/11/
 
 ## [第1讲 基础算法](第01章_基础算法.md)
 > 包括排序、二分、高精度、前缀和与差分、双指针算法、位运算、离散化、区间合并等内容。
