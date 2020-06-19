@@ -1,7 +1,7 @@
 # [AcWing上的算法基础课](https://www.acwing.com/activity/content/11/)
 > 打卡地址：https://www.acwing.com/activity/content/punch_the_clock/11/
 
-## [第1讲 基础算法](第01章_基础算法.md)
+## [第1章 基础算法](第01章_基础算法.md)
 > 包括排序、二分、高精度、前缀和与差分、双指针算法、位运算、离散化、区间合并等内容。
 ### 1.1 涉及的内容和题目
 + 排序
@@ -46,3 +46,15 @@
 + [排序、二分](https://www.acwing.com/video/10/)
 + [高精度、前缀和与差分](https://www.acwing.com/video/11/)
 + [双指针、位运算、离散化、区间合并](https://www.acwing.com/video/14/)
+
+## [第2章 数据结构](第2章_数据结构.md)
+> 包括单链表，双链表，栈，队列，单调栈，单调队列，KMP，Trie，并查集，堆，哈希表等内容
+
+## 2.1 涉及的内容和题目
+栈与队列：单调队列、单调栈
+kmp
+Trie
+并查集
+堆
+Hash表
+C++ STL使用技巧
