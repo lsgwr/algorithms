@@ -13,3 +13,7 @@
 注意，部分题目的HTML版题面不可用，请阅读PDF版的题面。
 
 重要提示：UVa/LA网站有个无限重定向的bug，如果遇到浏览器打不开页面，并且确定不是网络问题，请清理cookie（包括所有以onlinejudge.org结尾的网站的cookie）。
+
+## 牛客网题库
++ [算法竞赛入门经典刘汝佳紫书](https://ac.nowcoder.com/acm/problem/collection/166)
++ [《算法竞赛入门经典-训练指南第2版》例题习题](https://ac.nowcoder.com/acm/problem/collection/109)
