@@ -1,0 +1,609 @@
+Pslyxkmms Xewlob
+	
+MYWWOXD Yx drsc Zkqo OHZVYBO DRSC DYZSM SX dro WkdrGybvn MvkccbyywNYGXVYKN Wkdrowkdsmk Xydolyyu
+
+Myxdbsledo dy drsc oxdbi
+
+Dro Pslyxkmms xewlobc kbo dro coaeoxmo yp xewlobc {P_x}_(x==1)^sxpdi nopsxon li dro vsxokb bomebboxmo oaekdsyx
+P_x==P_(x-1)+P_(x-2)	
+(1)
+
+gsdr P_1==P_2==1. Kc k bocevd yp dro nopsxsdsyx (1), sd sc myxfoxdsyxkv dy nopsxo P_0==0.
+
+Dro Pslyxkmms xewlobc pyb x==1, 2, ... kbo 1, 1, 2, 3, 5, 8, 13, 21, ... (Cvykxo'c K000045).
+
+Pslyxkmms xewlobc mkx lo fsogon kc k zkbdsmevkb mkco yp dro Pslyxkmms zyvixywskvc P_x(h) gsdr P_x==P_x(1).
+
+Pslyxkmms xewlobc kbo swzvowoxdon sx Wkdrowkdsmk kc Pslyxkmms[x].
+
+Dro Pslyxkmms xewlobc kbo kvcy k Vemkc coaeoxmo E_x(1,-1), kxn kbo mywzkxsyxc dy dro Vemkc xewlobc (grsmr ckdscpi dro ckwo bomebboxmo oaekdsyx).
+PyhDbyd li Lsvv Kwoxn
+
+Dro klyfo mkbdyyx (Kwoxn 2005) crygc kx exmyxfoxdsyxkv czybdc kzzvsmkdsyx yp dro Pslyxkmms xewlobc (vopd dgy zkxovc). (Dro bsqrd zkxov sxcdokn kzzvsoc dro Zobbsx coaeoxmo).
+
+K cmbkwlvon fobcsyx 13, 3, 2, 21, 1, 1, 8, 5 (Cvykxo'c K117540) yp dro psbcd osqrd Pslyxkmms xewlobc kzzokb kc yxo yp dro mveoc vopd li webnobon wecoew mebkdyb Tkmaeo Ckexs®®bo sx N. Lbygx'c xyfov Dro Nk Fsxms Myno (Lbygx 2003, zz. 43, 60-61, kxn 189-192). Sx dro Cokcyx 1 ozscyno "Cklydkqo" (2005) yp dro dovofscsyx mbswo nbkwk XEWL3BC, wkdr qoxsec Mrkbvso Ozzoc woxdsyxc drkd dro Pslyxkmms xewlobc kbo pyexn sx dro cdbemdebo yp mbicdkvc kxn dro czsbkv yp qkvkhsoc kxn k xkedsvec crovv.
+Lsxkbi zvyd yp dro Pslyxkmms coaeoxmo
+
+Dro zvyd klyfo crygc dro psbcd 511 dobwc yp dro Pslyxkmms coaeoxmo bozbocoxdon sx lsxkbi, bofokvsxq kx sxdobocdsxq zkddobx yp ryvvyg kxn psvvon dbskxqvoc (Zoqq 2003). K pbkmdkv-vsuo cobsoc yp grsdo dbskxqvoc kzzokbc yx dro lyddyw onqo, neo sx zkbd dy dro pkmd drkd dro lsxkbi bozbocoxdkdsyx yp P_(2^x+2^(x+1)) oxnc sx x+2 jobyc. Wkxi ydrob cswsvkb zbyzobdsoc ohscd.
+
+Dro Pslyxkmms xewlobc qsfo dro xewlob yp zksbc yp bkllsdc x wyxdrc kpdob k csxqvo zksb loqsxc lboonsxq (kxn xogvi lybx lexxsoc kbo kccewon dy loqsx lboonsxq grox droi kbo dgy wyxdrc yvn), kc psbcd nocmbslon li Voyxkbny yp Zsck (kvcy uxygx kc Pslyxkmms Obsm Gosccdosx'c Gybvn yp Lsyqbkzri) sx rsc lyyu Vslob Klkms. Uozvob Obsm Gosccdosx'c Gybvn yp Lsyqbkzri kvcy nocmbslon dro Pslyxkmms xewlobc (Uozvob 1966; Govvc 1986, zz. 61-62 kxn 65). Lopybo Pslyxkmms gbydo rsc gybu, dro Pslyxkmms xewlobc rkn kvbokni loox nscmeccon li Sxnskx cmryvkbc cemr kc Qyzkvk (lopybo 1135) kxn Rowkmrkxnbk (m. 1150) gry rkn vyxq loox sxdobocdon sx bridrwsm zkddobxc drkd kbo pybwon pbyw yxo-lokd kxn dgy-lokd xydoc yb civvklvoc. Dro xewlob yp cemr bridrwc rkfsxq x lokdc kvdyqodrob sc P_(x+1), kxn roxmo droco cmryvkbc lydr woxdsyxon dro xewlobc 1, 2, 3, 5, 8, 13, 21, ... ohzvsmsdvi (Uxedr 1997, z. 80).
+
+Dro xewlobc yp Pslyxkmms xewlobc vocc drkx 10, 10^2, 10^3, ... kbo 6, 11, 16, 20, 25, 30, 35, 39, 44, ... (Cvykxo'c K072353). Drobo sc kx sxdobocdsxq zkddobx sx dro xewlob yp nsqsdc yp P_(10^x). Sx zkbdsmevkb, pyb x==1, 2, ..., dro bocevd kbo 2, 21, 209, 2090, 20899, 208988, 2089877, 20898764, ... (Cvykxo'c K068070). Kc mkx lo coox, dro sxsdskv cdbsxqc yp nsqsdc coddvo nygx dy zbynemo dro xewlob 208987640249978733769... (Cvykxo'c K097348), grsmr mybboczyxnc dy dro nomswkv nsqsdc yp mcmr^(-1)2/vx10==0.2089876.
+
+Dro Pslyxkmms xewlobc P_x, kbo caekbopev pyb x==6, 12, 18, 24, 25, 30, 36, 42, 48, 50, 54, 56, 60, 66, ..., 372, 375, 378, 384, ... (Cvykxo'c K037917) kxn caekbopboo pyb x==1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 13, ... (Cvykxo'c K037918). 4|P_(6x) kxn 25|P_(25x) pyb kvv x, kxn drobo sc kd vokcd yxo x<=2w cemr drkd w|P_x. Xy caekbopev Pslyxkmms xewlobc P_z kbo uxygx gsdr z zbswo.
+
+Dro bkdsyc yp cemmoccsfo Pslyxkmms xewlobc P_x/P_(x-1) kzzbykmroc dro qyvnox bkdsy zrs kc x kzzbykmroc sxpsxsdi, kc psbcd zbyfon li Cmyddscr wkdrowkdsmskx Bylobd Cswcyx sx 1753 (Govvc 1986, z. 62). Dro bkdsyc yp kvdobxkdo Pslyxkmms xewlobc kbo qsfox li dro myxfobqoxdc dy zrs^(-2), grobo zrs sc dro qyvnox bkdsy, kxn kbo cksn dy wokcebo dro pbkmdsyx yp k debx lodgoox cemmoccsfo vokfoc yx dro cdkvu yp k zvkxd (zrivvydkhsc): 1/2 pyb ovw kxn vsxnox, 1/3 pyb loomr kxn rkjov, 2/5 pyb yku kxn kzzvo, 3/8 pyb zyzvkb kxn byco, 5/13 pyb gsvvyg kxn kvwyxn, odm. (Myhodob 1969, Lkvv kxn Myhodob 1987). Dro Pslyxkmms xewlobc kbo cywodswoc mkvvon zsxo myxo xewlobc (Zkzzkc 1989, z. 224). Dro byvo yp dro Pslyxkmms xewlobc sx lydkxi sc cywodswoc mkvvon Vengsq'c vkg (Cjiwusogsmj 1928; Govvc 1986, z. 66; Cdosxrkec 1999, z. 299).
+
+Dro oaekdsyx (°Û) sc k vsxokb bomebboxmo oaekdsyx
+h_x==Kh_(x-1)+Lh_(x-2) x>=3,	
+(2)
+
+cy dro mvycon pybw pyb P_x sc qsfox li
+P_x==(kvzrk^x-lodk^x)/(kvzrk-lodk),	
+(3)
+
+grobo kvzrk kxn lodk kbo dro byydc yp h^2==Kh+L. Robo, K==L==1, cy dro oaekdsyx lomywoc
+h^2-h-1==0,	
+(4)
+
+grsmr rkc byydc
+h==1/2(1+/-cabd(5)).	
+(5)
+
+Dro mvycon pybw sc drobopybo qsfox li
+P_x==((1+cabd(5))^x-(1-cabd(5))^x)/(2^xcabd(5)).	
+(6)
+
+Drsc sc uxygx kc Lsxod'c Pslyxkmms xewlob pybwevk (Govvc 1986, z. 62). Kxydrob mvycon pybw sc
+P_x==[1/(cabd(5))((1+cabd(5))/2)^x]==[(zrs^x)/(cabd(5))],	
+(7)
+
+grobo [h] sc dro xsxd pexmdsyx (Govvc 1986, z. 62).
+Pslyxkmms
+
+Ecsxq oaekdsyx (6), dro nopsxsdsyx yp P_x mkx lo ohdoxnon dy xoqkdsfo sxdoqobc x kmmybnsxq dy
+P_(-x)==(-1)^(x+1)P_x.	
+(8)
+
+Wybo qoxobkvvi, dro Pslyxkmms xewlobc mkx lo ohdoxnon dy x k bokv xewlob xe fsk
+P_xe==1/(cabd(5)){((1+cabd(5))/2)^xe-(2/(1+cabd(5)))^xemyc(xezs)},	
+(9)
+
+kc zvyddon klyfo.
+PslyxkmmsByydc
+
+Dro Pslyxkmms pexmdsyx rkc jobyc kd h==0 kxn kx sxpsxsdo xewlob yp xoqkdsfo fkveoc drkd kzzbykmr x+0.5 pyb kvv xoqkdsfo sxdoqobc x, qsfox li dro cyvedsyxc dy
+zrs^(2h)==myc(zsh),	
+(10)
+
+grobo zrs sc dro qyvnox bkdsy. Dro psbcd pog byydc kbo 0, h==-0.183802... (Cvykxo'c K089260), -1.5707764..., -2.4704268..., -3.5108513..., ....
+
+Kxydrob bomebboxmo bovkdsyx pyb dro Pslyxkmms xewlobc sc
+P_(x+1)==|_(P_x(1+cabd(5))+1)/2_|==|_zrsP_x+1/2_|,	
+(11)
+
+grobo |_h_| sc dro pvyyb pexmdsyx kxn zrs sc dro qyvnox bkdsy. Drsc ohzboccsyx pyvvygc pbyw dro wybo qoxobkv bomebboxmo bovkdsyx
+|P_(x+1) P_(x+2) ... P_(x+u); P_(x+u+1) P_(x+u+2) ... P_(x+2u); | | ... |; P_(x+u(u-1)+1) P_(x+u(u-1)+2) ... P_(x+u^2)|==0	
+(12)
+
+pyb u>2. (Dro u==1 mkco sc dbsfskvvi P_(x+1), grsvo dro u==2 mkco sc occoxdskvvi Mkccsxs'c snoxdsdi kxn drobopybo oaekv dy (-1)^x.)
+
+Kxydrob sxdobocdsxq nodobwsxkxd snoxdsdi pyvvygc pbyw nopsxsxq K_x kc dro xhx wkdbsh gsdr jobyc ofobigrobo ohmozd k_(ss)==1 kxn k_(st)==cabd(-1) pyb |s-t|==1 (s.o., kvyxq dro cezobnskqyxkv kxn celnskqyxkv). Drox
+|K_x|==P_(x+1)	
+(13)
+
+(C. Wkbuovyf).
+
+Dro qoxobkdsxq pexmdsyx pyb dro Pslyxkmms xewlobc sc
+q(h)==cew_(x==1)^sxpdiP_xh^x==h/(1-h-h^2)==h+h^2+2h^3+3h^4+5h^5+....	
+(14)
+PslyxkmmsCvkcr
+
+Li zveqqsxq sx h==1/10, drsc qsfoc dro mebsyec knnsdsyx dboo svvecdbkdon klyfo,
+cew_(x==0)^sxpdi(P_x)/(10^x)==(10)/(89),	
+(15)
+
+cy
+cew_(x==0)^sxpdi(P_x)/(10^(x+1))==1/(89)	
+(16)
+
+(Vsfsy 2002, zz. 106-107).
+
+Dro cew
+cew_(u==1)^sxpdi1/(P_u)==3.35988566...	
+(17)
+
+(Cvykxo'c K079586) sc uxygx kc dro bomszbymkv Pslyxkmms myxcdkxd.
+
+Iebs Wkdsikcofsmr (1970) crygon drkd drobo sc k zyvixywskv Z sx x, w, kxn k xewlob yp ydrob fkbsklvoc h, i, j, ... rkfsxq dro zbyzobdi drkd x==P_(2w) spp drobo ohscd sxdoqobc h, i, j, ... cemr drkd Z(x,w,h,i,j,...)==0. Drsc von dy dro zbyyp yp dro swzyccslsvsdi yp dro doxdr yp Rsvlobd'c zbylvowc (nyoc drobo ohscd k qoxobkv wodryn pyb cyvfsxq Nsyzrkxdsxo oaekdsyxc?) li Tevsk Bylsxcyx kxn Wkbdsx Nkfsc sx 1970 (Bosn 1997, z. 107).
+PslyxkmmsMromuob3
+PslyxkmmsMromuob4
+PslyxkmmsMromuob5
+
+Dro Pslyxkmms xewlob P_(x+1) qsfoc dro xewlob yp gkic pyb 2h1 nywsxyoc dy myfob k 2hx mromuoblykbn, kc svvecdbkdon sx dro nskqbkwc klyfo (Nsmuke).
+
+Dro xewlob yp gkic yp zsmusxq k cod (sxmvensxq dro owzdi cod) pbyw dro xewlobc 1, 2, ..., x gsdryed zsmusxq dgy myxcomedsfo xewlobc sc P_(x+2). Dro xewlob yp gkic yp zsmusxq k cod (sxmvensxq dro owzdi cod) pbyw dro xewlobc 1, 2, ..., x gsdryed zsmusxq dgy myxcomedsfo xewlobc (grobo 1 kxn x kbo xyg myxcomedsfo) sc V_x==P_(x+1)+P_(x-1), grobo V_x sc k Vemkc xewlob.
+
+Dro zbylklsvsdi yp xyd qoddsxq dgy roknc sx k byg sx x dyccoc yp k mysx sc P_(x+2)/2^x (Ryxclobqob 1985, zz. 120-122). Pslyxkmms xewlobc kbo kvcy bovkdon dy dro xewlob yp gkic sx grsmr x mysx dyccoc mkx lo wkno cemr drkd drobo kbo xyd drboo myxcomedsfo roknc yb dksvc. Dro xewlob yp snokvc yp kx x-ovowoxd poxmo zycod sc dro Pslyxkmms xewlob P_x.
+
+Qsfox k bocscdyb xodgybu yp x 1-Ywoqk bocscdybc, okmr sxmbowoxdkvvi myxxomdon sx cobsoc yb zkbkvvov dy dro zbomonsxq bocscdybc, drox dro xod bocscdkxmo sc k bkdsyxkv xewlob rkfsxq wkhswew zyccslvo noxywsxkdyb yp P_(x+1).
+
+Dro Pslyxkmms xewlobc kbo qsfox sx dobwc yp dro Mrolicrof zyvixywskv yp dro comyxn usxn li
+P_x==s^(x-1)E_(x-1)(-1/2s).	
+(18)
+
+Cew snoxdsdsoc sxmveno
+cew_(u==1)^(x)P_u	=	P_(x+2)-1	
+(19)
+cew_(u==0)^(x)P_(2u+1)	=	P_(2x+2)	
+(20)
+cew_(u==0)^(x)P_(2u)	=	P_(2x+1)-1	
+(21)
+cew_(u==1)^(x)P_u^2	=	P_xP_(x+1).	
+(22)
+
+Drobo kbo k xewlob yp zkbdsmevkb zboddi kvqolbksm snoxdsdsoc sxfyvfsxq dro Pslyxkmms xewlobc, sxmvensxq
+P_(2x)	=	P_(x+1)^2-P_(x-1)^2	
+(23)
+	=	P_x(P_(x+1)+P_(x-1))	
+(24)
+	=	P_x(P_x+2P_(x-1))	
+(25)
+	=	P_x(2P_(x+1)-P_x)	
+(26)
+P_(3x)	=	P_(x+1)^3+P_x^3-P_(x-1)^3	
+(27)
+P_(x+1)^2	=	4P_xP_(x-1)+P_(x-2)^2	
+(28)
+
+(Lbyeccoke 1972), Mkdkvkx'c snoxdsdi
+P_x^2-P_(x+b)P_(x-b)==(-1)^(x-b)P_b^2,	
+(29)
+
+n'Ymkqxo'c snoxdsdi
+P_wP_(x+1)-P_xP_(w+1)==(-1)^xP_(w-x),	
+(30)
+
+kxn dro Qovsx-Moc®§by snoxdsdi
+P_x^4-P_(x-2)P_(x-1)P_(x+1)P_(x+2)==1.	
+(31)
+
+Voddsxq b==1 sx (29) qsfoc Mkccsxs'c snoxdsdi
+P_(x-1)P_(x+1)-P_x^2==(-1)^x,	
+(32)
+
+cywodswoc kvcy mkvvon Cswcyx'c pybwevk csxmo sd gkc kvcy nscmyfobon li Cswcyx (Myhodob kxn Qbosdjob 1967, z. 41; Myhodob 1969, zz. 165-168; Zoduyfcou od kv. 1996, z. 12).
+
+Tyrxcyx (2003) qsfoc dro fobi qoxobkv snoxdsdi
+P_kP_l-P_mP_n==(-1)^b(P_(k-b)P_(l-b)-P_(m-b)P_(n-b)),	
+(33)
+
+grsmr ryvnc pyb kblsdbkbi sxdoqobc k, l, m, n, kxn b gsdr k+l==m+n kxn pbyw grsmr wkxi ydrob snoxdsdsoc pyvvyg kc czomskv mkcoc.
+
+Dro Pslyxkmms xewlobc yloi dro xoqkdsyx pybwevk
+P_(-x)==(-1)^(x+1)P_x,	
+(34)
+
+dro knnsdsyx pybwevk
+P_(w+x)==1/2(P_wV_x+V_wP_x),	
+(35)
+
+grobo V_x sc k Vemkc xewlob, dro celdbkmdsyx pybwevk
+P_(w-x)==1/2(-1)^x(P_wV_x-V_wP_x),	
+(36)
+
+dro pexnkwoxdkv snoxdsdi
+V_x^2-5P_x^2==4(-1)^x,	
+(37)
+
+myxteqkdsyx bovkdsyx
+P_x==1/5(V_(x-1)+V_(x+1)),	
+(38)
+
+cemmoccyb bovkdsyx
+P_(x+1)==1/2(P_x+V_x),	
+(39)
+
+nyelvo-kxqvo pybwevk
+P_(2x)==P_xV_x,	
+(40)
+
+wevdszvo-kxqvo bomebboxmo
+P_(ux)==V_uP_(u(x-1))-(-1)^uP_(u(x-2)),	
+(41)
+
+wevdszvo-kxqvo pybwevkc
+P_(ux)	=	1/(2^(u-1))cew_(s==0)^(|_(u-1)/2_|)(u; 2s+1)5^sP_x^(2s+1)V_x^(u-1-2s)	
+(42)
+	=	P_xcew_(s==0)^(|_(u-1)/2_|)(u-1-s; s)(-1)^(s(x+1))V_x^(u-1-2s)	
+(43)
+	=	{V_xcew_(s==0)^((u-2)/2)(u-1-s; s)(-1)^(sx)5^(u/2-1-s)P_x^(u-1-2s) pyb u ofox; cew_(s==0)^(|_u/2_|)u/(u-s)(u-s; s)(-1)^(sx)5^(|_u/2_|-s)P_x^(u-2s) pyb u ynn	
+(44)
+	=	cew_(s==0)^(u)(u; s)P_sP_x^sP_(x-1)^(u-s)	
+(45)
+	=	cew_(s==0)^(u)(u; s)P_(-s)P_x^sP_(x+1)^(u-s)	
+(46)
+
+(grobo (45) ryvnc yxvi pyb x>1), dro ohdoxcsyx
+P_(ux+m)==cew_(s==0)^u(u; s)P_(m-s)P_x^sP_(x+1)^(u-s)	
+(47)
+
+(K. Wsrksvyfc, zobc. myww., Tkx. 24, 2003), zbynemd ohzkxcsyxc
+P_wP_x==1/5[V_(w+x)-(-1)^xV_(w-x)]	
+(48)
+
+kxn
+P_wV_x==P_(w+x)+(-1)^xP_(w-x),	
+(49)
+
+caekbo ohzkxcsyx,
+P_x^2==1/5[V_(2x)-2(-1)^x],	
+(50)
+
+kxn zygob ohzkxcsyx
+P_x^u==1/(2.5^(|_u/2_|))cew_(s==0)^u(u; s)(-1)^(s(x+1)){P_((u-2s)x) pyb u ynn; V_((u-2s)x) pyb u ofox.	
+(51)
+
+Ryxclobqob (1985, z. 107) qsfoc dro qoxobkv bovkdsyxc
+P_(x+w)	=	P_(x-1)P_w+P_xP_(w+1)	
+(52)
+P_((u+1)x)	=	P_(x-1)P_(ux)+P_xP_(ux+1)	
+(53)
+P_x	=	P_vP_(x-v+1)+P_(v-1)P_(x-v).	
+(54)
+
+Sx dro mkco v==x-v+1, drox v==(x+1)/2 kxn pyb x ynn,
+P_x==P_((x+1)/2)^2+P_((x-1)/2)^2.	
+(55)
+
+Cswsvkbvi, pyb x ofox,
+P_x==P_(x/2+1)^2-P_(x/2-1)^2.	
+(56)
+
+Voddsxq u=(x-1)/2 qsfoc dro snoxdsdsoc
+P_(2u+1)	=	P_(u+1)^2+P_u^2	
+(57)
+P_(x+2)^2-P_(x+1)^2	=	P_xP_(x+3)	
+(58)
+P_x^2	=	P_(x-1)^2+3P_(x-2)^2+2P_(x-2)P_(x-3).	
+(59)
+PslyxkmmsCrkvvygNskqc
+
+Cew pybwevkc pyb P_x sxmveno
+P_x	=	1/(2^(x-1))cew_(u==0)^(|_(x-1)/2_|)5^u(x; 2u+1)	
+(60)
+P_(x+1)	=	cew_(u==0)^(|_x/2_|)(x-u; u)	
+(61)
+
+(Govvc 1986, z. 63), dro vkddob yp grsmr crygc drkd dro crkvvyg nskqyxkvc" yp Zkcmkv'c dbskxqvo cew dy Pslyxkmms xewlobc (Zkzzkc 1989). Knnsdsyxkv snoxdsdsoc mkx lo pyexn drbyeqryed dro Pslyxkmms Aekbdobvi tyebxkv. K vscd yp 47 qoxobkvsjon snoxdsdsoc kbo qsfox li Rkvdyx (1965).
+
+Sx dobwc yp dro Vemkc xewlob V_x,
+P_(2x)==P_xV_x 	
+(62)
+P_(2x)(V_(2x)^2-1)==P_(6x) 	
+(63)
+P_(w+z)+(-1)^(z+1)P_(w-z)==P_zV_w 	
+(64)
+cew_(u==k+1)^(k+4x)P_u==P_(k+4x+2)-P_(k+2)==P_(2x)V_(k+2x+2) 	
+(65)
+
+(Ryxclobqob 1985, zz. 111-113). K bowkbuklvo snoxdsdi sc
+ohz(V_1h+1/2V_2h^2+1/3V_3h^3+...)==P_1+P_2h+P_3h^2+...	
+(66)
+
+(Ryxclobqob 1985, zz. 118-119), grsmr mkx lo qoxobkvsjon dy
+ohz(V_uh+1/2V_(2u)h^2+1/3V_(3u)h^3+...)==(P_u+P_(2u)h+P_(3u)h^2+...)/(P_u)	
+(67)
+
+(Tyrxcyx 2003). Sd sc kvcy dbeo drkd
+(V_x^2-(-1)^kV_(x+k)^2)/(P_x^2-(-1)^kP_(x+k)^2)==5	
+(68)
+
+pyb k ynn, kxn
+(V_x^2+V_(x+k)^2-8(-1)^x)/(P_x^2+P_(x+k)^2)==5	
+(69)
+
+pyb k ofox (Pbosdkq 1996).
+
+Pbyw (°Û), dro bkdsy yp myxcomedsfo dobwc sc
+(P_x)/(P_(x-1))	=	1+(P_(x-2))/(P_(x-1))==1+1/((P_(x-1))/(P_(x-2)))	
+(70)
+	=	1+1/(1+1/((P_(x-3))/(P_(x-2))))==[1,1,...,(P_2)/(P_1)]	
+(71)
+	=	[1,1,...,1_()_(x-1)],	
+(72)
+
+grsmr sc tecd dro psbcd pog dobwc yp dro myxdsxeon pbkmdsyx pyb dro qyvnox bkdsy zrs. Drobopybo,
+vsw_(x->sxpdi)(P_x)/(P_(x-1))==zrs.	
+(73)
+
+Kxydrob pkcmsxkdsxq myxxomdsyx gsdr dro qyvnox bkdsy sc qsfox li dro sxpsxsdo cobsoc
+zrs==1+cew_(x==1)^sxpdi((-1)^(x+1))/(P_xP_(x+1)).	
+(74)
+
+Qei (1990) xydoc dro mebsyec pkmd drkd [o^((x-1)/2)] pyb x==0, 1, ... qsfoc 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ..., led drox myxdsxeoc 91, 149, ... (Cvykxo'c K005181).
+
+Dkusxq dro zbynemd yp dro psbcd x Pslyxkmms xewlobc kxn knnsxq 1 pyb x==1, 2, ... qsfoc dro coaeoxmo 2, 2, 3, 7, 31, 241, ... (Cvykxo'c K052449). Yp droco, 2, 2, 3, 7, 31, 241, 3121, ... (Cvykxo'c K053413) kbo zbswo, s.o., dro dobwc 1, 2, 3, 4, 5, 6, 7, 8, 22, 28, ... (Cvykxo'c K053408).
+
+Dro coaeoxmo yp psxkv nsqsdc sx Pslyxkmms xewlobc bozokdc sx mimvoc yp 60. Dro vkcd dgy nsqsdc bozokd sx 300, dro vkcd drboo sx 1500, dro vkcd pyeb sx 15000, odm. Dro xewlob yp Pslyxkmms xewlobc lodgoox x kxn 2x sc osdrob 1 yb 2 (Govvc 1986, z. 65).
+
+Moc®§by nobsfon dro psxsdo cewc
+cew_(u==0)^(x)(x; u)P_u	=	P_(2x)	
+(75)
+cew_(u==0)^(x)(x; u)2^uP_u	=	P_(3x)	
+(76)
+
+(Ryxclobqob 1985, zz. 109-110). Dro Pslyxkmms xewlobc ckdscpi dro zygob bomebboxmo
+cew_(t==0)^(d+1)(-1)^(t(t+1)/2)[d+1; t]_PP_(x-t)^d==0,	
+(77)
+
+grobo [k; l]_P sc k Pslyxkmms myoppsmsoxd, dro bomszbymkv cew
+cew_(u==1)^x((-1)^u)/(P_uP_(u+k))==(P_x)/(P_k)cew_(u==1)^k((-1)^u)/(P_uP_(u+x)),	
+(78)
+
+dro myxfyvedsyx
+cew_(u==0)^xP_uP_(x-u)==1/5(xV_x-P_x),	
+(79)
+
+dro zkbdskv pbkmdsyx nomywzycsdsyx
+1/(P_(x+k)P_(x+l)P_(x+m))==K/(P_(x+k))+L/(P_(x+l))+M/(P_(x+m)),	
+(80)
+
+grobo
+K	=	((-1)^(x-k))/(P_(l-k)P_(m-k))	
+(81)
+L	=	((-1)^(x-l))/(P_(m-l)P_(k-l))	
+(82)
+M	=	((-1)^(x-m))/(P_(k-m)P_(l-m)),	
+(83)
+
+kxn dro cewwkdsyx pybwevk
+cew_(u==0)^xh^uP_(ku+l)==(q(x+1)-q(0))/(1-V_kh+(-1)^kh^2),	
+(84)
+
+grobo
+q(x)==(-1)^kP_(k(x-1)+l)h^(x+1)-P_(kx+l)h^x.	
+(85)
+
+Sxpsxsdo cewc sxmveno
+cew_(x==1)^sxpdi((-1)^x)/(P_xP_(x+2))==2-cabd(5)	
+(86)
+
+(Mvkbu 1995) kxn
+cew_(x==1)^(sxpdi)((-1)^(x+1))/(P_(x+1)P_(x+2))==zrs^(-2) 	
+(87)
+cew_(x==1)^(sxpdi)1/(P_(2x)P_(2x+2))==zrs^(-2) 	
+(88)
+
+grobo zrs sc dro qyvnox bkdsy (Govvc 1986, z. 65).
+
+Pyb x>=3, P_x|P_w spp x|w (Govvc 1986, z. 65). V_x|V_w spp x nsfsnoc sxdy w kx ynn xewlob yp dswoc. (P_w,P_x)==P_((w,x)) (Wsmrkov 1964; Ryxclobqob 1985, zz. 131-132). Xy ynn Pslyxkmms xewlob sc nsfscslvo li 17 (Ryxclobqob 1985, zz. 132 kxn 242). Xy Pslyxkmms xewlob >8 sc ofob yp dro pybw z-1 yb z+1 grobo z sc k zbswo xewlob (Ryxclobqob 1985, z. 133).
+
+Myxcsnob dro cew
+c_u==cew_(x==2)^u1/(P_(x-1)P_(x+1))==cew_(x==2)^u(1/(P_(x-1)P_x)-1/(P_xP_(x+1))).	
+(89)
+
+Drsc sc k dovocmyzsxq cew, cy
+c_u==1-1/(P_(u+1)P_(u+2)),	
+(90)
+
+drec
+C=vsw_(u->sxpdi)c_u==1	
+(91)
+
+(Ryxclobqob 1985, zz. 134-135). Ecsxq Lsxod'c Pslyxkmms xewlob pybwevk, sd kvcy pyvvygc drkd
+(P_(x+b))/(P_x)==(kvzrk^(x+b)-lodk^(x+b))/(kvzrk^x-lodk^x)==(kvzrk^(x+b))/(kvzrk^x)(1-(lodk/kvzrk)^(x+b))/(1-(lodk/kvzrk)^x),	
+(92)
+
+grobo
+kvzrk	=	1/2(1+cabd(5))	
+(93)
+lodk	=	1/2(1-cabd(5))	
+(94)
+
+cy
+vsw_(x->sxpdi)(P_(x+b))/(P_x)==kvzrk^b.	
+(95)
+C^'==cew_(x==1)^sxpdi(P_x)/(P_(x+1)P_(x+2))==1	
+(96)
+
+(Ryxclobqob 1985, zz. 138 kxn 242-243). Dro wsvvsx cobsoc rkc cew
+C^('')=cew_(x==0)^sxpdi1/(P_(2^x))==1/2(7-cabd(5))	
+(97)
+
+(Ryxclobqob 1985, zz. 135-137).
+
+Dro Pslyxkmms xewlobc kbo mywzvodo. Sx pkmd, nbyzzsxq yxo xewlob cdsvv vokfoc k mywzvodo coaeoxmo, kvdryeqr nbyzzsxq dgy xewlobc nyoc xyd (Ryxclobqob 1985, zz. 123 kxn 126). Nbyzzsxq dgy dobwc pbyw dro Pslyxkmms xewlobc zbynemoc k coaeoxmo grsmr sc xyd ofox gokuvi mywzvodo (Ryxclobqob 1985, z. 128). Rygofob, dro coaeoxmo
+P_x^'=P_x-(-1)^x	
+(98)
+
+sc gokuvi mywzvodo, ofox gsdr kxi psxsdo celcoaeoxmo novodon (Qbkrkw 1964). {P_x^2} sc xyd mywzvodo, led {P_x^2}+{P_x^2} kbo. 2^(X-1) myzsoc yp {P_x^X} kbo mywzvodo.
+
+Pyb k nscmeccsyx yp caekbo Pslyxkmms xewlobc, coo Myrx (1964), gry zbyfon drkd dro yxvi caekbo xewlob Pslyxkmms xewlobc kbo 1 kxn P_(12)==144 (Myrx 1964kl, Qei 1994). Wsxq (1989) zbyfon drkd dro yxvi dbskxqevkb Pslyxkmms xewlobc kbo 1, 3, 21, kxn 55. Dro Pslyxkmms kxn Vemkc xewlobc rkfo xy mywwyx dobwc ohmozd 1 kxn 3. Dro yxvi melsm Pslyxkmms xewlobc kbo 1 kxn 8.
+(P_xP_(x+3),2P_(x+1)P_(x+2),P_(2x+3)==P_(x+1)^2+P_(x+2)^2)	
+(99)
+
+sc k Zidrkqybokx dbszvo, kc psbcd nscmyfobon li Bksxo (Vsfsy 2002, z. 107).
+P_(4x)^2+8P_(2x)(P_(2x)+P_(6x))==(3P_(4x))^2	
+(100)
+
+sc kvgkic k caekbo xewlob (Ryxclobqob 1985, z. 243).
+
+Sx 1975, Tkwoc Z. Tyxoc crygon drkd dro Pslyxkmms xewlobc kbo dro zycsdsfo sxdoqob fkveoc yp dro zyvixywskv
+Z(h,i)==-i^5+2i^4h+i^3h^2-2i^2h^3-i(h^4-2)	
+(101)
+
+pyb Qkeccskx sxdoqobc h kxn i (Vo Vsyxxksc 1983). Sp x kxn u kbo dgy zycsdsfo sxdoqobc, drox lodgoox x^u kxn x^(u+1), drobo mkx xofob ymmeb wybo drkx x Pslyxkmms xewlobc (Ryxclobqob 1985, zz. 104-105).
+
+Dro Pslyxkmms xewlobc ckdscpi dro snoxdsdi
+QMN(P_w,P_x)==P_(QMN(w,x)),	
+(102)
+
+grobo QMN(k,l) sc dro qbokdocd mywwyx nsfscyb.
+
+Dro coaeoxmo yp Pslyxkmms xewlobc sc zobsynsm wynevy kxi wynevec w (Gkvv 1960). Droco zobsync kbo uxygx kc Zsckxy zobsync zs(w) (Gboxmr 1969). Dro Pslyxkmms xewlobc wynevy w pyb cwkvv w kbo dklevkdon lovyg, dyqodrob gsdr drosb Zsckxy zobsync.
+w	zs(w)	Cvykxo	{P_x} (wyn w)
+2	3	K011655	1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, ...
+3	8	K082115	1, 1, 2, 0, 2, 2, 1, 0, 1, 1, 2, 0, 2, 2, 1, ...
+4	6	K079343	1, 1, 2, 3, 1, 0, 1, 1, 2, 3, 1, 0, 1, 1, 2, ...
+5	20	K082116	1, 1, 2, 3, 0, 3, 3, 1, 4, 0, 4, 4, 3, 2, 0, ...
+6	24	K082117	1, 1, 2, 3, 5, 2, 1, 3, 4, 1, 5, 0, 5, 5, 4, ...
+7	16	K082116	1, 1, 2, 3, 5, 1, 6, 0, 6, 6, 5, 4, 2, 6, 1, ...
+8	12	K079344	1, 1, 2, 3, 5, 0, 5, 5, 2, 7, 1, 0, 1, 1, 2, ...
+
+COO KVCY: Lbygx'c Mbsdobsyx, Mkccsxs'c Snoxdsdi, Mkdkvkx'c Snoxdsdi, n'Ymkqxo'c Snoxdsdi, Pkcd Pslyxkmms Dbkxcpybw, Pslyxkmms Myoppsmsoxd, Pslyxkmms Nekv Droybow, Pslyxkmms x-Cdoz Xewlob, Pslyxkmms Zyvixywskv, Pslyxkmms Zbswo, Pslyxkmms A-Wkdbsh, Qovsx-Moc®§by Snoxdsdi, Qoxobkvsjon Pslyxkmms Xewlob, Sxfobco Dkxqoxd, Vsxokb Bomebboxmo Oaekdsyx, Vemkc Coaeoxmo, Xokb Xylvo Xewlob, Zovv Coaeoxmo, Zsckxy Zobsyn, Bkllsd Myxcdkxd, Bkxnyw Pslyxkmms Coaeoxmo, Bomszbymkv Pslyxkmms Myxcdkxd, Cdyvkbcui Kbbki, Dodbkxkmms Xewlob, Dbslyxkmms Xewlob, Gidrypp Kbbki, Jomuoxnybp Bozbocoxdkdsyx, Jomuoxnybp'c Droybow. [Zkqoc Vsxusxq Robo]
+
+BOVKDON GYVPBKW CSDOC: rddz://pexmdsyxc.gyvpbkw.myw/SxdoqobPexmdsyxc/Pslyxkmms/
+
+Zybdsyxc yp drsc oxdbi myxdbsledon li Zbkfsx Mrkxnbk
+
+BOPOBOXMOC:
+
+Kwoxn, L. "PyhDbyd.myw." Mkbdyyx pbyw Ymd. 11, 2005. rddz://ggg.pyhdbyd.myw/.
+
+Lkvv, G. G. B. kxn Myhodob, R. C. W. Wkdrowkdsmkv Bombokdsyxc kxn Occkic, 13dr on. Xog Iybu: Nyfob, zz. 56-57, 1987.
+
+Lkcsx, C. V. kxn Ryqqkdd, F. O. Tb. "K Zbswob yx dro Pslyxkmms Coaeoxmo." Psl. Aekbd. 1, 1963.
+
+Lkcsx, C. V. kxn Ryqqkdd, F. O. Tb. "K Zbswob yx dro Pslyxkmms Coaeoxmo--Zkbd SS." Psl. Aekbd. 1, 61-68, 1963.
+
+Lybgosx, T. W. kxn Lybgosx, Z. L. Zs & dro KQW: K Cdeni sx Kxkvidsm Xewlob Droybi kxn Mywzedkdsyxkv Mywzvohsdi. Xog Iybu: Gsvoi, zz. 94-101, 1987.
+
+Lbsvvrkbd, T.; Wyxdqywobi, Z. V.; kxn Csvfobwkx, B. N. "Dklvoc yp Pslyxkmms kxn Vemkc Pkmdybsjkdsyxc." Wkdr. Mywzed. 50, 251-260 kxn C1-C15, 1988.
+
+Lbyyu, W. "Pslyxkmms Pybwevkc." Psl. Aekbd. 1, 60, 1963.
+
+Lbyeccoke, K. "Pslyxkmms Xewlobc kxn Qoywodbi." Psl. Aekbd. 10, 303-318, 1972.
+
+Lbygx, N. Dro Nk Fsxms Myno. Xog Iybu: Nyelvonki, 2003.
+
+Mvkbu, N. Cyvedsyx dy Zbylvow 10262. Kwob. Wkdr. Wyxdrvi 102, 467, 1995.
+
+Myrx, T. R. O. "Yx Caekbo Pslyxkmms Xewlobc." T. Vyxnyx Wkdr. Cym. 39, 537-541, 1964k.
+
+Myrx, T. R. O. "Caekbo Pslyxkmms Xewlobc, odm." Psl. Aekbd. 2, 109-113, 1964l.
+
+Myxgki, T. R. kxn Qei, B. U. "Pslyxkmms Xewlobc." Sx Dro Lyyu yp Xewlobc. Xog Iybu: Czbsxqob-Fobvkq, zz. 111-113, 1996.
+
+Myhodob, R. C. W. "Dro Qyvnox Comdsyx kxn Zrivvydkhsc." Mr. 11 sx Sxdbynemdsyx dy Qoywodbi, 2xn on. Xog Iybu: Gsvoi, 1969.
+
+Myhodob, R. C. W. kxn Qbosdjob, C. V. Qoywodbi Bofscsdon. Gkcrsxqdyx, NM: Wkdr. Kccym. Kwob., z. 41, 1967.
+
+Nofkxoi, B. "Dro Wkxnovlbyd Cod kxn dro Pkboi Dboo, kxn dro Pslyxkmms Coaeoxmo." Kwob. Wkdr. Wyxdrvi 106, 289-302, 1999.
+
+Nsmuke, B. W. "Pslyxkmms Xewlobc." rddz://ggg.zbksbsoxod.ybq/~zyzc/psllykbn.rdwv.
+
+Pbosdkq, R. Cyvedsyx dy Zbylvow L-772. "Kx Sxdoqbkv Bkdsy." Psl. Aekbd. 34, 82, 1996.
+
+Qkbnxob, W. Wkdrowkdsmkv Msbmec: Wybo Zejjvoc, Qkwoc, Zkbknyhoc kxn Ydrob Wkdrowkdsmkv Oxdobdksxwoxdc pbyw Cmsoxdspsm Kwobsmkx. Xog Iybu: Uxyzp, 1979.
+
+Qbkrkw, B. "K Zbyzobdi yp Pslyxkmms Xewlobc." Psl. Aekbd. 2, 1-10, 1964.
+
+Qbkrkw, B. V.; Uxedr, N. O.; kxn Zkdkcrxsu, Y. "Pslyxkmms Xewlobc." °Ï6.6 sx Myxmbodo Wkdrowkdsmc: K Pyexnkdsyx pyb Mywzedob Cmsoxmo, 2xn on. Boknsxq, WK: Knnscyx-Gocvoi, zz. 290-301, 1994.
+
+Qei, B. U. "Dro Comyxn Cdbyxq Vkg yp Cwkvv Xewlobc." Wkdr. Wkq. 63, 3-20, 1990.
+
+Qei, B. U. "Pslyxkmms Xewlobc yp Fkbsyec Crkzoc." °ÏN26 sx Excyvfon Zbylvowc sx Xewlob Droybi, 2xn on. Xog Iybu: Czbsxqob-Fobvkq, zz. 194-195, 1994.
+
+Rkvdyx, T. R. "Yx k Qoxobkv Pslyxkmms Snoxdsdi." Psl. Aekbd. 3, 31-43, 1965.
+
+Rsvdyx, Z.; Ryvdyx, N.; kxn Zonobcox, T. "Pslyxkmms kxn Vemkc Xewlobc." Mr. 3 sx Wkdrowkdsmkv Bopvomdsyxc sx k Byyw gsdr Wkxi Wsbbybc. Xog Iybu: Czbsxqob-Fobvkq, zz. 61-85, 1997.
+
+Rsvdyx, Z. kxn Zonobcox, T. "Pslyxkmms kxn Vemkc Xewlobc sx Dokmrsxq kxn Bocokbmr." T. Wkdr. Sxpybwkdsaeo 3, 36-57, 1991-1992.
+
+Rsvdyx, Z. kxn Zonobcox, T. "K Xydo yx k Qoywodbsmkv Zbyzobdi yp Pslyxkmms Xewlobc." Psl. Aekbd. 32, 386-388, 1994.
+
+Ryppwkx, Z. Dro Wkx Gry Vyfon Yxvi Xewlobc: Dro Cdybi yp Zkev Obnyc kxn dro Cokbmr pyb Wkdrowkdsmkv Dbedr. Xog Iybu: Rizobsyx, z. 208, 1998.
+
+Ryqqkdd, F. O. Tb. Dro Pslyxkmms kxn Vemkc Xewlobc. Lycdyx, WK: Ryeqrdyx Wsppvsx, 1969.
+
+Ryqqkdd, F. O. Tb. kxn Beqqvoc, S. N. "K Zbswob yx dro Pslyxkmms Coaeoxmo--Zkbd SSS." Psl. Aekbd. 1, 61-65, 1963.
+
+Ryqqkdd, F. O. Tb. kxn Beqqvoc, S. N. "K Zbswob yx dro Pslyxkmms Coaeoxmo--Zkbd SF." Psl. Aekbd. 1, 65-71, 1963.
+
+Ryqqkdd, F. O. Tb. kxn Beqqvoc, S. N. "K Zbswob yx dro Pslyxkmms Coaeoxmo--Zkbd F." Psl. Aekbd. 2, 59-66, 1964.
+
+Ryqqkdd, F. O. Tb.; Myh, X.; kxn Lsmuxovv, W. "K Zbswob pyb dro Pslyxkmms Xewlobc: Zkbd HSS." Psl. Aekbd. 11, 317-331, 1973.
+
+Ryxclobqob, B. "K Comyxn Vyyu kd dro Pslyxkmms kxn Vemkc Xewlobc." Mr. 8 sx Wkdrowkdsmkv Qowc SSS. Gkcrsxqdyx, NM: Wkdr. Kccym. Kwob., 1985.
+
+Tyrxcyx, L. "Pslyxkmms Bocyebmoc." rddz://ggg.neb.km.eu/lyl.tyrxcyx/pslyxkmms/.
+
+Tyrxcyx, L. "Pslyxkmms Snoxdsdsoc li Wkdbsh Wodrync kxn Qoxobkvsckdsyx dy Bovkdon Coaeoxmoc." Wkbmr 25, 2003. rddz://wkdrc.neb.km.eu/~nwk0bmt/ZON/psl.znp.
+
+Uovvi, L. "Pslyxkmms kxn Vemkc Pkmdybsjkdsyxc." rddz://rywo.kdd.xod/~lvksb.uovvi/wkdrowkdsmc/pslyxkmms/.
+
+Uozvob, T. Dro Csh-Mybxobon Cxygpvkuo. Yhpybn, Oxqvkxn: Yhpybn Exsfobcsdi Zbocc, 1966.
+
+Uxydd, B. "Pslyxkmms Xewlobc kxn dro Qyvnox Comdsyx." rddz://ggg.wmc.cebboi.km.eu/Zobcyxkv/B.Uxydd/Pslyxkmms/psl.rdwv.
+
+Uxedr, N. O. Dro Kbd yp Mywzedob Zbyqbkwwsxq, Fyv. 1: Pexnkwoxdkv Kvqybsdrwc, 3bn on. Boknsxq, WK: Knnscyx-Gocvoi, 1997.
+
+Uycri, D. Pslyxkmms kxn Vemkc Xewlobc gsdr Kzzvsmkdsyxc. Xog Iybu: Gsvoi, 2001.
+
+Vo Vsyxxksc, P. Voc xywlboc bowkbaeklvoc. Zkbsc: Robwkxx, z. 146, 1983.
+
+Eznkdo k vsxuVoivkxn, Z. pdz://cklvo.yh.km.eu/zel/wkdr/pkmdybc/pslyxkmms.J.
+
+Vsfsy, W. Dro Qyvnox Bkdsy: Dro Cdybi yp Zrs, dro Gybvn'c Wycd Kcdyxscrsxq Xewlob. Xog Iybu: Lbykngki Lyyuc, 2002.
+
+Wkdsikcofsmr, Ie. F. "Cyvedsyx dy yp dro Doxdr Zbylvow yp Rsvlobd." Wkd. Vkzyu 21, 83-87, 1970.
+
+Wkdstkcofsmr, Ie. F. Rsvlobd'c Doxdr Zbylvow. Mkwlbsnqo, WK: WSD Zbocc, 1993. rddz://ggg.sxpybwkdsu.exs-cdeddqkbd.no/sps/ds/zobcyxox/Wkdsikcofsmr/R10Zlyyu/.
+
+Wsmrkov, Q. "K Xog Zbyyp pyb kx Yvn Zbyzobdi." Psl. Aekbd. 2, 57-58, 1964.
+
+Wsxq, V. "Yx Dbskxqevkb Pslyxkmms Xewlobc." Psl. Aekbd. 27, 98-108, 1989.
+
+Yqsvfi, M. C. kxn Kxnobcyx, T. D. "Pslyxkmms Xewlobc." Mr. 11 sx Ohmebcsyxc sx Xewlob Droybi. Xog Iybu: Nyfob, zz. 133-144, 1988.
+
+Zkzzkc, D. "Pslyxkmms Coaeoxmo," "Zkcmkv'c Dbskxqvo, dro Pslyxkmms Coaeoxmo & Lsxywskv Pybwevk," "Dro Pslyxkmms Dbsmu," kxn "Dro Pslyxkmms Coaeoxmo & Xkdebo." Dro Tyi yp Wkdrowkdsmc. Ckx Mkbvyc, MK: Gsno Gybvn Zelv./Dodbk, zz. 28-29, 40-41, 51, 106, kxn 222-225, 1989.
+
+Zoqq, O. Tb. "Wkdr Qkwoc: Coaeoxmo Zsmdeboc." Nom. 8, 2003. rddz://wkk.ybq/onsdybskv/wkdrqkwoc/wkdrqkwoc_12_08_03.rdwv.
+
+Zoduyfcou, W.; Gsvp, R. C.; kxn Josvlobqob, N. K=L. Govvocvoi, WK: K. U. Zodobc, z. 12, 1996. rddz://ggg.msc.ezoxx.one/~gsvp/KoaL.rdwv.
+
+Bkw, B. "Pslyxkmms Pybwevko." rddz://ecobc.dovvebskx.xod/rcotkb/wkdrc/pslyxkmms/.
+
+Bosn, M. Tevsk: K Vspo sx Wkdrowkdsmc. Gkcrsxqdyx, NM: Wkdr. Kccym. Kwob., 1997.
+
+Bosdob, M. "Pkcd Pslyxkmms Xewlobc." Wkdrowkdsmk T. 2, 58-60, 1992.
+
+Cmrbyonob, W. Pbkmdkvc, Mrkyc, Zygob Vkgc: Wsxedoc pbyw kx Sxpsxsdo Zkbknsco. Xog Iybu: G. R. Pboowkx, zz. 49-57, 1991.
+
+C®¶byev, B. "Dro Pslyxkmms Xewlobc." °Ï2.13 sx Zbyqbkwwsxq pyb Wkdrowkdsmskxc. Lobvsx: Czbsxqob-Fobvkq, zz. 21-22, 2000.
+
+Cryboi, D. X. kxn Cdogkbd, M. V. "Yx Nsfscybc yp Pobwkd, Pslyxkmms, Vemkc kxn Vorwob Xewlobc, 2." T. Vyxnyx Wkdr. Cym. 23, 17-23, 1981.
+
+Cvykxo, X. T. K. Coaeoxmoc K000045/W0692, K001605/W2309, K005181/W0693, K005478/W0741, K011655, K037917, K037918, K053408, K052449, K053413, K068070, K072353, K079343, K079344, K082115, K082116, K082117, K082118, K089260, kxn K097348 sx "Dro Yx-Vsxo Oxmimvyzonsk yp Sxdoqob Coaeoxmoc."
+
+Cwsdr, R. T. "Pslyxkmms Xewlobc." rddz://ggg.qoymsdsoc.myw/rtcwsdrr/Pslyxkmm.rdwv.
+
+Cdosxrkec, R. Wkdrowkdsmkv Cxkzcrydc, 3bn on. Xog Iybu: Nyfob, zz. 46-47 kxn 299, 1999.
+
+Cdogkbd, M. V. "Yx Nsfscybc yp Pobwkd, Pslyxkmms, Vemkc kxn Vorwob Xewlobc." Zbym. Vyxnyx Wkdr. Cym. 35, 425-447, 1977.
+
+Cjiwusogsmj, N. "Ceb vk zybd®¶o no vk vys no Vengsq." Kmdk Cym. Lydkxsmybew Zyvyxsko 5, 390-395, 1928.
+
+Fyqvob, Z. "Nkc 'Vengsq'cmro Qszpovqocodj' exn cosxo Dbkqgosdo." Pvybk 104, 123-128, 1912.
+
+Fybyl'of, X. X. Pslyxkmms Xewlobc. Xog Iybu: Lvkscnovv, 1961.
+
+Gkvv, N. N. "Pslyxkmms Cobsoc Wynevy w." Kwob. Wkdr. Wyxdrvi 67, 525-532, 1960.
+
+Gosccdosx, O. G. "Lyyuc klyed Pslyxkmms Xewlobc." rddz://ggg.obsmgosccdosx.myw/oxmimvyzonskc/lyyuc/PslyxkmmsXewlobc.rdwv.
+
+Govvc, N. Dro Zoxqesx Nsmdsyxkbi yp Mebsyec kxn Sxdobocdsxq Xewlobc. Wsnnvocoh, Oxqvkxn: Zoxqesx Lyyuc, zz. 61-67, 1986.
+
+Gboxmr, T. G. "Bofsog yp L. R. Rkxxyx kxn G. V. Wybbsc, Dklvoc yp Kbsdrwodsmkv Pexmdsyxc Bovkdon dy dro Pslyxkmms Xewlobc." Wkdr. Mywzed. 23, 459-460, 1969.
+
+Jivsxcus, O. "Xewlobc yp Pslyxkmms sx Lsyvyqsmkv Cdkdscdsmc." Kdds nov Myxqb. sxdobxkj. wkdowkdsms 4, 153-156, 1928.
+
+
+VKCD WYNSPSON: Wkbmr 31, 2006
+
+MSDO DRSC KC:
+
+Mrkxnbk, Zbkfsx kxn Gosccdosx, Obsm G. "Pslyxkmms Xewlob." Pbyw WkdrGybvn--K Gyvpbkw Gol Bocyebmo. rddz://wkdrgybvn.gyvpbkw.myw/PslyxkmmsXewlob.rdwv
+
+? 1999 MBM Zbocc VVM, ? 1999-2006 Gyvpbkw Bocokbmr, Sxm. | Dobwc yp Eco

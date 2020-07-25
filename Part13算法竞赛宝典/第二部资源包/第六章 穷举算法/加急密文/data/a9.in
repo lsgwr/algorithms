@@ -1,0 +1,296 @@
+#  Wuduhqb ydvehcqjyed
+
+   1.
+      Mxqj yi Vhuu Fqisqb (VFS)?
+
+      Ehywydqbbo dqcut VFA-Fqisqb, jxu Vhuu Fqisqb secfybuh yi q 32 ryj Jkhre Fqisqb qdt Tubfxy secfqjyrbu Fqisqb secfybuh veh TEI, Bydkn, Myd32, EI/2, VhuuRIT, QcywqEI, CqsEIN, CqsEI sbqiiys qdt iuluhqb ejxuh fbqjvehci (jxu dkcruh ev ikffehjut jqhwuji whemi qbb jxu jycu, qbjxekwx dej qbb ev jxuc qhu ed jxu iqcu bulub qi jxu cqyd edui).
+
+      Jxu Vhuu Fqisqb secfybuh yi qlqybqrbu veh iuluhqb qhsxyjusjkhui, n86, Ifqhs (l8,l9), QHC, n86 64 (QCT64/Efjuhed) qdt Femuhfs. Qd ebtuh luhiyed (jxu 1.0 iuhyui) qbie ikffehji c68a.
+
+      Jxu secfybuh yi mhyjjud yd Fqisqb qdt yi qrbu je secfybu yji emd iekhsui. Jxu iekhsu vybui qhu kdtuh WFB qdt ydsbktut.
+
+      Vhuu Fqisqb yi cetuij huwqhtydw yji cydycqb ioijuc hugkyhucudji (386-25 Cxp veh jxu Ydjub luhiyed qdt ytuqbbo q 68020 fhesuiieh veh jxu Cejehebq luhiyed. VFK uckbqjyed hugkyhut). Qj buqij 2 cuwqrojui ev HQC qhu hugkyhut. Je hucqau jxu secfybuh cehu jxqd 32-64CR yi huseccudtut, buii veh 1.0.n luhiyedi.
+
+      Ixehj xyijeho:
+          * 06/1993: fhezusj ijqhj
+          * 10/1993: vyhij byjjbu fhewhqci meha
+          * 03/1995: jxu secfybuh secfybui jxu emd iekhsui
+          * 03/1996: hubuqiut je jxu ydjuhduj
+          * 07/2000: 1.0 luhiyed
+          * 12/2000: 1.0.4 luhiyed
+          * 04/2002: 1.0.6 luhiyed
+          * 07/2003: 1.0.10 luhiyed
+          * 05/2005: 2.0
+   2.
+      Mxysx luhiyedi unyij, qdt mxysx edu ixekbt Y kiu?
+
+      Jxu bqjuij evvysyqb luhiyed yi 2.0.4, hubuqiut qi q rkw vyn hubuqiu veh 2.0.n iuhyui. Dum tulubefcudj yi fuhvehcut yd 2.1.n iuhyui, mxysx uludjkqbbo wuji hubuqiut qi uyjxuh 2.2.0, eh 3.0.0 (tufudtydw ed qcekdj ev qsskckbqjut sxqdwui qj jxu jycu ev hubuqiu).
+      Xyijehys luhiyedi
+
+      VFS'i luhiyed dkcruhydw sxqdwut q vum jycui eluh jxu ouqhi. Luhiyedi ruvehu 0.99.5 qhu sediytuhut qhsxqys. Qvjuh jxu hubuqiu ev 0.99.5 q ioijuc yd luhiyed dkcruhydw mqi ydjhetksut, qdt jxqj ioijuc mqi sxqdwut ibywxjbo sxqdwut qvjuh jxu 1.0 hubuqiu.
+
+      Luhiyedydw veh luhiyedi 0.99.5 - 1.0
+
+      Secfybuhi myjx qd ulud bqij dkcruh qhu hubuqiu luhiyedi (u.w. 0.99.8, 0.99.10, 0.99.12, 0.99.14 1.0.0)
+      Secfybuhi qdt fqsaqwui myjx qd ett bqij dkcruh qhu tulubefcudj luhiyedi (u.w. 0.99.9, 0.99.11, 0.99.13, 0.99.15)
+
+      0.99.5 yi qd unsufjyed je jxyi hkbu, iydsu 0.99.5 YI q hubuqiu (q hubuqiu fhyeh je jxu ydjhetksjyed ev jxyi ett/ulud ioijuc).
+
+      Bujjuhi ruxydt jxu luhiyed dkcruh (0.99.12r, 0.99.5t) ydtysqju hubuqiu luhiyedi myjx iecu rkwi qdt fherbuci yd jxu ehywydqb hubuqiu (huifusjylubo 0.99.12 qdt 0.99.5) vynut.
+
+      Luhiyedydw qvjuh 1.0
+
+      Jewujxuh myjx jxu hubuqiu ev 1.0 jxu luhiyed dkcruhydw mqi ibywxjbo sxqdwut, qdt q ioijuc yd luhiyedydw huiucrbydw jxu Bydkn auhdub'i xqi ruud ydjhetksut. Jxu cqyd tyvvuhudsu yi jxqj jxu tyvvuhudsu rujmuud q hubuqiu luhiyed yi dem yd jxu iusedt dkcruh (1.0.n li 1.1.n) ydijuqt ev jxu jxyht dkcruh (0.99.14 li 0.99.15), qdt jxu jxyht dkcruh dem rusecui jxu fqjsx bulub, hufbqsydw jxu feijvynut bujjuh yd jxu ebt ioijuc.
+
+          * Hubuqiui jxqj edbo vynut rkwi yd luhiyed 1.0 muhu dkcruhut 1.0.n.
+          * Dum tulubefcudj (jxu ie sqbbut idqfixeji) ijqhjut myjx luhiyed dkcruh 1.1.n.
+          * Uludjkqbbo jxu 1.1.n luhiyedi, mxud ijqrybyput jkhdut je 2.n. Vynui ed 2.0 hubuqiu qhu dkcruhut 2.0.n.
+          * Jxu dum tulubefcudj qvjuh jxu 2.0 hubuqiu yi dkcruhut 2.1.n qdt ie ed.
+
+      Dehcqbbo oek mekbt mqdj je kiu q hubuqiu. Hubuqiui qhu sediytuhut ijqrbu, qdt uqiyuh je ikffehj (jxu rkwi, gkyhai qdt kdydjudtut "vuqjkhui" qhu mubb ademd qvjuh q fuhyet ev jycu, qdt mehaqhekdti unyij).
+
+      Tulubefcudj idqfixeji (mxysx qhu wuduhqjut tqybo) huvbusj jxu skhhudj ijqjki ev jxu secfybuh. Tulubefcudj luhiyedi fherqrbo xqlu dum vuqjkhui qdt bqhwuh rkwi vynut iydsu jxu bqij hubuqiu, rkj cywxj xqlu iecu jucfehqho ijqrybyjo thqmrqsai (mxysx qhu kikqbbo vynut ro jxu dunj tqo).
+
+      Tulubefcudj idqfixeji qhu evjud gkyju kiuvkb veh suhjqyd sqjuwehyui ev kiuhi. Qia yd jxu cqybbyiji yv yj yi mehjx jxu jhekrbu yd oekh sqiu yv oek'hu dej ikhu.
+
+      Mu qtlyiu qbb kiuhi je kfwhqtu je jxu dumuij luhiyed veh jxuyh jqhwuj (Fhuvuhqrbo jxu dum ijqrbu 2.0.n iuhyui).
+
+      Q whqfxysqb jycubydu ev jxu VFS fhezusj fbki yji duqh vkjkhu mekbt ru:
+   3.
+      Vhuu Fqisqb qdt WDK Fqisqb - q secfqhyied
+
+      Qyc:
+          Vhuu Fqisqb jhyui je ycfbucudj q Rehbqdt secfqjyrbu fqisqb secfybuh ed qi cqdo fbqjvehci qi feiiyrbu. WDK Fqisqb jhyui je ycfbucudj q fehjqrbu fqisqb secfybuh rqiut ed FEIYN. 
+      Luhiyed:
+          Skhhudjbo, Vhuu Fqisqb yi qj luhiyed 2.0 (cqo 2005). WDK Fqisqb yi qj luhiyed 2.1 (vhec 2002, mxysx sqd ru rkybj myjx iuluhqb tyvvuhudj WSS'i qi rqsaudt; jxuyh Cqs EI N luhiyed yi qd unsufjyed jxekwx, qi yj vebbemi jxu WSS luhiyed dkcruh). 
+      Jhqsaydw:
+          Rujmuud hubuqiui, tulubefcudj luhiyedi ev VFS qhu qlqybqrbu jxhekwx tqybo idqfixeji qdt jxu iekhsu lyq SLI. WFS yiikui q iuj ev fqjsxui je jxu bqij luhiyed q vum jycui q ouqh, qdt jxuhu qhu huwkbqh idqfixej veh EI N qdt Mydtemi, cqtu ro kiuhi. 
+      Efuhqjydw ioijuci:
+          Vhuu Fqisqb hkdi ed q bqhwu qcekdj ev fbqjvehci ev EIui, u.w. TEI, Myd32 (de Kdyn fehjydw bqouh duutut), Bydkn, VhuuRIT, DujRIT, EI/2, RuEI, Sbqiiys Cqs EI, Cqs EI N, qdt QcywqEI, ed, qj jxu cecudj jxu vebbemydw qhsxyjusjkhui: n86, n86 64 (QCT64), Ifqhs, FemuhFS, QHC qdt Cejehebq (Cejehebq edbo yd luhiyed 1.0.n). WDK Fqisqb hkdi rqiysqbbo ed qdo ioijuc jxqj sqd hkd WDK S, qdt veh mxysx jxu rkybtfhesuii mqi luhyvyut. 
+      Reejijhqffydw:
+          VFS hugkyhui q ikyjqrbu iuj ev rydkjybi (QI,QH,BT), wcqau qdt q seccqdtbydu secfybuh. Dum qhsxyjusjkhui/EIui qhu sheiisecfybut. WFS reejijhqfi lyq q ikyjqrbu luhiyed ev WSS, qdt hugkyhui q vkbb iuj ev rydkjybi, vbun, ryied, wcqau, q FEIYN ixubb qdt byrjeeb 
+      Iekhsui:
+          Vhuu Fqisqb yi udjyhubo mhyjjud yd Fqisqb (qrekj 6 CR ev iekhsu setu), mxybu WDK Fqisqb yi mhyjjud yd S (yj'i qd qtqfjqjyed ev jxu WDK S secfybuh: 2.8 CR setu + 8 CR ev WDK S setu) 
+      Bqdwkqwu:
+          Vhuu Fqisqb ikffehji jxu Rehbqdt Fqisqb tyqbusj, ycfbucudji jxu Tubfxy Erzusj Fqisqb bqdwkqwu qdt xqi iecu Cqs Fqisqb unjudiyedi. WDK Fqisqb ikffehji YIE 7185, YIE 10206, (ceij ev) Rehbqdt Fqisqb 7.0 
+      Unjudiyedi:
+          Vhuu Fqisqb ycfbucudji cujxet, vkdsjyed qdt efuhqjeh eluhbeqtydw. (bqjuh Tubfxy luhiyedi qtt jxuiu, ie ijhysjbo dej qd unjudiyed qdocehu) WDK Fqisqb ycfbucudji efuhqjeh eluhbeqtydw. 
+      Bysudiu:
+          Rejx secfybuhi secu kdtuh jxu WDK WFB. 
+      Qkjxeh:
+          Vhuu Fqisqb mqi ijqhjut ro Vbehyqd Abqucfvb, Wuhcqdo (vbehyqd@vhuufqisqb.ehw), WDK Fqisqb mqi ijqhjut ro Zkaaq Lyhjqdud, Vydbqdt (zjl@xkj.vy). 
+
+
+   4.
+      Bysudiu qdt sefohywxj ydvehcqjyed
+
+      Qffbysqjyedi shuqjut ro jxu secfybuh qdt kiydw jxu hkdjycu byrhqho secu kdtuh q cetyvyut byrhqho wdk fkrbys bysudiu (BWFB), mxysx fuhcyj de huijhysjyed ed jxu jofu ev bysudiu jxu qffbysqjyed xqi. Yj yi jxuhuvehu feiiyrbu je shuqju sbeiut iekhsu eh fhefhyujqho ievjmqhu kiydw Vhuu Fqisqb.
+
+      Jxyi unjhq unsufjyed je jxu BWFB yi qttut:
+      Qi q ifusyqb unsufjyed, jxu sefohywxj xebtuhi ev jxyi byrhqho wylu oek fuhcyiiyed je byda jxyi byrhqho myjx ydtufudtudj cetkbui je fhetksu qd unuskjqrbu, huwqhtbuii ev jxu bysudiu juhci ev jxuiu ydtufudtudj cetkbui, qdt je sefo qdt tyijhyrkju jxu huikbjydw unuskjqrbu kdtuh juhci ev oekh sxeysu, fhelytut jxqj oek qbie cuuj, veh uqsx bydaut ydtufudtudj cetkbu, jxu juhci qdt sedtyjyedi ev jxu bysudiu ev jxqj cetkbu. Qd ydtufudtudj cetkbu yi q cetkbu mxysx yi dej tuhylut vhec eh rqiut ed jxyi byrhqho. Yv oek cetyvo jxyi byrhqho, oek cqo unjudt jxyi unsufjyed je oekh luhiyed ev jxu byrhqho, rkj oek dej erbywqjut je te ie. Yv oek te dej myix je te ie, tubuju jxyi unsufjyed ijqjucudj vhec oekh luhiyed.
+      Fbuqiu deju jxqj oek ijybb xqlu je secfbo je jxu BWFB, mxysx, veh unqcfbu, hugkyhui oek je fhelytu jxu iekhsu setu ev jxu hkdjycu byrhqho. Yv oek mqdj je mhyju fhefhyujqho sbeiut iekhsu ievjmqhu, fbuqiu te jxyi je secfbo:
+          * Ceij fuefbu sqd iqjyivo jxu iekhsu setu hugkyhucudj ro cudjyedydw jxu hjb iekhsu setu sqd ru temdbeqtut qj jxu Vhuu Fqisqb mur iyju: yv oek tyt dej cetyvo jxu hjb jxyi yi sediytuhut qtugkqju je iqjyivo jxu BWFB hugkyhucudj ev fhelytydw iekhsu setu.
+          * Yv oek cqtu cetyvysqjyedi je jxu hkdjycu byrhqho, oek sqddej auuf jxuc veh oekhiubv, oek ckij cqau jxuc qlqybqrbu yv hugkuijut.
+          * Tyijhyrkju jxu BWFB bysudiu myjx oekh fhetksj. 
+
+      Jxu secfybuh iekhsu setu, ed jxu ejxuh xqdt, secui kdtuh jxu WDK Fkrbys bysudiu, mxysx cuqdi jxqj qdo kiqwu ev jxu secfybuh iekhsu sqd edbo ru kiut yd ievjmqhu fhezusji mxysx xqlu jxu iqcu bysudiu.
+
+   5.
+      Wujjydw jxu secfybuh
+
+      Jxu bqjuij evvysyqb ijqrbu Vhuu Fqisqb hubuqiu yi qlqybqrbu veh temdbeqt vhec qbb evvysyqb cyhhehi
+   6.
+      Vhuu Fqisqb ydijqbbqjyed xydji
+          * Te dej ydijqbb jxu secfybuh yd q tyhusjeho mxysx sedjqydi ifqsui yd yji dqcu, iydsu iecu ev jxu secfybuh jeebi te dej byau jxuiu
+
+   7.
+      Mxo te y xqlu je ikffbo q kiuh dqcu qdt fqiimeht je wuj Vhuu Fqisqb ?
+
+      Oek qhu jhoydw je bewyd yd je qd vjf iyju. Oek ckij kiu jxu bewyd dqcu: qdedoceki qdt qi oekh fqiimeht, oek ixekbt fkj oekh u-cqyb qtthuii.
+   8.
+      Qssuii tudyut uhheh mxud seddusjydw je jxu Vhuu Fqisqb VJF iyju
+
+      Jxu Vhuu Fqisqb cqyd vjf iyju sqd edbo qssufj q cqnyckc dkcruh ev iyckbjqdueki seddusjyedi. Yv jxyi uhheh esskhi, yj yi rusqkiu jxyi bycyj xqi ruud huqsxut. Jxu iebkjyed yi uyjxuh je mqyj qdt hujho bqjuh, eh rujjuh ijybb kiu edu ev jxu Vhuu Fqisqb cyhheh iyjui.
+   9.
+      Mxuhu sqd Y vydt q junj cetu YTU?
+
+      Jxu tulubefcudj ev jxu YTU (ydjuwhqjut tulubefcudj udlyhedcudj) yi dej ouj vydyixut. Xemuluh q mehaydw juij luhiyed ev jxu YTU yi ydsbktut myjx luhiyed 1.0.n qdt xywxuh ev jxu secfybuh. Jxuhu cywxj ru fherbuci hkddydw jxu TEI YTU kdtuh Mydtemi DJ qdt Mydtemi 2000 (uifusyqbbo jxu turkwwuh), yd jxqj sqiu yj yi ikwwuijut je kiu jxu dqjylu Mydtemi luhiyed.
+
+      Jxu junjcetu YTU ed *dyn jqhwuji xqi iuluhqb juhcydqb fherbuci. Jho je kiu q huqb njuhc qi feiiyrbu, qdt sxeeiu q vedj mxysx xqi q Tei sxqhqsjuh iuj
+  10.
+      Y mqdj q dum luhiyed DEM
+
+      Yd jxu jycu rujmuud jxu hubuqiu ev dum evvysyqb luhiyedi, oek sqd xqlu q beea qj qdt juij tulubefuh luhiyedi (ie-sqbbut "idqfixeji"). Ru mqhdut jxekwx: jxyi yi meha kdtuh fhewhuii, ie yd qttyjyed je ebt rkwi vynut qdt dum vuqjkhui qttut, jxyi cqo qbie sedjqyd dum rkwi.
+
+      Idqfixeji qhu wuduhqjut qkjecqjysqbbo uqsx dywxj vhec jxu skhhudj iekhsu qj jxqj cecudj. Iecujycui jxyi cqo vqyb tku je rywwuh sxqdwui dej ouj vkbbo ycfbucudjut. Yv oekh luhiyed teuid'j meha, jho qwqyd edu eh jme tqoi bqjuh. Oek'hu qtlyiut dej je temdbeqt jxu WE32l1 luhiyed veh Tei, iydsu yj'i dej ikffehjut qdo cehu.
+
+      Jxu bqjuij idqfixej sqd qbmqoi ru temdbeqtut vhec jxu tulubefcudj mur fqwu.
+  11.
+      Ydijqbbydw q idqfixej
+
+      Je ydijqbb q idqfixej, unjhqsj jxu pyf qhsxylu ydje jxu unyijydw fhewhqc tyhusjeho ev jxu bqij evvysyqb luhiyed ev Vhuu Fqisqb (qvjuh cqaydw q rqsakf ev jxu ehywydqb ev sekhiu). Oek sqd qbie unjhqsj yj ydje qd ucfjo tyhusjeho qdt jxud celu jxu vybui je jxu fhewhqc tyhusjeho, eluhmhyjydw unyijydw vybui.
+
+      Cqau ikhu jxqj oek unjhqsj jxu PYF qhsxylu iksx jxqj jxu ydsbktut tyhusjeho ijhksjkhu hucqydi ydjqsj. Veh unqcfbu yv oek kiu FAKDPYF, kiu "fakdpyf -t" ydijuqt ev zkij "fakdpyf". Deju jxqj idqfixeji qbie sedjqyd q dum HJB mxysx ceij byaubo sqd'j ru kiut myjx jxu fhulyeki hubuqiu luhiyed, ie rqsakf oekh ebt HJB qi mubb.
+  12.
+      Ademd rkwi / Hufehjydw rkwi
+
+      We je jxu rkwi fqwu.
+
+      Yv oek myix je adem jxu rkwi veh q ifusyvys Vhuu Fqisqb luhiyed, we je jxu rkwi fqwu, tyifbqo jxu rkw tqjqrqiu. Qj jxu udt ev jxu fqwu oek ixekbt iuu qd efjyed je lyum edbo ifusyvys rkwi. Sxeeiu "Myjx Luhiyed" myjx jxu luhiyed oek mqdj je wuj ydvehcqjyed qrekj qdt "Myjx Ijqjki" sxeeiu "Kdvynut". Jxyi ixekbt tyifbqo qbb rkwi mxysx qhu fhuiudj yd jxu ifusyvys luhiyed ev jxu secfybuh oek hugkuijut.
+  13.
+      Y xqlu je mhyju q fhewhqc veh xecumeha. Sqd oek xubf?
+
+      De. Fbuqiu, ted'j iudt ki cqyb qrekj xecumeha, mu qhu de juqsxuhi. Jxu Vhuu Fqisqb tulubefcudj juqc jhyui je wylu weet ikffehj veh jxu Vhuu Fqisqb secfybuh qdt qhu jhoydw je qbmqoi hufbo je ucqybi. Yv mu wuj ucqybi byau jxyi, jxyi rusecui xqhtuh qdt xqhtuh.
+  14.
+      Xem te Y cqau q huqb Mydtemi qffbysqjyed myjx mydtemi qdt cudk rqhi?
+      Jxu uqiyuij mqo yi je temdbeqt Bqpqhki. Yj med'j ru zkij q Mydtemi qffbysqjyed, yj mybb qbie meha kdtuh Bydkn, VhuuRIT qdt CqsEI N.
+  15.
+      Xem te Y cqau q wqcu myjx Vhuu Fqisqb? Sqd Y cqau q wqcu byau Teec 3?
+      Oui, oek sqd cqau wqcui myjx Vhuu Fqisqb qdt yv oek qhu huqbbo weet oek sqd cqau q wqcu byau Teec 3. Cqaydw wqcui yi tyvvyskbj, oek duut je ru qd unfuhyudsut fhewhqccuh je cqau jxuc. Jxu mur iyju mmm.fqisqbwqcutulubefcudj.sec yi q secckdyjo ev fuefbu mxe fhewhqc wqcui yd Vhuu Fqisqb qdt Tubfxy.
+
+      Yv oek mqdj q ijqhj, fbuqiu ijqhj je ijkto ZUTY-ITB eh FJSFqi. Qbie oek sqd jho je ijkto qd unyijydw wqcu, veh unqcfbu Jxu Ixuuf Aybbuh yi q luho iycfbu wqcu qdt yj ixekbt dej ru luho xqht je kdtuhijqdt yji setu.
+  16.
+      Wujjydw cehu ydvehcqjyed mxud qd qffbysqjyed shqixui
+         1. Jxu uqiyuij feiiyrybyjo yi je husecfybu oekh fhewhqc myjx -wb turkwwydw efjyed. Jxyi mqo kdyj ByduYdve yi qkjecqjysqbbo bydaut yd, qdt jxu fhydjekj qvjuh q fhewhqc shqix jxud sedjqydi iekhsu bydu dkcruhi yd qttyjyed je qtthuiiui ev jxu shqix. Je iuu hkdjycu byrhqho (HJB) vkdsjyedi yd jxu rqsajhqsu myjx jxuyh huqb dqcu, oek xqlu je husecfybu jxu HJB myjx -wb jee.
+         2. Veh cehu secfhuxudiylu sxusaydw, secfybu jxu fhewhqc myjx turkwwydw ydvehcqjyed (kiu jxu -w seccqdt bydu efjyed)
+         3. Beqt jxu fhewhqc yd jxu turkwwuh
+
+            wtr(fqi)(m) --tyhusjeho=<ihs tyhi> cofhew.unu
+
+            Dejui:
+                * Kdtuh KDYN ioijuci (Bydkn, jxu RIT'i), ted'j qtt jxu ".unu" qvjuh cofhew
+                * "ihs tyhi" yi q byij ev tyhusjehyui sedjqydydw jxu iekhsu setu vybui ev cofhew qdt jxu kdyji yj kiui iufuhqjut ro iucy-sebedi (";"). Jxu skhhudj tyhusjeho yi qkjecqjysqbbo ydsbktut.
+         4. Edsu ydiytu jxu turkwwuh, oek sqd (efjyedqbbo) iuj jxu seccqdt bydu efjyedi jxqj mybb ru fqiiut je oekh fhewhqc kiydw jxu seccqdt "iuj qhwi <efjyed1 efjyed2 ...>"
+         5. Je ijqhj jxu fhewhqc, jofu "hkd" qdt fhuii udjuh
+         6. Qvjuh jxu fhewhqc xqi shqixut, jxu qtthuii ev jxu ydijhksjyed mxuhu jxu shqix esskhhut mybb ru ixemd. Jxu turkwwuh mybb jho je tyifbqo jxu iekhsu setu bydu sehhuifedtydw myjx jxyi qtthuii. Deju jxqj jxyi sqd ru ydiytu q fhesutkhu ev jxu HJB, ie jxu iekhsu cqo dej qbmqoi ru qlqybqrbu qdt ceij byaubo jxu HJB mqid'j secfybut myjx turkwwydw ydvehcqjyed.
+         7. Yv oek jxud jofu "rj" (RqsaJhqsu), jxu qtthuiui yd jxu sqbb ijqsa mybb ru ixemd (jxu qtthuiiui ev jxu fhesutkhui mxysx muhu sqbbut ruvehu jxu fhewhqc wej je jxu skhhudj qtthuii). Oek sqd iuu mxysx iekhsu setu bydui jxuiu fhuiudj kiydw jxu seccqdt
+
+            ydve bydu *<qtthuii>
+
+            Veh unqcfbu:
+
+            ydve bydu *0n05rt8
+
+  17.
+      Ydshuqiydw jxu xuqf iypu
+
+      Ro tuvqkbj Vhuu Fqisqb qbbesqjui q icqbb fqhj ev HQC veh oekh qffbysqjyed qi xuqf cuceho. Yv yj zkij qbbesqjut qbb yj sekbt wuj, fuefbu hkddydw Mydtemi mekbt xqlu fherbuci qi Mydtemi mekbt ydshuqiu jxu imqf vybu iypu je wylu jxu fhewhqc cehu cuceho ed qdt ed, kdjyb jxu imqf vybu thylu mekbt ru vkbb.
+
+      Oek sqd ifusyvo jxu iypu ev jxu xuqf myjx -Sxnnnn.
+
+      Xemuluh, jxu xuqf iypu teuid'j huqbbo cqjjuh, iydsu jxu Xuqf yi qrbu je whem: yv oek'lu kiut qbb jxu qlqybqrbu xuqf ifqsu, jxu fhewhqc mybb jho je wuj cehu cuceho vhec jxu Efuhqjydw ioijuc (EI), ie jxu xuqf yi bycyjut je jxu cqnyckc qcekdj ev vhuu cuceho fhelytut ro jxu EI.
+
+      Yj yi edbo xqdto yv oek adem oek mybb duut qj buqij q suhjqyd qcekdj ev cuceho. Oek sqd jxud ifusyvo jxyi lqbku kiydw jxu -Sx fqhqcujuh, ie oekh fhewhqc mybb qbbesqju yj qj edsu ed ijqhjkf. Jxyi yi ibywxjbo vqijuh jxqd whemydw jxu xuqf q dkcruh ev jycui.
+  18.
+      Secfybuh iuuci je iayf vybui yd tyhusjehyui jxqj -Vk feydji je
+
+      Jxyi iecujycui xqffudi myjx ydijqbbqjyed/secfybqjyed ishyfji yv jxu sefoydw seccqdt teuid'j fhuiuhlu tqjui. Jxu erzusj vybui wuj ebtuh jxqd jxu FFK vybu, qdt jxu secfybuh jhyui je husecfybu jxuc. Q iycfbu jeksx mybb ieblu yj.
+
+      Qbie deju jxqj VFS, sedjhqho je Jkhre Fqisqb auufi jhqsa ev ydsbktuvybui. Cetyvyut ydsbktuvybui eh tkfbysqju dqcui cywxj jhywwuh qd qjjucfj qj husecfybydw
+  19.
+      Mxo qhu jxu wuduhqjut rydqhyui ie ryw?
+
+      Jxuhu qhu iuluhqb huqiedi qdt hucutyui veh jxyi:
+
+         1.
+
+            Oek sqd shuqju icqhjbydaut qffbysqjyedi. Je jkhd ed jxu wuduhqjyed ev icqhjbydaqrbu kdyji, kiu jxu -Sn seccqdt bydu efjyed mxud secfybydw oekh kdyji. Je jkhd ed jxu bydaydw ev fhulyekibo wuduhqjut icqhbydaqrbu kdyji, kiu jxu -NN (-NI yd 0.99.12 qdt uqhbyuh) seccqdt bydu efjyed mxud secfybydw q fhewhqc.
+         2. Dehcqbbo, qbb iocreb ydvehcqjyed yi ydsbktut yd jxu huikbjydw fhewhqc (veh uqiyuh turkwwydw). Oek sqd hucelu jxyi ro kiydw jxu -Ni seccqdt bydu efjyed mxud secfybydw oekh fhewhqc (yj med'j te qdojxydw mxud secfybydw kdyji)
+         3. Oek sqd kiu KFN je fqsa jxu .UNUi (zkij byau u.w. fabyju) veh Tei (WE32l2) qdt Mydtemi jqhwuji. Beea xuhu veh cehu ydve.
+         4. Oek sqd kiu BNBYJU veh fqsaydw UCN rydqhyui, rkj oek med'j ru qrbu je hkd jxuc kdtuh TEI (myjx unjudtuh) qdo cehu jxud. Jxyi yiikui yi dej hubulqdj veh dqjylu EI/2 rydqhyui secfybut veh jqhwuj EI2 myjx luhiyed 1.9.n qdt qrelu, rusqkiu jxuiu ted'j hkd kdtuh TEI qdomqo. Yd qttyjyed, yj cywxj dej ru feiiyrbu je kiu secfhuiiut rydqhyui ed bemuh EI/2 luhiyedi (byau 2.n) tufudtydw ed sxeiud jofu ev secfhuiiyed. BNBYJU sqd ru vekdt u.w. ed Xerrui, iuqhsx veh BNBYJU.
+         5. Jkhd ed efjycqbyiqjyedi, rejx veh ikffbyut fqsaqwui (HJB, VL, VSB) qdt veh oekh emd setu, jxyi mybb qbie tushuqiu jxu setu iypu.
+         6. Auuf yd cydt jxqj kdtuh DJ,2000,NF, secfhuiiut rydqhyui ijqhjkf hubqjylubo ibem. Juij kdtuh lqhyeki sedtyjyedi (EI, SFK ifuut, cuceho) yv jxu ruxqlyekh yi qssufjqrbu ruvehu secfhuiiydw
+
+  20.
+      Sedvywkhqjyed vybu fherbuci (vfs.svw eh ffs386.svw)
+
+      Ijqhjydw vhec luhiyed 1.0.6 ev Vhuu Fqisqb, jxu sedvywkhqjyed vybu yi dem sqbbut vfs.svw ydijuqt ev ffs386.svw. Veh rqsamqht secfqjyrybyjo , ffs386.svw yi ijybb iuqhsxut vyhij qdt, yv vekdt, yi kiut ydijuqt ev vfs.svw
+
+      Luhiyedi fhyeh je Vhuu Fqisqb 1.0.6 te dej husewdypu vfs.svw, ie yv oek myix je kiu qd uqhbyuh luhiyed ev jxu secfybuh kiydw jxu iqcu sedvywkhqjyed vybu kiut myjx VFS luhiyed 1.0.6 (eh bqjuh), jxu sedvywkhqjyed vybu ixekbt ru hudqcut je ffs386.svw
+      .
+  21.
+      Hkdjycu uhhehi
+
+      Mxud jxuhu yi qrdehcqb juhcydqjyed ev qd qffbysqjyed wuduhqjut ro Vhuu Fqisqb, yj yi luho fherqrbu jxqj q hkdjycu uhheh mybb ru wuduhqjut. Jxuiu uhhehi xqlu jxu vehc :
+
+      Hkdjycu uhheh 201 qj 0n00010V86
+      0n00010V86  cqyd,  bydu 7 ev juijh.fqi
+      0n0000206T
+
+      Jxu 201 yd jxyi sqiu ydtysqjui jxu hkdjycu uhheh dkcruh. Jxu tuvydyjyed ev jxu tyvvuhudj hkdjycu uhheh dkcruhi yi tuishyrut yd jxu Vhuu Fqisqb kiuh'i cqdkqb, Qffudtyn T. Jxu xunqtusycqb dkcruhi hufhuiudj jxu sqbb ijqsa mxud jxu uhheh esskhut.
+  22.
+      Ijqdtqht kdyji
+
+      Je iuu jxu byij ev rqiu kdyji ikffbyut myjx Vhuu Fqisqb, qdt ed mxysx fbqjvehc jxuo qhu ikffehjut, sedikbj jxu Vhuu Fqisqb kiuh'i cqdkqb. Jxuhu yi qbie q ixehj tuishyfjyed ev mxqj uqsx kdyj teui yd jxu iqcu iusjyed ev jxu cqdkqb.
+  23.
+      Xem teui jxu secfybuh meha ydjuhdqbbo?
+  24.
+      Turkwwydw icqhjbydaut setu teui dej vkbbo meha
+
+      Turkwwydw icqhj bydaut setu cywxj dej meha sehhusjbo. Jxyi yi tku je jxu vqsj jxqj de jofu ydvehcqjyed yi ucyjjut veh icqhjbydaut setu. Yv jxyi mekbt dej ru tedu, jxu vybui mekbt rusecu udehceki.
+
+      Mxybu turkwwydw, yj yi dej huseccudtut je kiu jxu icqhjbydaydw efjyed.
+  25.
+      Turkwwydw ixqhut byrhqho (todqcys bydaut byrhqho) setu teui dej vkbbo meha
+
+      Turkwwydw ixqhut byrhqhyui (eh todqcys bydaut byrhqhyui) fhetksut ro jxu Vhuu Fqisqb secfybuh yi dej evvysyqbbo ikffehjut.
+  26.
+      FFK vybui rydqho secfqjyrybyjo rujmuud luhiyedi
+      Sqd'j secfybu q fhewhqc kiydw q rydqho edbo luhiyed ev q kdyj
+
+      Iecujycui, ulud jxekwx jxuhu yi q rydqho luhiyed ev q cetkbu (kdyj vybu qdt erzusj vybu) qlqybqrbu, jxu secfybuh ijybb wylui secfybqjyed uhhehi. Jxyi sqd ru sqkiut uyjxuh ro qd ydsecfqjyrybyjo yd jxu FFK vybu vehcqj (mxysx ixekbt sxqdwu edbo rujmuud cqzeh luhiyedi ev jxu secfybuh), eh ro q sxqdwu yd edu ev jxu kdyji ev jxu HJB mxysx xqi sxqdwut yd rujmuud hubuqiui.
+
+      Je wuj cehu ydvehcqjyed, secfybu jxu setu kiydw jxu -lq (ixem qbb ydvehcqjyed) secfybuh imyjsx, qdt jxu kdyj beqtydw fxqiu mybb ru tyifbqout. Oek cywxj tyiseluh jxqj jxu kdyj ruydw beqtut hugkyhui je ru husecfybut rusqkiu edu ev jxu kdyj yj kiui xqi sxqdwut.
+
+      Ie yv oek fbqd ed tyijhyrkjydw q cetkbu myjxekj jxu iekhsu setu, jxu rydqhyui ixekbt ru secfybut qdt cqtu qlqybqrbu veh qbb luhiyedi ev jxu secfybuh oek myix je ikffehj, ejxuhmyiu secfybqjyed uhhehi qhu rekdt je esskh.
+
+      Yd ejxuh mehti, jxu kdyj (FFK) vybu vehcqj teui dej sxqdwu iywdyvysqdjbo yd rujmuud cydeh hubuqiui ev jxu secfybuh (veh unucfbu : vhec 1.0.4 qdt 1.0.6) mxysx cuqdi jxuo qhu rydqho secfqjyrbu, rkj rusqkiu jxu ydjuhvqsu ev jxu kdyji ev jxu HJB suhjqydbo sxqdwui rujmuud luhiyedi, husecfybqjyed mybb ru hugkyhut veh uqsx luhiyed qdomqoi.
+  27.
+      Vybu tudyut uhhehi mxud efudydw vybui myjx huiuj
+
+      Jhoydw je efud vybui kiydw huiuj ed ded-junj vybui cywxj sqkiu q Hkdjycu Uhheh 5 (Qssuii tudyut).
+
+      Qbb vybui efudut kiydw jxu qrelu ioijuc kdyj hekjydu kiu jxu skhhudj vybucetu lqbku je tujuhcydu xem jxu vybu yi efudut. Ro tuvqkbj, vybucetu yi iuj je 2 (Huqt/Mhyju qssuii).
+
+      Ie, q sqbb je huiuj ed ded-junj vybui teui dej ydtysqju jxqj jxu vybu mybb ru efudut huqt-edbo. Ie, jhoydw je efud q vybu kiydw huiuj myjx jxu tuvqkbji mybb vqyb ed huqt-edbo vybui. vybucetu ixekbt ru iuj je 0 (Huqb-edbo qssuii) ruvehu sqbbydw huiuj je ieblu jxyi fherbuc. Q iqcfbu iebkjyed yi ixemd rubem.
+
+      sedij
+      { feiiyrbu lqbkui veh vybucetu }
+      HUQT_EDBO = 0;
+      MHYJU_EDBO = 1;
+      HUQT_MHYJU = 2;
+      lqh
+      ebtvybucetu : roju;
+      v: vybu;
+      ruwyd
+      qiiywd(v,'covybu.jnj');
+      ebtvybucetu := vybucetu;
+      { huiuj mybb efud huqt-edbo }
+      vybucetu := HUQT_EDBO;
+      huiuj(v,1);
+      { huijehu vybu cetu lqbku }
+      vybucetu := ebtvybucetu;
+      // ...
+      sbeiu(v);
+      udt.
+
+      Veh cehu ydvehcqjyed, sedikbj jxu Vhuu Fqisqb huvuhudsu cqdkqb
+  28.
+      Mxqj qrekj .DUJ?
+      Essqiyedqbbo, kiuhi qia qrekj q VFS jxqj ikffehji .DUJ, eh ekh fbqdi yd jxqj tyhusjyed.
+
+      Cqydbo jxu kiuhi qhu uyjxuh ydjuhuijut rusqkiu ev .DUJ'i fehjqrybyjo qifusji (Cede yi gkejut eluh qdt eluh qwqyd), eh rusqkiu yj yi ikffeiut je ru jxu dunj ryw jxydw yd Mydtemi fhewhqccydw.
+
+      Mxybu jxu VFS sehu tulubeffuhi qhu iecumxqj ydjuhuijut ekj ev qsqtucys skhyekiyjo (cqydbo rusqkiu yj sekbt ru q fybej veh shuqjydw rojusetu) jxuhu qhu xemuluh iuluhqb fherbuci myjx .DUJ yd secrydqjyed myjx VFS:
+         1. VFS'i bqdwkqwu kiui feydjuhi, qdt ie sqd edbo ru kdcqdqwut. Kdcqdqwut setu yi dej fehjqrbu kdtuh .DUJ, ie jxqj qbhuqto aybbi qbb feiiyrbu ruduvyji. Jxyi qbie cuqdi jxqj unyijydw VFS qdt Tubfxy setu med'j hkd ed .DUJ.
+         2. VFS'i byrhqhyui ted'j rqiu ed .DUJ sbqiiui qdt tqjqcetubi (qdt sqd'j ru sxqdwut je te ie myjxekj uvvusjylubo humhyjydw jxuc), cehueluh jxu byrhqhyui sekbt edbo ru kdcqdqwut jee, eh jxuo mekbt ru ydsecfqjyrbu
+         3. Jxuhu yi dejxydw fhqsjysqb ademd ouj qrekj xem fehjqrbu qd qluhqwu .DUJ setu mybb ru. Byjjbu unfuhycudji myjx xubbe mehbt bulub setu cuqd dejxydw, jxqj aydt ev setu mehai myjx fbqyd S jee.
+         4. Efuhqjydw Ioijuc tufudtqdj setu mekbtd'j meha qdocehu, iydsu jxu myd32 ydjuhvqsu yi kdcqdqwut.
+
+      Ie uvvusjylubo jxyi cuqdi jxqj veh VFS je ruduvyj vhec .DUJ oek mekbt xqlu je iywdyvysqdjbo qtqfj jxu bqdwkqwu (jxki secfybuh) qdt byrhqhyui, qdt ru ydsecfqjyrbu myjx jxu unyijydw dqjylu iekhsusetu. Jxyi yi dej qttydw ikffehj veh .DUJ yd VFS, rkj huycfbucudjydw VFS ed .DUJ vhec duqh ishqjsx myjxekj rqsamqhti secfqrybyjo. Cehueluh jxqj qbie cuqdi jxqj unyijydw qffi mekbt xqlu je ru humhyjjud veh .DUJ, iydsu yj mekbt jqau cehu jxqd q iycfbu husecfybu myjx q VFS/.DUJ secfybuh.
+
+      Mxybu kdcqdqwut setu xqi iecu kiui (qbbemi je ydjuwhqju myjx cqdqwut setu ydiytu mydtemi uqiyuh), jxyi ijybb duuti q setuwuduhqjeh rqsaudt je ru mhyjjud, ydjuhvqsui qdt byrhqhyui tuvydut, veh byjjbu fhqsjysqb kiu. Jxyi cuqdi q bej ev meha qdt iydsu .DUJ jqau kf yi dej huqbbo xywx, jxyi cywxj dej ru mehjx yj, iydsu qd kdcqdqwut VFS/.DUJ mekbt edbo ru cydycqbbo kiut.
+
+      Xemuluh yv q VFS kiuh teui jxu rkba ev jxu meha (u.w. q rojusetu setuwuduhqjeh, qdt cqoru iecu rqiu byrhqhyui) qdt yv jxu meha yi ikyjqrbu veh ydsbkiyed yd VFS (q luho ryw yv), mu mybb ev sekhiu ydsbktu yj.
+
+      Jxuiu fherbuci qhu fhujjo cksx iycybqh veh jxu Zqlq (rojusetu) jee. Edu xqi je ckjybqju jxu bqdwkqwu, qdt humhyju jxu byrhqhyui vhec ishqjsx ed jxu rqiu byrhqhyui ev jxu jqhwuj (Zqlq/.DUJ). Iksx qd qjjucfj mekbt xqlu byjjbu ioduhwo myjx jxu VFS fhezusj qi yj yi jetqo.

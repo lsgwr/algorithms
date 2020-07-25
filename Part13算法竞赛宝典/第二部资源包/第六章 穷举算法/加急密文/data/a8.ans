@@ -1,0 +1,154 @@
+
+Mandriva Legal FAQ
+
+   1.
+
+      Definitions
+   2.
+
+      What licensing model does Mandriva Linux follow?
+   3.
+
+      What is the difference between the Download Products License and the Commercial Products License?
+   4.
+
+      Do third party software products have their own licensing models?
+   5.
+
+      What is the functional difference between the Download Products and the Commercial Products, licenses aside?
+   6.
+
+      Can I distribute Download Products?
+   7.
+
+      Can I distribute Commercial Products for free?
+   8.
+
+      I am a Mandriva Club Member. Can I distribute "Power Pack", "Power Pack+", "Mandriva Linux Move", "AMD64 Edition" or "Power Pack DVD Edition" Mandrivalinux versions that I downloaded as a Member of Mandriva Club?
+   9.
+
+      Can I make modifications to Mandriva Linux Products?
+  10.
+
+      Can I distribute the modifications I performed on the Download Products of Mandriva Linux?
+  11.
+
+      Can I distribute the modifications I performed on the commercial versions of Mandriva Linux without asking Mandriva?
+  12.
+
+      I run e-commerce activities (i.e., I sell on eBay, on some other commercial site or on my own website); can I distribute a Mandriva product (including the Download) in the absence of an agreement?
+  13.
+
+      I am a magazine editor; can I distribute a Mandriva product (including the Download) with my magazine in the absence of an agreement?
+  14.
+
+      I am an OEM hardware vendor (i.e., I sell laptops, desktops, workstations, and servers). Can I sell them with the Download Version installed or included on a CD?
+  15.
+
+      I am a VAR (i.e., I distribute software products that include a Linux distribution). Can I include a Mandriva Linux distribution in my products and distribute them as is?
+  16.
+
+      I am a system integrator interested in Mandriva Linux. What can I do with your commercial products?
+  17.
+
+      I represent a business or organization which is interested in Mandriva Linux. Can I install a single Commercial Product on all of my machines?
+  18.
+
+      Can I use the graphics created by Mandriva independently of the software?
+
+1.Definitions
+Download Products :
+
+The Mandriva Linux Distributions that may be freely downloaded from our website and mirrors. These include (but are not restricted to) the "Mandrivalinux Download Edition" and "Mandralinux Move Download Edition".
+Commercial Products :
+
+The Mandriva Linux Distributions that are not available for free download and which are sold in retail, e-commerce, and directly by Mandriva its partners and distributors. These include (but are not restricted to) Discovery, Powerpack, Powerpack+, Corporate Server, Move, Multi Network Firewall, Mandrivaclustering, Mandriva Linux for PPC, and Mandrivalinux for AMD64.
+Free Software/Open Source Software :
+
+"Free software" (or "Open Source Software") refers to the users' freedom to use, copy, distribute, study, change and improve the software by following particular and well-defined licensing rules. For further details, refer to:
+html,http://www.gnu.org/philosophy/free-sw.html,
+http://www.opensource.org/docs/definition.php
+GPL :
+
+The General Public License is a Free Software license.
+For further details see http://www.gnu.org/licenses/gpl.html.
+
+2.What licensing model does Mandriva Linux follow?
+
+All code developed and distributed by Mandriva is released under the General Public License or equivalent. Mandriva Download Edition products only include software covered by a Free Software/Open Source license. Mandriva Commercial products include proprietary third-party software products, which contain their own licensing models.
+
+3.What is the difference between the Download Products License and the Commercial Products License?
+
+Both products are ruled by Open Source licenses. The difference is not the license of our products, but the licenses of third party software contained in the commercial distributions. Download Products only include components licensed under a Free Software/Open Source License. Commercial Products may also include software add-ons which are covered by a proprietary license which often prevents free copying and redistribution of the product.
+
+4.Do third party software products have their own licensing models?
+
+Yes. Third party software included in our Commercial products may be demonstration versions (e.g. Kaspersky, Crossover Office...), time limited versions, or versions that require a key to be activated, or freeware which retain a proprietary license. Please consult the appropriate instructions in each software package for complete licensing terms.
+
+5.What is the functional difference between the Download Products and the Commercial Products, licenses aside?
+
+/a Mandriva Commercial products include additional features and functions that improve operability with certain network adapters and graphic cards (such as proprietary drivers for N/aDIA(r) NForce and ATI (tm)). Furthermore, Mandrivasoft Commercial products often include support options (such as Mandriva Expert), documentation, and premium online services such as Mandriva Club and Mandrivaonline. Each commercial product is developed for a specific use to take advantage of superior system integration, extended life cycles, and/or maintenance programs.
+For further information about our products, please visit this page: http://www.mandriva.com/products/101/comparison.
+
+6.Can I distribute Download Products?
+
+/a Yes, it is permissible to copy and distribute Download products. In any case, the following notice must appear clearly and distinctively: This product is the Mandriva Linux Distribution known as ? Mandrivalinux Download Edition ? or "Mandriva Linux Move Download Edition" (or any other freely downloadable Mandriva product name). Commercial products such as "Mandriva Linux Powerpack Edition" (or "Mandrivalinux Move" or other derivative) include more features than the Download Edition such as commercial add-ons and third-party software. Commercial products also provide documentation and access to Mandriva services such as support. Download editions may be freely downloaded via the Internet at the following location:
+( http://www.mandrivalinux.com/en/ftp.php3).
+If you find this product useful, please support our efforts and join Mandriva Club by visiting the on-line club page:
+http://www.mandrivalinux.com/en/club/
+
+7.Can I distribute Commercial Products for free?
+
+No. Certain third party software, not governed by a free software license, is bundled with commercial products. Additionally, you may not use the Mandriva name, trademarks and logos (which is our business responsibility to protect), without prior agreement.
+
+8.I am a Mandriva Club Member. Can I distribute "Power Pack", "Power Pack+", "Mandriva Linux Move", "AMD64 Edition" or "Power Pack DVD Edition" Mandrivalinux versions that I downloaded as a Member of Mandriva Club?
+
+No. These products contain third party software which are covered by proprietary licenses and are thus not redistributable. Additionally, these are premium products offered to Club members as part of their subscription. Thus, they are not intended to be freely distributed. However, if you wish to become a Mandriva distributor, we would gladly welcome you as a Mandrivasoft Partner and establish a win/win agreement. See our Partner Page.
+
+9.Can I make modifications to Mandriva Linux Products?
+
+Yes. User contributed modifications aimed at improving software is the essence of Free Software. These modifications must retain the same Free Software license that you were granted (please refer to the GPL text for further details: www.gnu.org) whenever you distribute the resulting product.
+
+10.Can I distribute the modifications I performed on the Download Products of Mandriva Linux?
+
+You may not redistribute a modified version of Mandriva Download products unless all registered trademarks, brands, names and logos referring to Mandrivasoft are removed. This includes, for instance, the use of the word "Mandriva Linux", "Mandriva", the Mandriva Linux and Mandrivasoft logos. This is required to protect Mandrakesoft's intellectual property rights and to avoid creating confusion for our clients. However, if you wish to become a Mandrakesoft distributor, we would gladly welcome you as a Mandrakesoft Partner and establish a win/win agreement. See our Partner Page.
+
+11.Can I distribute the modifications I performed on the commercial versions of Mandriva Linux without asking Mandriva?
+
+Yes, but only if you remove all software that is not covered by a Free Software license. Also, all registered trademarks, brands, names and logos related to Mandriva must be removed. If you do not comply with these terms, you are not allowed to distribute the modifications as this would constitute an infringement of the intellectual property rights owned by each software owner. Also, you may not call this product "Mandriva Linux" or any other name related to Mandriva so our clients will not be confused by projects that we are not associated with.
+
+12.I run e-commerce activities (i.e., I sell on eBay, on some other commercial site or on my own website); can I distribute a Mandriva product (including the Download) in the absence of an agreement?
+
+You can only distribute the download and only if you comply with the rules exposed in questions 6 and question 8. Commercial products cannot be distributed without an agreement since you would be violating our trademark. Also you could be violating brand agreements we have signed with partners in specific areas. However, we favor such distributions and will be glad to put an agreement in place by which you can make such a distribution. Contact us at partner@mandriva.com. In any case, you cannot use any logo while selling products on the Web. Please refer to the following Guideline:
+When selling Download Products, please use this logo:
+
+When selling Retail Products (you must be a registered partner), please use this logo:
+
+13.I am a magazine editor; can I distribute a Mandriva product (including the Download) with my magazine in the absence of an agreement?
+
+Yes! All you need to do is to sign an agreement with Mandriva to use our trademarks and logos. The absence of such an agreement, you would be violating our trademark. Also you could be violating brand agreements we have signed with partners in specific areas. However, we favor such distributions and will be glad to settle an agreement by which you can do such a distribution.
+Contact us at covercd@mandriva.com. At this stage, many magazines have been distributing Mandriva Linux.
+
+14.I am an OEM hardware vendor (i.e., I sell laptops, desktops, workstations, and servers). Can I sell them with the Download Version installed or included on a CD?
+
+Yes! All you need to do is to sign an agreement with Mandriva to use our trademarks and logos. In absence of such an agreement, you would have to remove all utterances of our names and brands from the Mandriva Linux operating system. Also you will certainly want to be sure that our system runs properly on your hardware. We would be glad to see you participate in our certification program and enter a win-win distribution agreement with us. This will allow you to ensure the quality of the final products and leverage our brand. At this stage, several hundreds of OEMs have been distributing Mandriva Linux successfully. Contact us at: partner@mandriva.com
+
+15.I am a VAR (i.e., I distribute software products that include a Linux distribution). Can I include a Mandriva Linux distribution in my products and distribute them as is?
+
+Yes, of course: you just need to sign an agreement with Mandriva to use our trademarks and logos. In absence of such an agreement, you would have to remove our name and brands from your product. It is our responsibility to protect that name and brand. However we favor such distributions and will be glad to put in place a win-win agreement by which you can indeed include our product into yours.
+Contact us at: partner@mandriva.com
+
+16.I am a system integrator interested in Mandriva Linux. What can I do with your commercial products?
+
+We have a special program for you offering attractive prices and premium access to cutting-edge solutions. With the 4 levels Partner Program, you gain access to volume prices (one license per site), support, maintenance and updates. Get in touch with us for further details on 4 level Partner Program. This program is specifically designed for Value Added Resellers and System Integrators
+
+http://www.mandriva.com/partners/levels
+
+17.I represent a business or organization which is interested in Mandriva Linux. Can I install a single Commercial Product on all of my machines?
+
+If you need to install Mandriva Linux on several units, we have a special program which offers attractive prices and premium access to cutting-edge solutions. With the 4 level Partner Program, you gain access to volume prices (one license per site), support, maintenance and updates. Please get in touch with us for further details on Partner Program.
+
+18.Can I use the graphics created by Mandriva independently of the software?
+
+The "Star Logo" is registered and remains the intellectual property of Mandriva. You may register in our partnership program if you would like to use other Mandrivasoft visuals and graphics. Registration is free and easy on our website: Partner Page. When using our visuals, please refer to our Guidelines.
+

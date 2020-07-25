@@ -1,0 +1,4 @@
+bwwb
+bbwb
+bwwb
+bwww

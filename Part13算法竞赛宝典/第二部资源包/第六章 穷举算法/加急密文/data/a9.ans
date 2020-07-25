@@ -1,0 +1,296 @@
+#  General information
+
+   1.
+      What is Free Pascal (FPC)?
+
+      Originally named FPK-Pascal, the Free Pascal compiler is a 32 bit Turbo Pascal and Delphi compatible Pascal compiler for DOS, Linux, Win32, OS/2, FreeBSD, AmigaOS, MacOSX, MacOS classic and several other platforms (the number of supported targets grows all the time, although not all of them are on the same level as the main ones).
+
+      The Free Pascal compiler is available for several architectures, x86, Sparc (v8,v9), ARM, x86 64 (AMD64/Opteron) and Powerpc. An older version (the 1.0 series) also supports m68k.
+
+      The compiler is written in Pascal and is able to compile its own sources. The source files are under GPL and included.
+
+      Free Pascal is modest regarding its minimal system requirements (386-25 Mhz for the Intel version and ideally a 68020 processor for the Motorola version. FPU emulation required). At least 2 megabytes of RAM are required. To remake the compiler more than 32-64MB is recommended, less for 1.0.x versions.
+
+      Short history:
+          * 06/1993: project start
+          * 10/1993: first little programs work
+          * 03/1995: the compiler compiles the own sources
+          * 03/1996: released to the internet
+          * 07/2000: 1.0 version
+          * 12/2000: 1.0.4 version
+          * 04/2002: 1.0.6 version
+          * 07/2003: 1.0.10 version
+          * 05/2005: 2.0
+   2.
+      Which versions exist, and which one should I use?
+
+      The latest official version is 2.0.4, released as a bug fix release for 2.0.x series. New development is performed in 2.1.x series, which eventually gets released as either 2.2.0, or 3.0.0 (depending on amount of accumulated changes at the time of release).
+      Historic versions
+
+      FPC's version numbering changed a few times over the years. Versions before 0.99.5 are considered archaic. After the release of 0.99.5 a system in version numbering was introduced, and that system was changed slightly changed after the 1.0 release.
+
+      Versioning for versions 0.99.5 - 1.0
+
+      Compilers with an even last number are release versions (e.g. 0.99.8, 0.99.10, 0.99.12, 0.99.14 1.0.0)
+      Compilers and packages with an odd last number are development versions (e.g. 0.99.9, 0.99.11, 0.99.13, 0.99.15)
+
+      0.99.5 is an exception to this rule, since 0.99.5 IS a release (a release prior to the introduction of this odd/even system).
+
+      Letters behind the version number (0.99.12b, 0.99.5d) indicate release versions with some bugs and problems in the original release (respectively 0.99.12 and 0.99.5) fixed.
+
+      Versioning after 1.0
+
+      Together with the release of 1.0 the version numbering was slightly changed, and a system in versioning resembling the Linux kernel's has been introduced. The main difference is that the difference between a release version is now in the second number (1.0.x vs 1.1.x) instead of the third number (0.99.14 vs 0.99.15), and the third number now becomes the patch level, replacing the postfixed letter in the old system.
+
+          * Releases that only fixed bugs in version 1.0 were numbered 1.0.x.
+          * New development (the so called snapshots) started with version number 1.1.x.
+          * Eventually the 1.1.x versions, when stabilized turned to 2.x. Fixes on 2.0 release are numbered 2.0.x.
+          * The new development after the 2.0 release is numbered 2.1.x and so on.
+
+      Normally you would want to use a release. Releases are considered stable, and easier to support (the bugs, quirks and unintended "features" are well known after a period of time, and workarounds exist).
+
+      Development snapshots (which are generated daily) reflect the current status of the compiler. Development versions probably have new features and larger bugs fixed since the last release, but might have some temporary stability drawbacks (which are usually fixed by the next day).
+
+      Development snapshots are often quite useful for certain categories of users. Ask in the maillists if it is worth the trouble in your case if you're not sure.
+
+      We advise all users to upgrade to the newest version for their target (Preferably the new stable 2.0.x series).
+
+      A graphical timeline of the FPC project plus its near future would be:
+   3.
+      Free Pascal and GNU Pascal - a comparison
+
+      Aim:
+          Free Pascal tries to implement a Borland compatible pascal compiler on as many platforms as possible. GNU Pascal tries to implement a portable pascal compiler based on POSIX. 
+      Version:
+          Currently, Free Pascal is at version 2.0 (may 2005). GNU Pascal is at version 2.1 (from 2002, which can be built with several different GCC's as backend; their Mac OS X version is an exception though, as it follows the GCC version number). 
+      Tracking:
+          Between releases, development versions of FPC are available through daily snapshots and the source via CVS. GPC issues a set of patches to the last version a few times a year, and there are regular snapshot for OS X and Windows, made by users. 
+      Operating systems:
+          Free Pascal runs on a large amount of platforms of OSes, e.g. DOS, Win32 (no Unix porting layer needed), Linux, FreeBSD, NetBSD, OS/2, BeOS, Classic Mac OS, Mac OS X, and AmigaOS, on, at the moment the following architectures: x86, x86 64 (AMD64), Sparc, PowerPC, ARM and Motorola (Motorola only in version 1.0.x). GNU Pascal runs basically on any system that can run GNU C, and for which the buildprocess was verified. 
+      Bootstrapping:
+          FPC requires a suitable set of binutils (AS,AR,LD), gmake and a commandline compiler. New architectures/OSes are crosscompiled. GPC bootstraps via a suitable version of GCC, and requires a full set of binutils, flex, bison, gmake, a POSIX shell and libtool 
+      Sources:
+          Free Pascal is entirely written in Pascal (about 6 MB of source code), while GNU Pascal is written in C (it's an adaptation of the GNU C compiler: 2.8 MB code + 8 MB of GNU C code) 
+      Language:
+          Free Pascal supports the Borland Pascal dialect, implements the Delphi Object Pascal language and has some Mac Pascal extensions. GNU Pascal supports ISO 7185, ISO 10206, (most of) Borland Pascal 7.0 
+      Extensions:
+          Free Pascal implements method, function and operator overloading. (later Delphi versions add these, so strictly not an extension anymore) GNU Pascal implements operator overloading. 
+      License:
+          Both compilers come under the GNU GPL. 
+      Author:
+          Free Pascal was started by Florian Klaempfl, Germany (florian@freepascal.org), GNU Pascal was started by Jukka Virtanen, Finland (jtv@hut.fi). 
+
+
+   4.
+      License and copyright information
+
+      Applications created by the compiler and using the runtime library come under a modified library gnu public license (LGPL), which permit no restriction on the type of license the application has. It is therefore possible to create closed source or proprietary software using Free Pascal.
+
+      This extra exception to the LGPL is added:
+      As a special exception, the copyright holders of this library give you permission to link this library with independent modules to produce an executable, regardless of the license terms of these independent modules, and to copy and distribute the resulting executable under terms of your choice, provided that you also meet, for each linked independent module, the terms and conditions of the license of that module. An independent module is a module which is not derived from or based on this library. If you modify this library, you may extend this exception to your version of the library, but you not obligated to do so. If you do not wish to do so, delete this exception statement from your version.
+      Please note that you still have to comply to the LGPL, which, for example, requires you to provide the source code of the runtime library. If you want to write proprietary closed source software, please do this to comply:
+          * Most people can satisfy the source code requirement by mentioning the rtl source code can be downloaded at the Free Pascal web site: if you did not modify the rtl this is considered adequate to satisfy the LGPL requirement of providing source code.
+          * If you made modifications to the runtime library, you cannot keep them for yourself, you must make them available if requested.
+          * Distribute the LGPL license with your product. 
+
+      The compiler source code, on the other hand, comes under the GNU Public license, which means that any usage of the compiler source can only be used in software projects which have the same license.
+
+   5.
+      Getting the compiler
+
+      The latest official stable Free Pascal release is available for download from all official mirrors
+   6.
+      Free Pascal installation hints
+          * Do not install the compiler in a directory which contains spaces in its name, since some of the compiler tools do not like these
+
+   7.
+      Why do i have to supply a user name and password to get Free Pascal ?
+
+      You are trying to login in to an ftp site. You must use the login name: anonymous and as your password, you should put your e-mail address.
+   8.
+      Access denied error when connecting to the Free Pascal FTP site
+
+      The Free Pascal main ftp site can only accept a maximum number of simultaneous connections. If this error occurs, it is because this limit has been reached. The solution is either to wait and retry later, or better still use one of the Free Pascal mirror sites.
+   9.
+      Where can I find a text mode IDE?
+
+      The development of the IDE (integrated development environment) is not yet finished. However a working test version of the IDE is included with version 1.0.x and higher of the compiler. There might be problems running the DOS IDE under Windows NT and Windows 2000 (especially the debugger), in that case it is suggested to use the native Windows version.
+
+      The textmode IDE on *nix targets has several terminal problems. Try to use a real xterm as possible, and choose a font which has a Dos character set
+  10.
+      I want a new version NOW
+
+      In the time between the release of new official versions, you can have a look at and test developer versions (so-called "snapshots"). Be warned though: this is work under progress, so in addition to old bugs fixed and new features added, this may also contain new bugs.
+
+      Snapshots are generated automatically each night from the current source at that moment. Sometimes this may fail due to bigger changes not yet fully implemented. If your version doesn't work, try again one or two days later. You're advised not to download the GO32v1 version for Dos, since it's not supported any more.
+
+      The latest snapshot can always be downloaded from the development web page.
+  11.
+      Installing a snapshot
+
+      To install a snapshot, extract the zip archive into the existing program directory of the last official version of Free Pascal (after making a backup of the original of course). You can also extract it into an empty directory and then move the files to the program directory, overwriting existing files.
+
+      Make sure that you extract the ZIP archive such that the included directory structure remains intact. For example if you use PKUNZIP, use "pkunzip -d" instead of just "pkunzip". Note that snapshots also contain a new RTL which most likely can't be used with the previous release version, so backup your old RTL as well.
+  12.
+      Known bugs / Reporting bugs
+
+      Go to the bugs page.
+
+      If you wish to know the bugs for a specific Free Pascal version, go to the bugs page, display the bug database. At the end of the page you should see an option to view only specific bugs. Choose "With Version" with the version you want to get information about and "With Status" choose "Unfixed". This should display all bugs which are present in the specific version of the compiler you requested.
+  13.
+      I have to write a program for homework. Can you help?
+
+      No. Please, don't send us mail about homework, we are no teachers. The Free Pascal development team tries to give good support for the Free Pascal compiler and are trying to always reply to emails. If we get emails like this, this becomes harder and harder.
+  14.
+      How do I make a real Windows application with windows and menu bars?
+      The easiest way is to download Lazarus. It won't be just a Windows application, it will also work under Linux, FreeBSD and MacOS X.
+  15.
+      How do I make a game with Free Pascal? Can I make a game like Doom 3?
+      Yes, you can make games with Free Pascal and if you are really good you can make a game like Doom 3. Making games is difficult, you need to be an experienced programmer to make them. The web site www.pascalgamedevelopment.com is a community of people who program games in Free Pascal and Delphi.
+
+      If you want a start, please start to study JEDI-SDL or PTCPas. Also you can try to study an existing game, for example The Sheep Killer is a very simple game and it should not be very hard to understand its code.
+  16.
+      Getting more information when an application crashes
+         1. The easiest possibility is to recompile your program with -gl debugging option. This way unit LineInfo is automatically linked in, and the printout after a program crash then contains source line numbers in addition to addresses of the crash. To see runtime library (RTL) functions in the backtrace with their real name, you have to recompile the RTL with -gl too.
+         2. For more comprehensive checking, compile the program with debugging information (use the -g command line option)
+         3. Load the program in the debugger
+
+            gdb(pas)(w) --directory=<src dirs> myprog.exe
+
+            Notes:
+                * Under UNIX systems (Linux, the BSD's), don't add the ".exe" after myprog
+                * "src dirs" is a list of directories containing the source code files of myprog and the units it uses seperated by semi-colons (";"). The current directory is automatically included.
+         4. Once inside the debugger, you can (optionally) set the command line options that will be passed to your program using the command "set args <option1 option2 ...>"
+         5. To start the program, type "run" and press enter
+         6. After the program has crashed, the address of the instruction where the crash occurred will be shown. The debugger will try to display the source code line corresponding with this address. Note that this can be inside a procedure of the RTL, so the source may not always be available and most likely the RTL wasn't compiled with debugging information.
+         7. If you then type "bt" (BackTrace), the addreses in the call stack will be shown (the addresses of the procedures which were called before the program got to the current address). You can see which source code lines these present using the command
+
+            info line *<address>
+
+            For example:
+
+            info line *0x05bd8
+
+  17.
+      Increasing the heap size
+
+      By default Free Pascal allocates a small part of RAM for your application as heap memory. If it just allocated all it could get, people running Windows would have problems as Windows would increase the swap file size to give the program more memory on and on, until the swap file drive would be full.
+
+      You can specify the size of the heap with -Chxxxx.
+
+      However, the heap size doesn't really matter, since the Heap is able to grow: if you've used all the available heap space, the program will try to get more memory from the Operating system (OS), so the heap is limited to the maximum amount of free memory provided by the OS.
+
+      It is only handy if you know you will need at least a certain amount of memory. You can then specify this value using the -Ch parameter, so your program will allocate it at once on startup. This is slightly faster than growing the heap a number of times.
+  18.
+      Compiler seems to skip files in directories that -Fu points to
+
+      This sometimes happens with installation/compilation scripts if the copying command doesn't preserve dates. The object files get older than the PPU file, and the compiler tries to recompile them. A simple touch will solve it.
+
+      Also note that FPC, contrary to Turbo Pascal keeps track of includefiles. Modified includefiles or duplicate names might trigger an attempt at recompiling
+  19.
+      Why are the generated binaries so big?
+
+      There are several reasons and remedies for this:
+
+         1.
+
+            You can create smartlinked applications. To turn on the generation of smartlinkable units, use the -Cx command line option when compiling your units. To turn on the linking of previously generated smarlinkable units, use the -XX (-XS in 0.99.12 and earlier) command line option when compiling a program.
+         2. Normally, all symbol information is included in the resulting program (for easier debugging). You can remove this by using the -Xs command line option when compiling your program (it won't do anything when compiling units)
+         3. You can use UPX to pack the .EXEs (just like e.g. pklite) for Dos (GO32v2) and Windows targets. Look here for more info.
+         4. You can use LXLITE for packing EMX binaries, but you won't be able to run them under DOS (with extender) any more then. This issues is not relevant for native OS/2 binaries compiled for target OS2 with version 1.9.x and above, because these don't run under DOS anyway. In addition, it might not be possible to use compressed binaries on lower OS/2 versions (like 2.x) depending on chosen type of compression. LXLITE can be found e.g. on Hobbes, search for LXLITE.
+         5. Turn on optimalisations, both for supplied packages (RTL, FV, FCL) and for your own code, this will also decrease the code size.
+         6. Keep in mind that under NT,2000,XP, compressed binaries startup relatively slow. Test under various conditions (OS, CPU speed, memory) if the behaviour is acceptable before compressing
+
+  20.
+      Configuration file problems (fpc.cfg or ppc386.cfg)
+
+      Starting from version 1.0.6 of Free Pascal, the configuration file is now called fpc.cfg instead of ppc386.cfg. For backward compatibility , ppc386.cfg is still searched first and, if found, is used instead of fpc.cfg
+
+      Versions prior to Free Pascal 1.0.6 do not recognize fpc.cfg, so if you wish to use an earlier version of the compiler using the same configuration file used with FPC version 1.0.6 (or later), the configuration file should be renamed to ppc386.cfg
+      .
+  21.
+      Runtime errors
+
+      When there is abnormal termination of an application generated by Free Pascal, it is very probable that a runtime error will be generated. These errors have the form :
+
+      Runtime error 201 at 0x00010F86
+      0x00010F86  main,  line 7 of testr.pas
+      0x0000206D
+
+      The 201 in this case indicates the runtime error number. The definition of the different runtime error numbers is described in the Free Pascal user's manual, Appendix D. The hexadecimal numbers represent the call stack when the error occured.
+  22.
+      Standard units
+
+      To see the list of base units supplied with Free Pascal, and on which platform they are supported, consult the Free Pascal user's manual. There is also a short description of what each unit does in the same section of the manual.
+  23.
+      How does the compiler work internally?
+  24.
+      Debugging smartlinked code does not fully work
+
+      Debugging smart linked code might not work correctly. This is due to the fact that no type information is emitted for smartlinked code. If this would not be done, the files would become enormous.
+
+      While debugging, it is not recommended to use the smartlinking option.
+  25.
+      Debugging shared library (dynamic linked library) code does not fully work
+
+      Debugging shared libraries (or dynamic linked libraries) produced by the Free Pascal compiler is not officially supported.
+  26.
+      PPU files binary compatibility between versions
+      Can't compile a program using a binary only version of a unit
+
+      Sometimes, even though there is a binary version of a module (unit file and object file) available, the compiler still gives compilation errors. This can be caused either by an incompatibility in the PPU file format (which should change only between major versions of the compiler), or by a change in one of the units of the RTL which has changed in between releases.
+
+      To get more information, compile the code using the -va (show all information) compiler switch, and the unit loading phase will be displayed. You might discover that the unit being loaded requires to be recompiled because one of the unit it uses has changed.
+
+      So if you plan on distributing a module without the source code, the binaries should be compiled and made available for all versions of the compiler you wish to support, otherwise compilation errors are bound to occur.
+
+      In other words, the unit (PPU) file format does not change significantly in between minor releases of the compiler (for exemple : from 1.0.4 and 1.0.6) which means they are binary compatible, but because the interface of the units of the RTL certainly changes between versions, recompilation will be required for each version anyways.
+  27.
+      File denied errors when opening files with reset
+
+      Trying to open files using reset on non-text files might cause a Runtime Error 5 (Access denied).
+
+      All files opened using the above system unit routine use the current filemode value to determine how the file is opened. By default, filemode is set to 2 (Read/Write access).
+
+      So, a call to reset on non-text files does not indicate that the file will be opened read-only. So, trying to open a file using reset with the defaults will fail on read-only files. filemode should be set to 0 (Real-only access) before calling reset to solve this problem. A sample solution is shown below.
+
+      const
+      { possible values for filemode }
+      READ_ONLY = 0;
+      WRITE_ONLY = 1;
+      READ_WRITE = 2;
+      var
+      oldfilemode : byte;
+      f: file;
+      begin
+      assign(f,'myfile.txt');
+      oldfilemode := filemode;
+      { reset will open read-only }
+      filemode := READ_ONLY;
+      reset(f,1);
+      { restore file mode value }
+      filemode := oldfilemode;
+      // ...
+      close(f);
+      end.
+
+      For more information, consult the Free Pascal reference manual
+  28.
+      What about .NET?
+      Occasionally, users ask about a FPC that supports .NET, or our plans in that direction.
+
+      Mainly the users are either interested because of .NET's portability aspects (Mono is quoted over and over again), or because it is supposed to be the next big thing in Windows programming.
+
+      While the FPC core developpers are somewhat interested out of academic curiousity (mainly because it could be a pilot for creating bytecode) there are however several problems with .NET in combination with FPC:
+         1. FPC's language uses pointers, and so can only be unmanaged. Unmanaged code is not portable under .NET, so that already kills all possible benefits. This also means that existing FPC and Delphi code won't run on .NET.
+         2. FPC's libraries don't base on .NET classes and datamodels (and can't be changed to do so without effectively rewriting them), moreover the libraries could only be unmanaged too, or they would be incompatible
+         3. There is nothing practical known yet about how portable an average .NET code will be. Little experiments with hello world level code mean nothing, that kind of code works with plain C too.
+         4. Operating System dependant code wouldn't work anymore, since the win32 interface is unmanaged.
+
+      So effectively this means that for FPC to benefit from .NET you would have to significantly adapt the language (thus compiler) and libraries, and be incompatible with the existing native sourcecode. This is not adding support for .NET in FPC, but reimplementing FPC on .NET from near scratch without backwards compability. Moreover that also means that existing apps would have to be rewritten for .NET, since it would take more than a simple recompile with a FPC/.NET compiler.
+
+      While unmanaged code has some uses (allows to integrate with managed code inside windows easier), this still needs a codegenerator backend to be written, interfaces and libraries defined, for little practical use. This means a lot of work and since .NET take up is not really high, this might not be worth it, since an unmanaged FPC/.NET would only be minimally used.
+
+      However if a FPC user does the bulk of the work (e.g. a bytecode codegenerator, and maybe some base libraries) and if the work is suitable for inclusion in FPC (a very big if), we will of course include it.
+
+      These problems are pretty much similar for the Java (bytecode) too. One has to mutilate the language, and rewrite the libraries from scratch on the base libraries of the target (Java/.NET). Such an attempt would have little synergy with the FPC project as it is today.
