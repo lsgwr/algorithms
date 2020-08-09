@@ -134,32 +134,81 @@ public class Main {
     static int n;
     static List<List<int[]>> ccs = new ArrayList<>(); // 存储所有联通分量
     static boolean[][] visited;
-    
+
     static boolean inGrid(int r, int c) {
-        return r >= 0 && r < n && c >= 0 && c < n; 
+        return r >= 0 && r < n && c >= 0 && c < n;
     }
-    
+
     // BFS记录所有的联通分量
     static void bfs(int rStart, int cStart) {
         List<int[]> cc = new ArrayList<>(); // 存储联通分量内点的情况
-        cc.add(new ArrayList<>());
-    }
-    
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        visited = new boolean[n][n];
-        w = new int[n][n];
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) w[i][j] = sc.nextInt();
-        }
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                if(!visited[i][j]) bfs(i, j);
+        Queue<int[]> q = new ArrayDeque<>(); // 队列存储入队情况
+        q.add(new int[]{rStart, cStart});
+        cc.add(new int[]{rStart, cStart});
+        visited[rStart][cStart] = true; // 必须在加入队列后进行记录
+        while (!q.isEmpty()) {
+            int[] point = q.remove();
+            int r = point[0];
+            int c = point[1];
+            for (int[] dir : dirs) {
+                int rNext = r + dir[0];
+                int cNext = c + dir[1];
+                while (inGrid(rNext, cNext) && !visited[rNext][cNext] && w[r][c] == w[rNext][cNext]) {
+                    q.add(new int[]{rNext, cNext});
+                    cc.add(new int[]{rNext, cNext});
+                    visited[rNext][cNext] = true;
+                }
             }
         }
+        ccs.add(cc);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        visited = new boolean[n][n];
+        w = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) w[i][j] = sc.nextInt();
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (!visited[i][j]) bfs(i, j);
+            }
+        }
+        int topCnt = 0, bottomCnt = 0; // 山谷计数、山峰计数
         // Todo：遍历所有联通分量，统计山峰和山谷
-        
+        for (List<int[]> cc : ccs) {
+            // 判断是山峰还是山谷
+            int adjCnt = 0; // 非联通分量的相邻点的个数
+            boolean isTop = false, isBottom = false; // 是山峰还是山谷
+            for (int[] point : cc) {
+                for (int[] dir : dirs) {
+                    int rNext = point[0] + dir[0];
+                    int cNext = point[1] + dir[1];
+                    if (inGrid(rNext, cNext)) {
+                        if (w[rNext][cNext] > w[point[0]][point[1]]) { // 非联通分量山的点大于当前点，当前联通分量为山谷
+                            isBottom = true;
+                            adjCnt++;
+                        }
+                        if (w[rNext][cNext] < w[point[0]][point[1]]) { // 非联通分量山的点小于当前点，当前联通分量为山峰
+                            isTop = true;
+                            adjCnt++;
+                        }
+                        // w[rNext][cNext] == w[point[0]][point[1]] 说明是联通分量上的点，此处不予考虑
+                    }
+                }
+            }
+            if (adjCnt > 0) { // 有邻接区域，判断是山峰还是山顶
+                if (isTop && !isBottom) topCnt++;
+                if (!isTop && isBottom) bottomCnt++;
+            } else {
+                // 周围不存在相邻区域，则同时视为山峰和山谷
+                topCnt++;
+                bottomCnt++;
+            }
+        }
+        System.out.println(topCnt + " " + bottomCnt);
     }
 }
 ```
