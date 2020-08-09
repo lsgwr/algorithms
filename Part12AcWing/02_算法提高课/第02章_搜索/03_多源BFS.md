@@ -1,7 +1,17 @@
 # 多源BFS
-> 一般尝试从终点向起点遍历，这样不用考虑多点之间的覆盖问题，一次性把所有终点加入进BFS的Queue，进行一遍BFS，最终的dis数组就是我们要的最小距离，和自己第一次专业级考试的第一题完全相同
+> 一般尝试从终点向起点遍历(`即逆向思维，这点非常重要！`)，这样不用考虑多点之间的覆盖问题，一次性把所有终点加入进BFS的Queue，进行一遍BFS，最终的dis数组就是我们要的最小距离，和自己第一次专业级考试的第一题完全相同。在时间和空间上，逆向都由于正向数十倍！
+ 
+> 参考博客
 
-## `自己没做出来，正向做法超时了`[173.矩阵距离](https://www.acwing.com/problem/content/description/175/)
++ [【力扣1162】 多源BFS](https://zhuanlan.zhihu.com/p/130229427)
++ [地图分析--多源BFS](https://blog.csdn.net/ATFWUS/article/details/105184960)
+
+> 更多本类的题目
+
++ [LeetCode 1162.地图分析](https://leetcode-cn.com/problems/as-far-from-land-as-possible/)
++ [LeetCode 499.迷宫 III](https://leetcode-cn.com/problems/the-maze-iii/)
+
+## `自己没做出来，正向做法超时了`[AcWing 173.矩阵距离](https://www.acwing.com/problem/content/description/175/)
 ```java
 // 多源BFS要学会从终点开始遍历，互相之间不用覆盖即可。即逆向思维
 import java.util.*;
