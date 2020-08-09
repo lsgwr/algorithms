@@ -12,6 +12,12 @@
 + [LeetCode 499.迷宫 III](https://leetcode-cn.com/problems/the-maze-iii/)
 
 ## `自己没做出来，正向做法超时了`[AcWing 173.矩阵距离](https://www.acwing.com/problem/content/description/175/)
+
+这道题目我们主要要注意转换原题,原题告诉我们要求最短路,这个我们不能改变,但是原题说让我们求每个数与1的距离,那么我们只需要记住一点,那就是BFS具有层次单调性,且最重要的是天生自带flood-fill问题的解法.
+flood-fill问题:一个起点到其他位置的最少步数.
+这道题目我们完全可以认为是多起点问题,也就是说,我们直接将所有为1的点,加入到状态队列之中,那么这道题目就解决了.
+
+
 ```java
 // 多源BFS要学会从终点开始遍历，互相之间不用覆盖即可。即逆向思维
 import java.util.*;
