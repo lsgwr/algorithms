@@ -1,3 +1,5 @@
+package C08_广度优先搜索.T864_获取所有钥匙的最短路径;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +29,12 @@ public class Solution {
     public int shortestPathAllKeys(String[] grid) {
         R = grid.length;
         C = grid[0].length();
-        this.grid = grid.;
+        this.grid = grid;
         // 锁的数目
         int K = 0;
         for (int r = 0; r < R; r++) {
             for (int c = 0; c < C; c++) {
-                if (grid[r].charAt(c) == '@'){
+                if (grid[r].charAt(c) == '@') {
                     // 找到起点
                     rStart = r;
                     cStart = c;
@@ -112,5 +114,7 @@ public class Solution {
     }
 
     private int bfs(int start, int end, boolean[][] visited, List<Character> keys) {
+        // Todo
+        return -1;
     }
 }
