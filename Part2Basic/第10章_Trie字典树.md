@@ -194,4 +194,40 @@ private boolean match(Node node, String word, int index) {
 > https://leetcode-cn.com/tag/trie/
 
 + [421.数组中两个数的最大异或值](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/)
+> 还没做完
+```java
+class Solution {
+    // 这里每个节点的邻接子树只有0和1两种情况，实际Map只有两个键
+    class Node {
+        int num = -1;
+        boolean isNum;
+        TreeMap<Integer, Node> children;
+        Node () {
+            children = new TreeMap<>();
+        }
+    }
+
+    private Node root;
+
+    public Trie() {
+        root = new Node(); // 初始节点
+    }
+
+    public int findMaximumXOR(int[] nums) {
+        for (int num : nums) { // 把num的二进制逐位存入到Trie中
+            Node cur = root; // 从根节点开始
+            for (int i = 31; i >= 0; i--) {
+                int ibit = num & (1 >> i); // num的第位对应的二进制表示
+                if(cur.children.get(ibit) == null) cur.children.put(ibit, new Node());
+                cur = cur.children.get(c);
+            }
+            cur.isNum = true;
+            cur.num = num; // 二进制的最后一位，标记为是数字并把数字记上
+        }
+
+        // 算最大的异或值
+        
+    }
+}
+```
 + []
