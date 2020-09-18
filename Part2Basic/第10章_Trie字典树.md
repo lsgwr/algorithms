@@ -192,3 +192,6 @@ private boolean match(Node node, String word, int index) {
 
 ## LeetCode上字典树相关的问题
 > https://leetcode-cn.com/tag/trie/
+
++ [421.数组中两个数的最大异或值](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/)
++ []
