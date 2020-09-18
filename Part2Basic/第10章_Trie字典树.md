@@ -197,10 +197,7 @@ private boolean match(Node node, String word, int index) {
 > 还没做完
 ```java
 class Solution {
-    // 这里每个节点的邻接子树只有0和1两种情况，实际Map只有两个键
     class Node {
-        int num = -1;
-        boolean isNum;
         TreeMap<Integer, Node> children;
         Node () {
             children = new TreeMap<>();
@@ -225,8 +222,28 @@ class Solution {
             cur.num = num; // 二进制的最后一位，标记为是数字并把数字记上
         }
 
-        // 算最大的异或值
-        
+        // Todo:算最大的异或值，叶子节点存储地就是每个对应的数
+        for(int num: nums) {
+            Node node = root;
+            for(int i = 31; i >= 0; i--) {
+                if ((num & (1 << i)) == 0) {
+                    if (node.right != null) {
+                        node = node.right;
+                    } else {
+                        node = node.left;
+                    }
+                } else {
+                    if (node.left != null) {
+                        node = node.left;
+                    } else {
+                        node = node.right;
+                    }
+                }
+            }
+            int nn = node.left.val;
+            max = Math.max(max, n ^ nn);
+        }
+        return max;
     }
 }
 ```
