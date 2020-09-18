@@ -10,24 +10,20 @@ package Chapter10Trie.Section2To4TrieBasicAddContainPrefix;
 import java.util.TreeMap;
 
 public class Trie {
-    private class Node {
+    class Node {
         /**
          * 当前节点所属的到根节点的链路能不能形成一个单词
          */
-        public boolean isWord;
+        boolean isWord;
         /**
          * 指向下一个节点的map指针，因为一个节点可能有多个子节点
          * (英文单词每个节点可能对应下面的26个)，所以是一对多的关系，故需要map来存储
+         * 此外存Map可以实现快速根据键值选中符合条件的子节点，因此此处必须用Map
          */
-        public TreeMap<Character, Node> next;
+        TreeMap<Character, Node> next;
 
-        public Node(boolean isWord) {
-            this.isWord = isWord;
+        Node() {
             next = new TreeMap<>();
-        }
-
-        public Node() {
-            this(false);
         }
     }
 
@@ -57,7 +53,7 @@ public class Trie {
      *
      * @param word 要添加的单词
      */
-    public void add(String word) {
+    public void insert(String word) {
         // 开始从根节点开始
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
@@ -66,7 +62,7 @@ public class Trie {
             if (cur.next.get(c) == null) {
                 cur.next.put(c, new Node());
             }
-            // 当在当前节点指向的孩子节点中存在要插入的字符c的时候,直接跳过
+            // cur节点往后移动一位，这里用map的作用就体现出来了，可以快速找到当前字符c处在哪个子节点上
             cur = cur.next.get(c);
         }
         // 先判断这个单词是不是以前就存在
@@ -83,15 +79,13 @@ public class Trie {
      * @param word 要查询的单词
      * @return 是否包含指定单词
      */
-    public boolean contains(String word) {
+    public boolean search(String word) {
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
-            // 只要在第二层找不到word第一个字符(第二层是所有单词的起点)
-            if (cur.next.get(c) == null) {
-                return false;
-            }
-            cur = cur.next.get(c);
+            // 当前节点的子节点是否包含字符c，不包含则肯定不包含单词word了，直接返回即可
+            if (cur.next.get(c) == null) return false;
+            cur = cur.next.get(c); // 循环到下一个点
         }
         // 到达字符串的最后一个字符,即使有这个单词，但是isWord不为True也表明没有被标记过。不算包含这个单词
         return cur.isWord;
@@ -107,13 +101,11 @@ public class Trie {
         Node cur = root;
         for (int i = 0; i < prefix.length(); i++) {
             char c = prefix.charAt(i);
-            // 只要在第二层找不到word第一个字符(第二层是所有单词的起点)
-            if (cur.next.get(c) == null) {
-                return false;
-            }
-            cur = cur.next.get(c);
+            // 当前节点的子节点是否包含字符c，不包含则肯定不包含前缀prefix了，直接返回即可
+            if (cur.next.get(c) == null) return false;
+            cur = cur.next.get(c); // 循环到下一个点
         }
-        // 只要找到这个链路，就可认为这个前缀是存在地
+        // 只要找到这个前缀，就可认为包含这个前缀的单词是存在地，不需要判断前缀到达的位置是否是单词
         return true;
     }
 }
