@@ -53,7 +53,7 @@ public class Trie {
      *
      * @param word 要添加的单词
      */
-    public void insert(String word) {
+    public void add(String word) {
         // 开始从根节点开始
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
@@ -79,7 +79,7 @@ public class Trie {
      * @param word 要查询的单词
      * @return 是否包含指定单词
      */
-    public boolean search(String word) {
+    public boolean contains(String word) {
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
