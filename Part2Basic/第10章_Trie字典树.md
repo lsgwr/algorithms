@@ -231,3 +231,6 @@ private boolean match(Node node, String word, int index) {
 
 ### 模式匹配
 ### 编译原理
+
+## LeetCode上字典树相关的问题
+> https://leetcode-cn.com/tag/trie/
