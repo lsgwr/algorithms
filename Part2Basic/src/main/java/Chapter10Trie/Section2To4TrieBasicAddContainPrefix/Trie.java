@@ -59,9 +59,7 @@ public class Trie {
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             //  当在当前节点指向的孩子节点中不存在要插入的字符c的时候。为null表示不存在，把字符串作为新的Trie节点插入
-            if (cur.next.get(c) == null) {
-                cur.next.put(c, new Node());
-            }
+            if (cur.next.get(c) == null) cur.next.put(c, new Node());
             // cur节点往后移动一位，这里用map的作用就体现出来了，可以快速找到当前字符c处在哪个子节点上
             cur = cur.next.get(c);
         }
