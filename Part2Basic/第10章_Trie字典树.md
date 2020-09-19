@@ -267,4 +267,96 @@ class Solution {
 }
 ```
 
-+ [212.单词搜索II](https://leetcode-cn.com/problems/word-search-ii/)
+### [212.单词搜索II](https://leetcode-cn.com/problems/word-search-ii/)
+> 要对DFS的细节和字典树的细节充分了解
+
+```java
+import java.util.*;
+
+class Solution {
+    class Node {
+        boolean isWord;
+        String word;
+        TreeMap<Character, Node> children;
+
+        Node() {
+            children = new TreeMap<>();
+        }
+    }
+
+    private Node root;
+
+    private Set<String> res;
+
+    private int R, C;
+
+    private final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+
+    public Solution() {
+        root = new Node();
+        res = new HashSet<>();
+    }
+
+    private char[][] grid;
+
+    private boolean[][] visited;
+
+    private boolean inGrid(int r, int c) {
+        return r >= 0 && r < R && c >= 0 && c < C;
+    }
+
+    public void add(String word) {
+        Node cur = root;
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            if (cur.children.get(c) == null) cur.children.put(c, new Node());
+            cur = cur.children.get(c);
+        }
+        if (cur.isWord) return;
+        cur.isWord = true;
+        cur.word = word; // 在是单词的地方记录下是哪个单词
+    }
+
+    // 把DFS和字典的search结合在一起
+    public List<String> findWords(char[][] board, String[] words) {
+        this.grid = board;
+        this.R = board.length;
+        this.C = board[0].length;
+        for (String word : words) add(word); // 添加单词，构建词典树
+
+        for (int r = 0; r < R; r++) {
+            for (int c = 0; c < C; c++) {
+                if (root.children.containsKey(board[r][c])) {
+                    visited = new boolean[R][C];
+                    dfs(r, c, root.children.get(board[r][c])); // 从当前字符开始往下DFS遍历
+                }
+            }
+        }
+        return new ArrayList<>(res);
+    }
+
+    private void dfs(int r, int c, Node node) {
+        if (node == null) return;
+        if (node.isWord) res.add(node.word);
+        visited[r][c] = true;
+
+        for (int[] dir : dirs) {
+            int rNext = r + dir[0];
+            int cNext = c + dir[1];
+            if (inGrid(rNext, cNext) && !visited[rNext][cNext] && node.children.containsKey(grid[rNext][cNext])) {
+                dfs(rNext, cNext, node.children.get(grid[rNext][cNext]));
+                visited[rNext][cNext] = false; // 回溯时要把标记为改回去
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        char[][] board = {{'o', 'a', 'a', 'n'}, {'e', 't', 'a', 'e'}, {'i', 'h', 'k', 'r'}, {'i', 'f', 'l', 'v'}};
+        String[] words = {"oath", "pea", "eat", "rain"};
+
+        solution.findWords(board, words);
+    }
+}
+```
