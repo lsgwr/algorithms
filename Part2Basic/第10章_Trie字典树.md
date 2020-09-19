@@ -194,7 +194,7 @@ private boolean match(Node node, String word, int index) {
 > https://leetcode-cn.com/tag/trie/
 
 ### [421.数组中两个数的最大异或值](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/)
-> 这个题目很巧妙，暴力法能过，但是效率太低了，还是要用字典树来做
+> 这个题目很巧妙，暴力法能过，但是效率太低了，还是要用字典树来做。树的子节点因为只有0和1两种，因此可以把children从map改成两个Node属性，代码也好理解
 
 ```java
 import java.util.*;
