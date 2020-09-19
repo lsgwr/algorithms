@@ -53,3 +53,83 @@ public class Main {
     }
 }
 ```
+
+## 2.[LeetCode 527.单词缩写](https://leetcode-cn.com/problems/word-abbreviation)
+```txt
+给定一个由n个不重复非空字符串组成的数组，你需要按照以下规则为每个单词生成最小的缩写。
+
+初始缩写由起始字母+省略字母的数量+结尾字母组成。
+若存在冲突，亦即多于一个单词有同样的缩写，则使用更长的前缀代替首字母，直到从单词到缩写的映射唯一。换而言之，最终的缩写必须只能映射到一个单词。
+若缩写并不比原单词更短，则保留原样。
+示例:
+
+输入: ["like", "god", "internal", "me", "internet", "interval", "intension", "face", "intrusion"]
+输出: ["l2e","god","internal","me","i6t","interval","inte4n","f2e","intr4n"]
+ 
+
+注意:
+
+n和每个单词的长度均不超过 400。
+每个单词的长度大于 1。
+单词只由英文小写字母组成。
+返回的答案需要和原数组保持同一顺序。
+```
+
+```java
+// 首先给每个单词选择最短的缩写。然后我们对于所有重复的单词，我们增加这些重复项的长度。
+// 参考：https://leetcode-cn.com/problems/word-abbreviation/solution/dan-ci-suo-xie-by-leetcode/
+class Solution {
+    private int[] prefixs;
+    private Map<Integer, String> wordsCur;
+
+    // 单词word需保留前prefix个字符以及最后一个字符中间的字符用end - prefix - 1来代替
+    private String abbrev(String word, int prefix) {
+        // prefix已经到了最后一个字符了，word已经不用变了
+        if (prefix >= (word.length() - 1)) {
+            return word;
+        }
+        return word.substring(0, prefix) + (word.length() - 1 - prefix) + word.substring(word.length() - 1);
+    }
+
+    // 查找重复单词，存在地话返回重复的单词的下标
+    private Set<String> getRepeated() {
+        Set<String> result = new HashSet<>();
+        Map<String, Integer> wordCnt = new HashMap<>();
+        for (int index : wordsCur.keySet()) {
+            String word = wordsCur.get(index);
+            if (wordCnt.get(word) == null) wordCnt.put(word, 1);
+            else result.add(word); // 把重复出现的单词加入到结果中去
+        }
+        return result;
+    }
+
+    // 首先给每个单词选择最短的缩写。然后我们对于所有重复的单词，我们增加这些重复项的长度。
+    public List<String> wordsAbbreviation(List<String> words) {
+        wordsCur = new HashMap<>(); // 记录当前的单词
+        prefixs = new int[words.size()];
+        Arrays.fill(prefixs, 1); // 初始认为每个单词的前缀都只保留一个字符
+        for (int i = 0; i < words.size(); i++) {
+            wordsCur.put(i, abbrev(words.get(i), prefixs[i]));
+        }
+        // 查找重复单词
+        Set<String> repeatedWords = getRepeated();
+        while (repeatedWords.size() != 0) {
+            for (int i = 0; i < words.size(); i++) {
+                if (repeatedWords.contains(wordsCur.get(i))) {
+                    prefixs[i]++; // 找到重复的单词就尝试把单词前缀长度+1
+                    wordsCur.put(i, abbrev(words.get(i), prefixs[i])); // 更新单词缩写
+                }
+            }
+            repeatedWords = getRepeated();
+        }
+
+        List<String> result = new ArrayList<>();
+        for (Integer index : wordsCur.keySet()) {
+            if (wordsCur.get(index).length() < words.get(index).length()) result.add(wordsCur.get(index));
+            else result.add(words.get(index)); // 缩写后的单词长度比原来地还长，就把原来的单词加进去
+        }
+        return result;
+    }
+}
+```
+
