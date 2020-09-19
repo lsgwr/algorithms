@@ -268,7 +268,7 @@ class Solution {
 ```
 
 ### [212.单词搜索II](https://leetcode-cn.com/problems/word-search-ii/)
-> 要对DFS的细节和字典树的细节充分了解
+> 要对DFS的细节和字典树的细节充分了解，在dfs的过程中，添加了一个trie树的剪枝，然后把符合要求的返回到结果中
 
 ```java
 import java.util.*;
