@@ -270,6 +270,8 @@ class Solution {
 ### [212.单词搜索II](https://leetcode-cn.com/problems/word-search-ii/)
 > 要对DFS的细节和字典树的细节充分了解，在dfs的过程中，添加了一个trie树的剪枝，然后把符合要求的返回到结果中
 
+结合数据结构和题目的特殊条件进行剪枝，是做DFS和BFS必须学会的技巧
+
 ```java
 import java.util.*;
 
