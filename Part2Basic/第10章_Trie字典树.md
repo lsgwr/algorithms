@@ -193,57 +193,76 @@ private boolean match(Node node, String word, int index) {
 ## LeetCode上字典树相关的问题
 > https://leetcode-cn.com/tag/trie/
 
-+ [421.数组中两个数的最大异或值](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/)
-> 还没做完
+### [421.数组中两个数的最大异或值](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/)
+> 这个题目很巧妙，暴力法能过，但是效率太低了，还是要用字典树来做
+
 ```java
+import java.util.*;
+
 class Solution {
+    // 这里每个节点的邻接子树只有0和1两种情况，实际Map只有两个键
     class Node {
-        TreeMap<Integer, Node> children;
-        Node () {
-            children = new TreeMap<>();
+        int val;
+        Node left, right; // 左侧为0， 右侧为1
+
+        Node(int x) {
+            val = x;
         }
     }
 
     private Node root;
 
-    public Trie() {
-        root = new Node(); // 初始节点
+    public Solution() {
+        root = new Node(0); // 初始节点
     }
 
     public int findMaximumXOR(int[] nums) {
-        for (int num : nums) { // 把num的二进制逐位存入到Trie中
-            Node cur = root; // 从根节点开始
-            for (int i = 31; i >= 0; i--) {
-                int ibit = num & (1 >> i); // num的第位对应的二进制表示
-                if(cur.children.get(ibit) == null) cur.children.put(ibit, new Node());
-                cur = cur.children.get(c);
-            }
-            cur.isNum = true;
-            cur.num = num; // 二进制的最后一位，标记为是数字并把数字记上
+        int maxLevel = 0;
+        for (int num : nums) { // 计算最大的层数
+            int curLevel = (int) (Math.floor(Math.log(num) / Math.log(2)));
+            maxLevel = Math.max(maxLevel, curLevel);
         }
 
-        // Todo:算最大的异或值，叶子节点存储地就是每个对应的数
-        for(int num: nums) {
-            Node node = root;
-            for(int i = 31; i >= 0; i--) {
-                if ((num & (1 << i)) == 0) {
-                    if (node.right != null) {
-                        node = node.right;
-                    } else {
-                        node = node.left;
-                    }
-                } else {
-                    if (node.left != null) {
-                        node = node.left;
-                    } else {
-                        node = node.right;
-                    }
+        for (int num : nums) { // 把num的二进制逐位存入到Trie中
+            Node cur = root; // 从根节点开始
+            for (int i = maxLevel; i >= 0; i--) {
+                int ibit = (num >> i) & 1; // num的第位对应的二进制表示
+                if (ibit == 0) {
+                    if (cur.left == null) cur.left = new Node(ibit);
+                    cur = cur.left;
+                }
+                if (ibit == 1) {
+                    if (cur.right == null) cur.right = new Node(ibit);
+                    cur = cur.right;
                 }
             }
-            int nn = node.left.val;
-            max = Math.max(max, n ^ nn);
         }
-        return max;
+        // DFS求子树的最大值
+        return dfs(root.left, root.right, maxLevel);
+    }
+
+    // left:左侧取地节点；right：右侧取地节点
+    private int dfs(Node left, Node right, int level) {
+        if (root == null && left == null) return 0;
+        // 走到这里说明左右节点至少一个不为空
+        int res = 0;
+        int max = 0;
+        if (left == null || right == null) {
+            if (right != null) max = Math.max(max, dfs(right.left, right.right, level - 1));
+            if (left != null) max = Math.max(max, dfs(left.left, left.right, level - 1));
+        } else {
+            // 左右的节点都不为空，则可以累计一次1了，计算下幂指数即可
+            res = left.val == right.val ? 0 : (int) Math.pow(2, level);
+            if (left.left != null) {
+                if (right.right != null) max = Math.max(max, dfs(left.left, right.right, level - 1));
+                else max = Math.max(max, dfs(left.left, right.left, level - 1));
+            }
+            if (left.right != null) {
+                if (right.left !=null) max = Math.max(max, dfs(left.right, right.left, level - 1));
+                else max = Math.max(max, dfs(left.right, right.right, level - 1));
+            } 
+        }
+        return res + max;
     }
 }
 ```
