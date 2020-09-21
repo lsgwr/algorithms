@@ -1,4 +1,5 @@
 # 08_DFS之连通性模型
+> 连通性问题不需要回溯处理visited等数组！！本节题目比较简单，可以直接跳过
 
 ## 题目
 
@@ -62,6 +63,65 @@ public class Main {
             }
         }
         return false;
+    }
+}
+```
+
+### [AcWing 1113.红与黑](https://www.acwing.com/problem/content/1115/)
+```java
+import java.io.*;
+
+class Main {
+
+    static char[][] grid;
+
+    static int R, C;
+
+    static boolean[][] visited;
+
+    static final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+
+    static int result;
+
+    static boolean inGrid(int r, int c) {
+        return r >= 0 && r < R && c >= 0 && c < C;
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String lineWH = "";
+        while (!(lineWH = bf.readLine()).equals("0 0")) { // 只要输入不是0 0就一直检测
+            String[] WH = lineWH.split(" ");
+            R = Integer.parseInt(WH[1]);
+            C = Integer.parseInt(WH[0]);
+            visited = new boolean[R][C];
+            grid = new char[R][C];
+            for (int i = 0; i < R; i++) {
+                grid[i] = bf.readLine().toCharArray();
+            }
+            result = 0;
+            for (int r = 0; r < R; r++) {
+                for (int c = 0; c < C; c++) {
+                    if (grid[r][c] == '@') {
+                        dfs(r, c);
+                        break;
+                    }
+                }
+            }
+            System.out.println(result);
+        }
+    }
+
+    private static void dfs(int rCur, int cCur) {
+        visited[rCur][cCur] = true;
+        result++;
+        for (int[] dir : dirs) {
+            int rNext = rCur + dir[0];
+            int cNext = cCur + dir[1];
+            if (inGrid(rNext, cNext) && !visited[rNext][cNext] && grid[rNext][cNext] == '.') {
+                dfs(rNext, cNext);
+            }
+        }
     }
 }
 ```
