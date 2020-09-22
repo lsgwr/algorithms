@@ -133,7 +133,7 @@ class Main {
 ```
 
 ### [AcWing 1118.分成互质组](https://www.acwing.com/problem/content/1120/)
-> 参考地：https://www.acwing.com/solution/content/10364/ 这个自己没做出来，需要好好学习下
+> 参考地：https://www.acwing.com/solution/content/10364/ 这个自己没做出来，可以当成了模板题！！需要好好学习下！！！
 
 边分组边枚举分组的思想很值得借鉴！！！
 
