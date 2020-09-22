@@ -68,3 +68,40 @@ class Solution {
     }
 }
 ```
+
+[325.和为K的最长子数组长度]()
+leetcode 739 每日温度   
+leetcode 554 砖墙     
+leetcode 76  最小子串覆盖
+leetcode 438 找到字符串中所有字母异位词
+leetcode 200 岛屿数量 
+leetcode 1219 黄金矿工
+leetcode 505 迷宫II
+leetcode 51  N皇后
+leetcode 22  括号生成
+leetcode 207 课程表
+leetcode562  矩阵中最长的连续1线段  
+leetcode1477 找两个和为目标值且不重叠的子数组
+题号 1405
+题目名称 最长快乐字符串（难度 中等；考察点 字符串， 贪心算法）
+链接 https://leetcode-cn.com/problems/longest-happy-string/
+
+题号 990
+题目名称 等式方程的可满足性（难度 中等；考察点：并查集/图）
+链接 https://leetcode-cn.com/problems/satisfiability-of-equality-equations/
+
+题号 1129
+题目名称 颜色交替的最短路径（难度 中等；考察点：广度优先搜索/图）
+链接 https://leetcode-cn.com/problems/shortest-path-with-alternating-colors/
+
+题号 1190
+题目名称 反转每对括号间的子串（难度 中等；考察点 字符串/栈）
+链接 https://leetcode-cn.com/problems/reverse-substrings-between-each-pair-of-parentheses/ 
+
+题号 LCP12（难度 中等；考察点 数组/二分法）
+题目名称 小张刷题计划
+链接 https://leetcode-cn.com/problems/xiao-zhang-shua-ti-ji-hua/
+
+题号 1419
+题目名称 数青蛙（难度 中等；考察点 字符串）
+链接 https://leetcode-cn.com/problems/minimum-number-of-frogs-croaking/
