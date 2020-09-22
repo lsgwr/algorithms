@@ -131,3 +131,100 @@ class Main {
     }
 }
 ```
+
+### [AcWing 1118.分成互质组](https://www.acwing.com/problem/content/1120/)
+> 参考地：https://www.acwing.com/solution/content/10364/
+
+边分组边枚举分组的思想很值得借鉴！！！
+
+```java
+import java.util.*;
+
+class Main {
+    static int n;
+
+    static int[] nums;
+
+    static boolean[][] isPrime; // isPrime[i][j]表示nums中下标为i和下标为j的元素是否互质
+
+    static boolean[] visited;
+
+    static int res = 10; // 求最小分组个数，那么初始化时要为最大值
+
+    static int len = 0; // 当遍历完所有元素时，分成了多少组
+
+    static List<Integer>[] mutualPrimeList;
+
+    // 互质为求其最大公约数，当最大公约数为1时，则两个数互质
+    static boolean isMutualPrime(int n, int m) {
+        while (m > 0) {
+            int t = n % m;
+            n = m;
+            m = t; // 当m = 0说明两个数存在倍数关系
+        }
+        return n == 1;
+    }
+
+    /**
+     * 判断下标为x的元素是否和list中的元素对应nums中的值互质(list是前面的元素已经分好的互质数集合)
+     * list中是存储地元素在nums中的下标
+     */
+    static boolean isMutualPrimes(List<Integer> list, int j) {
+        for (int i : list) {
+            if (!isPrime[i][j]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        nums = new int[n];
+        isPrime = new boolean[n][n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }
+        // 记录互斥的数据对，后面DFS时不用每次都计算一遍了
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (isMutualPrime(nums[i], nums[j])) {
+                    isPrime[i][j] = true;
+                }
+            }
+        }
+        visited = new boolean[n]; // 记录某个下标是否以及被使用了，枚举每一种
+        mutualPrimeList = new List[10]; // 最多分成10组
+        for (int i = 0; i < 10; i++) {
+            mutualPrimeList[i] = new ArrayList<>();
+        }
+
+        dfs(0);
+        System.out.println(res);
+    }
+
+    // 枚举每个元素属于哪一个组(前面已经分好的组)
+    private static void dfs(int index) {
+        if (index == n) {
+            res = Math.min(res, len);
+            return;
+        }
+
+        for (int i = 0; i < len; i++) { // 尝试把index放入前面分好的组
+            if (isMutualPrimes(mutualPrimeList[i], index)) { // 判断index对应的元素是否能放入当前的互质列表
+                mutualPrimeList[i].add(index); // 可以地话就放入进去，开启下一轮的DFS
+                dfs(index + 1);
+                mutualPrimeList[i].remove(mutualPrimeList[i].size() - 1); // 回溯过程中删除前面加的元素
+            }
+        }
+
+        // 如果上面不能划分进去已有的互质集合，那么就要划分新的集合了
+        mutualPrimeList[len].add(index);
+        len++;
+        dfs(index + 1);
+        len--; // 回溯过程中，需要删除数组扩容
+        mutualPrimeList[len].remove(mutualPrimeList[len].size() - 1);
+    }
+}
+```
