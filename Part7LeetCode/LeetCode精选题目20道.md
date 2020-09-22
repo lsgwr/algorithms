@@ -70,6 +70,7 @@ class Solution {
 ```
 
 ## [325.和为K的最长子数组长度](https://leetcode-cn.com/problems/maximum-size-subarray-sum-equals-k/)
+> 用到了前缀和
 ```txt
 给定一个数组 nums 和一个目标值 k，找到和等于 k 的最长子数组长度。如果不存在任意一个符合要求的子数组，则返回 0。
 
@@ -86,10 +87,6 @@ class Solution {
 输入: nums = [-2, -1, 2, 1], k = 1
 输出: 2 
 解释: 子数组 [-1, 2] 和等于 1，且长度最长。
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/maximum-size-subarray-sum-equals-k
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
 > 暴力解法如下（用到了前缀数组）：
@@ -119,9 +116,78 @@ class Solution {
 }
 ```
 
+> 前缀和 + 哈希 + 贪心
 
-leetcode 739 每日温度   
-leetcode 554 砖墙     
+```java
+class Solution {
+    // 注意不能用滑动窗口，滑动窗口一般是有序数组或者字符串才用
+    public int maxSubArrayLen(int[] nums, int k) {
+        if (nums.length == 0) return 0;
+        int N = nums.length + 1;
+        int[] a = new int[N];
+        int[] S = new int[N];
+        for (int i = 1; i < N; i++) {
+            a[i] = nums[i - 1];
+            S[i] = S[i - 1] + a[i];
+        }
+
+        // 遍历前缀和，同时构建map，键为前缀和1到i的前缀和即S[i] - S[0] = S[i]，值为i
+        Map<Integer, Integer> mapSIndex = new HashMap<>();
+        int res = 0;
+        for (int i = 0; i < S.length; i++) {
+            // 需要在map中匹配的剩余值
+            int target = S[i] - k;
+            // 如果能匹配到剩余值对应的map的key，那么key对应的的值value就是要找的区间做端点(i是右端点)
+            if (mapSIndex.containsKey(target)) {
+                int index = mapSIndex.get(target); // [index, i)就是我们要找的区间
+                res = Math.max(res, i - index);
+            }
+
+            // 如果前缀和从未出现过，则加入当前前缀和的最优索引，注意如果这个前缀和的值之前出现过则不能覆盖(贪心思想：先加入的前缀和对应的索引肯定更小)
+            if (!mapSIndex.containsKey(S[i])) {
+                mapSIndex.put(S[i], i);
+            }
+        }
+        return res;
+    }
+}
+```
+
+
+## [739.每日温度](https://leetcode-cn.com/problems/daily-temperatures/)
+> 单调栈的套模板题
+
+```txt
+请根据每日 气温 列表，重新生成一个列表。对应位置的输出为：要想观测到更高的气温，至少需要等待的天数。如果气温在这之后都不会升高，请在该位置用 0 来代替。
+
+例如，给定一个列表 temperatures = [73, 74, 75, 71, 69, 72, 76, 73]，你的输出应该是 [1, 1, 4, 2, 1, 1, 0, 0]。
+
+提示：气温 列表长度的范围是 [1, 30000]。每个气温的值的均为华氏度，都是在 [30, 100] 范围内的整数。
+```
+
+```java
+class Solution {
+    // 找出每个元素右边第一个比它大的元素的下标
+    int[] nextGreaterElement(int[] nums) {
+        Stack<Integer> st = new Stack<>();
+        int[] res = new int[nums.length];
+        for (int i = nums.length - 1; i >= 0; i--) {
+            // 只要栈不为空，且栈顶元素比当前元素小，则弹出栈顶元素。每个元素入栈一次出栈一次，所以时间复杂度为O(n)
+            while (!st.isEmpty() && nums[i] >= nums[st.peek()]) st.pop();
+            int nearestMax = st.isEmpty() ? -1 : st.peek();
+            res[i] = nearestMax == -1 ? 0 : (nearestMax - i);
+            st.push(i); // 插入x仍然保持住单调递减栈的特性
+        }
+        return res;
+    }
+
+    public int[] dailyTemperatures(int[] nums) {
+        return nextGreaterElement(nums);
+    }
+}
+```
+
+### [554.砖墙](https://leetcode-cn.com/problems/brick-wall/)
 leetcode 76  最小子串覆盖
 leetcode 438 找到字符串中所有字母异位词
 leetcode 200 岛屿数量 
