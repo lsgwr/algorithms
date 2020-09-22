@@ -101,14 +101,14 @@ class Solution {
         int N = nums.length + 1;
         int[] a = new int[N];
         int[] S = new int[N];
-        for (int i = 1; i < N; i++) {
+        for (int i = 1; i < N; i++) { // 对原数组重新赋值，下标 + 1才能方便前缀和计算
             a[i] = nums[i - 1];
             S[i] = S[i - 1] + a[i];
         }
 
         int res = 0;
         for (int i = 1; i < N; i++) {
-            for (int j = i; j < N; j++) {
+            for (int j = i; j < N; j++) { // 一定注意这里是j = i而不是j = i + 1,
                 if (S[j] - S[i - 1] == k) {
                     res = Math.max(res, j - i + 1);
                 }
