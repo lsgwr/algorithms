@@ -69,7 +69,57 @@ class Solution {
 }
 ```
 
-[325.和为K的最长子数组长度]()
+## [325.和为K的最长子数组长度](https://leetcode-cn.com/problems/maximum-size-subarray-sum-equals-k/)
+```txt
+给定一个数组 nums 和一个目标值 k，找到和等于 k 的最长子数组长度。如果不存在任意一个符合要求的子数组，则返回 0。
+
+注意:
+ nums 数组的总和是一定在 32 位有符号整数范围之内的。
+
+示例 1:
+
+输入: nums = [1, -1, 5, -2, 3], k = 3
+输出: 4 
+解释: 子数组 [1, -1, 5, -2] 和等于 3，且长度最长。
+示例 2:
+
+输入: nums = [-2, -1, 2, 1], k = 1
+输出: 2 
+解释: 子数组 [-1, 2] 和等于 1，且长度最长。
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/maximum-size-subarray-sum-equals-k
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+> 暴力解法如下（用到了前缀数组）：
+
+```java
+class Solution {
+    public int maxSubArrayLen(int[] nums, int k) {
+        if (nums.length == 0) return 0;
+        int N = nums.length + 1;
+        int[] a = new int[N];
+        int[] S = new int[N];
+        for (int i = 1; i < N; i++) {
+            a[i] = nums[i - 1];
+            S[i] = S[i - 1] + a[i];
+        }
+
+        int res = 0;
+        for (int i = 1; i < N; i++) {
+            for (int j = i; j < N; j++) {
+                if (S[j] - S[i - 1] == k) {
+                    res = Math.max(res, j - i + 1);
+                }
+            }
+        }
+        return res;
+    }
+}
+```
+
+
 leetcode 739 每日温度   
 leetcode 554 砖墙     
 leetcode 76  最小子串覆盖
