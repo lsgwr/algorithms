@@ -1,6 +1,8 @@
 # LeetCode精选题目20道
 
-## 1.[56.合并区间](https://leetcode-cn.com/problems/merge-intervals/)
+### 1.[56.合并区间](https://leetcode-cn.com/problems/merge-intervals/)
+> 贪心
+
 ```txt
 给出一个区间的集合，请合并所有重叠的区间。
 
@@ -69,8 +71,8 @@ class Solution {
 }
 ```
 
-## [325.和为K的最长子数组长度](https://leetcode-cn.com/problems/maximum-size-subarray-sum-equals-k/)
-> 用到了前缀和
+### 2.[325.和为K的最长子数组长度](https://leetcode-cn.com/problems/maximum-size-subarray-sum-equals-k/)
+> 前缀和 + 哈希 + 贪心
 ```txt
 给定一个数组 nums 和一个目标值 k，找到和等于 k 的最长子数组长度。如果不存在任意一个符合要求的子数组，则返回 0。
 
@@ -154,8 +156,8 @@ class Solution {
 ```
 
 
-## [739.每日温度](https://leetcode-cn.com/problems/daily-temperatures/)
-> 单调栈的套模板题
+### 3.[739.每日温度](https://leetcode-cn.com/problems/daily-temperatures/)
+> 单调栈，找出每个元素右边第一个比它大的元素的下标
 
 ```txt
 请根据每日 气温 列表，重新生成一个列表。对应位置的输出为：要想观测到更高的气温，至少需要等待的天数。如果气温在这之后都不会升高，请在该位置用 0 来代替。
@@ -187,10 +189,11 @@ class Solution {
 }
 ```
 
-### [554.砖墙](https://leetcode-cn.com/problems/brick-wall/)
-leetcode 76  最小子串覆盖
-leetcode 438 找到字符串中所有字母异位词
-leetcode 200 岛屿数量 
+### 4.[554.砖墙](https://leetcode-cn.com/problems/brick-wall/)
+> // 计算每行所有缝隙位置(距离最左侧的距离)，枚举所有缝隙位置去划线，通过二分法确定当前的线是否穿过砖
+### 5.[76.最小子串覆盖]()
+### 6.[438.找到字符串中所有字母异位词]()
+### 200 岛屿数量 
 leetcode 1219 黄金矿工
 leetcode 505 迷宫II
 leetcode 51  N皇后
