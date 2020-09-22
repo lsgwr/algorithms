@@ -138,7 +138,9 @@ class Main {
 边分组边枚举分组的思想很值得借鉴！！！
 
 ```java
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 class Main {
     static int n;
@@ -210,6 +212,8 @@ class Main {
             res = Math.min(res, len);
             return;
         }
+        
+        if (len >= res) return; // 剪枝操作，一旦当前组数大于前面已有的最小组数，继续DFS后续还会增大，因此可以直接退出了
 
         for (int i = 0; i < len; i++) { // 尝试把index放入前面分好的组
             if (isMutualPrimes(mutualPrimeList[i], index)) { // 判断index对应的元素是否能放入当前的互质列表
