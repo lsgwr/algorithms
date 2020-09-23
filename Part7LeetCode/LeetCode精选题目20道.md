@@ -191,6 +191,66 @@ class Solution {
 
 ### 4.[554.砖墙](https://leetcode-cn.com/problems/brick-wall/)
 > // 计算每行所有缝隙位置(距离最左侧的距离)，枚举所有缝隙位置去划线，通过二分法确定当前的线是否穿过砖
+
+```txt
+你的面前有一堵矩形的、由多行砖块组成的砖墙。 这些砖块高度相同但是宽度不同。你现在要画一条自顶向下的、穿过最少砖块的垂线。
+
+砖墙由行的列表表示。 每一行都是一个代表从左至右每块砖的宽度的整数列表。
+
+如果你画的线只是从砖块的边缘经过，就不算穿过这块砖。你需要找出怎样画才能使这条线穿过的砖块数量最少，并且返回穿过的砖块数量。
+
+你不能沿着墙的两个垂直边缘之一画线，这样显然是没有穿过一块砖的。
+```
+
+```java
+// 需要重点关注的用例：
+// [[1,2,2,1],[3,1,2],[1,3,2],[2,4],[3,1,2],[1,3,1,1]] 输出为2
+// [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]] 结果为0
+// [[1],[1],[1]]  结果为3
+class Solution {
+
+    // 判断缝隙位置是否在当前行存在
+    private boolean binarySearch(List<Integer> rowCracks, int crack) {
+        int l = 0;
+        int r = rowCracks.size();
+        while (l < r) {
+            int mid = l + r >> 1;
+            if (rowCracks.get(mid) > crack) r = mid;
+            else if (rowCracks.get(mid) < crack) l = mid + 1;
+            else return true; // 找到缝隙缝隙了
+        }
+        return false; // 没找到缝隙
+    }
+
+    public int leastBricks(List<List<Integer>> wall) {
+        Set<Integer> crackAllSet = new HashSet<>(); // 所有行不重复的缝隙集合
+        List<List<Integer>> rowCracksList = new ArrayList<>();
+        for (int i = 0; i < wall.size(); i++) {
+            rowCracksList.add(new ArrayList<>());
+            int sum = 0; // 存储缝隙的位置
+            List<Integer> wallRow = wall.get(i); // 第i行墙的情况
+            for (int j = 0; j < wallRow.size() - 1; j++) {
+                sum += wallRow.get(j); // 获取当前的裂缝距最左端的距离
+                rowCracksList.get(i).add(sum);
+                crackAllSet.add(sum); // 累计所有的缝隙
+            }
+        }
+
+        int res = wall.size(); // 初始化为最多穿过的砖数(即为行数)，不要初始化为其他值，否则可能找不到缝隙，比如用例 [[1],[1],[1]]，结果应该是 3
+        // 遍历所有的缝隙，通过二分法判断缝隙能够穿过某一行
+        for (int crack : crackAllSet) {
+            int wallsThrough = wall.size(); // 初始化默认穿过所有的砖 
+            for (List<Integer> rowCracks : rowCracksList) {
+                if (binarySearch(rowCracks, crack)) { // 找到缝隙了，没有穿过当前行的砖
+                    wallsThrough--;
+                }
+            }
+            res = Math.min(res,  wallsThrough);
+        }
+        return res;
+    }
+}
+```
 ### 5.[76.最小子串覆盖]()
 ### 6.[438.找到字符串中所有字母异位词]()
 ### 200 岛屿数量 
