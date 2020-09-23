@@ -955,7 +955,7 @@ class Solution {
 }
 ```
 ### 14.[1477.找两个和为目标值且不重叠的子数组](https://leetcode-cn.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/)
-> 前缀和 + 哈希，类似上面的[LeetCode 325.和为K的最长子数组长度](https://leetcode-cn.com/problems/maximum-size-subarray-sum-equals-k/)
+> 前缀和 + 滑动窗口，类似上面的[LeetCode 325.和为K的最长子数组长度](https://leetcode-cn.com/problems/maximum-size-subarray-sum-equals-k/)
 
 > 直接用暴力法，也过了53/60个用例，还行，后面再优化下
 
@@ -980,7 +980,7 @@ class Solution {
 
         List<int[]> intervalList = new ArrayList<>();
 
-        // 暴力吧
+        // 暴力吧，改成滑动窗口兴许能过(所有元素都是正数，right++和增加,left--和减少，因此可以用滑动窗口)
         for (int i = 1; i < a.length; i++) {
             for (int j = i; j < a.length; j++) {
                 if (s[j] - s[i - 1] != target) continue; // 遍历下一个区间
