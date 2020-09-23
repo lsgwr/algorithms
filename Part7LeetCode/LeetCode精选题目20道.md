@@ -367,7 +367,7 @@ class Solution {
     }
 }
 ```
-### [200.岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
+### 7.[200.岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
 > DFS求联通分量的个数
 
 ```txt
@@ -422,7 +422,8 @@ class Solution {
     }
 }
 ```
-leetcode 1219 黄金矿工
+
+### [1219.黄金矿工]()
 leetcode 505 迷宫II
 leetcode 51  N皇后
 leetcode 22  括号生成
