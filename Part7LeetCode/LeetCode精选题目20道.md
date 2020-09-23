@@ -424,6 +424,63 @@ class Solution {
 ```
 
 ### 8.[1219.黄金矿工](https://leetcode-cn.com/problems/path-with-maximum-gold/)
+> DFS求最大值，很简单
+```java
+你要开发一座金矿，地质勘测学家已经探明了这座金矿中的资源分布，并用大小为 m * n 的网格 grid 进行了标注。每个单元格中的整数就表示这一单元格中的黄金数量；如果该单元格是空的，那么就是 0。
+
+为了使收益最大化，矿工需要按以下规则来开采黄金：
+
+每当矿工进入一个单元，就会收集该单元格中的所有黄金。
+矿工每次可以从当前位置向上下左右四个方向走。
+每个单元格只能被开采（进入）一次。
+不得开采（进入）黄金数目为 0 的单元格。
+矿工可以从网格中 任意一个 有黄金的单元格出发或者是停止。
+```
+
+```java
+class Solution {
+    int R, C;
+    int[][] grid;
+    boolean[][] visited;
+    int res = 0; // 黄金的最大值
+    final int[][] dirs = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+
+    public int getMaximumGold(int[][] grid) {
+        this.R = grid.length;
+        this.C = grid[0].length;
+        this.grid = grid;
+
+        for (int r = 0; r < R; r++) {
+            for (int c = 0; c < C; c++) {
+                if (grid[r][c] != 0) {
+                    visited = new boolean[R][C];
+                    dfs(r, c, grid[r][c]); // 每次DFS都刷新最大可以得到的黄金量
+                }
+            }
+        }
+        return res;
+    }
+
+    private void dfs(int rCur, int cCur, int goldTotal) {
+        visited[rCur][cCur] = true;
+        res = Math.max(res, goldTotal); // 一共的黄金量去更新最大的黄金量
+
+        for (int[] dir : dirs) {
+            int rNext = rCur + dir[0];
+            int cNext = cCur + dir[1];
+            if (inGrid(rNext, cNext) && !visited[rNext][cNext] && grid[rNext][cNext] != 0) {
+                dfs(rNext, cNext, goldTotal + grid[rNext][cNext]);
+                visited[rNext][cNext] = false;
+            }
+        }
+    }
+
+    private boolean inGrid(int r, int c) {
+        return r >= 0 && r < R && c >= 0 && c < C;
+    }
+}
+```
+
 ### 9.[505.迷宫II](https://leetcode-cn.com/problems/the-maze-ii/)
 ### 10.[51.N皇后](https://leetcode-cn.com/problems/n-queens-ii/)
 ### 11.[22.括号生成](https://leetcode-cn.com/problems/generate-parentheses/)
