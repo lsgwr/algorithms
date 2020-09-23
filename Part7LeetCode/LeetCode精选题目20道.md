@@ -308,7 +308,65 @@ class Solution {
     }
 }
 ```
-### 6.[438.找到字符串中所有字母异位词]()
+### 6.[438.找到字符串中所有字母异位词](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/)
+> 和上面的题几乎完全一样，就是变换了下要返回的数据，把start依次加入到结果列表中并返回即可
+
+```txt
+给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。
+
+字符串只包含小写英文字母，并且字符串 s 和 p 的长度都不超过 20100。
+
+说明：
+
+字母异位词指字母相同，但排列不同的字符串。
+不考虑答案输出的顺序。
+```
+
+```java
+class Solution {
+    public List<Integer> findAnagrams(String s, String t) {
+        char[] sa = s.toCharArray();
+        char[] ta = t.toCharArray();
+        Map<Character, Integer> need = new HashMap<>(); // T中字符出现次数
+        Map<Character, Integer> window = new HashMap<>(); // 「窗口」中的相应字符的出现次数
+        for (char c : ta) {
+            if (need.get(c) == null) need.put(c, 0);
+            else need.put(c, need.get(c) + 1);
+        }
+
+        int left = 0, right = 0; // 使用left和right变量初始化窗口的两端，不要忘了，区间[left, right)是左闭右开的，所以初始情况下窗口没有包含任何元素：
+        int valid = 0; // 窗口中满足need条件的字符个数
+        int start = 0, len = t.length(); // 目标字符串的长度
+        List<Integer> res = new ArrayList<>(); // 存储满足调试的开始索引
+        while (right < s.length()) {
+            char c = sa[right]; // c是将移入窗口的字符
+            right++; // 右边界右移，扩大窗口
+            // Todo: 进行窗口内数据的一些列更新
+            if (need.containsKey(c)) {
+                if (window.get(c) == null) window.put(c, 0);
+                else window.put(c, window.get(c) + 1);
+                if (window.get(c).equals(need.get(c))) valid++; // 一个字符频率相等，说明当前字符c满足情况了。这里一定要用equals而不是==，否则会有大用例通过不了
+            }
+
+            // 判断左侧窗口是否要收缩
+            while (valid == need.size()) { // 所有字符都在滑动窗口内找到了
+                // Todo: 在这里更新最小覆盖字符串相关参数
+                if (right - left == len) {
+                    start = left;
+                    res.add(start);
+                }
+                char d = sa[left]; // d是即将移出窗口的字符
+                left++; // 左边界右移，窗口缩小
+                if (need.containsKey(d)) {
+                    if (window.get(d).equals(need.get(d))) valid--; // 左边界字符正要满足滑动窗口包含目标值，删除一个左边界可能会影响。这里一定要用equals而不是==，否则会有大用例通过不了
+                    window.put(d, window.get(d) - 1); // 更新当前点的字符d的频率
+                }
+            }
+        }
+        return res;
+    }
+}
+```
 ### 200 岛屿数量 
 leetcode 1219 黄金矿工
 leetcode 505 迷宫II
