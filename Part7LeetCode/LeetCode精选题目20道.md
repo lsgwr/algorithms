@@ -423,33 +423,27 @@ class Solution {
 }
 ```
 
-### [1219.黄金矿工]()
-leetcode 505 迷宫II
-leetcode 51  N皇后
-leetcode 22  括号生成
-leetcode 207 课程表
-leetcode562  矩阵中最长的连续1线段  
-leetcode1477 找两个和为目标值且不重叠的子数组
-题号 1405
-题目名称 最长快乐字符串（难度 中等；考察点 字符串， 贪心算法）
-链接 https://leetcode-cn.com/problems/longest-happy-string/
+### 8.[1219.黄金矿工](https://leetcode-cn.com/problems/path-with-maximum-gold/)
+### 9.[505.迷宫II](https://leetcode-cn.com/problems/the-maze-ii/)
+### 10.[51.N皇后](https://leetcode-cn.com/problems/n-queens-ii/)
+### 11.[22.括号生成](https://leetcode-cn.com/problems/generate-parentheses/)
+### 12.[207.课程表](https://leetcode-cn.com/problems/course-schedule/)
+### 13.[562.矩阵中最长的连续1线段](https://leetcode-cn.com/problems/longest-line-of-consecutive-one-in-matrix/)
+### 14.[1477.找两个和为目标值且不重叠的子数组](https://leetcode-cn.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/)
+### 15.[1405.最长快乐字符串](https://leetcode-cn.com/problems/longest-happy-string/)
+> 考察点 字符串， 贪心算法
 
-题号 990
-题目名称 等式方程的可满足性（难度 中等；考察点：并查集/图）
-链接 https://leetcode-cn.com/problems/satisfiability-of-equality-equations/
+### 16.[990.等式方程的可满足性](https://leetcode-cn.com/problems/satisfiability-of-equality-equations/)
+> 考察点：并查集/图
 
-题号 1129
-题目名称 颜色交替的最短路径（难度 中等；考察点：广度优先搜索/图）
-链接 https://leetcode-cn.com/problems/shortest-path-with-alternating-colors/
+### 17.[1129.颜色交替的最短路径](https://leetcode-cn.com/problems/shortest-path-with-alternating-colors/)
+> 考察点：广度优先搜索/图
 
-题号 1190
-题目名称 反转每对括号间的子串（难度 中等；考察点 字符串/栈）
-链接 https://leetcode-cn.com/problems/reverse-substrings-between-each-pair-of-parentheses/ 
+### 18.[1190.反转每对括号间的子串](https://leetcode-cn.com/problems/reverse-substrings-between-each-pair-of-parentheses/)
+> 考察点 字符串/栈
 
-题号 LCP12（难度 中等；考察点 数组/二分法）
-题目名称 小张刷题计划
-链接 https://leetcode-cn.com/problems/xiao-zhang-shua-ti-ji-hua/
+### 19.[LCP12.小张刷题计划](https://leetcode-cn.com/problems/xiao-zhang-shua-ti-ji-hua/)
+> 考察点 数组/二分法
 
-题号 1419
-题目名称 数青蛙（难度 中等；考察点 字符串）
-链接 https://leetcode-cn.com/problems/minimum-number-of-frogs-croaking/
+### 20.[1419.数青蛙](https://leetcode-cn.com/problems/minimum-number-of-frogs-croaking/)
+> 中等；考察点 字符串
