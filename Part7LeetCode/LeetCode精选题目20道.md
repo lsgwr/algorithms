@@ -954,7 +954,8 @@ class Solution {
     }
 }
 ```
-### 14.[1477.找两个和为目标值且不重叠的子数组](https://leetcode-cn.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/)
+### 14.2.[1477.找两个和为目标值且不重叠的子数组](https://leetcode-cn.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/)
+> 前缀和 + 哈希，类似上面的[LeetCode 325.和为K的最长子数组长度](https://leetcode-cn.com/problems/maximum-size-subarray-sum-equals-k/)
 ### 15.[1405.最长快乐字符串](https://leetcode-cn.com/problems/longest-happy-string/)
 > 考察点 字符串， 贪心算法
 
