@@ -862,6 +862,86 @@ class Solution {
 }
 ```
 ### 13.[562.矩阵中最长的连续1线段](https://leetcode-cn.com/problems/longest-line-of-consecutive-one-in-matrix/)
+> 暴力也能过，唉，计算机每秒执行10^7条指令，只要估算暴力过，就直接暴力！！哈哈
+
+```java
+// 考虑用例：
+// [[1,1,1,1],[0,1,1,0],[0,0,0,1]]
+// [[1,1,0,0,1,0,0,1,1,0],[1,0,0,1,0,1,1,1,1,1],[1,1,1,0,0,1,1,1,1,0],[0,1,1,1,0,1,1,1,1,1],[0,0,1,1,1,1,1,1,1,0],[1,1,1,1,1,1,0,1,1,1],[0,1,1,1,1,1,1,0,0,1],[1,1,1,1,1,0,0,1,1,1],[0,1,0,1,1,0,1,1,1,1],[1,1,1,0,1,0,1,1,1,1]]
+class Solution {
+    int R, C;
+    int[][] grid;
+
+    // 计算[r, c]点所在的水平、垂直、对角线的最长连续1线段
+    private int getMax1Len(int r, int c) {
+        int max = 0;
+        // 1.判断水平方向
+        int len = 1;
+        for (int i = c + 1; i < C; i++) { // 只往右边找
+            if (grid[r][i] == 1) len++;
+            else break;
+        }
+        max = Math.max(max, len);
+
+        // 2.判断垂直方向
+        len = 1;
+        for (int i = r + 1; i < R; i++) {
+            if (grid[i][c] == 1) len++;
+            else break;
+        }
+        max = Math.max(max, len);
+
+        // 3.判断正对角线
+        len = 1;
+        for (int i = r + 1, j = c + 1; i < R && j < C; i++, j++) {
+            if (grid[i][j] == 1) len++;
+            else break;
+        }
+        max = Math.max(max, len);
+
+        len = 1;
+        // 4.判断反对角线
+        for (int i = r + 1, j = c - 1; i < R && j >= 0; i++, j--) {
+            if (grid[i][j] == 1) len++;
+            else break;
+        }
+        max = Math.max(max, len);
+        
+        return max;
+    }
+
+    public int longestLine(int[][] M) {
+        if (M.length == 0 || M[0].length == 0) return 0;
+        R = M.length;
+        C = M[0].length;
+        grid = M;
+        int res = 0; // 求最大值，则初始化为最小值
+        for (int r = 0; r < R; r++) {
+            for (int c = 0; c < C; c++) {
+                if (grid[r][c] != 1) continue;
+                res = Math.max(res, getMax1Len(r, c));
+            }
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        int[][] M = {
+                {1, 1, 0, 0, 1, 0, 0, 1, 1, 0},
+                {1, 0, 0, 1, 0, 1, 1, 1, 1, 1},
+                {1, 1, 1, 0, 0, 1, 1, 1, 1, 0},
+                {0, 1, 1, 1, 0, 1, 1, 1, 1, 1},
+                {0, 0, 1, 1, 1, 1, 1, 1, 1, 0},
+                {1, 1, 1, 1, 1, 1, 0, 1, 1, 1},
+                {0, 1, 1, 1, 1, 1, 1, 0, 0, 1},
+                {1, 1, 1, 1, 1, 0, 0, 1, 1, 1},
+                {0, 1, 0, 1, 1, 0, 1, 1, 1, 1},
+                {1, 1, 1, 0, 1, 0, 1, 1, 1, 1}
+        };
+        new Solution().longestLine(M);
+    }
+}
+```
 ### 14.[1477.找两个和为目标值且不重叠的子数组](https://leetcode-cn.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/)
 ### 15.[1405.最长快乐字符串](https://leetcode-cn.com/problems/longest-happy-string/)
 > 考察点 字符串， 贪心算法
