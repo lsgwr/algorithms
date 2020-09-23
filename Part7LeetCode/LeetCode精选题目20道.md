@@ -668,6 +668,64 @@ class Solution {
 
 
 ### 11.[22.括号生成](https://leetcode-cn.com/problems/generate-parentheses/)
+> 栈 + 暴力DFS
+```java
+import java.lang.reflect.Array;
+import java.util.*;
+
+class Solution {
+
+    int n;
+    List<String> res;
+    // 校验字符集合是否符合括号匹配的规则
+    boolean check(List<Character> chs) {
+        Stack<Character> st = new Stack<>();
+        int left = n;
+        int right = n;
+        for (char c : chs) {
+            if (c == '(') {
+                left--;
+                st.push(c);
+            }
+            if (c == ')') {
+                right--;
+                if (st.isEmpty()) return false;
+                st.pop();
+            }
+        }
+        return st.isEmpty() && left == 0 && right == 0;
+    }
+
+    public List<String> generateParenthesis(int n) {
+        this.n = n;
+        this.res = new ArrayList<>();
+        List<Character> chs = new ArrayList<>();
+        dfs(chs);
+        return res;
+    }
+
+    private void dfs (List<Character> chs) {
+        if (chs.size() == n * 2) {
+            if (!check(chs)) return;
+            StringBuilder sb = new StringBuilder();
+            for (Character ch : chs) {
+                sb.append(ch);
+            }
+            res.add(sb.toString());
+            return;
+        }
+        // 1.尝试放(
+        chs.add('(');
+        dfs(chs);
+        chs.remove(chs.size() - 1);
+
+        // 2.尝试放)
+        chs.add(')');
+        dfs(chs);
+        chs.remove(chs.size() - 1);
+    }
+}
+```
 ### 12.[207.课程表](https://leetcode-cn.com/problems/course-schedule/)
 ### 13.[562.矩阵中最长的连续1线段](https://leetcode-cn.com/problems/longest-line-of-consecutive-one-in-matrix/)
 ### 14.[1477.找两个和为目标值且不重叠的子数组](https://leetcode-cn.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/)
