@@ -482,7 +482,11 @@ class Solution {
 ```
 
 ### 9.[505.迷宫II](https://leetcode-cn.com/problems/the-maze-ii/)
-+ 1.
+> 这个题用DFS肯定会超时，见自己的DFS超时实现：https://leetcode-cn.com/submissions/detail/110787824/
+
+此外，此题可以得到如下经验：
+
++ 1.求最小值时，在邻接状态确定的情况下，优先选BFS，如LeetCode 505；在邻接状态不确定的情况下(随着到的点不同会动态变化),可是使用DFS找到所有达到目标点的情况，然后取这些方案中的最小值，如AcWing 1118.分成互质组 和 AcWing 165.小猫爬山
 + 2.这个题目的特殊情况，一个点可以经过多次，不断更新某个点的最小值，尤其是终点，千万不要一到终点就提前退出！！
 
 ```txt
@@ -595,6 +599,74 @@ class Solution {
 
 
 ### 10.[51.N皇后](https://leetcode-cn.com/problems/n-queens-ii/)
+> 也是[AcWing 843](https://www.acwing.com/problem/content/845/),规则是`任意两个皇后都不能处于同一行、同一列或同一斜线上`，把check函数写好，剩下地就是不断尝试放皇后了
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    int n;
+    boolean[][] visited; // 节点访问数组
+    List<List<String>> res;
+
+    /**
+     * 检查位置(r, c)处放置皇后是否和之前放地冲突
+     */
+    private boolean check(int r, int c, List<int[]> points) {
+        for (int[] point : points) {
+            // 同一行 or 同一列则不能放，直接返回
+            if (point[0] == r || point[1] == c) return false;
+            // 斜率为1表明在一条斜线上，直接返回，不和上面的条件合并是为了防止point[1] - c值为0
+            double k = Math.abs((point[0] - r) * 1.0 / (point[1] - c)); // 注意斜率为负数的情况
+            if (k == 1.0) return false;
+        }
+        return true;
+    }
+
+    private void dfs(int r, int c, List<int[]> points) {
+        visited[r][c] = true;
+        points.add(new int[]{r, c});
+        if (points.size() == n) { // 找到了一个合适的放置方案
+            List<String> solution = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                StringBuilder sb = new StringBuilder();
+                for (int j = 0; j < n; j++) {
+                    if (visited[i][j]) sb.append("Q");
+                    else sb.append(".");
+                }
+                solution.add(sb.toString());
+            }
+            res.add(solution);
+            return;
+        }
+
+        // 上面的点满足条件了，则下一个必须从下一行开始了
+        if (r + 1 < n) { // 行必须在合适的范围
+            for (int i = 0; i < n; i++) { // 固定行，遍历列
+                if (!visited[r + 1][i] && check(r + 1, i, points)) {
+                    dfs(r + 1, i, points);
+                    visited[r + 1][i] = false;
+                    points.remove(points.size() - 1);
+                }
+            }
+        }
+    }
+
+    public List<List<String>> solveNQueens(int n) {
+        this.n = n;
+        res = new ArrayList<>();
+        for (int i = 0; i < n; i++) { // 第一个起始的元素肯定是在第1行
+            List<int[]> points = new ArrayList<>(); // 记录皇后放置的位置
+            visited = new boolean[n][n]; // 每次开始的位置不一样，所以要重置访问数组
+            dfs(0, i, points);
+        }
+        return res;
+    }
+}
+```
+
+
 ### 11.[22.括号生成](https://leetcode-cn.com/problems/generate-parentheses/)
 ### 12.[207.课程表](https://leetcode-cn.com/problems/course-schedule/)
 ### 13.[562.矩阵中最长的连续1线段](https://leetcode-cn.com/problems/longest-line-of-consecutive-one-in-matrix/)
