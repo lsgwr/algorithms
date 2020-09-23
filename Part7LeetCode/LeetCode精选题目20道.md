@@ -122,7 +122,7 @@ class Solution {
 
 ```java
 class Solution {
-    // 注意不能用滑动窗口，滑动窗口一般是有序数组或者字符串才用
+    // 注意不能用滑动窗口，滑动窗口一般是正数数组或者字符串才用(这两种情形当right++的时候，目标值增加，left++的时候，目标值减少。正数数组目标值是区间和，字符串时字符出现频率)
     public int maxSubArrayLen(int[] nums, int k) {
         if (nums.length == 0) return 0;
         int N = nums.length + 1;
