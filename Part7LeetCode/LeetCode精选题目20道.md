@@ -482,6 +482,118 @@ class Solution {
 ```
 
 ### 9.[505.迷宫II](https://leetcode-cn.com/problems/the-maze-ii/)
++ 1.
++ 2.这个题目的特殊情况，一个点可以经过多次，不断更新某个点的最小值，尤其是终点，千万不要一到终点就提前退出！！
+
+```txt
+由空地和墙组成的迷宫中有一个球。球可以向上下左右四个方向滚动，但在遇到墙壁前不会停止滚动。当球停下时，可以选择下一个方向。
+
+给定球的起始位置，目的地和迷宫，找出让球停在目的地的最短距离。距离的定义是球从起始位置（不包括）到目的地（包括）经过的空地个数。如果球无法停在目的地，返回 -1。
+
+迷宫由一个0和1的二维数组表示。 1表示墙壁，0表示空地。你可以假定迷宫的边缘都是墙壁。起始位置和目的地的坐标通过行号和列号给出。
+
+ 
+
+示例 1:
+
+输入 1: 迷宫由以下二维数组表示
+
+0 0 1 0 0
+0 0 0 0 0
+0 0 0 1 0
+1 1 0 1 1
+0 0 0 0 0
+
+输入 2: 起始位置坐标 (rowStart, colStart) = (0, 4)
+输入 3: 目的地坐标 (rowDest, colDest) = (4, 4)
+
+输出: 12
+
+解析: 一条最短路径 : left -> down -> left -> down -> right -> down -> right。 总距离为 1 + 1 + 3 + 1 + 2 + 2 + 2 = 12。
+```
+
+```java
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Queue;
+
+class Solution {
+
+    int[][] grid;
+    int R, C;
+    final int[][] dirs = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
+
+    // 当前位置必须在栅格内，而且必须不是铁壁，才能继续往下走
+    private boolean inGrid(int r, int c) {
+        return r >= 0 && r < R && c >= 0 && c < C;
+    }
+
+    // BFS原生就是求最短距离的，这里更好一些
+    private int bfs(int rStart, int cStart, int rEnd, int cEnd) {
+        int[][] dis = new int[R][C]; // dis[r]][c]表示位置[r, c]的点到起点的距离
+        for (int i = 0; i < R; i++) {
+            Arrays.fill(dis[i], Integer.MAX_VALUE); // 要求最小值，就要初始化为最大值，因为每个点可能会更新多次
+        }
+
+        Queue<Integer> rQueue = new ArrayDeque<>();
+        Queue<Integer> cQueue = new ArrayDeque<>();
+        rQueue.add(rStart);
+        cQueue.add(cStart);
+        dis[rStart][cStart] = 0; // 起点距离起点的步数为0
+
+        while (!rQueue.isEmpty() && !cQueue.isEmpty()) {
+            int rCur = rQueue.remove();
+            int cCur = cQueue.remove();
+            // if (rCur == rEnd && cCur == cEnd) return dis[rEnd][cEnd]; // 可能会有多种方案都能经过重点，所以这里一定不要提前退出！！
+            for (int[] dir : dirs) {
+                int rNext = rCur + dir[0];
+                int cNext = cCur + dir[1];
+                int stepDis = 0;
+                while (inGrid(rNext, cNext) && grid[rNext][cNext] == 0) { // 下一个方向是能走的条件：在栅格内且是空地
+                    // 计算按照dir方向滚动最终能停在哪个点
+                    // 2.尝试继续往下一个位置走
+                    rNext = rNext + dir[0];
+                    cNext = cNext + dir[1];
+                    // 3.距离 + 1
+                    stepDis++;
+                }
+                // 上面的while结束，[rNextFinal, cNextFinal]存储地是最后一个合法的位置的下一个位置，所以要再减回去，才是滚动后停下来的位置
+                rNext = rNext - dir[0];
+                cNext = cNext - dir[1];
+                // 注意在一般的BFS中，我们不会经过同一个点超过一次(用visited数组来控制)，但是在这道题目中，只要从起始位置大当前位置的步数
+                // 小于之前走法得到的最小步数dis[rNext][cNext]，我们就会把点(rNext, cNext)点加入到队列中，再次进行BFS
+                if (dis[rCur][cCur] + stepDis < dis[rNext][cNext]) {
+                    dis[rNext][cNext] = dis[rCur][cCur] + stepDis;
+                    rQueue.add(rNext);
+                    cQueue.add(cNext);
+                }
+            }
+        }
+        return dis[rEnd][cEnd] == Integer.MAX_VALUE ? -1 : dis[rEnd][cEnd];
+    }
+
+    public int shortestDistance(int[][] maze, int[] start, int[] destination) {
+        R = maze.length;
+        C = maze[0].length;
+        grid = maze;
+        return bfs(start[0], start[1], destination[0], destination[1]);
+    }
+
+    /**
+     * [0,4] [4,4]  true
+     * [4,3] [0,1]  false
+     * [0,4] [1,2]  true
+     */
+    public static void main(String[] args) {
+        int[][] maze = {{0, 0, 1, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 1, 0}, {1, 1, 0, 1, 1}, {0, 0, 0, 0, 0}};
+        int[] start = {0, 4};
+        int[] destination = {4, 4};
+        System.out.println(new Solution().shortestDistance(maze, start, destination));
+    }
+}
+```
+
+
 ### 10.[51.N皇后](https://leetcode-cn.com/problems/n-queens-ii/)
 ### 11.[22.括号生成](https://leetcode-cn.com/problems/generate-parentheses/)
 ### 12.[207.课程表](https://leetcode-cn.com/problems/course-schedule/)
