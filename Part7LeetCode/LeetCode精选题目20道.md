@@ -251,7 +251,63 @@ class Solution {
     }
 }
 ```
-### 5.[76.最小子串覆盖]()
+### 5.[76.最小子串覆盖](https://leetcode-cn.com/problems/minimum-window-substring/submissions/)
+> 滑动窗口
+
+```txt
+给你一个字符串 S、一个字符串 T 。请你设计一种算法，可以在 O(n) 的时间复杂度内，从字符串 S 里面找出：包含 T 所有字符的最小子串。
+
+
+示例：
+
+输入：S = "ADOBECODEBANC", T = "ABC"
+输出："BANC"
+```
+
+```java
+class Solution {
+    public String minWindow(String s, String t) {
+        char[] sa = s.toCharArray();
+        char[] ta = t.toCharArray();
+        Map<Character, Integer> need = new HashMap<>(); // T中字符出现次数
+        Map<Character, Integer> window = new HashMap<>(); // 「窗口」中的相应字符的出现次数
+        for (char c : ta) {
+            if (need.get(c) == null) need.put(c, 0);
+            else need.put(c, need.get(c) + 1);
+        }
+
+        int left = 0, right = 0; // 使用left和right变量初始化窗口的两端，不要忘了，区间[left, right)是左闭右开的，所以初始情况下窗口没有包含任何元素：
+        int valid = 0; // 窗口中满足need条件的字符个数
+        int start = 0, len = Integer.MAX_VALUE; // 最小覆盖子串的起始索引及长度
+        while (right < s.length()) {
+            char c = sa[right]; // c是将移入窗口的字符
+            right++; // 右边界右移，扩大窗口
+            // Todo: 进行窗口内数据的一些列更新
+            if (need.containsKey(c)) {
+                if (window.get(c) == null) window.put(c, 0);
+                else window.put(c, window.get(c) + 1);
+                if (window.get(c).equals(need.get(c))) valid++; // 一个字符频率相等，说明当前字符c满足情况了。这里一定要用equals而不是==，否则会有大用例通过不了
+            }
+
+            // 判断左侧窗口是否要收缩
+            while (valid == need.size()) { // 所有字符都在滑动窗口内找到了
+                // Todo: 在这里更新最小覆盖字符串相关参数
+                if (right - left < len) {
+                    start = left;
+                    len = right - left;
+                }
+                char d = sa[left]; // d是即将移出窗口的字符
+                left++; // 左边界右移，窗口缩小
+                if (need.containsKey(d)) {
+                    if (window.get(d).equals(need.get(d))) valid--; // 左边界字符正要满足滑动窗口包含目标值，删除一个左边界可能会影响。这里一定要用equals而不是==，否则会有大用例通过不了
+                    window.put(d, window.get(d) - 1); // 更新当前点的字符d的频率
+                }
+            }
+        }
+        return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len); // 注意是开始索引和结束索引取字符串
+    }
+}
+```
 ### 6.[438.找到字符串中所有字母异位词]()
 ### 200 岛屿数量 
 leetcode 1219 黄金矿工
