@@ -601,6 +601,18 @@ class Solution {
 ### 10.[51.N皇后](https://leetcode-cn.com/problems/n-queens-ii/)
 > 也是[AcWing 843](https://www.acwing.com/problem/content/845/),规则是`任意两个皇后都不能处于同一行、同一列或同一斜线上`，把check函数写好，剩下地就是不断尝试放皇后了
 
+```txt
+n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
+
+
+
+上图为 8 皇后问题的一种解法。
+
+给定一个整数 n，返回所有不同的 n 皇后问题的解决方案。
+
+每一种解法包含一个明确的 n 皇后问题的棋子放置方案，该方案中 'Q' 和 '.' 分别代表了皇后和空位。
+```
+
 ```java
 import java.util.ArrayList;
 import java.util.List;
@@ -669,6 +681,18 @@ class Solution {
 
 ### 11.[22.括号生成](https://leetcode-cn.com/problems/generate-parentheses/)
 > 栈 + 暴力DFS
+
+```txt
+数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。
+
+ 
+
+示例：
+
+输入：n = 3
+输出：["((()))", "(()())", "(())()", "()(())", "()()()"]
+```
+
 ```java
 import java.lang.reflect.Array;
 import java.util.*;
@@ -728,6 +752,28 @@ class Solution {
 ```
 ### 12.[207.课程表](https://leetcode-cn.com/problems/course-schedule/)
 > 拓扑排序,知识点见[Part2BasicGraph/第13章_有向图及相关算法](../Part2BasicGraph/第13章_有向图及相关算法.md#136137-拓扑排序--仅针对有向图)
+
+```txt
+你这个学期必须选修 numCourse 门课程，记为 0 到 numCourse-1 。
+
+在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们：[0,1]
+
+给定课程总量以及它们的先决条件，请你判断是否可能完成所有课程的学习？
+
+
+示例 1:
+
+输入: 2, [[1,0]] 
+输出: true
+解释: 总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。
+示例 2:
+
+输入: 2, [[1,0],[0,1]]
+输出: false
+解释: 总共有 2 门课程。学习课程 1 之前，你需要先完成​课程 0；并且学习课程 0 之前，你还应先完成课程 1。这是不可能的。
+```
+
+
 ```java
 class Solution {
     /**
