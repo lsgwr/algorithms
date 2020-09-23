@@ -367,7 +367,61 @@ class Solution {
     }
 }
 ```
-### 200 岛屿数量 
+### [200.岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
+> DFS求联通分量的个数
+
+```txt
+给你一个由 '1'（陆地）和 '0'（水）组成的的二维网格，请你计算网格中岛屿的数量。
+
+岛屿总是被水包围，并且每座岛屿只能由水平方向或竖直方向上相邻的陆地连接形成。
+
+此外，你可以假设该网格的四条边均被水包围。
+```
+```java
+class Solution {
+    private int Rs;
+    private int Cs;
+    private char[][] grid;
+    private boolean[][] visited;
+    private final int[][] dirs = {{0, 1},{1, 0}, {0, -1}, {-1, 0}};
+    private int ccCount;
+
+    private boolean inGrid(int r, int c){
+        return r >= 0 && r < Rs && c >= 0 && c < Cs;
+    }
+
+    public int numIslands(char[][] grid) {
+        if(grid == null || grid.length == 0){
+            return 0;
+        }
+        Rs = grid.length;
+        Cs = grid[0].length;
+        this.grid = grid;
+        visited = new boolean[Rs][Cs];
+        ccCount = 0;
+        for(int r = 0; r < Rs; r++){
+            for(int c = 0; c < Cs; c++){
+                if(!visited[r][c] && grid[r][c] == '1'){
+                    dfs(r, c);
+                    ccCount++;
+                }
+            }
+        }
+        return ccCount;
+    }
+
+    private void dfs(int r, int c){
+        visited[r][c] = true;
+        for(int[] dir : dirs){
+            int rNext = r + dir[0];
+            int cNext = c + dir[1];
+            if(inGrid(rNext, cNext) && !visited[rNext][cNext] && grid[rNext][cNext] == '1'){
+                dfs(rNext, cNext);
+            }
+        }
+    }
+}
+```
 leetcode 1219 黄金矿工
 leetcode 505 迷宫II
 leetcode 51  N皇后
