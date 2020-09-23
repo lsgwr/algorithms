@@ -954,8 +954,64 @@ class Solution {
     }
 }
 ```
-### 14.2.[1477.找两个和为目标值且不重叠的子数组](https://leetcode-cn.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/)
+### 14.[1477.找两个和为目标值且不重叠的子数组](https://leetcode-cn.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/)
 > 前缀和 + 哈希，类似上面的[LeetCode 325.和为K的最长子数组长度](https://leetcode-cn.com/problems/maximum-size-subarray-sum-equals-k/)
+
+> 直接用暴力法，也过了53/60个用例，还行，后面再优化下
+
+```txt
+给你一个整数数组 arr 和一个整数值 target 。
+
+请你在 arr 中找 两个互不重叠的子数组 且它们的和都等于 target 。可能会有多种方案，请你返回满足要求的两个子数组长度和的 最小值 。
+
+请返回满足要求的最小长度和，如果无法找到这样的两个子数组，请返回 -1 。
+```
+
+```java
+class Solution {
+    // 前缀和 + 哈希，类似325.和为K的最长子数组长度
+    public int minSumOfLengths(int[] arr, int target) {
+        int[] s = new int[arr.length + 1]; // 前缀和数组
+        int[] a = new int[arr.length + 1]; // 数组arr统一往后移动一位
+        for (int i = 1; i <= arr.length; i++) {
+            a[i] = arr[i - 1];
+            s[i] = s[i - 1] + a[i];
+        }
+
+        List<int[]> intervalList = new ArrayList<>();
+
+        // 暴力吧
+        for (int i = 1; i < a.length; i++) {
+            for (int j = i; j < a.length; j++) {
+                if (s[j] - s[i - 1] != target) continue; // 遍历下一个区间
+                intervalList.add(new int[]{i, j});
+            }
+        }
+
+        // 再暴力遍历所有满足条件的集合
+        int res = Integer.MAX_VALUE;
+        for (int i = 0; i < intervalList.size(); i++) {
+            for (int j = i + 1; j < intervalList.size(); j++) {
+                if (notIntersect(intervalList.get(i), intervalList.get(j))) {
+                    res = Math.min(res, getIntervalLenSum(intervalList.get(i), intervalList.get(j)));
+                }
+            }
+        }
+        return res == Integer.MAX_VALUE ? -1 : res;
+    }
+
+    // 判断两个区间是否不相交
+    private boolean notIntersect(int[] intervalLeft, int[] intervalRight) {
+        return intervalLeft[1] < intervalRight[0]; // 因为是闭区间，所以必须严格小于，区间才不会相交
+    }
+
+    // 获取两个区间的长度和
+    private int getIntervalLenSum(int[] intervalLeft, int[] intervalRight) {
+        return intervalLeft[1] - intervalLeft[0] + 1 + intervalRight[1] - intervalRight[0] + 1;
+    }
+}
+```
+
 ### 15.[1405.最长快乐字符串](https://leetcode-cn.com/problems/longest-happy-string/)
 > 考察点 字符串， 贪心算法
 
