@@ -1166,6 +1166,99 @@ class Solution {
 ### 15.[1405.最长快乐字符串](https://leetcode-cn.com/problems/longest-happy-string/)
 > 考察点 字符串， 贪心算法
 
+> 先DFS暴力做了一下，过了1/3的用例
+
+```java
+class Solution {
+    int aMax, bMax, cMax;
+    int aCnt = 0, bCnt = 0, cCnt = 0;
+    String result = "";
+    private void dfs(String cur, List<String> list) {
+        if (cur.equals("a")) aCnt++;
+        if (cur.equals("b")) bCnt++;
+        if (cur.equals("c")) cCnt++;
+        list.add(cur);
+        String str = String.join("", list);
+        if (aCnt > aMax || bCnt > bMax || cCnt > cMax || 
+            str.contains("aaa") || str.contains("bbb") || str.contains("ccc")) {
+            return; // 一旦不满足，直接退出
+        }
+
+        if (str.length() > result.length()) result = str; // 更新最大值
+        
+        dfs("a", list);
+        list.remove(list.size() - 1);
+        aCnt--;
+
+        dfs("b", list);
+        list.remove(list.size() - 1);
+        bCnt--;
+
+        dfs("c", list);
+        list.remove(list.size() - 1);
+        cCnt--;
+    }
+    public String longestDiverseString(int a, int b, int c) {
+        aMax = a;
+        bMax = b;
+        cMax = c;
+        // 先暴力
+        List<String> cList = new ArrayList<>();
+        dfs("", cList);
+        return result; // 得到一个最大值即可
+    }
+}
+```
+
+> 贪心：每轮放置字符时优先先放剩余次数最多的, 如果上次放的2个字符和剩余个数最多的字符相同，则放置次多的字符
+
+参考：https://leetcode-cn.com/problems/longest-happy-string/solution/tan-xin-suan-fa-you-ya-jie-fa-by-bigpotato-3/
+
+```java
+import java.util.Arrays;
+
+class Solution {
+    class PII {
+        char c;
+        int cnt;
+
+        public PII(char c, int cnt) {
+            this.c = c;
+            this.cnt = cnt;
+        }
+    }
+
+    public String longestDiverseString(int a, int b, int c) {
+        PII[] piis = new PII[3];
+        piis[0] = new PII('a', a);
+        piis[1] = new PII('b', b);
+        piis[2] = new PII('c', c);
+
+        StringBuilder sb = new StringBuilder();
+        while (true) {
+            Arrays.sort(piis, (o1, o2) -> o2.cnt - o1.cnt); // 按照使用次数降序排序列，每次使用后都要重新排队
+            // 先放最多的，如果前面放的两个字符和剩余个数最多的字符相同，则防止次多的字符
+            if (sb.length() >= 2 && sb.charAt(sb.length() - 1) == piis[0].c && sb.charAt(sb.length() - 2) == piis[0].c) {
+                if (piis[1].cnt > 0) {
+                    sb.append(piis[1].c);
+                    piis[1].cnt--;
+                } else {
+                    break;
+                }
+            } else {
+                if (piis[0].cnt > 0) {
+                    sb.append(piis[0].c);
+                    piis[0].cnt--;
+                } else {
+                    break;
+                }
+            }
+        }
+        return sb.toString();
+    }
+}
+```
+
 ### 16.[990.等式方程的可满足性](https://leetcode-cn.com/problems/satisfiability-of-equality-equations/)
 > 考察点：并查集/图
 
