@@ -1012,6 +1012,60 @@ class Solution {
 }
 ```
 
+把暴力改成滑动窗口，又能多过3个
+
+```java
+class Solution {
+    // 前缀和 + 哈希，类似325.和为K的最长子数组长度
+    public int minSumOfLengths(int[] arr, int target) {
+        int[] s = new int[arr.length + 1]; // 前缀和数组
+        int[] a = new int[arr.length + 1]; // 数组arr统一往后移动一位
+        for (int i = 1; i <= arr.length; i++) {
+            a[i] = arr[i - 1];
+            s[i] = s[i - 1] + a[i];
+        }
+
+        List<int[]> intervalList = new ArrayList<>();
+
+        // 暴力求所有合为target的子区间，改成滑动窗口兴许能过(所有元素都是正数，right++和增加,left--和减少，因此可以用滑动窗口)
+        int left = 0, right = 1;
+        while (right < a.length) {
+            if (s[right] - s[left] == target) {
+                intervalList.add(new int[]{left, right}); // 对于arr来说，区间是[left, right)，左闭右开区间
+            }
+
+            while (s[right] - s[left] > target) {
+                left++;
+                if (s[right] - s[left] == target) {
+                    intervalList.add(new int[]{left, right}); // 对于arr来说，区间是[left, right)，左闭右开区间
+                }
+            }
+            right++;
+        }
+
+        // 再暴力遍历所有满足条件的集合
+        int res = Integer.MAX_VALUE;
+        for (int i = 0; i < intervalList.size(); i++) {
+            int[] iInterval = intervalList.get(i);
+            if (iInterval[1] - iInterval[0] >= res) continue; // 单个元素长度超出限制就提前退出
+            for (int j = i + 1; j < intervalList.size(); j++) {
+                int[] jInterval = intervalList.get(j);
+                if (iInterval[1] <= jInterval[0]) { // 两个区间不相交
+                    res = Math.min(res, getIntervalLenSum(iInterval, jInterval));
+                }
+            }
+        }
+        return res == Integer.MAX_VALUE ? -1 : res;
+    }
+
+
+    // 获取两个区间的长度和
+    private int getIntervalLenSum(int[] intervalLeft, int[] intervalRight) {
+        return intervalLeft[1] - intervalLeft[0] + intervalRight[1] - intervalRight[0];
+    }
+}
+```
+
 ### 15.[1405.最长快乐字符串](https://leetcode-cn.com/problems/longest-happy-string/)
 > 考察点 字符串， 贪心算法
 
