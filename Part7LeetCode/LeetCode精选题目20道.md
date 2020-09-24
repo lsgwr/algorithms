@@ -24,44 +24,25 @@
 // [[1,4],[4,5]]
 // [[1,4],[2,3]]
 // []
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 class Solution {
-    class PII {
-        int first, second;
-        public PII(int first, int second) {
-            this.first = first;
-            this.second = second;
-        }
-    }
     public int[][] merge(int[][] intervals) {
-        if (intervals.length == 0 || intervals[0].length == 0) {
-            return new int[0][2];
-        }
-        List<PII> intervalList = new ArrayList<>();
-        for (int[] interval : intervals) {
-            intervalList.add(new PII(interval[0], interval[1]));
-        }
         // 按照区间左端点进行排序
-        Collections.sort(intervalList, (o1, o2) -> o1.first - o2.first); // 按照区间左端点进行排序
+        Arrays.sort(intervals, (o1, o2) -> o1[0] - o2[0]); // 按照区间左端点进行排序
         List<int[]> result = new ArrayList<>();
-        PII pii = intervalList.get(0);
-        int left = pii.first;
-        int right = pii.second;
-        for (int i = 1; i < intervalList.size(); i++) {
-            pii = intervalList.get(i);
-            if (right >= pii.first) { // 如果新来的区间的左端点小于right，则可以合并区间
-                if (right > pii.second) continue; // [left, right]完全包含pii
-                right = pii.second;
-            } else { // 一旦right比新来的区间的左端点还小，那么肯定要新算一个区间了
-                result.add(new int[]{left, right});
-                left = pii.first;
-                right = pii.second;
+        int left = Integer.MIN_VALUE, right = Integer.MIN_VALUE;
+        for (int[] interval : intervals) {
+            if (right >= interval[0]) { // 当前区间的左端点 < right，则可以合并区间
+                if (right > interval[1]) continue; // [left, right]完全包含interval
+                right = interval[1]; // [left, right]没完全包含interval，需要更新右端点
+            } else { // 一旦right比新来的区间的左端点还小，那么肯定要新开一个区间了
+                if (left != Integer.MIN_VALUE) result.add(new int[]{left, right});
+                left = interval[0];
+                right = interval[1];
             }
         }
-        result.add(new int[]{left, right});
+        if (left != Integer.MIN_VALUE) result.add(new int[]{left, right}); // 最终的left和right记得还要加进去
         int[][] res = new int[result.size()][2];
         for (int i = 0; i < result.size(); i++) {
             res[i] = result.get(i);
