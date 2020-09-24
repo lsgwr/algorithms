@@ -957,7 +957,7 @@ class Solution {
 ### 14.[1477.找两个和为目标值且不重叠的子数组](https://leetcode-cn.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/)
 > 前缀和 + 滑动窗口，类似上面的[LeetCode 325.和为K的最长子数组长度](https://leetcode-cn.com/problems/maximum-size-subarray-sum-equals-k/)
 
-> 直接用暴力法，也过了53/60个用例，还行，后面再优化下
+> 直接用暴力法，也过了`53/60`个用例，还行，后面再优化下
 
 ```txt
 给你一个整数数组 arr 和一个整数值 target 。
@@ -1012,7 +1012,7 @@ class Solution {
 }
 ```
 
-把暴力改成滑动窗口，又能多过3个
+把暴力改成滑动窗口，又能多过4个用例 `57/60`
 
 ```java
 class Solution {
@@ -1062,6 +1062,103 @@ class Solution {
     // 获取两个区间的长度和
     private int getIntervalLenSum(int[] intervalLeft, int[] intervalRight) {
         return intervalLeft[1] - intervalLeft[0] + intervalRight[1] - intervalRight[0];
+    }
+}
+```
+
+把前缀和去掉，直接在滑动窗口中维护sum，又多过了1个用例 `58/60`
+
+```java
+class Solution {
+    // 前缀和 + 哈希，类似325.和为K的最长子数组长度
+    public int minSumOfLengths(int[] arr, int target) {
+        List<int[]> intervalList = new ArrayList<>(); // 存储所有和为target的区间左右端点
+        // 暴力求所有合为target的子区间，改成滑动窗口兴许能过(所有元素都是正数，right++和增加,left--和减少，因此可以用滑动窗口)
+        int left = 0, right = 0, sum = 0;
+        while (right < arr.length) { // 注意滑动窗口都是增删元素，然后再移动left或right指针
+            sum += arr[right]; // 右侧移入新的元素
+            right++;
+            if (sum == target) {
+                intervalList.add(new int[]{left, right}); // 对于arr来说，区间是[left, right)，左闭右开区间
+            }
+
+            while (sum > target) {
+                sum -= arr[left]; // 左侧移走一个元素
+                left++;
+                if (sum == target) { // 不断的减也可能减
+                    intervalList.add(new int[]{left, right}); // 对于arr来说，区间是[left, right)，左闭右开区间
+                }
+            }
+        }
+
+        // 再暴力遍历所有满足条件的集合
+        int res = Integer.MAX_VALUE;
+        for (int i = 0; i < intervalList.size(); i++) {
+            int[] iInterval = intervalList.get(i);
+            if (iInterval[1] - iInterval[0] >= res) continue; // 单个元素长度超出限制就提前退出
+            for (int j = i + 1; j < intervalList.size(); j++) {
+                int[] jInterval = intervalList.get(j);
+                if (iInterval[1] <= jInterval[0]) { // 两个区间不相交
+                    res = Math.min(res, getIntervalLenSum(iInterval, jInterval));
+                }
+            }
+        }
+        return res == Integer.MAX_VALUE ? -1 : res;
+    }
+
+
+    // 获取两个区间的长度和
+    private int getIntervalLenSum(int[] intervalLeft, int[] intervalRight) {
+        return intervalLeft[1] - intervalLeft[0] + intervalRight[1] - intervalRight[0];
+    }
+}
+```
+
+> 对得到的和为target的区间进行排序，这样一旦满足条件的res，后面的都不需要遍历了，可以提前break，性能大大提高
+
+```java
+import java.util.*;
+
+// 参考评论区：https://leetcode-cn.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/solution/find-two-by-ikaruga/
+class Solution {
+    // 前缀和 + 哈希，类似325.和为K的最长子数组长度
+    public int minSumOfLengths(int[] arr, int target) {
+        List<int[]> intervalList = new ArrayList<>();
+        // 完全按照labuladong总结的滑动窗口模板来做的：(所有元素都是正数，right++则sum增加,left++则sum减少，因此可以用滑动窗口)
+        int left = 0, right = 0, sum = 0;
+        while (right < arr.length) { // 注意滑动窗口都是增删元素，然后再移动left或right指针
+            sum += arr[right]; // 右侧移入新的元素
+            right++;
+            if (sum == target) {
+                intervalList.add(new int[]{right - left, left}); // 对于arr来说，区间是[left, right)，左闭右开区间，所以区间长度正好是right - left
+            }
+
+            while (sum > target) {
+                sum -= arr[left]; // 左侧移走一个元素
+                left++;
+                if (sum == target) { // 不断的减也可能减到目标值
+                    intervalList.add(new int[]{right - left, left}); // 对于arr来说，区间是[left, right)，左闭右开区间，所以区间长度正好是right - left
+                }
+            }
+        }
+
+        intervalList.sort(((o1, o2) -> o1[0] - o2[0])); // 按照区间长度排序，这个用法很好，我们不用单独建PII类了
+
+        // 再暴力遍历所有满足条件的集合
+        int res = Integer.MAX_VALUE;
+        for (int i = 0; i < intervalList.size(); i++) {
+            int[] interval1 = intervalList.get(i);
+            if (interval1[0] * 2 >= res) break;// ans是两个长度之和，如果遍历到有超过这个长度的，后面的肯定更大了，就无需遍历了
+
+            for (int j = i + 1; j < intervalList.size(); j++) {
+                int[] interval2 = intervalList.get(j); // 获得另一个满足条件的区间
+                if (interval1[1] < interval2[1] && interval1[1] + interval1[0] > interval2[1]) continue; // 区间1在左，和区间2相交
+                if (interval2[1] < interval1[1] && interval2[1] + interval2[0] > interval1[1]) continue; // 区间2在左，和区间1相交
+                res = Math.min(res, interval1[0] + interval2[0]); // 区间不相交才可以更新区间长度之和
+                break; // 长度经过排序之后，后面的区间长度肯定更大，即一定比res大了，因此不需要遍历了
+            }
+        }
+        return res == Integer.MAX_VALUE ? -1 : res;
     }
 }
 ```
