@@ -1415,6 +1415,118 @@ class Solution {
 
 ### 17.[1129.颜色交替的最短路径](https://leetcode-cn.com/problems/shortest-path-with-alternating-colors/)
 > 考察点：广度优先搜索/图
+```java
+import java.util.*;
+
+class Solution {
+    final int RED = 0;
+    final int BLUE = 1;
+    TreeMap<Integer, Integer>[] adj;
+    int[] dis;
+    int n;
+    int MAX;
+
+    public int[] shortestAlternatingPaths(int n, int[][] red_edges, int[][] blue_edges) {
+        this.n = n;
+        dis = new int[n]; // 结果数组
+        Arrays.fill(dis, Integer.MAX_VALUE / 2); // 求最小值，所以要初始化为最大值
+        adj = new TreeMap[n];
+        MAX = red_edges.length + blue_edges.length; // 最长的路径可能是多少，用于剪枝，防止自环
+
+        for (int i = 0; i < n; i++) {
+            adj[i] = new TreeMap<>();
+        }
+
+        for (int[] red_edge : red_edges) {
+            adj[red_edge[0]].put(red_edge[1], RED);
+        }
+
+        for (int[] blue_edge : blue_edges) {
+            adj[blue_edge[0]].put(blue_edge[1], BLUE);
+        }
+
+        dis[0] = 0; // 0到0的节点为0
+        // 类似求解二分图吧，需要把父遍历点传进去
+        dfs(0, 0); // 起点的parent认为就是自己
+        // 把所有的Integer.MAX_VALUE改成-1
+        for (int i = 0; i < n; i++) {
+            if (dis[i] == Integer.MAX_VALUE / 2) dis[i] = -1;
+        }
+        return dis;
+    }
+
+    private void dfs(int v, int parent) {
+        if (dis[v] > MAX) return; // 防止自环边或者平行边
+        for (int w : adj[v].keySet()) { // 获取v的所有邻接边
+            if (v == parent) { // parent是root地话，直接遍历所有root的邻接点都可以
+                if ((dis[v] + 1) < dis[w]) {
+                    dis[w] = dis[v] + 1;
+                    dfs(w, v);
+                }
+            } else {
+                if ((adj[parent].get(v) + adj[v].get(w)) == 1 && (dis[v] + 1) < dis[w]) { // 颜色必须交替
+                    dis[w] = dis[v] + 1;
+                    dfs(w, v);
+                    dis[w] = dis[v] + 1;
+                }
+            }
+        }
+    }
+
+
+    public static void main(String[] args) {
+        int n = 3;
+        int[][] red_edges = {{0, 1}, {1, 2}};
+        int[][] blue_edges = {};
+        new Solution().shortestAlternatingPaths(n, red_edges, blue_edges);
+    }
+}
+```
+
+> 参考的代码
+
+```java
+class Solution {
+    public int[] shortestAlternatingPaths(int n, int[][] A, int[][] B) {
+        boolean graph[][][] = new boolean[2][n][n];
+        for(int t[]: A) {
+            graph[0][t[0]][t[1]] = true;
+        }
+        for(int t[]: B) {
+            graph[1][t[0]][t[1]] = true;
+        }
+        int distance1[] = new int[n], distance2[] = new int[n], res[] = new int[n], d = 1;
+        Queue <Integer> queue1 = new LinkedList<> (), queue2 = new LinkedList<> (), queue = queue2;
+        queue1.offer(0);
+        queue2.offer(0);
+        boolean flag = false, color = true;
+        while(!queue1.isEmpty() || !queue2.isEmpty()) {
+            queue = (queue == queue1) ? queue2 : queue1;
+            int size = queue.size();
+            for(int i = 0; i < size; i++) {
+                int cur = queue.poll(), distance[] = color ? distance1 : distance2;
+                for(int nxt = 0; nxt < n; nxt++) {
+                    if(distance[nxt] != 0 || !graph[color ? 0 : 1][cur][nxt]) 
+                      continue;
+                    graph[color ? 0 : 1][cur][nxt] = false;
+                    distance[nxt] = d;
+                    queue.offer(nxt);
+                }
+            }
+            if(flag) d++;
+            else color = !color;
+            flag = !flag;
+        }
+        for(int i = 1; i < n; i++) {
+            if(distance1[i] == 0 && distance2[i] == 0) res[i] = -1;
+            else if(distance1[i] == 0) res[i] = distance2[i];
+            else if(distance2[i] == 0) res[i] = distance1[i];
+            else res[i] = Math.min(distance1[i], distance2[i]);
+        }
+        return res;
+    }
+}
+```
 
 ### 18.[1190.反转每对括号间的子串](https://leetcode-cn.com/problems/reverse-substrings-between-each-pair-of-parentheses/)
 > 考察点 字符串/栈
