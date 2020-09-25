@@ -4,7 +4,7 @@
 ## 题目
 
 ### [AcWing 1112.迷宫](https://www.acwing.com/problem/content/1114/)
-> 联通性问题一次找到即可，不需要回溯！！！回溯反而会导致超时！！
+> 联通性问题一次找到即可，不需要回溯！！！回溯反而会导致超时！！此外也可以一次DFS维护int[] visited，根据visited[i]和visited[j]是否相等来判断，对于多对点求联通性非常适用
 ```java
 import java.io.*;
 
