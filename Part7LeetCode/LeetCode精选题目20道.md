@@ -1268,7 +1268,150 @@ class Solution {
 ```
 
 ### 16.[990.等式方程的可满足性](https://leetcode-cn.com/problems/satisfiability-of-equality-equations/)
-> 考察点：并查集/图
+> 考察点：并查集/图，借助了自己总结的并查集类
+
+```txt
+给定一个由表示变量之间关系的字符串方程组成的数组，每个字符串方程 equations[i] 的长度为 4，并采用两种不同的形式之一："a==b" 或 "a!=b"。在这里，a 和 b 是小写字母（不一定不同），表示单字母变量名。
+
+只有当可以将整数分配给变量名，以便满足所有给定的方程时才返回 true，否则返回 false。 
+
+ 
+
+示例 1：
+
+输入：["a==b","b!=a"]
+输出：false
+解释：如果我们指定，a = 1 且 b = 1，那么可以满足第一个方程，但无法满足第二个方程。没有办法分配变量同时满足这两个方程。
+示例 2：
+
+输入：["b==a","a==b"]
+输出：true
+解释：我们可以指定 a = 1 且 b = 1 以满足满足这两个方程。
+示例 3：
+
+输入：["a==b","b==c","a==c"]
+输出：true
+示例 4：
+
+输入：["a==b","b!=c","c==a"]
+输出：false
+示例 5：
+
+输入：["c==c","b==d","x!=z"]
+输出：true
+ 
+
+提示：
+
+1 <= equations.length <= 500
+equations[i].length == 4
+equations[i][0] 和 equations[i][3] 是小写字母
+equations[i][1] 要么是 '='，要么是 '!'
+equations[i][2] 是 '='
+```
+
+```java
+class UnionFind {
+    /**
+     * 记录每个节点在联通分量中的父节点
+     */
+    private int[] parent;
+
+    /**
+     * rank[i]表示节点i所在的联通分量树的层数/高度/深度
+     */
+    private int[] rank;
+
+    public UnionFind(int size) {
+        this.parent = new int[size];
+        this.rank = new int[size];
+        for (int i = 0; i < parent.length; i++) {
+            // 初始化时每个顶点的父节点都认为是自己
+            parent[i] = i;
+            // 初始时所有元素都是互不相连地，所以每个元素都是一个并查集，每个并查集只有一个元素,也就是一层
+            rank[i] = 1;
+        }
+    }
+
+    public boolean isConnected(int p, int q) {
+        return find(p) == find(q);
+    }
+
+    public void unionElements(int p, int q) {
+        int pRoot = find(p);
+        int qRoot = find(q);
+        if (pRoot == qRoot) {
+            // p和q在一个联通分量内，不需要union了，直接退出
+            return;
+        }
+        // 不在一个并查集内的话，只需要把两个根节点连接起来即可
+        // 第5节：根据层数优化。下面按照两个并并查集的层数(rank[i])的大小决定谁连接谁(层数少地连接层数多地)
+        if (rank[pRoot] < rank[qRoot]) { // p所在的并查集层数小于q所在的并查集层数，p指向q
+            // p所在的并查集连接q所在的并查集，rank[root]取两者中层数较大地，并不需要维护rank
+            parent[pRoot] = qRoot;
+        } else if (rank[pRoot] > rank[qRoot]) { // p所在的并查集层数大于q所在的并查集层数,q指向p
+            // p所在的并查集连接q所在的并查集，rank[root]取两者中层数较大地，并不需要维护rank
+            // q所在的并查集连接p所在的并查集
+            parent[qRoot] = pRoot;
+        } else { // p所在的并查集层数等于q所在的并查集层数,谁指向谁都行，这里选p指向q
+            //当 rank[pRoot] = rank[qRoot];
+            parent[pRoot] = qRoot;
+            // 两个层级相等的并查集树根节点相连，层数一定增长1，所以把新的并查集层数+1
+            rank[qRoot] += 1;
+        }
+    }
+
+    public int getSize() {
+        return parent.length;
+    }
+
+    /**
+     * 获取元素i所属的联通分量的根节点，因为是树，所以查找的时间复杂度是O(logn)
+     *
+     * @param i 元素，即parent数组的下标，用来唯一标识一个元素，即parent数组的下标既是索引又是元素
+     * @return i所属的联通分量的根节点
+     */
+    private int find(int i) {
+        if (i < 0 || i >= parent.length) {
+            throw new IllegalArgumentException("传入的索引超出了数组范围！");
+        }
+        // 当i的父节点是自己时说明达到了根节点
+        while (parent[i] != i) {
+            // 第6节：路径压缩
+            parent[i] = parent[parent[i]];
+            i = parent[i];
+        }
+        return i;
+    }
+}
+class Solution {
+    public boolean equationsPossible(String[] equations) {
+        UnionFind uf = new UnionFind(equations.length * 2); // 最多的联通分量的个数
+        int cnt = 0;
+        Map<Character, Integer> map = new HashMap<>(); // 记录字符对应的整数映射(不用的字符用0~cnt来表示)
+        for (String equation : equations) {
+            char left = equation.charAt(0); // 左操作符
+            char right = equation.charAt(3); // 右操作符
+            if (map.get(left) == null) map.put(left, cnt++);
+            if (map.get(right) == null) map.put(right, cnt++);
+            String operator = equation.substring(1, 3); // 获取操作符
+            if (operator.equals("==")) uf.unionElements(map.get(left), map.get(right));
+        }
+
+        // 再判断所有不等式
+        for (String equation : equations) {
+            char left = equation.charAt(0); // 左操作符
+            char right = equation.charAt(3); // 右操作符
+            String operator = equation.substring(1, 3); // 获取操作符
+            if (operator.equals("!=")) {
+                if (uf.isConnected(map.get(left), map.get(right))) return false;
+            }
+        }
+
+        return true;
+    }
+}
+```
 
 ### 17.[1129.颜色交替的最短路径](https://leetcode-cn.com/problems/shortest-path-with-alternating-colors/)
 > 考察点：广度优先搜索/图
