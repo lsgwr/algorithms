@@ -1,0 +1,610 @@
+Fibonacci Number
+	
+COMMENT On this Page EXPLORE THIS TOPIC IN the MathWorld ClassroomDOWNLOAD Mathematica Notebook
+
+Contribute to this entry
+
+The Fibonacci numbers are the sequence of numbers {F_n}_(n==1)^infty defined by the linear recurrence equation
+F_n==F_(n-1)+F_(n-2)	
+(1)
+
+with F_1==F_2==1. As a result of the definition (1), it is conventional to define F_0==0.
+
+The Fibonacci numbers for n==1, 2, ... are 1, 1, 2, 3, 5, 8, 13, 21, ... (Sloane's A000045).
+
+Fibonacci numbers can be viewed as a particular case of the Fibonacci polynomials F_n(x) with F_n==F_n(1).
+
+Fibonacci numbers are implemented in Mathematica as Fibonacci[n].
+
+The Fibonacci numbers are also a Lucas sequence U_n(1,-1), and are companions to the Lucas numbers (which satisfy the same recurrence equation).
+FoxTrot by Bill Amend
+
+The above cartoon (Amend 2005) shows an unconventional sports application of the Fibonacci numbers (left two panels). (The right panel instead applies the Perrin sequence).
+
+A scrambled version 13, 3, 2, 21, 1, 1, 8, 5 (Sloane's A117540) of the first eight Fibonacci numbers appear as one of the clues left by murdered museum curator Jacque Sauni®®re in D. Brown's novel The Da Vinci Code (Brown 2003, pp. 43, 60-61, and 189-192). In the Season 1 episode "Sabotage" (2005) of the television crime drama NUMB3RS, math genius Charlie Eppes mentions that the Fibonacci numbers are found in the structure of crystals and the spiral of galaxies and a nautilus shell.
+Binary plot of the Fibonacci sequence
+
+The plot above shows the first 511 terms of the Fibonacci sequence represented in binary, revealing an interesting pattern of hollow and filled triangles (Pegg 2003). A fractal-like series of white triangles appears on the bottom edge, due in part to the fact that the binary representation of F_(2^n+2^(n+1)) ends in n+2 zeros. Many other similar properties exist.
+
+The Fibonacci numbers give the number of pairs of rabbits n months after a single pair begins breeding (and newly born bunnies are assumed to begin breeding when they are two months old), as first described by Leonardo of Pisa (also known as Fibonacci Eric Weisstein's World of Biography) in his book Liber Abaci. Kepler Eric Weisstein's World of Biography also described the Fibonacci numbers (Kepler 1966; Wells 1986, pp. 61-62 and 65). Before Fibonacci wrote his work, the Fibonacci numbers had already been discussed by Indian scholars such as Gopala (before 1135) and Hemachandra (c. 1150) who had long been interested in rhythmic patterns that are formed from one-beat and two-beat notes or syllables. The number of such rhythms having n beats altogether is F_(n+1), and hence these scholars both mentioned the numbers 1, 2, 3, 5, 8, 13, 21, ... explicitly (Knuth 1997, p. 80).
+
+The numbers of Fibonacci numbers less than 10, 10^2, 10^3, ... are 6, 11, 16, 20, 25, 30, 35, 39, 44, ... (Sloane's A072353). There is an interesting pattern in the number of digits of F_(10^n). In particular, for n==1, 2, ..., the result are 2, 21, 209, 2090, 20899, 208988, 2089877, 20898764, ... (Sloane's A068070). As can be seen, the initial strings of digits settle down to produce the number 208987640249978733769... (Sloane's A097348), which corresponds to the decimal digits of csch^(-1)2/ln10==0.2089876.
+
+The Fibonacci numbers F_n, are squareful for n==6, 12, 18, 24, 25, 30, 36, 42, 48, 50, 54, 56, 60, 66, ..., 372, 375, 378, 384, ... (Sloane's A037917) and squarefree for n==1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 13, ... (Sloane's A037918). 4|F_(6n) and 25|F_(25n) for all n, and there is at least one n<=2m such that m|F_n. No squareful Fibonacci numbers F_p are known with p prime.
+
+The ratios of successive Fibonacci numbers F_n/F_(n-1) approaches the golden ratio phi as n approaches infinity, as first proved by Scottish mathematician Robert Simson in 1753 (Wells 1986, p. 62). The ratios of alternate Fibonacci numbers are given by the convergents to phi^(-2), where phi is the golden ratio, and are said to measure the fraction of a turn between successive leaves on the stalk of a plant (phyllotaxis): 1/2 for elm and linden, 1/3 for beech and hazel, 2/5 for oak and apple, 3/8 for poplar and rose, 5/13 for willow and almond, etc. (Coxeter 1969, Ball and Coxeter 1987). The Fibonacci numbers are sometimes called pine cone numbers (Pappas 1989, p. 224). The role of the Fibonacci numbers in botany is sometimes called Ludwig's law (Szymkiewicz 1928; Wells 1986, p. 66; Steinhaus 1999, p. 299).
+
+The equation (°Û) is a linear recurrence equation
+x_n==Ax_(n-1)+Bx_(n-2) n>=3,	
+(2)
+
+so the closed form for F_n is given by
+F_n==(alpha^n-beta^n)/(alpha-beta),	
+(3)
+
+where alpha and beta are the roots of x^2==Ax+B. Here, A==B==1, so the equation becomes
+x^2-x-1==0,	
+(4)
+
+which has roots
+x==1/2(1+/-sqrt(5)).	
+(5)
+
+The closed form is therefore given by
+F_n==((1+sqrt(5))^n-(1-sqrt(5))^n)/(2^nsqrt(5)).	
+(6)
+
+This is known as Binet's Fibonacci number formula (Wells 1986, p. 62). Another closed form is
+F_n==[1/(sqrt(5))((1+sqrt(5))/2)^n]==[(phi^n)/(sqrt(5))],	
+(7)
+
+where [x] is the nint function (Wells 1986, p. 62).
+Fibonacci
+
+Using equation (6), the definition of F_n can be extended to negative integers n according to
+F_(-n)==(-1)^(n+1)F_n.	
+(8)
+
+More generally, the Fibonacci numbers can be extended to n a real number nu via
+F_nu==1/(sqrt(5)){((1+sqrt(5))/2)^nu-(2/(1+sqrt(5)))^nucos(nupi)},	
+(9)
+
+as plotted above.
+FibonacciRoots
+
+The Fibonacci function has zeros at x==0 and an infinite number of negative values that approach n+0.5 for all negative integers n, given by the solutions to
+phi^(2x)==cos(pix),	
+(10)
+
+where phi is the golden ratio. The first few roots are 0, x==-0.183802... (Sloane's A089260), -1.5707764..., -2.4704268..., -3.5108513..., ....
+
+Another recurrence relation for the Fibonacci numbers is
+F_(n+1)==|_(F_n(1+sqrt(5))+1)/2_|==|_phiF_n+1/2_|,	
+(11)
+
+where |_x_| is the floor function and phi is the golden ratio. This expression follows from the more general recurrence relation
+|F_(n+1) F_(n+2) ... F_(n+k); F_(n+k+1) F_(n+k+2) ... F_(n+2k); | | ... |; F_(n+k(k-1)+1) F_(n+k(k-1)+2) ... F_(n+k^2)|==0	
+(12)
+
+for k>2. (The k==1 case is trivially F_(n+1), while the k==2 case is essentially Cassini's identity and therefore equal to (-1)^n.)
+
+Another interesting determinant identity follows from defining A_n as the nxn matrix with zeros everywhere except a_(ii)==1 and a_(ij)==sqrt(-1) for |i-j|==1 (i.e., along the superdiagonal and subdiagonal). Then
+|A_n|==F_(n+1)	
+(13)
+
+(S. Markelov).
+
+The generating function for the Fibonacci numbers is
+g(x)==sum_(n==1)^inftyF_nx^n==x/(1-x-x^2)==x+x^2+2x^3+3x^4+5x^5+....	
+(14)
+FibonacciSlash
+
+By plugging in x==1/10, this gives the curious addition tree illustrated above,
+sum_(n==0)^infty(F_n)/(10^n)==(10)/(89),	
+(15)
+
+so
+sum_(n==0)^infty(F_n)/(10^(n+1))==1/(89)	
+(16)
+
+(Livio 2002, pp. 106-107).
+
+The sum
+sum_(k==1)^infty1/(F_k)==3.35988566...	
+(17)
+
+(Sloane's A079586) is known as the reciprocal Fibonacci constant.
+
+Yuri Matiyasevich (1970) showed that there is a polynomial P in n, m, and a number of other variables x, y, z, ... having the property that n==F_(2m) iff there exist integers x, y, z, ... such that P(n,m,x,y,z,...)==0. This led to the proof of the impossibility of the tenth of Hilbert's problems (does there exist a general method for solving Diophantine equations?) by Julia Robinson and Martin Davis in 1970 (Reid 1997, p. 107).
+FibonacciChecker3
+FibonacciChecker4
+FibonacciChecker5
+
+The Fibonacci number F_(n+1) gives the number of ways for 2x1 dominoes to cover a 2xn checkerboard, as illustrated in the diagrams above (Dickau).
+
+The number of ways of picking a set (including the empty set) from the numbers 1, 2, ..., n without picking two consecutive numbers is F_(n+2). The number of ways of picking a set (including the empty set) from the numbers 1, 2, ..., n without picking two consecutive numbers (where 1 and n are now consecutive) is L_n==F_(n+1)+F_(n-1), where L_n is a Lucas number.
+
+The probability of not getting two heads in a row in n tosses of a coin is F_(n+2)/2^n (Honsberger 1985, pp. 120-122). Fibonacci numbers are also related to the number of ways in which n coin tosses can be made such that there are not three consecutive heads or tails. The number of ideals of an n-element fence poset is the Fibonacci number F_n.
+
+Given a resistor network of n 1-Omega resistors, each incrementally connected in series or parallel to the preceding resistors, then the net resistance is a rational number having maximum possible denominator of F_(n+1).
+
+The Fibonacci numbers are given in terms of the Chebyshev polynomial of the second kind by
+F_n==i^(n-1)U_(n-1)(-1/2i).	
+(18)
+
+Sum identities include
+sum_(k==1)^(n)F_k	=	F_(n+2)-1	
+(19)
+sum_(k==0)^(n)F_(2k+1)	=	F_(2n+2)	
+(20)
+sum_(k==0)^(n)F_(2k)	=	F_(2n+1)-1	
+(21)
+sum_(k==1)^(n)F_k^2	=	F_nF_(n+1).	
+(22)
+
+There are a number of particular pretty algebraic identities involving the Fibonacci numbers, including
+F_(2n)	=	F_(n+1)^2-F_(n-1)^2	
+(23)
+	=	F_n(F_(n+1)+F_(n-1))	
+(24)
+	=	F_n(F_n+2F_(n-1))	
+(25)
+	=	F_n(2F_(n+1)-F_n)	
+(26)
+F_(3n)	=	F_(n+1)^3+F_n^3-F_(n-1)^3	
+(27)
+F_(n+1)^2	=	4F_nF_(n-1)+F_(n-2)^2	
+(28)
+
+(Brousseau 1972), Catalan's identity
+F_n^2-F_(n+r)F_(n-r)==(-1)^(n-r)F_r^2,	
+(29)
+
+d'Ocagne's identity
+F_mF_(n+1)-F_nF_(m+1)==(-1)^nF_(m-n),	
+(30)
+
+and the Gelin-Ces®§ro identity
+F_n^4-F_(n-2)F_(n-1)F_(n+1)F_(n+2)==1.	
+(31)
+
+Letting r==1 in (29) gives Cassini's identity
+F_(n-1)F_(n+1)-F_n^2==(-1)^n,	
+(32)
+
+sometimes also called Simson's formula since it was also discovered by Simson (Coxeter and Greitzer 1967, p. 41; Coxeter 1969, pp. 165-168; Petkovsek et al. 1996, p. 12).
+
+Johnson (2003) gives the very general identity
+F_aF_b-F_cF_d==(-1)^r(F_(a-r)F_(b-r)-F_(c-r)F_(d-r)),	
+(33)
+
+which holds for arbitrary integers a, b, c, d, and r with a+b==c+d and from which many other identities follow as special cases.
+
+The Fibonacci numbers obey the negation formula
+F_(-n)==(-1)^(n+1)F_n,	
+(34)
+
+the addition formula
+F_(m+n)==1/2(F_mL_n+L_mF_n),	
+(35)
+
+where L_n is a Lucas number, the subtraction formula
+F_(m-n)==1/2(-1)^n(F_mL_n-L_mF_n),	
+(36)
+
+the fundamental identity
+L_n^2-5F_n^2==4(-1)^n,	
+(37)
+
+conjugation relation
+F_n==1/5(L_(n-1)+L_(n+1)),	
+(38)
+
+successor relation
+F_(n+1)==1/2(F_n+L_n),	
+(39)
+
+double-angle formula
+F_(2n)==F_nL_n,	
+(40)
+
+multiple-angle recurrence
+F_(kn)==L_kF_(k(n-1))-(-1)^kF_(k(n-2)),	
+(41)
+
+multiple-angle formulas
+F_(kn)	=	1/(2^(k-1))sum_(i==0)^(|_(k-1)/2_|)(k; 2i+1)5^iF_n^(2i+1)L_n^(k-1-2i)	
+(42)
+	=	F_nsum_(i==0)^(|_(k-1)/2_|)(k-1-i; i)(-1)^(i(n+1))L_n^(k-1-2i)	
+(43)
+	=	{L_nsum_(i==0)^((k-2)/2)(k-1-i; i)(-1)^(in)5^(k/2-1-i)F_n^(k-1-2i) for k even; sum_(i==0)^(|_k/2_|)k/(k-i)(k-i; i)(-1)^(in)5^(|_k/2_|-i)F_n^(k-2i) for k odd	
+(44)
+	=	sum_(i==0)^(k)(k; i)F_iF_n^iF_(n-1)^(k-i)	
+(45)
+	=	sum_(i==0)^(k)(k; i)F_(-i)F_n^iF_(n+1)^(k-i)	
+(46)
+
+(where (45) holds only for n>1), the extension
+F_(kn+c)==sum_(i==0)^k(k; i)F_(c-i)F_n^iF_(n+1)^(k-i)	
+(47)
+
+(A. Mihailovs, pers. comm., Jan. 24, 2003), product expansions
+F_mF_n==1/5[L_(m+n)-(-1)^nL_(m-n)]	
+(48)
+
+and
+F_mL_n==F_(m+n)+(-1)^nF_(m-n),	
+(49)
+
+square expansion,
+F_n^2==1/5[L_(2n)-2(-1)^n],	
+(50)
+
+and power expansion
+F_n^k==1/(2.5^(|_k/2_|))sum_(i==0)^k(k; i)(-1)^(i(n+1)){F_((k-2i)n) for k odd; L_((k-2i)n) for k even.	
+(51)
+
+Honsberger (1985, p. 107) gives the general relations
+F_(n+m)	=	F_(n-1)F_m+F_nF_(m+1)	
+(52)
+F_((k+1)n)	=	F_(n-1)F_(kn)+F_nF_(kn+1)	
+(53)
+F_n	=	F_lF_(n-l+1)+F_(l-1)F_(n-l).	
+(54)
+
+In the case l==n-l+1, then l==(n+1)/2 and for n odd,
+F_n==F_((n+1)/2)^2+F_((n-1)/2)^2.	
+(55)
+
+Similarly, for n even,
+F_n==F_(n/2+1)^2-F_(n/2-1)^2.	
+(56)
+
+Letting k=(n-1)/2 gives the identities
+F_(2k+1)	=	F_(k+1)^2+F_k^2	
+(57)
+F_(n+2)^2-F_(n+1)^2	=	F_nF_(n+3)	
+(58)
+F_n^2	=	F_(n-1)^2+3F_(n-2)^2+2F_(n-2)F_(n-3).	
+(59)
+FibonacciShallowDiags
+
+Sum formulas for F_n include
+F_n	=	1/(2^(n-1))sum_(k==0)^(|_(n-1)/2_|)5^k(n; 2k+1)	
+(60)
+F_(n+1)	=	sum_(k==0)^(|_n/2_|)(n-k; k)	
+(61)
+
+(Wells 1986, p. 63), the latter of which shows that the shallow diagonals" of Pascal's triangle sum to Fibonacci numbers (Pappas 1989). Additional identities can be found throughout the Fibonacci Quarterly journal. A list of 47 generalized identities are given by Halton (1965).
+
+In terms of the Lucas number L_n,
+F_(2n)==F_nL_n 	
+(62)
+F_(2n)(L_(2n)^2-1)==F_(6n) 	
+(63)
+F_(m+p)+(-1)^(p+1)F_(m-p)==F_pL_m 	
+(64)
+sum_(k==a+1)^(a+4n)F_k==F_(a+4n+2)-F_(a+2)==F_(2n)L_(a+2n+2) 	
+(65)
+
+(Honsberger 1985, pp. 111-113). A remarkable identity is
+exp(L_1x+1/2L_2x^2+1/3L_3x^3+...)==F_1+F_2x+F_3x^2+...	
+(66)
+
+(Honsberger 1985, pp. 118-119), which can be generalized to
+exp(L_kx+1/2L_(2k)x^2+1/3L_(3k)x^3+...)==(F_k+F_(2k)x+F_(3k)x^2+...)/(F_k)	
+(67)
+
+(Johnson 2003). It is also true that
+(L_n^2-(-1)^aL_(n+a)^2)/(F_n^2-(-1)^aF_(n+a)^2)==5	
+(68)
+
+for a odd, and
+(L_n^2+L_(n+a)^2-8(-1)^n)/(F_n^2+F_(n+a)^2)==5	
+(69)
+
+for a even (Freitag 1996).
+
+From (°Û), the ratio of consecutive terms is
+(F_n)/(F_(n-1))	=	1+(F_(n-2))/(F_(n-1))==1+1/((F_(n-1))/(F_(n-2)))	
+(70)
+	=	1+1/(1+1/((F_(n-3))/(F_(n-2))))==[1,1,...,(F_2)/(F_1)]	
+(71)
+	=	[1,1,...,1_()_(n-1)],	
+(72)
+
+which is just the first few terms of the continued fraction for the golden ratio phi. Therefore,
+lim_(n->infty)(F_n)/(F_(n-1))==phi.	
+(73)
+
+Another fascinating connection with the golden ratio is given by the infinite series
+phi==1+sum_(n==1)^infty((-1)^(n+1))/(F_nF_(n+1)).	
+(74)
+
+Guy (1990) notes the curious fact that [e^((n-1)/2)] for n==0, 1, ... gives 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ..., but then continues 91, 149, ... (Sloane's A005181).
+
+Taking the product of the first n Fibonacci numbers and adding 1 for n==1, 2, ... gives the sequence 2, 2, 3, 7, 31, 241, ... (Sloane's A052449). Of these, 2, 2, 3, 7, 31, 241, 3121, ... (Sloane's A053413) are prime, i.e., the terms 1, 2, 3, 4, 5, 6, 7, 8, 22, 28, ... (Sloane's A053408).
+
+The sequence of final digits in Fibonacci numbers repeats in cycles of 60. The last two digits repeat in 300, the last three in 1500, the last four in 15000, etc. The number of Fibonacci numbers between n and 2n is either 1 or 2 (Wells 1986, p. 65).
+
+Ces®§ro derived the finite sums
+sum_(k==0)^(n)(n; k)F_k	=	F_(2n)	
+(75)
+sum_(k==0)^(n)(n; k)2^kF_k	=	F_(3n)	
+(76)
+
+(Honsberger 1985, pp. 109-110). The Fibonacci numbers satisfy the power recurrence
+sum_(j==0)^(t+1)(-1)^(j(j+1)/2)[t+1; j]_FF_(n-j)^t==0,	
+(77)
+
+where [a; b]_F is a Fibonacci coefficient, the reciprocal sum
+sum_(k==1)^n((-1)^k)/(F_kF_(k+a))==(F_n)/(F_a)sum_(k==1)^a((-1)^k)/(F_kF_(k+n)),	
+(78)
+
+the convolution
+sum_(k==0)^nF_kF_(n-k)==1/5(nL_n-F_n),	
+(79)
+
+the partial fraction decomposition
+1/(F_(n+a)F_(n+b)F_(n+c))==A/(F_(n+a))+B/(F_(n+b))+C/(F_(n+c)),	
+(80)
+
+where
+A	=	((-1)^(n-a))/(F_(b-a)F_(c-a))	
+(81)
+B	=	((-1)^(n-b))/(F_(c-b)F_(a-b))	
+(82)
+C	=	((-1)^(n-c))/(F_(a-c)F_(b-c)),	
+(83)
+
+and the summation formula
+sum_(k==0)^nx^kF_(ak+b)==(g(n+1)-g(0))/(1-L_ax+(-1)^ax^2),	
+(84)
+
+where
+g(n)==(-1)^aF_(a(n-1)+b)x^(n+1)-F_(an+b)x^n.	
+(85)
+
+Infinite sums include
+sum_(n==1)^infty((-1)^n)/(F_nF_(n+2))==2-sqrt(5)	
+(86)
+
+(Clark 1995) and
+sum_(n==1)^(infty)((-1)^(n+1))/(F_(n+1)F_(n+2))==phi^(-2) 	
+(87)
+sum_(n==1)^(infty)1/(F_(2n)F_(2n+2))==phi^(-2) 	
+(88)
+
+where phi is the golden ratio (Wells 1986, p. 65).
+
+For n>=3, F_n|F_m iff n|m (Wells 1986, p. 65). L_n|L_m iff n divides into m an odd number of times. (F_m,F_n)==F_((m,n)) (Michael 1964; Honsberger 1985, pp. 131-132). No odd Fibonacci number is divisible by 17 (Honsberger 1985, pp. 132 and 242). No Fibonacci number >8 is ever of the form p-1 or p+1 where p is a prime number (Honsberger 1985, p. 133).
+
+Consider the sum
+s_k==sum_(n==2)^k1/(F_(n-1)F_(n+1))==sum_(n==2)^k(1/(F_(n-1)F_n)-1/(F_nF_(n+1))).	
+(89)
+
+This is a telescoping sum, so
+s_k==1-1/(F_(k+1)F_(k+2)),	
+(90)
+
+thus
+S=lim_(k->infty)s_k==1	
+(91)
+
+(Honsberger 1985, pp. 134-135). Using Binet's Fibonacci number formula, it also follows that
+(F_(n+r))/(F_n)==(alpha^(n+r)-beta^(n+r))/(alpha^n-beta^n)==(alpha^(n+r))/(alpha^n)(1-(beta/alpha)^(n+r))/(1-(beta/alpha)^n),	
+(92)
+
+where
+alpha	=	1/2(1+sqrt(5))	
+(93)
+beta	=	1/2(1-sqrt(5))	
+(94)
+
+so
+lim_(n->infty)(F_(n+r))/(F_n)==alpha^r.	
+(95)
+S^'==sum_(n==1)^infty(F_n)/(F_(n+1)F_(n+2))==1	
+(96)
+
+(Honsberger 1985, pp. 138 and 242-243). The millin series has sum
+S^('')=sum_(n==0)^infty1/(F_(2^n))==1/2(7-sqrt(5))	
+(97)
+
+(Honsberger 1985, pp. 135-137).
+
+The Fibonacci numbers are complete. In fact, dropping one number still leaves a complete sequence, although dropping two numbers does not (Honsberger 1985, pp. 123 and 126). Dropping two terms from the Fibonacci numbers produces a sequence which is not even weakly complete (Honsberger 1985, p. 128). However, the sequence
+F_n^'=F_n-(-1)^n	
+(98)
+
+is weakly complete, even with any finite subsequence deleted (Graham 1964). {F_n^2} is not complete, but {F_n^2}+{F_n^2} are. 2^(N-1) copies of {F_n^N} are complete.
+
+For a discussion of square Fibonacci numbers, see Cohn (1964), who proved that the only square number Fibonacci numbers are 1 and F_(12)==144 (Cohn 1964ab, Guy 1994). Ming (1989) proved that the only triangular Fibonacci numbers are 1, 3, 21, and 55. The Fibonacci and Lucas numbers have no common terms except 1 and 3. The only cubic Fibonacci numbers are 1 and 8.
+(F_nF_(n+3),2F_(n+1)F_(n+2),F_(2n+3)==F_(n+1)^2+F_(n+2)^2)	
+(99)
+
+is a Pythagorean triple, as first discovered by Raine (Livio 2002, p. 107).
+F_(4n)^2+8F_(2n)(F_(2n)+F_(6n))==(3F_(4n))^2	
+(100)
+
+is always a square number (Honsberger 1985, p. 243).
+
+In 1975, James P. Jones showed that the Fibonacci numbers are the positive integer values of the polynomial
+P(x,y)==-y^5+2y^4x+y^3x^2-2y^2x^3-y(x^4-2)	
+(101)
+
+for Gaussian integers x and y (Le Lionnais 1983). If n and k are two positive integers, then between n^k and n^(k+1), there can never occur more than n Fibonacci numbers (Honsberger 1985, pp. 104-105).
+
+The Fibonacci numbers satisfy the identity
+GCD(F_m,F_n)==F_(GCD(m,n)),	
+(102)
+
+where GCD(a,b) is the greatest common divisor.
+
+The sequence of Fibonacci numbers is periodic modulo any modulus m (Wall 1960). These periods are known as Pisano periods pi(m) (Wrench 1969). The Fibonacci numbers modulo m for small m are tabulated below, together with their Pisano periods.
+m	pi(m)	Sloane	{F_n} (mod m)
+2	3	A011655	1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, ...
+3	8	A082115	1, 1, 2, 0, 2, 2, 1, 0, 1, 1, 2, 0, 2, 2, 1, ...
+4	6	A079343	1, 1, 2, 3, 1, 0, 1, 1, 2, 3, 1, 0, 1, 1, 2, ...
+5	20	A082116	1, 1, 2, 3, 0, 3, 3, 1, 4, 0, 4, 4, 3, 2, 0, ...
+6	24	A082117	1, 1, 2, 3, 5, 2, 1, 3, 4, 1, 5, 0, 5, 5, 4, ...
+7	16	A082116	1, 1, 2, 3, 5, 1, 6, 0, 6, 6, 5, 4, 2, 6, 1, ...
+8	12	A079344	1, 1, 2, 3, 5, 0, 5, 5, 2, 7, 1, 0, 1, 1, 2, ...
+
+SEE ALSO: Brown's Criterion, Cassini's Identity, Catalan's Identity, d'Ocagne's Identity, Fast Fibonacci Transform, Fibonacci Coefficient, Fibonacci Dual Theorem, Fibonacci n-Step Number, Fibonacci Polynomial, Fibonacci Prime, Fibonacci Q-Matrix, Gelin-Ces®§ro Identity, Generalized Fibonacci Number, Inverse Tangent, Linear Recurrence Equation, Lucas Sequence, Near Noble Number, Pell Sequence, Pisano Period, Rabbit Constant, Random Fibonacci Sequence, Reciprocal Fibonacci Constant, Stolarsky Array, Tetranacci Number, Tribonacci Number, Wythoff Array, Zeckendorf Representation, Zeckendorf's Theorem. [Pages Linking Here]
+
+RELATED WOLFRAM SITES: http://functions.wolfram.com/IntegerFunctions/Fibonacci/
+
+Portions of this entry contributed by Pravin Chandra
+
+REFERENCES:
+
+Amend, B. "FoxTrot.com." Cartoon from Oct. 11, 2005. http://www.foxtrot.com/.
+
+Ball, W. W. R. and Coxeter, H. S. M. Mathematical Recreations and Essays, 13th ed. New York: Dover, pp. 56-57, 1987.
+
+Basin, S. L. and Hoggatt, V. E. Jr. "A Primer on the Fibonacci Sequence." Fib. Quart. 1, 1963.
+
+Basin, S. L. and Hoggatt, V. E. Jr. "A Primer on the Fibonacci Sequence--Part II." Fib. Quart. 1, 61-68, 1963.
+
+Borwein, J. M. and Borwein, P. B. Pi & the AGM: A Study in Analytic Number Theory and Computational Complexity. New York: Wiley, pp. 94-101, 1987.
+
+Brillhart, J.; Montgomery, P. L.; and Silverman, R. D. "Tables of Fibonacci and Lucas Factorizations." Math. Comput. 50, 251-260 and S1-S15, 1988.
+
+Brook, M. "Fibonacci Formulas." Fib. Quart. 1, 60, 1963.
+
+Brousseau, A. "Fibonacci Numbers and Geometry." Fib. Quart. 10, 303-318, 1972.
+
+Brown, D. The Da Vinci Code. New York: Doubleday, 2003.
+
+Clark, D. Solution to Problem 10262. Amer. Math. Monthly 102, 467, 1995.
+
+Cohn, J. H. E. "On Square Fibonacci Numbers." J. London Math. Soc. 39, 537-541, 1964a.
+
+Cohn, J. H. E. "Square Fibonacci Numbers, etc." Fib. Quart. 2, 109-113, 1964b.
+
+Conway, J. H. and Guy, R. K. "Fibonacci Numbers." In The Book of Numbers. New York: Springer-Verlag, pp. 111-113, 1996.
+
+Coxeter, H. S. M. "The Golden Section and Phyllotaxis." Ch. 11 in Introduction to Geometry, 2nd ed. New York: Wiley, 1969.
+
+Coxeter, H. S. M. and Greitzer, S. L. Geometry Revisited. Washington, DC: Math. Assoc. Amer., p. 41, 1967.
+
+Devaney, R. "The Mandelbrot Set and the Farey Tree, and the Fibonacci Sequence." Amer. Math. Monthly 106, 289-302, 1999.
+
+Dickau, R. M. "Fibonacci Numbers." http://www.prairienet.org/~pops/fibboard.html.
+
+Freitag, H. Solution to Problem B-772. "An Integral Ratio." Fib. Quart. 34, 82, 1996.
+
+Gardner, M. Mathematical Circus: More Puzzles, Games, Paradoxes and Other Mathematical Entertainments from Scientific American. New York: Knopf, 1979.
+
+Graham, R. "A Property of Fibonacci Numbers." Fib. Quart. 2, 1-10, 1964.
+
+Graham, R. L.; Knuth, D. E.; and Patashnik, O. "Fibonacci Numbers." °Ï6.6 in Concrete Mathematics: A Foundation for Computer Science, 2nd ed. Reading, MA: Addison-Wesley, pp. 290-301, 1994.
+
+Guy, R. K. "The Second Strong Law of Small Numbers." Math. Mag. 63, 3-20, 1990.
+
+Guy, R. K. "Fibonacci Numbers of Various Shapes." °ÏD26 in Unsolved Problems in Number Theory, 2nd ed. New York: Springer-Verlag, pp. 194-195, 1994.
+
+Halton, J. H. "On a General Fibonacci Identity." Fib. Quart. 3, 31-43, 1965.
+
+Hilton, P.; Holton, D.; and Pedersen, J. "Fibonacci and Lucas Numbers." Ch. 3 in Mathematical Reflections in a Room with Many Mirrors. New York: Springer-Verlag, pp. 61-85, 1997.
+
+Hilton, P. and Pedersen, J. "Fibonacci and Lucas Numbers in Teaching and Research." J. Math. Informatique 3, 36-57, 1991-1992.
+
+Hilton, P. and Pedersen, J. "A Note on a Geometrical Property of Fibonacci Numbers." Fib. Quart. 32, 386-388, 1994.
+
+Hoffman, P. The Man Who Loved Only Numbers: The Story of Paul Erdos and the Search for Mathematical Truth. New York: Hyperion, p. 208, 1998.
+
+Hoggatt, V. E. Jr. The Fibonacci and Lucas Numbers. Boston, MA: Houghton Mifflin, 1969.
+
+Hoggatt, V. E. Jr. and Ruggles, I. D. "A Primer on the Fibonacci Sequence--Part III." Fib. Quart. 1, 61-65, 1963.
+
+Hoggatt, V. E. Jr. and Ruggles, I. D. "A Primer on the Fibonacci Sequence--Part IV." Fib. Quart. 1, 65-71, 1963.
+
+Hoggatt, V. E. Jr. and Ruggles, I. D. "A Primer on the Fibonacci Sequence--Part V." Fib. Quart. 2, 59-66, 1964.
+
+Hoggatt, V. E. Jr.; Cox, N.; and Bicknell, M. "A Primer for the Fibonacci Numbers: Part XII." Fib. Quart. 11, 317-331, 1973.
+
+Honsberger, R. "A Second Look at the Fibonacci and Lucas Numbers." Ch. 8 in Mathematical Gems III. Washington, DC: Math. Assoc. Amer., 1985.
+
+Johnson, B. "Fibonacci Resources." http://www.dur.ac.uk/bob.johnson/fibonacci/.
+
+Johnson, B. "Fibonacci Identities by Matrix Methods and Generalisation to Related Sequences." March 25, 2003. http://maths.dur.ac.uk/~dma0rcj/PED/fib.pdf.
+
+Kelly, B. "Fibonacci and Lucas Factorizations." http://home.att.net/~blair.kelly/mathematics/fibonacci/.
+
+Kepler, J. The Six-Cornered Snowflake. Oxford, England: Oxford University Press, 1966.
+
+Knott, R. "Fibonacci Numbers and the Golden Section." http://www.mcs.surrey.ac.uk/Personal/R.Knott/Fibonacci/fib.html.
+
+Knuth, D. E. The Art of Computer Programming, Vol. 1: Fundamental Algorithms, 3rd ed. Reading, MA: Addison-Wesley, 1997.
+
+Koshy, T. Fibonacci and Lucas Numbers with Applications. New York: Wiley, 2001.
+
+Le Lionnais, F. Les nombres remarquables. Paris: Hermann, p. 146, 1983.
+
+Update a linkLeyland, P. ftp://sable.ox.ac.uk/pub/math/factors/fibonacci.Z.
+
+Livio, M. The Golden Ratio: The Story of Phi, the World's Most Astonishing Number. New York: Broadway Books, 2002.
+
+Matiyasevich, Yu. V. "Solution to of the Tenth Problem of Hilbert." Mat. Lapok 21, 83-87, 1970.
+
+Matijasevich, Yu. V. Hilbert's Tenth Problem. Cambridge, MA: MIT Press, 1993. http://www.informatik.uni-stuttgart.de/ifi/ti/personen/Matiyasevich/H10Pbook/.
+
+Michael, G. "A New Proof for an Old Property." Fib. Quart. 2, 57-58, 1964.
+
+Ming, L. "On Triangular Fibonacci Numbers." Fib. Quart. 27, 98-108, 1989.
+
+Ogilvy, C. S. and Anderson, J. T. "Fibonacci Numbers." Ch. 11 in Excursions in Number Theory. New York: Dover, pp. 133-144, 1988.
+
+Pappas, T. "Fibonacci Sequence," "Pascal's Triangle, the Fibonacci Sequence & Binomial Formula," "The Fibonacci Trick," and "The Fibonacci Sequence & Nature." The Joy of Mathematics. San Carlos, CA: Wide World Publ./Tetra, pp. 28-29, 40-41, 51, 106, and 222-225, 1989.
+
+Pegg, E. Jr. "Math Games: Sequence Pictures." Dec. 8, 2003. http://maa.org/editorial/mathgames/mathgames_12_08_03.html.
+
+Petkovsek, M.; Wilf, H. S.; and Zeilberger, D. A=B. Wellesley, MA: A. K. Peters, p. 12, 1996. http://www.cis.upenn.edu/~wilf/AeqB.html.
+
+Ram, R. "Fibonacci Formulae." http://users.tellurian.net/hsejar/maths/fibonacci/.
+
+Reid, C. Julia: A Life in Mathematics. Washington, DC: Math. Assoc. Amer., 1997.
+
+Reiter, C. "Fast Fibonacci Numbers." Mathematica J. 2, 58-60, 1992.
+
+Schroeder, M. Fractals, Chaos, Power Laws: Minutes from an Infinite Paradise. New York: W. H. Freeman, pp. 49-57, 1991.
+
+S®¶roul, R. "The Fibonacci Numbers." °Ï2.13 in Programming for Mathematicians. Berlin: Springer-Verlag, pp. 21-22, 2000.
+
+Shorey, T. N. and Stewart, C. L. "On Divisors of Fermat, Fibonacci, Lucas and Lehmer Numbers, 2." J. London Math. Soc. 23, 17-23, 1981.
+
+Sloane, N. J. A. Sequences A000045/M0692, A001605/M2309, A005181/M0693, A005478/M0741, A011655, A037917, A037918, A053408, A052449, A053413, A068070, A072353, A079343, A079344, A082115, A082116, A082117, A082118, A089260, and A097348 in "The On-Line Encyclopedia of Integer Sequences."
+
+Smith, H. J. "Fibonacci Numbers." http://www.geocities.com/hjsmithh/Fibonacc.html.
+
+Steinhaus, H. Mathematical Snapshots, 3rd ed. New York: Dover, pp. 46-47 and 299, 1999.
+
+Stewart, C. L. "On Divisors of Fermat, Fibonacci, Lucas and Lehmer Numbers." Proc. London Math. Soc. 35, 425-447, 1977.
+
+Szymkiewicz, D. "Sur la port®¶e de la loi de Ludwig." Acta Soc. Botanicorum Poloniae 5, 390-395, 1928.
+
+Vogler, P. "Das 'Ludwig'sche Gipfelgesetz' und seine Tragweite." Flora 104, 123-128, 1912.
+
+Vorob'ev, N. N. Fibonacci Numbers. New York: Blaisdell, 1961.
+
+Wall, D. D. "Fibonacci Series Modulo m." Amer. Math. Monthly 67, 525-532, 1960.
+
+Weisstein, E. W. "Books about Fibonacci Numbers." http://www.ericweisstein.com/encyclopedias/books/FibonacciNumbers.html.
+
+Wells, D. The Penguin Dictionary of Curious and Interesting Numbers. Middlesex, England: Penguin Books, pp. 61-67, 1986.
+
+Wrench, J. W. "Review of B. H. Hannon and W. L. Morris, Tables of Arithmetical Functions Related to the Fibonacci Numbers." Math. Comput. 23, 459-460, 1969.
+
+Zylinski, E. "Numbers of Fibonacci in Biological Statistics." Atti del Congr. internaz. matematici 4, 153-156, 1928.
+
+
+LAST MODIFIED: March 31, 2006
+
+CITE THIS AS:
+
+Chandra, Pravin and Weisstein, Eric W. "Fibonacci Number." From MathWorld--A Wolfram Web Resource. http://mathworld.wolfram.com/FibonacciNumber.html
+
+? 1999 CRC Press LLC, ? 1999-2006 Wolfram Research, Inc. | Terms of Use
+

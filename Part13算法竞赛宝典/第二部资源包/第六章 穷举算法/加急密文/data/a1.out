@@ -1,0 +1,124 @@
+Monty Hall Dilemma
+
+The Monty Hall Dilemma was discussed in the popular "Ask Marylin" question-and-answer column of the Parade magazine. Details can also be found in the "Power of Logical Thinking" by Marylin vos Savant, St. Martin's Press, 1996.
+
+Marylin received the following question:
+Suppose you're on a game show, and you're given the choice of three doors. Behind one door is a car, behind the others, goats. You pick a door, say number 1, and the host, who knows what's behind the doors, opens another door, say number 3, which has a goat. He says to you, "Do you want to pick door number 2?" Is it to your advantage to switch your choice of doors?
+Craig. F. Whitaker
+Columbia, MD
+
+Marylin's response caused an avalanche of correspondence, mostly from people who would not accept her solution. Several iterations of correspondence ensued. Eventually, she issued a call to Math teachers among her readers to organize experiments and send her the charts. Some readers with access to computers ran computer simulations. At long last, the truth was established and accepted.
+
+Below is one simulation you may try on your computer. For simplicity, I do not hide goats behind the doors. There is only one 'abstract' prize. You may either hit on the right door or miss it. You make your selection by pressing small round buttons below input controls that substitute for the doors. Down below other controls update experiment statistics even as you progress.
+
+Approximately every second the program clears 'door' controls and is waiting for your selection. Before you start, set up a desired total number of experiments. With every selection it will decrease by 1.
+
+Two controversial solutions are given after the puzzle. Which is the right one?
+
+(The simulation below has been written in JavaScript early in 1996, I believe. It was among my first attempts to create dynamic pages on the web. After I began programmimg in Java, I never again looked back to JavaScript. Recently, I implemented a simulation of the Monty Hall Dilemma in Java. It is more transparent. I also like it better.)
+Important note:
+
+You run a simulation. During a simulation you are allowed to make as many selections as indicated in the "Trials to go" control before your first selection. Remember also that after each selection the device needs approximately 1 second to clear up controls. Please wait till it does. To start a new simulation please press the "Reset" button.
+Doors 				When you select a door and miss the prize the word 'selected' appears in the control. The one open by the host will display the word 'open'. If you guess correctly the word 'prize' will be displayed in the corresponding control.
+				Use these radio buttons to make your selection.
+	#Wins	#Losses
+If you switch 		
+If you do not switch 		
+Number of hits 		
+Trials to go 		
+
+Solution #1
+
+There is a 1/3 chance that you'll hit the prize door, and a 2/3 chance that you'll miss the prize. If you do not switch, 1/3 is your probability to get the prize. However, if you missed (and this with the probability of 2/3) then the prize is behind one of the remaining two doors. Furthermore, of these two, the host will open the empty one, leaving the prize door closed. Therefore, if you miss and then switch, you are certain to get the prize. Summing up, if you do not switch your chance of winning is 1/3 whereas if you do switch your chance of winning is 2/3.
+Solution #2
+
+After the host opened one door, two remained closed with equal probabilities of having the prize behind them. Therefore, regardless of whether you switch or not you have a 50-50 chance(i.e, with probabilities 1/2) to hit or miss the prize door.
+Remark 1
+
+The above simulation tool have the virtue of being quite suggestive - three quantities, viz.,
+
+    * the number of hits
+    * the number of wins with no switching
+    * the number of losses with switching 
+
+are all equal. It's really better to see once...
+Remark 2
+
+S.K.Stein in his book Strength in Numbers makes use of the Monty Hall Dilemma to demonstrate a mathematician's approach to problem solving. First run 50 experiments. Next think of the results. (In the following he uses 35 mm film cansiters to simulate doors in the stage performance.)
+ 	
+
+If, after thinking some more about the question, you still are not sure about the answer and are not ready to explain it, then do the following. (Keep in mind that just citing experimental data is not an explanation. The data may convince you that something is true, but they do not explain it.)
+
+Get one more canister and perform a similar experiment, using four canisters instead of three. Put a wad of paper in one canister. After your friend chooses a canister, look in the remaining three and show the friend two empty canisters. The friend then faces a choice between the two other canisters. Carry out the same experiments as before. Think over the results you get. What do they suggest? Do you see a way to explain what happens?
+
+Performing these experiments not only gives you some clues, it also slows you down from the common frenzy of everyday life, so you can focus on just one thing for a period of time.
+
+If you still do not see how to explain what is going on, then use ten can- isters. Put the wad in one of them. After your friend chooses a canister, look in the other nine. Show your friend eight empty canisters out of those nine and remove all eight. Again that leaves just two canisters. Conduct a similar experiment.
+
+I am confident that you will solve this problem, so confident that I do not include the answer anywhere in the book, not even in fine print upside down hidden in the back matter. You mill probably, along the way, calculate the fraction of times that switching will pick the car and the fraction of times that not switching will pick the car. Using these fractions, you will be able to explain the brainteaser completely. Then you will have to admit that you can think mathematically. You just needed the opportunity.
+
+Terry Pascal offered his variant of the solution. Also check Ashutosh Joshi's description of an approach that helped him come to terms with Marylin's solution. Bruno Barros found a different approach. Yet another view has been presented by Peter Stikker.
+
+One of the solutions that come naturally to me has been sent by Michael Gerard Wilson:
+ 	
+
+Hi Alex,
+
+It was a while ago that I accepted the idea that switching doors was the correct play every time because it improves your chances of winning, but I had trouble convincing my friends that it was the correct answer. However, a friend of mine just came up with this explanation that I think should really make it obvious.
+
+Let's say that you choose your door (out of 3, of course). Then, without showing what's behind any of the doors, Monty says you can stick with your first choice or you can have both of the two other doors. I think most everyone would then take the two doors collectively.
+
+Kenneth Kaplan found that counting the losing probabilies helps arrive at the right conclusion:
+ 	
+
+I'm sure others have lent this insight, but I've always found it easier to consider the chance of losing when (1) you don't switch, and (2) you do.
+
+You'll lose 2/3 of the time if you don't switch. If you do switch, then the prize is still available 2/3 of the time, and you'll make the wrong choice 1/2 the time, so the chance of losing when you switch is only (2/3)*(1/2) = 1/3. You've halved your chance of losing = doubled your chances of winning by switching.
+
+Keith Devlin has come with a new twist to the problem:
+... suppose you are playing a seven door version of the game. You choose three doors. Monty now opens three of the remaining doors to show you that there is no prize behind it. He then says, "Would you like to stick with the three doors you have chosen, or would you prefer to swap them for the one other door I have not opened?" What do you do? Do you stick with your three doors or do you make the 3 for 1 swap he is offering?
+
+Multi-Stage Monty Hall Dilemma
+
+"In the three-door Monty Hall Dilemma, there are two stages to the decision, the initial pick followed by the decision to stick with it or switch to the only other remaining alternative after the host has shown an incorrect door. An intriguing extension of the basic Monty Hall Dilemma has been provided by M. Bhaskara Rao of the Department of Statistics at the North Dakota University. He analyzed what happens when the dilemma is expanded beyond the two stages. The number of stages can be as many as the number of doors minus one.
+
+"Suppose there are four doors, one of which is a winner. The host says:
+
+"You point to one of the doors, and then I will open one of the other non-winners. Then you decide whether to stick with your original pick or switch to one of the remaining doors. Then I will open another (other than the current pick) non-winner. You will then make your final decision by sticking with the door picked on the previous decision or by switching to the only other remaining door.
+
+"Now there are three stages, and the four different strategies can be summarized as follows:
+Stage	1	2	3	Probability of winning
+	Pick	Stick	Stick	.250
+	Pick	Switch	Stick	.375
+	Pick	Stick	Switch	.750
+	Pick	Switch	Switch	.625
+
+"People who accept the correctness of the 2/3 solution in the basic Monty Hall Dilemma might assume that one does best by switching in both Stage 2 and Stage 3. However, as shown here, the counter-intuitive solution to the three-stage Monty Hall Dilemma is to stick in Stage 2 and to switch in Stage 3. These remarkable probabilities were published by Rao in the American Statistician. The underlying principle is that in a multi-stage Monty Hall Dilemma, one should stick with one's initial hunch until the very last chance and then switch."
+
+Three Shell Game
+
+Martin Gardner in his Aha! Gotcha describes the following variant:
+
+Operator: Step right up, folks. See if you can guess which shell the pea is under. Double your money if you win.
+
+After playing the game a while, Mr. Mark decided he couldn't win more than once out of three.
+
+Operator: Don't leave, Mac. I'll give you a break. Pick any shell. I'll turn over an empty one. Then the pea has to be under one of the other two, so your chances of winning go way up.
+
+Poor Mr. Mark went broke fast. He did not realize that turning an empty shell had no effect on his chances. Do you see why?
+Comment
+
+The problem is actually the same but looked at from a different perspective. Since Mr. Mark has made his choice no Operator's action can change his chances. So, to me at least, the Shell Game makes it pretty obvious that unless you switch in the Monty Hall Dilemma (i.e. if you play the Shell Game), you chances remain 1 to 3. However, if you switch, you select one door out of two.
+
+References
+
+   1. A.K.Dewdney, 200% of Nothing, John Wiley & Sons, Inc., 1993
+   2. Martin Gardner, aha! Gotcha. Paradoxes to puzzle and delight, Freeman & Co, NY, 1982
+   3. J. dePillis, 777 Mathematical Conversation Starters, MAA, 2002, pp. 143-146
+   4. Marylin vos Savant, The Power of Logical Thinking, St. Martin's Press, NY 1996
+   5. S.K.Stein, Strength in Numbers, John Wiley & Sons, 1996 
+
+On Internet
+
+   1. The WWW Tackles The Monty Hall Problem
+   2. Win a car 
