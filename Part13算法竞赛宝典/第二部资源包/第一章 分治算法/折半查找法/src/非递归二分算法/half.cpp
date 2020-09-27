@@ -1,41 +1,38 @@
-//非递归的折半查找法
+// 非递归法
 #include <iostream>
-#include <cstdlib>
-#define MAXN 10001
-using namespace std;
-int key,top,bot,mid,n,a[MAXN];
 
-void half()//二分查找法 
-{
-  top=1;
-  bot=n;
-  while (top<=bot)
-  {
-    mid=(bot+top)/2;
-    if (key==a[mid])//如果正好找到 
-    {
-      cout<<mid<<endl;
-      exit(0);
+#define MAX 10001
+
+using namespace std;
+
+int a[MAX], target, n;
+
+void search() {
+    int left = 1, right = n, mid;
+    while (left <= right) {
+        mid = (left + right) / 2;
+        if (target == a[mid]) {
+            cout << mid << endl;
+            return;
+        } else if (target < a[mid]) {
+            left = mid - 1;
+        } else {
+            right = mid + 1;
+        }
     }
-    else if (key<a[mid])//选择右半段 
-      bot=mid-1;
-    else               //选择左半段 
-      top=mid+1;
-  }
-  cout<<-1<<endl;
+    cout << -1 << endl;
 }
 
-int main () 
-{
-  freopen("half.in","r",stdin);
-  freopen("half.out","w",stdout);  
-  cin>>n;
-  for(int i=1;i<=n;i++)
-    cin>>a[i]; 
-  cin>>key;
-  if (key<a[1] || key>a[n])
-    cout<<-1<<endl;
-  else  
-    half();
-  return 0;
+int main() {
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+    }
+    cin >> target;
+    if (target < a[1] || target > a[n]) {
+        cout << -1 << endl;
+    } else {
+        search();
+    }
+    return 0;
 }
