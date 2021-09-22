@@ -1,0 +1,26 @@
+##########################
+# Jetbrains Ignore files #
+##########################
+*.iml
+.idea/
+target/
+.DS_Store
+bin/
+
+#####################
+# C++ Ignore files #
+#####################
+#*.out
+cmake-build-debug/
+.vscode/
+
+#####################
+# Python Ignore files #
+#####################
+.ipynb_checkpoints/
+__pycache__/
+.settings/
+.classpath
+.project
+.factorypath
+mldata/

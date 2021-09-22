@@ -1,0 +1,6 @@
+.idea/
+target/
+cmake-build-debug/
+*.iml
+bin/
+.DS_Store

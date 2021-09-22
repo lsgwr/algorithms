@@ -1,0 +1,8 @@
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/dp)
+file(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
+foreach(file ${files})
+    get_filename_component(name ${file} NAME)
+    add_executable(${name} ${file})
+    # target_link_libraries(${name} ${CMAKE_SOURCE_DIR}/lib/libcstl.a ${CMAKE_SOURCE_DIR}/lib/libsecurec.a)
+    target_include_directories(${name} PUBLIC ${CMAKE_SOURCE_DIR}/include)
+endforeach()

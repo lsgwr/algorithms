@@ -1,0 +1,20 @@
+1
+18 800
+processor 5000_MHz 156 23
+processor 6000_MHz 34 45
+processor 3500_MHz 4543 34
+processor 4200_MHz 435 45
+memory 2_GB 343 45
+memory 4_GB 345 78
+memory 1_GB 35 234
+mainbord all_onboard 52 45
+harddisk 250_GB 54 34
+harddisk 500_FB 78 57
+casing midi 36 54
+monitor 17_inch 157 24
+monitor 22_inch 678 123
+monitor 19_inch 76 23
+monitor 20_inch 78 23
+mouse cordless_optical 18 12
+mouse microsoft 56 23
+keyboard office 4 456
