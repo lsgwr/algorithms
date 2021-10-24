@@ -1,10 +1,8 @@
-# 高中信息学竞赛
+# 信息学竞赛入门经典 系列
 
-> 视频教程收集在百度网盘的数据结构与算法部分下了
+> 一共四本书，代码都在本工程里了
 
-+ [动态规划](dp)
-+ [树](Book4Training)
-+ [数学基础](Book2Solutions)
-+ [图](Book1Main)
-+ 线段树
-+ [字符串算法](Book3Implement)
++ 《算法竞赛入门经典(第二版)：[Book1Main](Book1Main)
++ 习题与解答：[Book2Solutions](Book2Solutions)
++ 算法实现：[Book3Implement](Book3Implement)
++ 训练指南：[Book4Training](Book4Training)
